@@ -1,0 +1,3836 @@
+【分享页正文 / WorkBuddy ①-2 正式设计批次二（T-03）提交说明】
+
+询问内容是什么
+内容由 AI 生成，请核实重要信息
+
+GPT 已完成《34》V1.2 和《35》V1.2 的最终独立审核。
+
+﻿
+
+
+**正式审核通过：①-2 批次一（8 个组件）。**
+
+﻿
+
+
+现在允许启动批次二（T-03）。
+
+﻿
+
+
+执行要求：
+
+1. 严格按《30》V1.3 已批准的范围完成批次二，不擅自增删组件。
+
+2. 继续使用《34》现有的规范卡模板，完整定义 Props / Events / Slots、PC / 手机变体、状态、交互、Token、i18n、数据契约、验收及复用关系。
+
+3. 输入框三状态规则必须沿用已批准规范。
+
+4. 无障碍矩阵逐项落实，不得只写原则、不定义具体验收。
+
+5. 继续保持不写代码、不做样机、不正式化 CSS Variables、不进入页面设计。
+
+6. 完成后提交完整批次二文档及自检记录，停止并等待 GPT 独立审核，不自动启动批次三。
+
+﻿
+
+
+请开始批次二设计。
+
+12:57
+WorkBuddy
+已完成 7m50s
+
+批次二（T-03）设计完成并提交，现已停止等待 GPT 独立审核。
+
+交付内容
+《36》批次二规范文档：12 张规范卡（序号 7–18）—— C-05 三件（FmModal/FmConfirm/FmDrawer）+ C-06 九件（FmFormField/FmInput/FmTextarea/FmSelect/FmCheckbox/FmRadio/FmSwitch/FmStepper/FmSearchInput）。每卡 11 字段 + 契约明细（Props/Events/Slots）+「明确不设」；含续表映射 46 行（#71–#116）、§5.4.1 矩阵逐行落实 9 行、三状态实测表、复用落地、TBD-05。
+《37》自检记录：6 项要求逐条核验 + 可复现脚本，95/95 PASS、EXIT=0、正文==stdout 逐字一致。
+对 6 项要求的落实
+范围：12 组件逐名对账《30》§4.4，全库 36 SFC 未增删改；P 组零纳入。
+模板：沿用《34》全字段 + 逐卡契约明细。
+三状态：逐字沿用《25》/《20》——S1 4.54:1 / S2 15.96:1 / S3 7.56·6.94:1，兜底 A #707070 四底全 ≥3:1、B 不作首选；FmSearchInput 继承结论不重复实测。
+矩阵逐项落实：9 行每行给出对比度数值、焦点归因（SC 2.4.7 + 项目强化 ≥3:1）、禁用态、键盘/aria 语义的具体验收，并与卡内编号互引；未覆盖组合标批次五补测。
+红线：无代码/样机、CSS 仍 DRAFT、未进页面设计。
+停止点：批次三未启动，自检通过不构成放行。
+两点需你知道的判断
+独立分册决策：批次一《34》《35》已通过冻结，其 120 项脚本读《34》全文按「8 卡/70 行」断言；若把批次二追加进《34》会破坏已通过脚本。故采用《36》《37》独立分册，编号续接不重叠——已复验批次一脚本仍 120/120 PASS，《34》《35》零改动。
+TBD-05 遮罩色：《19b》无独立遮罩背景色 Token（仅 --z-mask 层级，阴影 rgba 语义不同），按 L3-5 不造值，组件层只写「未固化，待 TBD-05 Token 确认」，回流 ①-1 层。
+
+边界终检：docs 38 份（新增 2）、src/ 不存在、实现文件 0、基线文件时间戳全部未动。等待 GPT 对批次二的独立审核，批次三（T-04 上，3 件）继续保持未启动。​
+
+37-①-2正式设计批次二交付与自检记录.md
+26.3 KB
+36-阶段一第二步-基础组件规范文档-批次二.md
+82.9 KB
+Hy4 flash
+13:05
+
+
+========================================================================
+《36》36-阶段一第二步-基础组件规范文档-批次二.md（T-03，12 张规范卡 §4.1～§4.12，序号 7–18）
+========================================================================
+
+36-阶段一第二步-基础组件规范文档-批次二
+《36》阶段一第二步 · 基础组件规范文档（批次二 · T-03 · 12 张）
+项
+	
+内容
+
+
+记录编号
+	
+SPEC-①-2-20261116-02-B2（批次二 · T-03）
+
+
+版本
+	
+V1.0 · 批次二首版（2026-11-16）。批次一为《34》V1.2（已获 GPT 最终独立审核通过）。本批以独立分册交付，模板 / Layer 3 编号 / 验收编号续接《34》，不改《34》《35》任何字节
+
+
+依据
+	
+《30》V1.3（GPT 最终审核通过）§4.4 序号 7～18 / §4.6 复用关系 / §5.3 规范卡模板 / §5.4 全局验收 / §5.4.1 交互控件无障碍覆盖矩阵 / §5.4.2；《34》V1.2（规范卡模板 + Layer 3 映射 #1～#70 + §2 统一面板规则）；《19》§2.4 输入框规则 / §5～§13；《19b》Layer 1～2（仍 DRAFT，本批零写入）；《20》§5.2 三状态实测 / 全组合对比度；《25》输入框三状态规则（沿用已批准规范）；《16》V1.6 色值；《01》§4.8 /《02》§4 状态机
+
+
+触发
+	
+GPT 已完成《34》《35》V1.2 最终独立审核，正式通过 ①-2 批次一（8 个组件），允许启动批次二（T-03）；用户 2026-11-16 指令 6 项执行要求：①严格按《30》V1.3 范围不增删组件；②沿用《34》规范卡模板、完整定义全字段；③输入框三状态沿用已批准规范；④无障碍矩阵逐项落实、不只写原则；⑤不写代码 / 样机 / CSS 正式版 / 页面设计；⑥提交完整批次二文档 + 自检记录后停止、不自动启动批次三
+
+
+文件性质
+	
+①-2 正式规范文档 · 批次二独立分册（只交付规范，不交付代码）。采用独立分册的原因：批次一《34》《35》已获 GPT 最终通过并冻结，其 120 项自检脚本读取《34》全文并按 8 卡 / 70 行断言；若把批次二卡片追加进《34》，将使已通过的批次一脚本失效。故本批独立成册，《34》《35》零改动、脚本保持可复现，编号体系续接而不重叠
+
+
+本批范围
+	
+T-03 全部 = 12 张规范卡：序号 7～18 —— C-05 FmModal(7) FmConfirm(8) FmDrawer(9)；C-06 FmFormField(10) FmInput(11) FmTextarea(12) FmSelect(13) FmCheckbox(14) FmRadio(15) FmSwitch(16) FmStepper(17) FmSearchInput(18)。另含 §1 续表映射 #71～#116、§2 §5.4.1 矩阵逐行落实、§3 输入框三状态实测表、§4 验收对照、§5 复用落地
+
+
+本批不做
+	
+批次三～五组件（序号 3/5/6/19～24/30～36 等）；T-05 交叉核验汇总 / T-06 送审包；P 组 5 项；不生成任何 .vue / .ts / .css 实现文件、不做样机、不固化 CSS、不新增组件、不进入页面模板 / 页面设计、不改色值 / 基线 / 四张 V5 图
+
+
+状态闸门
+	
+①-1 已收尾；批次一（8 卡）已 GPT 通过；①-2 批次二进行中（批次 2 / 5，V1.0 待 GPT 独立审核）；批次三（T-04 上）继续保持未启动；①-2 整体完成后仍单独送审、单独确认（X-15 那一次）；①-3 / ①-4 未开始
+
+
+停止点
+	
+提交《36》《37》后停止，等待 GPT 独立审核通过后才开始批次三；自检脚本通过不构成放行
+1. 批次二 Layer 3 → Layer 2 映射表（续表 #71～#116，覆盖率必须 100%）
+规则同《34》§1.3：本表续接《34》#1～#70（#70 为 --fm-image-radius），本批新增 #71～#116；每行映射列只准 var(--…Layer 2…) 形式，禁止 Layer 1 直引、禁止字面 HEX / px / 阴影 / 时长值（L3-1～L3-6）。复用方不另起重复别名（U-5）：FmConfirm/FmDrawer 复用 --fm-modal-*，C-06 各控件复用 --fm-field-* 与 --fm-input-*，FmSearchInput 复用 --fm-input-*，FmStepper 复用 --fm-btn-*。确需新值回 ①-1 Tokens 层走变更流程（见 §5 TBD-05 遮罩背景色）。本批不写入任何 .css / .vue 文件。
+1.1 C-05 弹窗 / 确认框 / 抽屉（#71～#92）
+#
+	
+Layer 3 别名
+	
+映射（Layer 2）
+	
+用途
+	
+所属组件
+
+
+71
+	
+--fm-modal-z
+	
+var(--z-modal)
+	
+模态内容层级
+	
+FmModal
+
+
+72
+	
+--fm-modal-mask-z
+	
+var(--z-mask)
+	
+遮罩层级（遮罩色见 §5 TBD-05）
+	
+FmModal
+
+
+73
+	
+--fm-modal-shadow
+	
+var(--shadow-modal)
+	
+模态阴影
+	
+FmModal
+
+
+74
+	
+--fm-modal-bg
+	
+var(--color-surface)
+	
+模态底
+	
+FmModal
+
+
+75
+	
+--fm-modal-radius
+	
+var(--radius-lg)
+	
+模态圆角
+	
+FmModal
+
+
+76
+	
+--fm-modal-pad-pc
+	
+var(--space-5)
+	
+PC 模态内边距
+	
+FmModal
+
+
+77
+	
+--fm-modal-pad-mobile
+	
+var(--space-4)
+	
+手机模态内边距
+	
+FmModal
+
+
+78
+	
+--fm-modal-title-color
+	
+var(--color-text-primary)
+	
+标题文字
+	
+FmModal
+
+
+79
+	
+--fm-modal-title-size
+	
+var(--font-size-h3)
+	
+标题字号
+	
+FmModal
+
+
+80
+	
+--fm-modal-body-color
+	
+var(--color-text-secondary)
+	
+正文文字
+	
+FmModal
+
+
+81
+	
+--fm-modal-focus-ring
+	
+var(--color-focus-ring)
+	
+焦点 ring（项目强化 ≥3:1）
+	
+FmModal
+
+
+82
+	
+--fm-modal-duration
+	
+var(--motion-duration-slow)
+	
+进出场时长（320ms，《30》§4.3 C-05）
+	
+FmModal
+
+
+83
+	
+--fm-confirm-icon-danger
+	
+var(--color-danger)
+	
+危险确认图标语义色
+	
+FmConfirm
+
+
+84
+	
+--fm-confirm-icon-warning
+	
+var(--color-warning)
+	
+警示确认图标语义色
+	
+FmConfirm
+
+
+85
+	
+--fm-drawer-radius-top
+	
+var(--radius-xl)
+	
+手机底部抽屉顶部圆角
+	
+FmDrawer
+
+
+86
+	
+--fm-drawer-pad
+	
+var(--space-4)
+	
+抽屉内边距
+	
+FmDrawer
+
+
+87
+	
+--fm-drawer-safe-bottom
+	
+var(--space-safe-bottom)
+	
+抽屉底部 iOS 安全区
+	
+FmDrawer
+
+
+88
+	
+--fm-drawer-duration
+	
+var(--motion-duration-slow)
+	
+抽屉滑入时长
+	
+FmDrawer
+FmConfirm（序号 8） 复用 --fm-modal-*（#71～#82）不另立浮层别名，仅 #83～#84 为图标语义色差异。FmDrawer（序号 9） 复用 --fm-modal-z / --fm-modal-mask-z / --fm-modal-shadow / --fm-modal-bg 浮层机制，仅 #85～#88 为形态差异（U-1 / U-5）。
+1.2 C-06 表单 / 输入 / 选择器（#89～#116）
+#
+	
+Layer 3 别名
+	
+映射（Layer 2）
+	
+用途
+	
+所属组件
+
+
+89
+	
+--fm-field-label-color
+	
+var(--color-text-primary)
+	
+字段 label 文字
+	
+FmFormField
+
+
+90
+	
+--fm-field-label-size
+	
+var(--font-size-body-sm)
+	
+字段 label 字号（14px）
+	
+FmFormField
+
+
+91
+	
+--fm-field-hint-color
+	
+var(--color-text-tertiary)
+	
+辅助说明文字
+	
+FmFormField
+
+
+92
+	
+--fm-field-error-color
+	
+var(--color-text-safe-red)
+	
+校验错误文字（小字号红字唯一收敛点）
+	
+FmFormField
+
+
+93
+	
+--fm-field-gap
+	
+var(--space-2)
+	
+label / 控件 / 提示间距
+	
+FmFormField
+
+
+94
+	
+--fm-input-bg
+	
+var(--color-surface)
+	
+输入框底
+	
+FmInput
+
+
+95
+	
+--fm-input-bg-disabled
+	
+var(--color-disabled-bg)
+	
+禁用底
+	
+FmInput
+
+
+96
+	
+--fm-input-text
+	
+var(--color-text-primary)
+	
+已填值文字（S2）
+	
+FmInput
+
+
+97
+	
+--fm-input-placeholder
+	
+var(--color-text-quaternary)
+	
+占位文字（S1；#707070 兜底 A）
+	
+FmInput
+
+
+98
+	
+--fm-input-border
+	
+var(--color-border-strong)
+	
+输入区边界（承担识别功能须独立 ≥3:1）
+	
+FmInput
+
+
+99
+	
+--fm-input-border-focus
+	
+var(--color-focus-ring)
+	
+焦点态边界 / ring（S3）
+	
+FmInput
+
+
+100
+	
+--fm-input-focus-width
+	
+var(--color-focus-outline-width)
+	
+focus ring 宽度
+	
+FmInput
+
+
+101
+	
+--fm-input-focus-offset
+	
+var(--color-focus-outline-offset)
+	
+focus ring 偏移
+	
+FmInput
+
+
+102
+	
+--fm-input-radius
+	
+var(--radius-md)
+	
+输入区圆角
+	
+FmInput
+
+
+103
+	
+--fm-input-height-pc
+	
+var(--space-6)
+	
+PC 输入区高度
+	
+FmInput
+
+
+104
+	
+--fm-input-height-mobile
+	
+var(--space-7)
+	
+手机输入区高度（48px ≥44 触控达标）
+	
+FmInput
+
+
+105
+	
+--fm-input-error-border
+	
+var(--color-text-safe-red)
+	
+错误态边界（红，配合图标 / 文案非唯一线索）
+	
+FmInput
+
+
+106
+	
+--fm-textarea-min-height
+	
+var(--space-8)
+	
+多行输入最小高度（64px）
+	
+FmTextarea
+
+
+107
+	
+--fm-select-option-hover-bg
+	
+var(--color-brand-50)
+	
+下拉项 hover 浅底
+	
+FmSelect
+
+
+108
+	
+--fm-select-option-selected-color
+	
+var(--color-text-brand)
+	
+下拉选中项文字 / 勾选色
+	
+FmSelect
+
+
+109
+	
+--fm-select-arrow-color
+	
+var(--color-text-tertiary)
+	
+下拉箭头图标色（必要图标 ≥3:1 需实测）
+	
+FmSelect
+
+
+110
+	
+--fm-checkbox-size
+	
+var(--space-4)
+	
+勾选框边长（16px）
+	
+FmCheckbox
+
+
+111
+	
+--fm-checkbox-checked-bg
+	
+var(--color-brand-primary-cta)
+	
+勾选态填充（主 CTA 色）
+	
+FmCheckbox
+
+
+112
+	
+--fm-checkbox-border
+	
+var(--color-border-strong)
+	
+未勾选边界（≥3:1）
+	
+FmCheckbox
+
+
+113
+	
+--fm-checkbox-checkmark
+	
+var(--color-text-inverse)
+	
+勾选标记（反白）
+	
+FmCheckbox
+
+
+114
+	
+--fm-switch-track-on
+	
+var(--color-brand-primary-cta)
+	
+开关开态轨道
+	
+FmSwitch
+
+
+115
+	
+--fm-switch-track-off
+	
+var(--color-border-strong)
+	
+开关关态轨道
+	
+FmSwitch
+
+
+116
+	
+--fm-switch-thumb
+	
+var(--color-text-inverse)
+	
+开关滑块（反白）
+	
+FmSwitch
+复用不另起别名（U-5）：FmTextarea 复用 --fm-input-*（#94～#105）+ --fm-field-*（#89～#93），仅 #106 为多行最小高度差异；FmSelect 复用 --fm-input-border / --fm-input-border-focus / --fm-field-*，仅 #107～#109 为下拉项差异；FmRadio 复用 --fm-checkbox-*（#110～#113，radio 圆点形态差异在卡内描述、不新增色值）；FmStepper 复用 --fm-btn-*（《34》#1～#27）+ --fm-input-text + --fm-field-*，无本批新增别名；FmSearchInput 复用 --fm-input-*（#94～#105）全部三状态结论，仅搜索图标 / 清除按钮复用 --fm-select-arrow-color 的语义（不另起重复别名）。
+核对声明：#71～#116 共 46 行，映射列全部为 var(--…) 形式、无 Layer 1 直引、无字面 HEX / px / 阴影 / 时长值（脚本核验见《37》§3）。#97 --fm-input-placeholder → var(--color-text-quaternary)（#707070 兜底 A）为《16》V1.6 已确认色值的既有 Layer 2 别名，非新增基础值；全区无新增 Layer 2 / Layer 1 值。全库累计 #1～#116 共 116 行（《34》70 + 本批 46），序号连续、无重名。
+2. §5.4.1 交互控件无障碍覆盖矩阵 · 批次二逐行落实
+依据《30》V1.3 §5.4.1 矩阵。完成判据：矩阵每一行涉及本批组件的，逐行给出可勾选的具体验收与实测口径，不只写原则；不达标项给调整值或降级用法，不得以目测 / 估算记达标；焦点可见按 SC 2.4.7 判定、focus ring ≥3:1 按项目强化标准判定、按钮文字按 1.4.3 文字规则判定、图标 / 边界按 1.4.11 判定，不得混用条款；色值一律沿用《16》V1.6 /《20》，不新增、不修改（标准归因说明逐字沿用《30》§5.4.1，见本节§2.0）。
+2.0 标准归因说明（逐字沿用《30》V1.3 §5.4.1，不降低任何标准）
+焦点可见：SC 2.4.7 Focus Visible（WCAG 2.1 AA）只要求「键盘可操作的 UI 具有可见的焦点指示模式」，不规定统一数值对比度。本项目 focus ring ≥3:1 为项目强化验收标准，数值口径参照 SC 1.4.11（WCAG 2.1 AA，UI 组件视觉信息 ≥3:1），不写作 2.4.7 原文要求。
+版本与条款准确性：SC 2.4.11（WCAG 2.2 AA，焦点不被完全遮挡）非对比度条款、SC 2.4.13（WCAG 2.2 AAA，焦点外观）属 AAA；本项目基线 WCAG 2.1 AA，不将 2.2 条款作为本轮验收依据。
+文字与图标分层：SC 1.4.3（AA）普通文本 ≥4.5:1、大文本 ≥3:1；SC 1.4.11（AA）必要图标与 UI 组件边界 ≥3:1。按钮文字不得统一按 3:1：普通按钮文字 4.5:1，大文本按钮文字 3:1，必要图标 / 边界 3:1。
+2.1 矩阵逐行落实表（本批相关行）
+矩阵行（《30》§5.4.1）
+	
+本批涉及组件
+	
+对比度具体验收
+	
+焦点可见性具体验收
+	
+禁用态辨识具体验收
+	
+键盘 / 状态语义具体验收
+	
+实测结论落点
+
+
+FmInput（基座·定义处）
+	
+FmInput
+	
+空白 placeholder --fm-input-placeholder(#707070)≥4.5:1；已填值 --fm-input-text≥4.5:1；边界 --fm-input-border 承担识别功能须 ≥3:1（否则按 §3 三状态判定）
+	
+聚焦时 --fm-input-border-focus(→focus ring)≥3:1；2.4.7 焦点可见
+	
+disabled 底 --fm-input-bg-disabled + 字 --color-text-disabled 可辨且 tabindex=-1 不可聚焦
+	
+aria-invalid / aria-describedby（由 FmFormField 注入）、readonly 语义
+	
+§3 三状态表 + 卡 §5.5
+
+
+FmTextarea
+	
+FmTextarea
+	
+同 FmInput（继承实测结论，不重复实测）；多行内文字同 --fm-input-text
+	
+同 FmInput（继承）
+	
+同 FmInput + readonly 态可辨（继承 + 自身差异态实测）
+	
+多行输入 Tab 聚焦、方向键在文本内移动（浏览器原生）
+	
+引用 FmInput 三状态结论 + 卡 §5.8 差异态
+
+
+FmSelect
+	
+FmSelect
+	
+控件边界 ≥3:1；展开项文字 / 选中项 --fm-select-option-selected-color ≥4.5:1；下拉箭头必要图标 ≥3:1（未覆盖组合批次五补测）
+	
+展开 / 收起时焦点始终可见（2.4.7，≥3:1 项目强化）
+	
+禁用项文字 --color-text-disabled 可辨且不可选
+	
+方向键导航、Enter/Esc 选择 / 收起、aria-expanded/role=listbox/aria-selected
+	
+卡 §5.9
+
+
+FmCheckbox
+	
+FmCheckbox
+	
+勾选框边界 --fm-checkbox-border ≥3:1；标签文字 ≥4.5:1；勾选态 --fm-checkbox-checked-bg 与底可辨
+	
+覆盖整个可点区（label + 框）聚焦可见
+	
+disabled + indeterminate 两态均可辨且不可聚焦
+	
+Space 切换、aria-checked（true/false/mixed）
+	
+卡 §5.10
+
+
+FmRadio
+	
+FmRadio
+	
+同 FmCheckbox（继承边界 ≥3:1 + 标签 ≥4.5:1）；选中圆点 --fm-checkbox-checked-bg 可辨
+	
+同 FmCheckbox（继承）
+	
+同 FmCheckbox（继承）
+	
+方向键在同名组内切换、aria-checked、组 role=radiogroup
+	
+卡 §5.11
+
+
+FmSwitch
+	
+FmSwitch
+	
+开 / 关两态轨道 --fm-switch-track-on/off 与底边界 ≥3:1；滑块 --fm-switch-thumb 反白与轨道 ≥3:1（未覆盖组合批次五补测）
+	
+同 FmCheckbox（继承，覆盖可点区）
+	
+同 FmCheckbox（继承）
+	
+Space 切换、role=switch + aria-checked
+	
+卡 §5.12
+
+
+FmStepper
+	
+FmStepper
+	
+加减按钮文字 4.5:1 / 边界 3:1（继承 FmButton 分层，不统一按 3:1）；数值文字 --fm-input-text ≥4.5:1
+	
+加 / 减按钮分别可见（2.4.7）
+	
+到 min / max 时对应按钮 disabled 可辨且不可聚焦
+	
+ArrowUp/ArrowDown 调整、aria-valuenow/aria-valuemin/aria-valuemax、role=spinbutton
+	
+卡 §5.13
+
+
+FmModal / FmConfirm / FmDrawer 相关操作
+	
+三件
+	
+关闭 / 确认 / 取消按钮文字 4.5:1（普通文字）/ 边界 3:1（继承 FmButton 分层）
+	
+焦点陷阱：初始焦点落在对话框内、Tab / Shift+Tab 不逸出、关闭后焦点返回触发元素（2.4.7 逐焦点可见）
+	
+确认按钮在校验未通过时 disabled 可辨且不可聚焦
+	
+Esc 关闭、Tab 不逸出、role=dialog + aria-modal=true + aria-labelledby（标题）；FmDrawer 同机制（继承）
+	
+卡 §5.1～§5.3
+
+
+FmButton / FmIconButton（按钮基座·本批为继承方）
+	
+FmStepper / 弹窗操作按钮
+	
+普通按钮文字 4.5:1、大文本 3:1；必要图标 / 边界 3:1（继承《34》#1～#27 与按钮基座实测，不重复实测）
+	
+继承按钮基座 focus ring（项目强化 ≥3:1）
+	
+继承按钮基座 disabled 规则
+	
+Enter/Space；图标-only aria-label（本批 drawer 关闭按钮若图标-only 须 aria-label）
+	
+引用《34》§3.1 + 卡 §5.13
+落实判据：上表每一行须在对应规范卡「交互与可访问性」与「验收标准」字段有编号化验收项（本节行 → 卡内编号互相引用）；未覆盖色值组合（如下拉箭头在浅底、FmSwitch 轨道与底）标「《20》未覆盖组合 → 批次五补测」，不冒充已测。色值零新增：本批所有对比度结论只用《16》V1.6 已确认色值；遮罩背景色缺失登记 TBD-05，不在组件层造值。
+3. 输入框三状态可辨认性实测表（沿用《25》/《20》已批准规范）
+来源与边界：本节逐字沿用《25》§2 +《20》§5.2.2 已批准的三状态规则与实测数值，不修改任何色值、不降低任何标准、不引入 B #949494 为首选。三状态（空白 / 已填写 / 焦点）全部通过方可主张「边界不再是唯一识别线索」；任一状态不通过即视为「边界仍承担必要识别功能」，须独立 ≥3:1。不得仅凭浅灰填充底色、外部 Label 或形状间距认定符合 SC 1.4.11。本表为批次二 FmInput（基座）与全部继承控件（FmTextarea / FmSelect / FmSearchInput 等）的验收依据。
+状态
+	
+判定条件（《20》§5.2.2）
+	
+实测值（《20》程序实测，非估算）
+	
+结论
+	
+本批落点
+
+
+S1 空白（placeholder / 未输入）
+	
+无输入值时边界 / 可输入范围仍可辨；placeholder 不替代持久可见 label
+	
+placeholder #707070（--color-text-quaternary）on #F5F5F5 = 4.54:1（文字达标）；填充底对白底仅 1.09:1，不能据此判定边界可辨
+	
+文字达标；边界按「承担识别功能须独立 ≥3:1」判定
+	
+FmInput 卡 §5.5 状态矩阵 + 验收 S-01
+
+
+S2 已填写
+	
+已填值文字达标；不得因「框内有字」认定框可辨
+	
+已填值 #1A1A1A on #F5F5F5 = 15.96:1（文字达标）；边界判定同 S1、不因有值放宽
+	
+文字达标；边界独立判定
+	
+FmInput 验收 S-02
+
+
+S3 焦点
+	
+focus ring 与紧邻颜色达标；失焦后 S1 / S2 仍须成立
+	
+--color-focus-ring #5146A6 on 白底 7.56:1、on #F5F5F5 6.94:1，均达标；焦点态达标不豁免非焦点态边界判定
+	
+达标；不豁免
+	
+FmInput 验收 S-03
+
+
+兜底 A（唯一首选）
+	
+三状态未通过、边界仍是必要识别线索时，边界独立 ≥3:1
+	
+#707070：白底 4.95:1、#F5F5F5 4.54:1、#F7F7F9 4.63:1、#F4F1FC 4.44:1，四种常见底全部 ≥3:1
+	
+唯一首选，零新增色值（--color-text-quaternary 既有）
+	
+FmInput 卡 Token #97
+
+
+兜底 B（暂不作为首选）
+	
+新增建议值
+	
+#949494：#F5F5F5 2.78:1 / #F7F7F9 2.84:1 / #F4F1FC 2.72:1（浅底 <3:1）
+	
+暂不作为首选；具体色值与实测仅见《20》§5.2，本批不引入该 HEX
+	
+不进 Token 表、不作为本批实现依据
+
+
+优先路径（保留）
+	
+填充底 + 持久可见 label + 输入区形状 / 内边距 + focus ring
+	
+#E2E2E2 对白底 1.30:1，不得作为识别输入框的唯一视觉线索
+	
+做法本身不等于达标，须经三状态验收通过
+	
+FmInput 卡 §5.5
+
+
+继承结论
+	
+FmTextarea / FmSelect / FmSearchInput 继承 FmInput 三状态基础结论
+	
+继承，不重复实测；仅测自身差异态（多行 / 下拉 / 搜索图标与清除按钮）
+	
+继承有效（U-4）
+	
+各卡复用关系字段
+实测口径纪律：上表数值为《20》已有程序实测的如实转录，非本批新测；①-2 为规范文档、无代码可渲染，任何未在《20》覆盖的新组合统一标「批次五补测」，不得以估值记达标（脚本核验见《37》§3 J 组）。
+4. 第二批组件规范卡（12 张 · 序号 7～18）
+每卡 11 字段齐全（《30》§5.3 模板，缺一视为未完成）；Props / Events / Slots 逐项定义（类型 / 必填 / 默认值 / 合法枚举 / 行为）。a11y「实测结论」数值以《20》为准，未覆盖组合标「批次五补测」；每张卡「交互与可访问性」与「验收标准」字段的编号与 §2.1 矩阵行互相引用。
+4.1 FmModal（C-05 · 序号 7）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+居中模态对话框：承载需要用户短暂专注的浮层内容（表单、详情、提示）。浮层机制（遮罩 / z-index / 焦点陷阱 / Esc / reduced-motion）的唯一定义处，被 FmConfirm(8)、FmDrawer(9) 继承（U-1）。不负责：轻量反馈（→ FmToast）、二次确认文案组合（→ FmConfirm）、手机底部抽屉形态（→ FmDrawer）。
+
+
+2
+	
+Props / Events / Slots
+	
+完整契约见 §4.1.1。摘要 —— Props：modelValue（boolean，v-model 开合，必填）、titleKey（string，必填，标题 i18n key）、closable（boolean，默认 true）、closeOnMask（boolean，默认 true）、closeOnEsc（boolean，默认 true）、size（'md' / 'lg'，默认 'md'）；Events：update:modelValue、open、close(reason)；Slots：默认（正文，必需）、title（覆盖标题，可选）、footer（底部操作区，可选）。
+
+
+3
+	
+PC 变体
+	
+居中模态，宽高自适应内容；底 --fm-modal-bg、阴影 --fm-modal-shadow、圆角 --fm-modal-radius、内边距 --fm-modal-pad-pc；标题 --fm-modal-title-size / --fm-modal-title-color、正文 --fm-modal-body-color；层级 --fm-modal-z，遮罩 --fm-modal-mask-z（遮罩色见 §5 TBD-05）；容器 1200 / 1440 内居中，不写死宽。
+
+
+4
+	
+手机变体
+	
+独立布局非缩放；内边距 --fm-modal-pad-mobile；375 / 390 / 430 宽度自适应（左右留白），不溢出；弹层避开 iOS 安全区；触控关闭按钮 ≥44×44；modal 形态在手机仍为居中（底部抽屉用 FmDrawer）。
+
+
+5
+	
+状态矩阵
+	
+开（visible）/ 关（closed）/ entering / leaving；无 hover / disabled（浮层非内联控件）；关闭按钮 default / hover / focus-visible / disabled（closable=false 时不渲染）；reduced-motion 下进出场过渡趋零、不保留持续性动画（延续《19》V1.4 第 4 条），但内容可达性不变。
+
+
+6
+	
+交互与可访问性
+	
+打开时焦点移入对话框内（initialFocus 目标或首个可聚焦元素）；Tab / Shift+Tab 焦点陷阱不逸出；Esc 关闭（默认，见 closeOnEsc）；关闭后焦点返回触发元素（对应 §2.1「弹窗相关操作」行）。role=dialog + aria-modal=true + aria-labelledby（指向标题）；关闭按钮 aria-label（key fm.modal.close）。焦点全程可见（2.4.7，ring --fm-modal-focus-ring，≥3:1 项目强化）；按钮文字按 1.4.3 分层（普通 4.5:1，不统一按 3:1）；文字 / 底组合以《20》为准、未覆盖组合批次五补测。遮罩层对 AT 隐藏（aria-hidden），不做焦点停靠。
+
+
+7
+	
+Token 依赖
+	
+本批映射 #71～#82（§1.1）；复用按钮基座 --fm-btn-*（《34》#1～#27）用于关闭按钮；Layer 2 间接依赖 --z-modal / --z-mask / --shadow-modal / --color-surface / --color-focus-ring 等（经映射，不直引 Layer 1）。
+
+
+8
+	
+i18n
+	
+titleKey 由调用方传 i18n key、组件内 t(titleKey)；内置 key 仅 fm.modal.close（关闭按钮 aria-label）；正文 / footer 经插槽由调用方 t() 注入；无写死文案、无字符串拼接翻译；标题过长自适应不截断（必要时换行）。
+
+
+9
+	
+数据契约
+	
+无业务数据字段；开合状态经 v-model 由调用方持有；不访问 Dexie / Repository；浮层内容所需业务数据由调用方经插槽注入。
+
+
+10
+	
+验收标准
+	
+M-01 焦点移入 + 陷阱 Tab 不逸出 + 关闭后返回触发元素（对应 §2.1 弹窗行）；M-02 Esc / 遮罩 / 关闭按钮三种关闭路径与 close.reason 正确；M-03 role=dialog + aria-modal + aria-labelledby 齐全；M-04 焦点 ring 项目强化 ≥3:1；M-05 按钮文字按 1.4.3 分层实测；M-06 reduced-motion 下无持续动画且内容可达；M-07 双端 375/390/430 不溢出、遮罩层级正确；M-08 无硬编码文案。对应全局：《30》§5.4 WCAG / 双端 / i18n / a11y 矩阵「弹窗」行。
+
+
+11
+	
+复用关系
+	
+浮层基座（定义处）。FmConfirm(8)、FmDrawer(9) 继承本卡的遮罩 / z-index / 焦点陷阱 / Esc / reduced-motion 机制（§1.1，U-1 / U-5），只在各自卡写差异；复用方验收项引用 M-01～M-06。
+4.1.1 契约明细（Props / Events / Slots）
+Props
+名称
+	
+类型
+	
+必填
+	
+默认值
+	
+合法枚举 / 行为
+
+
+modelValue
+	
+boolean
+	
+是
+	
+无默认值
+	
+开合受控值；true 显示、false 关闭；组件不自行改写，经 update:modelValue 通知调用方
+
+
+titleKey
+	
+string
+	
+是
+	
+无默认值
+	
+标题 i18n key，组件内 t(titleKey)；缺失视为实现错误（标题参与 aria-labelledby）
+
+
+closable
+	
+boolean
+	
+否
+	
+true
+	
+是否渲染关闭按钮与启用关闭路径；false 时不渲染关闭按钮，closeOnMask / closeOnEsc 仍可独立配置
+
+
+closeOnMask
+	
+boolean
+	
+否
+	
+true
+	
+点击遮罩是否关闭；close.reason='mask'（非 manual）
+
+
+closeOnEsc
+	
+boolean
+	
+否
+	
+true
+	
+Esc 是否关闭；close.reason='esc'
+
+
+size
+	
+'md' / 'lg'
+	
+否
+	
+'md'
+	
+模态宽度档；仅两值，均随内容自适应、不写死 px
+Events
+事件
+	
+参数
+	
+触发时机
+
+
+update:modelValue
+	
+value: boolean
+	
+任一关闭路径触发时派发 false；打开由调用方置 true
+
+
+open
+	
+无
+	
+进入 visible、焦点移入完成后派发一次
+
+
+close
+	
+reason: 'manual' / 'mask' / 'esc'
+	
+进入 leaving 之前派发一次；三值对应关闭按钮 / 遮罩 / Esc（与 Toast 的 replaced 无关）
+Slots
+插槽
+	
+用途
+	
+必需
+
+
+默认
+	
+弹层正文（调用方 t() 注入文案）
+	
+是
+
+
+title
+	
+覆盖标题渲染；仍须参与 aria-labelledby、仍经 t()
+	
+否
+
+
+footer
+	
+底部操作区（放 FmButton / FmConfirm 操作按钮）
+	
+否
+明确不设：不设「遮罩色 / z-index / 焦点陷阱行为」插槽（浮层机制是基座能力，开放替换会破坏 U-1 与无障碍保证）；不设「自定义样式」插槽，样式一律经 Layer 3 别名。
+4.2 FmConfirm（C-05 · 序号 8）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+重要操作的二次确认对话框（删除、清空、不可逆提交等）。基于 FmModal 浮层机制，只增确认 / 取消按钮组合与二次确认文案（U-1）。不负责：普通信息展示模态（→ FmModal）、表单录入（→ FmModal + 表单组件）。
+
+
+2
+	
+Props / Events / Slots
+	
+完整契约见 §4.2.1。摘要 —— Props：modelValue（boolean，必填）、titleKey（必填）、messageKey（必填，确认正文 key）、tone（'danger' / 'warning' / 'default'，默认 'default'）、confirmKey（默认 fm.confirm.ok）、cancelKey（默认 fm.confirm.cancel）、loading（默认 false）、disabled（默认 false）；Events：update:modelValue、confirm、cancel；Slots：无（文案全经 key）。
+
+
+3
+	
+PC 变体
+	
+复用 FmModal 居中形态与 --fm-modal-*（#71～#82）；语义图标色：tone='danger' → --fm-confirm-icon-danger，'warning' → --fm-confirm-icon-warning，'default' 无图标；确认 / 取消按钮用 FmButton 基座，危险确认用 --fm-btn-bg-danger。
+
+
+4
+	
+手机变体
+	
+继承 FmModal 手机行为（居中、宽度自适应、触控 ≥44×44、安全区）；按钮双端通栏或并排按内容自适应；375 / 390 / 430 不溢出。
+
+
+5
+	
+状态矩阵
+	
+同 FmModal 开合状态（继承）；确认按钮 default / hover / focus-visible / disabled / loading：disabled=true 或 loading=true 时确认不可点击（防重复提交）、可辨识且不可聚焦；取消按钮始终可用（除非 closable 语义禁用）。
+
+
+6
+	
+交互与可访问性
+	
+完全继承 FmModal 的焦点陷阱 / 初始焦点 / Esc / 关闭返回（引用 M-01～M-03，不重复定义浮层机制）；确认按钮默认获得初始焦点（危险操作默认落在「取消」更安全，规范卡定 tone='danger' 时初始焦点落取消按钮，防误触）；确认 / 取消按钮文字按 1.4.3 普通文本 4.5:1；tone 图标为装饰，不作为唯一语义线索（语义由文案承载）；aria-describedby 关联正文（对应 §2.1 弹窗行）。
+
+
+7
+	
+Token 依赖
+	
+复用 --fm-modal-*（#71～#82）+ 本批 #83～#84 图标语义色 + FmButton 基座 --fm-btn-*（《34》#1～#27）；危险按钮色 --fm-btn-bg-danger / --fm-btn-text-on-danger。
+
+
+8
+	
+i18n
+	
+titleKey / messageKey / confirmKey / cancelKey 全为 key，组件内 t()；内置默认 key fm.confirm.ok / fm.confirm.cancel；缺失回退 zh-CN；无写死文案；确认文案含变量名时用 I18nText 插值，不拼接翻译。
+
+
+9
+	
+数据契约
+	
+无业务数据字段；确认结果经事件传出、不访问 Dexie；messageKey 所指文案可含动态数据（由调用方经插值参数提供）。
+
+
+10
+	
+验收标准
+	
+CF-01 继承浮层机制且引用 M-01～M-06（不重复实测）；CF-02 tone 三档图标色正确；CF-03 危险确认初始焦点落「取消」防误触；CF-04 confirm / cancel 事件参数正确、loading/disabled 防重复提交；CF-05 aria-describedby 关联正文；CF-06 双端与文案 i18n 齐备。对应全局：《30》§5.4 a11y 矩阵「弹窗」行 / i18n。
+
+
+11
+	
+复用关系
+	
+基座 = FmModal（U-1 / U-4）：继承遮罩 / z-index / 焦点陷阱 / Esc / reduced-motion（M-01～M-06），自身差异仅「确认 / 取消按钮组合 + tone 图标 + 二次确认文案 + 危险态初始焦点策略」；Layer 3 别名仅 #83～#84 差异色。
+4.2.1 契约明细（Props / Events / Slots）
+Props
+名称
+	
+类型
+	
+必填
+	
+默认值
+	
+合法枚举 / 行为
+
+
+modelValue
+	
+boolean
+	
+是
+	
+无默认值
+	
+开合受控值；复用 FmModal 的 v-model 语义
+
+
+titleKey
+	
+string
+	
+是
+	
+无默认值
+	
+标题 i18n key
+
+
+messageKey
+	
+string
+	
+是
+	
+无默认值
+	
+确认正文 i18n key，经 aria-describedby 关联
+
+
+tone
+	
+'danger' / 'warning' / 'default'
+	
+否
+	
+'default'
+	
+语义档：危险 / 警示 / 默认；决定图标色与按钮变体，danger 时初始焦点落取消按钮
+
+
+confirmKey
+	
+string
+	
+否
+	
+'fm.confirm.ok'
+	
+确认按钮文案 key；调用方可覆盖
+
+
+cancelKey
+	
+string
+	
+否
+	
+'fm.confirm.cancel'
+	
+取消按钮文案 key
+
+
+loading
+	
+boolean
+	
+否
+	
+false
+	
+确认处理中：确认按钮 aria-busy 且不可重复点击
+
+
+disabled
+	
+boolean
+	
+否
+	
+false
+	
+确认按钮禁用（如前置校验未通过），可辨且不可聚焦
+Events
+事件
+	
+参数
+	
+触发时机
+
+
+update:modelValue
+	
+value: boolean
+	
+确认 / 取消 / 关闭路径派发 false（复用基座语义）
+
+
+confirm
+	
+无
+	
+点击确认按钮派发一次；loading/disabled 时不派发；业务动作由调用方执行
+
+
+cancel
+	
+无
+	
+点击取消 / Esc / 遮罩关闭时派发一次
+Slots
+插槽
+	
+用途
+	
+必需
+
+
+无
+	
+文案全经 key 注入（防绕过 i18n）；确认 / 取消按钮由组件按 tone 渲染
+	
+—
+明确不设：不设正文 / 按钮插槽（文案一律经 key，防绕过翻译与 tone 语义）；不设浮层机制插槽（继承 FmModal，见 §4.1）。
+4.3 FmDrawer（C-05 · 序号 9）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+抽屉式浮层：手机底部抽屉（筛选、详情、操作面板）与 PC 侧滑抽屉。基于 FmModal 浮层机制，只增形态（底部 / 侧滑）、尺寸与滑入动效差异（U-1）。不负责：二次确认（→ FmConfirm）、居中模态（→ FmModal）。
+
+
+2
+	
+Props / Events / Slots
+	
+完整契约见 §4.3.1。摘要 —— Props：modelValue（boolean，必填）、placement（'bottom' / 'left' / 'right'，默认 'bottom'）、titleKey（string，可选）、closable（默认 true）、closeOnMask（默认 true）、closeOnEsc（默认 true）；Events：update:modelValue、open、close(reason)；Slots：默认（正文，必需）、title、footer。
+
+
+3
+	
+PC 变体
+	
+侧滑抽屉（placement='left'/'right'），底 --fm-modal-bg、阴影 --fm-modal-shadow、层级复用 --fm-modal-z；内边距 --fm-modal-pad-pc；宽度随内容自适应、不写死。
+
+
+4
+	
+手机变体
+	
+主形态为底部抽屉（placement='bottom'）：顶部圆角 --fm-drawer-radius-top、内边距 --fm-drawer-pad、底部安全区 --fm-drawer-safe-bottom；滑入时长 --fm-drawer-duration；触控拖柄 / 关闭按钮 ≥44×44；375 / 390 / 430 通栏不溢出。
+
+
+5
+	
+状态矩阵
+	
+开 / 关 / entering / leaving（继承 FmModal）；关闭按钮 hover / focus-visible；reduced-motion 下滑入趋零、不保留持续动画（引用 M-06，不重复定义）。
+
+
+6
+	
+交互与可访问性
+	
+复用 FmModal 焦点陷阱 / 初始焦点 / Esc / 关闭返回（引用 M-01～M-03）；role=dialog + aria-modal=true + aria-labelledby（若有标题）；若关闭按钮为图标-only，须 aria-label（key fm.drawer.close，对应 §2.1「图标-only aria-label」）；焦点可见（2.4.7）；按钮文字 1.4.3 分层；遮罩色见 TBD-05。滑入为进出场过渡，不作为持续动画。
+
+
+7
+	
+Token 依赖
+	
+复用 --fm-modal-z / --fm-modal-mask-z / --fm-modal-shadow / --fm-modal-bg / --fm-modal-focus-ring（#71～#74、#81）+ 本批 #85～#88 形态差异别名；按钮复用 --fm-btn-*。
+
+
+8
+	
+i18n
+	
+titleKey 由调用方传 key；内置 key fm.drawer.close（关闭按钮 aria-label）；正文 / footer 经插槽由调用方 t()；无写死文案。
+
+
+9
+	
+数据契约
+	
+无业务数据字段；开合经 v-model；筛选类抽屉的筛选条件由调用方持有、经事件回传；不访问 Dexie。
+
+
+10
+	
+验收标准
+	
+D-01 继承浮层机制并引用 M-01～M-06；D-02 placement 三档形态正确、手机底部抽屉安全区生效；D-03 图标关闭按钮 aria-label 100% 存在（§2.1 图标行）；D-04 焦点陷阱与关闭返回有效；D-05 reduced-motion 无持续动画；D-06 双端 375/390/430 不溢出。对应全局：《30》§5.4 a11y 矩阵「弹窗」行 / 双端。
+
+
+11
+	
+复用关系
+	
+基座 = FmModal（U-1 / U-4）：继承遮罩 / z-index / 焦点陷阱 / Esc / reduced-motion，自身差异仅「底部 / 侧滑形态 + 顶部圆角 + 滑入动效 + 安全区」；Layer 3 别名仅 #85～#88 差异项，不复制浮层机制。
+4.3.1 契约明细（Props / Events / Slots）
+Props
+名称
+	
+类型
+	
+必填
+	
+默认值
+	
+合法枚举 / 行为
+
+
+modelValue
+	
+boolean
+	
+是
+	
+无默认值
+	
+开合受控值；复用 FmModal 语义
+
+
+placement
+	
+'bottom' / 'left' / 'right'
+	
+否
+	
+'bottom'
+	
+抽屉方位；手机主形态 bottom，PC 用 left/right；仅三值
+
+
+titleKey
+	
+string
+	
+否
+	
+无默认值
+	
+标题 i18n key；缺省时抽屉无标题，aria-labelledby 可指向关闭按钮或正文首标题
+
+
+closable
+	
+boolean
+	
+否
+	
+true
+	
+是否渲染关闭按钮
+
+
+closeOnMask
+	
+boolean
+	
+否
+	
+true
+	
+点击遮罩关闭，close.reason='mask'
+
+
+closeOnEsc
+	
+boolean
+	
+否
+	
+true
+	
+Esc 关闭，close.reason='esc'
+Events
+事件
+	
+参数
+	
+触发时机
+
+
+update:modelValue
+	
+value: boolean
+	
+关闭路径派发 false
+
+
+open
+	
+无
+	
+进入 visible、焦点移入后派发一次
+
+
+close
+	
+reason: 'manual' / 'mask' / 'esc'
+	
+进入 leaving 前派发一次
+Slots
+插槽
+	
+用途
+	
+必需
+
+
+默认
+	
+抽屉正文（调用方 t() 注入）
+	
+是
+
+
+title
+	
+覆盖标题渲染
+	
+否
+
+
+footer
+	
+底部操作区
+	
+否
+明确不设：不设浮层机制 / 遮罩色插槽（继承 FmModal）；不设「滑入时长」可配插槽（动效时长经 Layer 3 别名统一管理、reduced-motion 下强制趋零）。
+4.4 FmFormField（C-06 · 序号 10）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+字段容器：统一 label / 必填标记 / 控件槽 / 辅助说明 / 校验提示的关联与布局；字段容器与校验提示机制的唯一定义处（U-1），被 C-06 各输入控件复用。不负责：控件自身的输入交互（→ FmInput 等各控件卡）、表单整体提交（→ 调用方）。
+
+
+2
+	
+Props / Events / Slots
+	
+完整契约见 §4.4.1。摘要 —— Props：labelKey（string，必填）、required（默认 false）、errorKey（string，可选）、hintKey（string，可选）、forId（string，必填，用于 label / 控件 / 提示关联）；Events：无（纯容器）；Slots：默认（控件，必需）、hint、error。
+
+
+3
+	
+PC 变体
+	
+label 用 --fm-field-label-color / --fm-field-label-size；辅助说明 --fm-field-hint-color；错误提示 --fm-field-error-color（小字号红字收敛点 --color-text-safe-red）；各区间距 --fm-field-gap；必填标记在 label 后、语义由文字 / aria 承载而非仅颜色。
+
+
+4
+	
+手机变体
+	
+同视觉规范；label 与提示不缩小到 <12px；375 / 390 / 430 标签与控件不重叠、错误提示换行不溢出；触控区由内部控件保证 ≥44×44。
+
+
+5
+	
+状态矩阵
+	
+default / error / disabled（经内部控件传导）/ readonly；error 态显示校验提示并设 aria-invalid/aria-describedby；无 hover / focus（容器非交互件，焦点在内部控件）。
+
+
+6
+	
+交互与可访问性
+	
+<label for=forId> 与控件 id 关联（持久可见 label，不依赖 placeholder）；错误提示经 aria-describedby 关联到控件，控件 aria-invalid=true；必填经 aria-required 或 label 文字（非仅颜色）；错误文字 --fm-field-error-color ≥4.5:1（1.4.3 普通文本）；提示 icon 若存在为装饰、不作唯一线索（对应 §2.1 FmInput 行 aria-invalid/aria-describedby）。
+
+
+7
+	
+Token 依赖
+	
+本批 #89～#93；内部控件复用各自 --fm-input-* / --fm-checkbox-* 等；不新增色值。
+
+
+8
+	
+i18n
+	
+labelKey / errorKey / hintKey 全为 key、组件内 t()；内置必填标记 key fm.field.required（供 aria / 视觉）；动态错误文案用 I18nText 插值，不拼接翻译。
+
+
+9
+	
+数据契约
+	
+无业务数据字段；forId 由调用方保证同表单内唯一；校验结果由调用方经 errorKey 传入；不访问 Dexie。地址 mock 与真实模型同构（《30》§4.3 C-06）。
+
+
+10
+	
+验收标准
+	
+FF-01 label / 控件 / 提示三者 for/id/aria-describedby 关联正确；FF-02 error 态 aria-invalid 同步且提示文字 ≥4.5:1；FF-03 必填语义非仅颜色；FF-04 错误文字用 --color-text-safe-red 收敛点；FF-05 双端标签与提示不重叠 / 不溢出；FF-06 全部文案走 key。对应全局：《30》§5.4 WCAG / a11y 矩阵「FmInput」行 / i18n。
+
+
+11
+	
+复用关系
+	
+字段容器基座（定义处）。FmTextarea/FmSelect/FmCheckbox/FmRadio/FmSwitch/FmStepper 复用 label 关联 / 校验提示 / 错误态 aria-describedby（§1.2；U-1 / U-5）；FmInput 的 aria-invalid/aria-describedby 由本容器注入（§2.1）。
+4.4.1 契约明细（Props / Events / Slots）
+Props
+名称
+	
+类型
+	
+必填
+	
+默认值
+	
+合法枚举 / 行为
+
+
+labelKey
+	
+string
+	
+是
+	
+无默认值
+	
+字段 label 的 i18n key；组件内 t(labelKey)，持久可见
+
+
+forId
+	
+string
+	
+是
+	
+无默认值
+	
+关联内部控件 id；同表单内唯一；<label for> / aria-describedby 依赖此值
+
+
+required
+	
+boolean
+	
+否
+	
+false
+	
+必填标记；语义由文字 / aria-required 承载，非仅颜色
+
+
+errorKey
+	
+string
+	
+否
+	
+无默认值
+	
+校验错误文案 key；提供时进入 error 态并注入 aria-invalid / aria-describedby
+
+
+hintKey
+	
+string
+	
+否
+	
+无默认值
+	
+辅助说明 key；与 errorKey 同时存在时 error 优先呈现、hint 可保留
+Events
+事件
+	
+参数
+	
+触发时机
+
+
+无
+	
+—
+	
+纯容器；不派发事件，输入 / 校验事件由内部控件与调用方处理
+Slots
+插槽
+	
+用途
+	
+必需
+
+
+默认
+	
+输入控件（由调用方放入 FmInput 等，并绑定 forId 对应 id）
+	
+是
+
+
+hint
+	
+覆盖辅助说明渲染（仍经 t()）
+	
+否
+
+
+error
+	
+覆盖错误提示渲染（仍经 t()）
+	
+否
+明确不设：不设「校验逻辑」prop / 插槽（校验属业务服务，组件只呈现调用方传入的 errorKey）；不设「label 显隐」开关（持久可见 label 是三状态规则硬要求）。
+4.5 FmInput（C-06 · 序号 11）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+单行文本输入框；输入框基础样式、空白 / 已填写 / 焦点三状态与无障碍规则的唯一定义处（U-1），被 FmTextarea / FmSelect / FmSearchInput 继承。不负责：多行（→ FmTextarea）、搜索语义 / 清除（→ FmSearchInput）、label 与校验提示布局（→ FmFormField）。
+
+
+2
+	
+Props / Events / Slots
+	
+完整契约见 §4.5.1。摘要 —— Props：modelValue（string，v-model）、id（string，必填，与 FmFormField.forId 关联）、placeholderKey（string，可选）、type（'text' / 'password' / 'tel' / 'email' / 'number'，默认 'text'）、disabled（默认 false）、readonly（默认 false）、invalid（默认 false）、maxlength（number，可选）；Events：update:modelValue、focus、blur、enter；Slots：无（前后缀经 props 提供，见契约明细）。
+
+
+3
+	
+PC 变体
+	
+高度 --fm-input-height-pc、圆角 --fm-input-radius、底 --fm-input-bg；已填值 --fm-input-text、占位 --fm-input-placeholder；边界 --fm-input-border（承担识别功能须独立 ≥3:1）；focus 边界 --fm-input-border-focus、宽 / 偏移 #100/#101；错误边界 --fm-input-error-border。
+
+
+4
+	
+手机变体
+	
+高度 --fm-input-height-mobile（48px ≥44 触控达标）；字号 ≥16px 避免 iOS 聚焦缩放；375 / 390 / 430 输入区通栏自适应、不溢出；placeholder 不替代持久 label。
+
+
+5
+	
+状态矩阵
+	
+三状态必检（沿用《25》/《20》已批准规范，见 §3）：S1 空白（placeholder #707070，文字 4.54:1）、S2 已填写（#1A1A1A 15.96:1）、S3 焦点（ring #5146A6 白底 7.56:1 / 浅底 6.94:1，且失焦后 S1/S2 仍成立）。另：hover / disabled（底 --fm-input-bg-disabled + 禁用文字，不可聚焦可辨识）/ readonly（可聚焦可复制但不可改，aria-readonly=true）/ error（--fm-input-error-border + aria-invalid=true，红边界非唯一线索，配图标与文案）。
+
+
+6
+	
+交互与可访问性
+	
+Tab 聚焦、焦点可见（2.4.7，focus ring ≥3:1 项目强化）；不得仅凭浅灰填充底 / 外部 Label / 形状间距认定符合 SC 1.4.11（§3）；边界承担识别功能须独立 ≥3:1，兜底 A #707070（--fm-input-placeholder / --color-text-quaternary，四底全 ≥3:1）为唯一首选、B 不作首选；aria-invalid / aria-describedby 由 FmFormField 注入（§2.1）；文字 1.4.3 ≥4.5:1、边界 / 图标 1.4.11 ≥3:1；未覆盖组合批次五补测。
+
+
+7
+	
+Token 依赖
+	
+本批 #94～#105；复用 --fm-field-*（#89～#93）；Layer 2 间接依赖 --color-text-quaternary(#707070) / --color-focus-ring / --color-border-strong / --color-disabled-bg 等；不新增色值。
+
+
+8
+	
+i18n
+	
+placeholderKey 由调用方传 key（t(placeholderKey)）；占位文案可翻译、长度自适应；动态值经 I18nText；无写死文案。
+
+
+9
+	
+数据契约
+	
+modelValue 为字符串；type='number' 时值为字符串形式（避免浮点，金额 / 数量格式化交 FmNumber 等，见《30》C-11）；不访问 Dexie；地址 / 表单字段与真实模型同构（mock 同构）。
+
+
+10
+	
+验收标准
+	
+S-01 S1 空白实测通过（§3）；S-02 S2 已填写实测通过；S-03 S3 焦点实测且失焦后 S1/S2 仍成立；S-04 边界承担识别功能时 ≥3:1（兜底 A 唯一首选）；S-05 disabled 可辨不可聚焦、readonly 可聚焦不可改；S-06 aria-invalid/aria-describedby 经 FormField 注入正确；S-07 未靠浅灰底 / Label / 间距直接判达标；S-08 双端 375/390/430 与触控达标、字号 ≥16px；S-09 全部文案走 key。对应全局：《30》§5.4 WCAG / a11y 矩阵「FmInput」行 / 数据契约。
+
+
+11
+	
+复用关系
+	
+输入框基座（定义处）。FmTextarea（§4.6）、FmSelect（§4.7）、FmSearchInput（§4.12）继承三状态基础样式与 a11y 规则，不重复实测三状态、只测自身差异态（U-4）；复用方验收项引用 S-01～S-07；Layer 3 别名 --fm-input-* 归本卡，复用方不另起重复别名（U-5）。
+4.5.1 契约明细（Props / Events / Slots）
+Props
+名称
+	
+类型
+	
+必填
+	
+默认值
+	
+合法枚举 / 行为
+
+
+modelValue
+	
+string
+	
+否
+	
+''
+	
+输入值，v-model 受控；type='number' 时仍为字符串形式（禁浮点）
+
+
+id
+	
+string
+	
+是
+	
+无默认值
+	
+原生 id；与 FmFormField.forId 关联；缺失视为实现错误（label / aria-describedby 依赖）
+
+
+placeholderKey
+	
+string
+	
+否
+	
+无默认值
+	
+占位文案 i18n key；不替代持久可见 label
+
+
+type
+	
+'text' / 'password' / 'tel' / 'email' / 'number'
+	
+否
+	
+'text'
+	
+原生输入类型；仅五值；number 保持字符串值
+
+
+disabled
+	
+boolean
+	
+否
+	
+false
+	
+禁用：不可聚焦、底 --fm-input-bg-disabled、禁用文字、可辨识（tabindex=-1）
+
+
+readonly
+	
+boolean
+	
+否
+	
+false
+	
+只读：可聚焦 / 可选中复制、不可改，aria-readonly=true
+
+
+invalid
+	
+boolean
+	
+否
+	
+false
+	
+错误态：边界 --fm-input-error-border + aria-invalid=true；非唯一线索，须配 FmFormField 错误文案
+
+
+maxlength
+	
+number
+	
+否
+	
+无默认值
+	
+原生最大长度；非整数 / 负数按无限制处理并开发态告警
+Events
+事件
+	
+参数
+	
+触发时机
+
+
+update:modelValue
+	
+value: string
+	
+输入值变化时派发；disabled / readonly 时不派发
+
+
+focus
+	
+payload: FocusEvent
+	
+获得焦点时派发（S3 焦点态）
+
+
+blur
+	
+payload: FocusEvent
+	
+失去焦点时派发（触发 S1/S2 复核：失焦后仍须成立）
+
+
+enter
+	
+无
+	
+焦点在输入框内按 Enter 时派发（如提交，业务由调用方处理）
+Slots
+插槽
+	
+用途
+	
+必需
+
+
+无
+	
+文案经 placeholderKey，前后缀图标 / 单位经 props（prefix/suffix 见下方「明确不设」说明：本批不引入新插槽，前后缀留待后续按需增补且须回归三状态）
+	
+—
+明确不设：不设「边界颜色 / focus 样式」可替换插槽（三状态与兜底 A 是无障碍硬约束，不可被业务绕过）；不设自定义 label 插槽（label 由 FmFormField 承担、须持久可见）；不设文本插槽（值经 v-model）。前后缀图标若后续引入，须回归三状态验收，不在本批新增。
+4.6 FmTextarea（C-06 · 序号 12）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+多行文本输入。继承 FmInput 三状态与 a11y 基础 + FmFormField 容器机制，自身差异仅多行形态 / 最小高度 / 行数。不负责：单行输入（FmInput）、富文本（范围外）。
+
+
+2
+	
+Props / Events / Slots
+	
+完整契约见 §4.6.1。摘要 —— Props：modelValue（string）、id（必填）、placeholderKey（可选）、rows（number，默认 3）、disabled（默认 false）、readonly（默认 false）、invalid（默认 false）、maxlength（可选）、autoHeight（默认 false）；Events：update:modelValue、focus、blur；Slots：无。
+
+
+3
+	
+PC 变体
+	
+复用 --fm-input-* 样式；最小高度 --fm-textarea-min-height；底 / 文字 / 边界 / focus 同 FmInput；可拖拽改变大小遵循浏览器原生或调用方配置。
+
+
+4
+	
+手机变体
+	
+同 FmInput 手机规则（字号 ≥16px、触控区、通栏、安全区）；多行区高度自适应内容（autoHeight），375/390/430 不溢出。
+
+
+5
+	
+状态矩阵
+	
+继承 FmInput 三状态（S1/S2/S3，引用其结论不重复实测）+ hover / disabled / readonly / error；自身差异态：多行换行、autoHeight 增高、rows 行数 —— 三态须在这些差异下仍成立。
+
+
+6
+	
+交互与可访问性
+	
+继承 FmInput 焦点可见（2.4.7，≥3:1 项目强化）、边界 ≥3:1 判定、三状态规则（§3）；多行输入 Tab 聚焦、方向键在文本内移动（浏览器原生）；aria-invalid/aria-describedby 经 FmFormField 注入；readonly 可辨；文字 1.4.3 / 边界 1.4.11（对应 §2.1「FmTextarea」行）。
+
+
+7
+	
+Token 依赖
+	
+复用 --fm-input-*（#94～#105）+ --fm-field-*（#89～#93）+ 本批 #106 最小高度；不新增色值。
+
+
+8
+	
+i18n
+	
+placeholderKey 走 t()；动态值 I18nText；无写死文案。
+
+
+9
+	
+数据契约
+	
+modelValue 字符串；多行文本不参与金额 / 数值计算；不访问 Dexie。
+
+
+10
+	
+验收标准
+	
+TA-01 继承 FmInput 三状态结论（引用 S-01～S-04，不重复实测）；TA-02 差异态（多行 / autoHeight / rows）下三状态仍成立；TA-03 readonly 可辨；TA-04 aria-invalid/aria-describedby 注入正确；TA-05 双端与触控达标。对应全局：《30》§5.4 a11y 矩阵「FmTextarea」行。
+
+
+11
+	
+复用关系
+	
+基座 = FmInput + FmFormField（U-4）：继承三状态基础样式与 a11y 实测结论（引用 S-01～S-07）、字段容器 label / 校验机制；自身差异仅「多行 / 最小高度 / 行数 / autoHeight」（#106）；Layer 3 别名仅 #106，不重复定义 --fm-input-*。
+4.6.1 契约明细（Props / Events / Slots）
+Props
+名称
+	
+类型
+	
+必填
+	
+默认值
+	
+合法枚举 / 行为
+
+
+modelValue
+	
+string
+	
+否
+	
+''
+	
+多行值，v-model 受控
+
+
+id
+	
+string
+	
+是
+	
+无默认值
+	
+与 FmFormField.forId 关联
+
+
+placeholderKey
+	
+string
+	
+否
+	
+无默认值
+	
+占位文案 key，不替代持久 label
+
+
+rows
+	
+number
+	
+否
+	
+3
+	
+初始可见行数；非正整数按 3 处理
+
+
+autoHeight
+	
+boolean
+	
+否
+	
+false
+	
+随内容增高；true 时最小高度仍为 --fm-textarea-min-height
+
+
+disabled
+	
+boolean
+	
+否
+	
+false
+	
+禁用：不可聚焦、可辨识
+
+
+readonly
+	
+boolean
+	
+否
+	
+false
+	
+只读：可聚焦可选中、不可改
+
+
+invalid
+	
+boolean
+	
+否
+	
+false
+	
+错误态：边界红 + aria-invalid=true
+
+
+maxlength
+	
+number
+	
+否
+	
+无默认值
+	
+最大长度；非法值按无限制处理
+Events
+事件
+	
+参数
+	
+触发时机
+
+
+update:modelValue
+	
+value: string
+	
+输入变化时；disabled / readonly 不派发
+
+
+focus
+	
+payload: FocusEvent
+	
+获得焦点
+
+
+blur
+	
+payload: FocusEvent
+	
+失去焦点
+Slots
+插槽
+	
+用途
+	
+必需
+
+
+无
+	
+同 FmInput，值经 v-model、label 经 FmFormField
+	
+—
+明确不设：不设富文本 / 工具栏插槽（范围外）；不设边界样式插槽（继承 FmInput 三状态硬约束）。
+4.7 FmSelect（C-06 · 序号 13）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+下拉选择器：单选下拉（选项列表展开选择）。继承 --fm-input-border / focus 与 FmFormField 容器机制，自身差异仅下拉面板 / 选项 / 展开收起交互。不负责：多选（范围外）、复选 / 单选组（→ FmCheckbox/FmRadio）。
+
+
+2
+	
+Props / Events / Slots
+	
+完整契约见 §4.7.1。摘要 —— Props：modelValue（string / number）、id（必填）、options（Array<{value,labelKey}>，必填）、placeholderKey（可选）、disabled（默认 false）、invalid（默认 false）、clearable（默认 false）；Events：update:modelValue、open、close、change(payload)；Slots：option（自定义选项渲染，可选）。
+
+
+3
+	
+PC 变体
+	
+触发区复用 --fm-input-* 边界 / 高度 / 圆角；展开面板底 --color-surface（经 Layer 2）、阴影 --shadow-float；hover 项 --fm-select-option-hover-bg、选中项 --fm-select-option-selected-color、箭头 --fm-select-arrow-color。
+
+
+4
+	
+手机变体
+	
+触发区高度 --fm-input-height-mobile（48px ≥44）；选项行高 ≥44 触控；展开面板在 375/390/430 内自适应、不溢出、必要时内部滚动；避免被软键盘 / 安全区遮挡。
+
+
+5
+	
+状态矩阵
+	
+收起 / 展开 / 选中 / hover 项 / disabled / error；选项 disabled 态可辨且不可选；无选项（empty）态显示占位文案。
+
+
+6
+	
+交互与可访问性
+	
+键盘：聚焦触发区、Enter/Space/ArrowDown 展开、ArrowUp/ArrowDown 导航、Enter 选中、Esc 收起；焦点全程可见（2.4.7，≥3:1 项目强化）；aria-expanded（展开态）、role=listbox / role=option、aria-selected（对应 §2.1「FmSelect」行）；控件边界 ≥3:1、展开项文字 ≥4.5:1、箭头必要图标 ≥3:1（未覆盖组合批次五补测）；disabled 项可辨不可选。
+
+
+7
+	
+Token 依赖
+	
+复用 --fm-input-border / --fm-input-border-focus / --fm-input-height-* / --fm-input-radius（#98～#99、#102～#104）+ --fm-field-*（#89～#93）+ 本批 #107～#109。
+
+
+8
+	
+i18n
+	
+options[].labelKey / placeholderKey 全走 t()；选项标签动态数据用 I18nText；无写死文案。
+
+
+9
+	
+数据契约
+	
+options 为 {value, labelKey}[]，value 与业务模型同类型（string / number）；不访问 Dexie；选项列表由调用方注入（如地址省市区、筛选项）。
+
+
+10
+	
+验收标准
+	
+SEL-01 键盘全流程（展开 / 导航 / 选中 / Esc）可达；SEL-02 aria-expanded/listbox/option/aria-selected 齐全；SEL-03 展开 / 收起焦点可见且 ≥3:1；SEL-04 选项文字 4.5:1、边界 / 箭头 3:1（未覆盖组合标批次五补测）；SEL-05 disabled 项可辨不可选；SEL-06 手机面板不溢出 / 不被遮挡；SEL-07 文案全走 key。对应全局：《30》§5.4 a11y 矩阵「FmSelect」行。
+
+
+11
+	
+复用关系
+	
+基座 = FmInput（边界 / focus 基础）+ FmFormField（label / 校验）（U-4）：继承 --fm-input-border/focus 与三状态基础判定，自身差异为下拉面板 / 选项 / 展开交互；Layer 3 别名仅 #107～#109，不重复定义 --fm-input-*。
+4.7.1 契约明细（Props / Events / Slots）
+Props
+名称
+	
+类型
+	
+必填
+	
+默认值
+	
+合法枚举 / 行为
+
+
+modelValue
+	
+string | number
+	
+否
+	
+无默认值
+	
+选中值；与 options[].value 同类型
+
+
+id
+	
+string
+	
+是
+	
+无默认值
+	
+与 FmFormField.forId 关联
+
+
+options
+	
+Array<{ value: string | number; labelKey: string; disabled?: boolean }>
+	
+是
+	
+无默认值
+	
+选项列表；labelKey 走 t()；disabled 项可辨不可选
+
+
+placeholderKey
+	
+string
+	
+否
+	
+无默认值
+	
+未选中占位文案 key
+
+
+disabled
+	
+boolean
+	
+否
+	
+false
+	
+整体禁用
+
+
+invalid
+	
+boolean
+	
+否
+	
+false
+	
+错误态：aria-invalid=true
+
+
+clearable
+	
+boolean
+	
+否
+	
+false
+	
+是否显示清除入口（清除派发 update:modelValue 空值）；清除按钮图标-only 须 aria-label（key fm.select.clear）
+Events
+事件
+	
+参数
+	
+触发时机
+
+
+update:modelValue
+	
+value: string | number | null
+	
+选中 / 清除时派发
+
+
+open
+	
+无
+	
+面板展开
+
+
+close
+	
+无
+	
+面板收起
+
+
+change
+	
+payload: { value, option }
+	
+选中项变化时派发一次（区别于 update:modelValue）
+Slots
+插槽
+	
+用途
+	
+必需
+
+
+option
+	
+自定义单选项渲染（作用域插槽，参数含 option / selected）；仍须满足对比度与焦点要求
+	
+否
+明确不设：不设「多选」props（范围外，保持单选语义单纯）；不设面板 / 边界样式插槽（复用 FmInput 硬约束）。
+4.8 FmCheckbox（C-06 · 序号 14）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+复选框：勾选框 + 标签，支持半选（indeterminate）。勾选框边界 ≥3:1 与 aria-checked 语义的规范定义处（Radio / Switch 复用其边界约定）。不负责：单选组（→ FmRadio）、开关语义（→ FmSwitch）。
+
+
+2
+	
+Props / Events / Slots
+	
+完整契约见 §4.8.1。摘要 —— Props：modelValue（boolean，v-model）、labelKey（必填）、id（必填）、indeterminate（默认 false）、disabled（默认 false）、invalid（默认 false）；Events：update:modelValue、change(payload)；Slots：无（标签经 key）。
+
+
+3
+	
+PC 变体
+	
+勾选框边长 --fm-checkbox-size；未勾边界 --fm-checkbox-border；勾选填充 --fm-checkbox-checked-bg、标记 --fm-checkbox-checkmark；标签文字 ≥4.5:1；标签与框间距 --fm-field-gap。
+
+
+4
+	
+手机变体
+	
+整个可点区（label + 框）触控 ≥44×44；375/390/430 标签换行不溢出；勾选框尺寸不缩小到不可辨。
+
+
+5
+	
+状态矩阵
+	
+未选 / 选中 / 半选（indeterminate）/ disabled / error；disabled 与 indeterminate 均可辨；无 hover 语义变化（焦点覆盖可点区）。
+
+
+6
+	
+交互与可访问性
+	
+Space 切换（原生 checkbox 语义）；焦点覆盖整个可点区且可见（2.4.7，≥3:1 项目强化）；勾选框边界 --fm-checkbox-border ≥3:1、标签文字 4.5:1（对应 §2.1「FmCheckbox」行）；aria-checked（true/false/mixed，半选为 mixed）、disabled 时不可聚焦且可辨；勾选态不用颜色作唯一线索（勾选标记形状 + aria-checked）。
+
+
+7
+	
+Token 依赖
+	
+本批 #110～#113 + --fm-field-*（#89～#93）；不新增色值。
+
+
+8
+	
+i18n
+	
+labelKey 走 t()；动态标签用 I18nText；无写死文案。
+
+
+9
+	
+数据契约
+	
+modelValue 布尔；indeterminate 为展示态（不改变 modelValue，提交时按业务规则解释）；不访问 Dexie。
+
+
+10
+	
+验收标准
+	
+CB-01 勾选框边界 ≥3:1、标签 ≥4.5:1；CB-02 Space 切换、aria-checked 三态（含 mixed）正确；CB-03 焦点覆盖可点区且可见；CB-04 disabled / indeterminate 可辨；CB-05 勾选态非仅颜色线索；CB-06 手机触控 ≥44×44、标签不溢出。对应全局：《30》§5.4 a11y 矩阵「FmCheckbox」行。
+
+
+11
+	
+复用关系
+	
+勾选框边界 ≥3:1 与 focus / disabled / aria-checked 约定被 FmRadio(15)、FmSwitch(16) 复用（U-4 / U-5），复用方引用 CB-01～CB-05；容器机制复用 FmFormField。Layer 3 别名 #110～#113 归本卡。
+4.8.1 契约明细（Props / Events / Slots）
+Props
+名称
+	
+类型
+	
+必填
+	
+默认值
+	
+合法枚举 / 行为
+
+
+modelValue
+	
+boolean
+	
+否
+	
+false
+	
+勾选态，v-model 受控
+
+
+labelKey
+	
+string
+	
+是
+	
+无默认值
+	
+标签 i18n key，持久可见
+
+
+id
+	
+string
+	
+是
+	
+无默认值
+	
+与 FmFormField.forId 关联
+
+
+indeterminate
+	
+boolean
+	
+否
+	
+false
+	
+半选展示态；aria-checked='mixed'，不改变 modelValue
+
+
+disabled
+	
+boolean
+	
+否
+	
+false
+	
+禁用：不可聚焦、可辨识
+
+
+invalid
+	
+boolean
+	
+否
+	
+false
+	
+错误态（配合 FormField 提示）
+Events
+事件
+	
+参数
+	
+触发时机
+
+
+update:modelValue
+	
+value: boolean
+	
+勾选态变化时；disabled 不派发
+
+
+change
+	
+payload: { checked: boolean }
+	
+用户切换时派发一次
+Slots
+插槽
+	
+用途
+	
+必需
+
+
+无
+	
+标签经 labelKey，防绕过 i18n
+	
+—
+明确不设：不设「勾选框颜色」插槽（边界 ≥3:1 是硬约束）；不设自定义标签插槽（须经 key）。
+4.9 FmRadio（C-06 · 序号 15）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+单选按钮：圆点 + 标签，同名组内互斥。边界 / focus / disabled / aria-checked 约定复用 FmCheckbox，自身差异仅圆形形态与组内方向键导航。不负责：下拉单选（→ FmSelect）、复选（→ FmCheckbox）。
+
+
+2
+	
+Props / Events / Slots
+	
+完整契约见 §4.9.1。摘要 —— Props：modelValue（string / number，当前选中值）、value（string / number，必填，本项值）、name（string，必填，组名）、labelKey（必填）、disabled（默认 false）；Events：update:modelValue、change(payload)；Slots：无。
+
+
+3
+	
+PC 变体
+	
+圆点边长复用 --fm-checkbox-size；选中圆点 --fm-checkbox-checked-bg；未选边界 --fm-checkbox-border ≥3:1；标签 ≥4.5:1；圆形形态为本组件差异（无新增色值别名）。
+
+
+4
+	
+手机变体
+	
+整个可点区触控 ≥44×44；375/390/430 标签不溢出；同组项间距 --fm-field-gap。
+
+
+5
+	
+状态矩阵
+	
+未选 / 选中 / disabled / error；disabled 可辨不可选；无 indeterminate（radio 无半选）。
+
+
+6
+	
+交互与可访问性
+	
+Space 选中、ArrowUp/ArrowDown/ArrowLeft/ArrowRight 在同名组内切换（对应 §2.1「FmRadio」行）；焦点可见（2.4.7，≥3:1 项目强化）；边界 ≥3:1、标签 4.5:1（继承 CB-01）；role=radiogroup（组容器由调用方 / FormField 提供）+ aria-checked（true/false）；组语义用 name + 原生 radio 行为保证。
+
+
+7
+	
+Token 依赖
+	
+复用 --fm-checkbox-*（#110～#113）+ --fm-field-*（#89～#93）；无本批新增别名（U-5）。
+
+
+8
+	
+i18n
+	
+labelKey 走 t()；动态标签 I18nText；无写死文案。
+
+
+9
+	
+数据契约
+	
+modelValue 为当前选中项的 value（string / number）；name 同表单内唯一标识一组；不访问 Dexie。
+
+
+10
+	
+验收标准
+	
+R-01 继承勾选框边界 / 标签对比度（引用 CB-01）；R-02 方向键组内切换 + Space 选中正确；R-03 aria-checked / radiogroup 语义正确；R-04 disabled 可辨不可选；R-05 手机触控 ≥44×44、标签不溢出。对应全局：《30》§5.4 a11y 矩阵「FmRadio」行。
+
+
+11
+	
+复用关系
+	
+基座 = FmCheckbox（边界 ≥3:1 / focus / disabled / aria-checked 约定）+ FmFormField（容器）（U-4 / U-5）：继承 CB-01～CB-05，自身差异仅「圆形形态 + 组内方向键 + 互斥 value/name」；不新增 Layer 3 别名（复用 #110～#113）。
+4.9.1 契约明细（Props / Events / Slots）
+Props
+名称
+	
+类型
+	
+必填
+	
+默认值
+	
+合法枚举 / 行为
+
+
+modelValue
+	
+string | number
+	
+否
+	
+无默认值
+	
+当前选中项的 value；v-model 受控
+
+
+value
+	
+string | number
+	
+是
+	
+无默认值
+	
+本选项值；与 modelValue 比较决定选中
+
+
+name
+	
+string
+	
+是
+	
+无默认值
+	
+组名，同名互斥（原生 radio group 语义）
+
+
+labelKey
+	
+string
+	
+是
+	
+无默认值
+	
+标签 i18n key
+
+
+disabled
+	
+boolean
+	
+否
+	
+false
+	
+禁用：不可聚焦、可辨识
+Events
+事件
+	
+参数
+	
+触发时机
+
+
+update:modelValue
+	
+value: string | number
+	
+选中本项时派发本项 value
+
+
+change
+	
+payload: { value }
+	
+用户切换选中时派发一次
+Slots
+插槽
+	
+用途
+	
+必需
+
+
+无
+	
+标签经 labelKey
+	
+—
+明确不设：不设半选 / indeterminate（radio 无此态）；不设边界 / 标签插槽（继承 FmCheckbox 硬约束）。
+4.10 FmSwitch（C-06 · 序号 16）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+开关：两态即时生效的布尔切换（设置项开 / 关）。focus / disabled / aria-checked 约定复用 FmCheckbox，自身差异仅轨道 + 滑块形态与 role=switch。不负责：需要二次确认的危险开关（→ FmConfirm）、复选组（→ FmCheckbox）。
+
+
+2
+	
+Props / Events / Slots
+	
+完整契约见 §4.10.1。摘要 —— Props：modelValue（boolean，v-model）、labelKey（必填）、id（必填）、disabled（默认 false）、loading（默认 false）；Events：update:modelValue、change(payload)；Slots：无。
+
+
+3
+	
+PC 变体
+	
+开态轨道 --fm-switch-track-on、关态 --fm-switch-track-off、滑块 --fm-switch-thumb；轨道与底边界 ≥3:1（开关是 UI 组件，1.4.11）；开 / 关状态色不作为唯一线索（滑块位置 + aria-checked + 可选文字）。
+
+
+4
+	
+手机变体
+	
+可点区触控 ≥44×44；375/390/430 标签与开关不重叠、不溢出；开关尺寸不缩小到不可辨。
+
+
+5
+	
+状态矩阵
+	
+开 / 关 / disabled / loading；loading 时切换 pending、aria-busy=true；disabled 可辨不可聚焦。
+
+
+6
+	
+交互与可访问性
+	
+Space 切换（对应 §2.1「FmSwitch」行）；焦点覆盖整个可点区且可见（2.4.7，≥3:1 项目强化）；role=switch + aria-checked（true/false）；开 / 关轨道与底边界 ≥3:1、滑块与轨道 ≥3:1（未覆盖组合批次五补测）；开 / 关非仅颜色线索（滑块位置 + aria-checked）；label 经 FmFormField 关联。
+
+
+7
+	
+Token 依赖
+	
+本批 #114～#116 + 复用 --fm-field-*（#89～#93）；无新增色值。
+
+
+8
+	
+i18n
+	
+labelKey 走 t()；开 / 关可选文字（若有）内置 key fm.switch.on/fm.switch.off；无写死文案。
+
+
+9
+	
+数据契约
+	
+modelValue 布尔；状态即时生效，持久化 / 提交由调用方业务服务处理；不访问 Dexie。
+
+
+10
+	
+验收标准
+	
+SW-01 开 / 关轨道与边界 ≥3:1（未覆盖组合标批次五补测）；SW-02 Space 切换、role=switch + aria-checked 正确；SW-03 焦点覆盖可点区且可见；SW-04 开 / 关非仅颜色线索；SW-05 disabled / loading 可辨且防重复；SW-06 手机触控 ≥44×44。对应全局：《30》§5.4 a11y 矩阵「FmSwitch」行。
+
+
+11
+	
+复用关系
+	
+基座 = FmCheckbox（focus / disabled / aria-checked 约定）+ FmFormField（容器）（U-4 / U-5）：继承 CB-03～CB-05，自身差异仅「轨道 + 滑块形态 + role=switch + loading」；Layer 3 别名仅 #114～#116。
+4.10.1 契约明细（Props / Events / Slots）
+Props
+名称
+	
+类型
+	
+必填
+	
+默认值
+	
+合法枚举 / 行为
+
+
+modelValue
+	
+boolean
+	
+否
+	
+false
+	
+开关态，v-model 受控
+
+
+labelKey
+	
+string
+	
+是
+	
+无默认值
+	
+标签 i18n key
+
+
+id
+	
+string
+	
+是
+	
+无默认值
+	
+与 FmFormField.forId 关联
+
+
+disabled
+	
+boolean
+	
+否
+	
+false
+	
+禁用：不可聚焦、可辨识
+
+
+loading
+	
+boolean
+	
+否
+	
+false
+	
+切换 pending：aria-busy=true、防重复切换
+Events
+事件
+	
+参数
+	
+触发时机
+
+
+update:modelValue
+	
+value: boolean
+	
+切换时派发；disabled / loading 不派发
+
+
+change
+	
+payload: { checked: boolean }
+	
+用户切换时派发一次
+Slots
+插槽
+	
+用途
+	
+必需
+
+
+无
+	
+标签经 labelKey
+	
+—
+明确不设：不设「轨道颜色」插槽（状态色 + ≥3:1 边界是硬约束）；不设三态（switch 仅开 / 关）。
+4.11 FmStepper（C-06 · 序号 17）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+数量步进：加减按钮 + 数值显示（如购物车数量）。加减按钮继承 FmButton 基座，数值文字复用 --fm-input-text，容器复用 FmFormField。不负责：金额计算（→ FmPrice/FmAmountBreakdown）、库存判断（→ 业务服务传入 min/max）。
+
+
+2
+	
+Props / Events / Slots
+	
+完整契约见 §4.11.1。摘要 —— Props：modelValue（number，v-model）、min（默认 1）、max（number，必填）、step（默认 1）、disabled（默认 false）、id（可选）；Events：update:modelValue、change(payload)、limitReached(payload)；Slots：无。
+
+
+3
+	
+PC 变体
+	
+加减按钮复用 FmButton 尺寸 / focus ring / 触控别名（--fm-btn-*，《34》#1～#27）；数值文字 --fm-input-text；按钮边界 --fm-btn-border-secondary；按钮文字按 1.4.3 分层（普通 4.5:1，不统一按 3:1）。
+
+
+4
+	
+手机变体
+	
+加减按钮触控 ≥44×44（继承按钮基座手机档 --fm-btn-height-mobile）；375/390/430 不溢出；数值居中、不因长按缩放。
+
+
+5
+	
+状态矩阵
+	
+default / 到 min（减按钮 disabled）/ 到 max（加按钮 disabled）/ disabled / error；min / max 边界按钮 disabled 可辨且不可聚焦（对应 §2.1「FmStepper」行）。
+
+
+6
+	
+交互与可访问性
+	
+加减按钮分别可聚焦、焦点各自可见（2.4.7，≥3:1 项目强化，引用按钮基座 B-05）；键盘 ArrowUp/ArrowDown 调整（数值区）、按钮 Enter/Space；role=spinbutton + aria-valuenow/aria-valuemin/aria-valuemax（对应 §2.1「FmStepper」行）；按钮文字 4.5:1 / 边界 3:1（继承按钮分层，不统一按 3:1）；数值变化经 aria-live=polite 播报（不过度打扰）。
+
+
+7
+	
+Token 依赖
+	
+复用 FmButton #1～#27 + --fm-input-text（#96）+ --fm-field-*（#89～#93）；无本批新增别名（U-5）。
+
+
+8
+	
+i18n
+	
+减 / 加按钮为图标-only 时须 aria-label（内置 key fm.stepper.decrease/fm.stepper.increase，含当前值可用 I18nText 插值）；播报文案走 key；无写死文案。
+
+
+9
+	
+数据契约
+	
+modelValue 为整数（step 为整数步长）；数量整数运算，禁浮点（数量非金额，但同样避免浮点误差）；min/max 由调用方按库存 / 限购传入；不访问 Dexie。
+
+
+10
+	
+验收标准
+	
+ST-01 加减按钮分别焦点可见（引用 B-05）；ST-02 role=spinbutton + aria-valuenow/min/max 齐全、键盘调整有效；ST-03 min/max 边界按钮 disabled 可辨不可聚焦；ST-04 按钮文字按 1.4.3 分层（引用按钮基座，不统一按 3:1）；ST-05 数值 aria-live 播报；ST-06 触控 ≥44×44、整数步进无浮点；ST-07 图标按钮 aria-label 100% 存在。对应全局：《30》§5.4 a11y 矩阵「FmStepper」+「FmButton」行。
+
+
+11
+	
+复用关系
+	
+基座 = FmButton（加减按钮）+ FmFormField（容器）（U-4 / U-5）：继承按钮尺寸 / 状态 / focus ring / 触控（引用 B-01～B-08），数值文字复用 --fm-input-text；自身差异仅「min/max 边界禁用 + 数值播报 + role=spinbutton」；不新增 Layer 3 别名。
+4.11.1 契约明细（Props / Events / Slots）
+Props
+名称
+	
+类型
+	
+必填
+	
+默认值
+	
+合法枚举 / 行为
+
+
+modelValue
+	
+number
+	
+否
+	
+min
+	
+当前数量，整数；v-model 受控
+
+
+min
+	
+number
+	
+否
+	
+1
+	
+最小值；到达时减按钮 disabled
+
+
+max
+	
+number
+	
+是
+	
+无默认值
+	
+最大值；到达时加按钮 disabled；由库存 / 限购决定
+
+
+step
+	
+number
+	
+否
+	
+1
+	
+步长，正整数；非法值按 1 处理
+
+
+disabled
+	
+boolean
+	
+否
+	
+false
+	
+整体禁用
+
+
+id
+	
+string
+	
+否
+	
+无默认值
+	
+可选；用于与 FmFormField 关联（数值区）
+Events
+事件
+	
+参数
+	
+触发时机
+
+
+update:modelValue
+	
+value: number
+	
+加减 / 键盘调整后派发，值钳制在 [min, max]
+
+
+change
+	
+payload: { value: number; delta: number }
+	
+数量变化时派发一次，delta 为本次增量
+
+
+limitReached
+	
+payload: { limit: 'min' | 'max' }
+	
+尝试越过边界被钳制时派发（供调用方提示库存 / 限购）
+Slots
+插槽
+	
+用途
+	
+必需
+
+
+无
+	
+加减按钮与数值由组件渲染；按钮 aria-label 经内置 key
+	
+—
+明确不设：不设「自定义加减按钮」插槽（继承 FmButton 基座，替换会破坏焦点 / 触控保证）；不设小数步长（数量整数，禁浮点）。
+4.12 FmSearchInput（C-06 · 序号 18）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+搜索输入框：在 FmInput 基础上增搜索图标、清除按钮与搜索语义。继承 FmInput 全部三状态基础样式与 a11y 规则（不重复实测），自身差异仅搜索图标 / 清除按钮 / 搜索触发（U-1）。不负责：搜索结果展示（→ 页面 / FmTable）、普通输入（→ FmInput）。
+
+
+2
+	
+Props / Events / Slots
+	
+完整契约见 §4.12.1。摘要 —— Props：modelValue（string）、id（必填）、placeholderKey（默认 fm.search.placeholder）、disabled（默认 false）、clearable（默认 true）、debounce（number，默认 300）；Events：update:modelValue、search(payload)、clear；Slots：无。
+
+
+3
+	
+PC 变体
+	
+复用 --fm-input-*（#94～#105）全部样式；搜索图标与清除按钮色复用 --fm-select-arrow-color 语义（必要图标 ≥3:1，不另起重复别名，U-5）；图标置于输入区前、清除按钮置于后。
+
+
+4
+	
+手机变体
+	
+同 FmInput 手机规则（字号 ≥16px、触控 ≥44×44、通栏、安全区）；清除按钮触控热区 ≥44×44；375/390/430 不溢出。
+
+
+5
+	
+状态矩阵
+	
+继承 FmInput 三状态（S1/S2/S3，引用其结论）+ hover / disabled / error；自身差异态：搜索图标常驻、清除按钮仅在有值且 clearable 时出现（disabled 时隐藏）；三状态须在这些差异下仍成立（对应 U-4「另测自身差异态」）。
+
+
+6
+	
+交互与可访问性
+	
+继承 FmInput 焦点可见（2.4.7，≥3:1 项目强化）、边界 ≥3:1 判定、三状态规则（§3，不重复实测三状态）；清除按钮图标-only 须 aria-label（key fm.search.clear）、焦点可见；搜索图标为装饰（aria-hidden，搜索语义由 role=searchbox / 输入语义承载）；Enter 触发 search；aria-invalid/aria-describedby 经 FmFormField 注入（对应 §2.1「FmInput」行）。
+
+
+7
+	
+Token 依赖
+	
+复用 --fm-input-*（#94～#105）+ --fm-field-*（#89～#93）+ --fm-select-arrow-color（#109，图标色）；无本批新增别名（U-5）。
+
+
+8
+	
+i18n
+	
+placeholderKey 默认 fm.search.placeholder；内置 key fm.search.clear（清除按钮 aria-label）；动态值 I18nText；无写死文案。
+
+
+9
+	
+数据契约
+	
+modelValue 字符串；search 事件携带当前词，搜索业务由调用方处理；debounce 仅控制 update:modelValue 的触发频率（非搜索请求节流的唯一手段）；不访问 Dexie。
+
+
+10
+	
+验收标准
+	
+SI-01 继承 FmInput 三状态结论（引用 S-01～S-07，不重复实测）；SI-02 自身差异态（搜索图标常驻 / 清除按钮显隐）下三状态仍成立；SI-03 清除按钮 aria-label 100% 存在且焦点可见；SI-04 Enter 触发 search、debounce 行为正确；SI-05 role=searchbox 语义正确；SI-06 双端触控 ≥44×44、不溢出。对应全局：《30》§5.4 a11y 矩阵「FmInput」行 / U-4。
+
+
+11
+	
+复用关系
+	
+基座 = FmInput + FmFormField（U-1 / U-4）：继承三状态基础样式与 a11y 实测结论（引用 S-01～S-07）、字段容器机制；自身差异仅「搜索图标 + 清除按钮 + 搜索事件 + debounce」；不新增 Layer 3 别名（复用 #94～#105、#109）。
+4.12.1 契约明细（Props / Events / Slots）
+Props
+名称
+	
+类型
+	
+必填
+	
+默认值
+	
+合法枚举 / 行为
+
+
+modelValue
+	
+string
+	
+否
+	
+''
+	
+搜索词，v-model 受控
+
+
+id
+	
+string
+	
+是
+	
+无默认值
+	
+与 FmFormField.forId 关联
+
+
+placeholderKey
+	
+string
+	
+否
+	
+'fm.search.placeholder'
+	
+占位文案 key
+
+
+clearable
+	
+boolean
+	
+否
+	
+true
+	
+有值时显示清除按钮；图标-only 须 aria-label
+
+
+debounce
+	
+number
+	
+否
+	
+300
+	
+update:modelValue 触发的防抖毫秒；非正整数按 0 处理
+
+
+disabled
+	
+boolean
+	
+否
+	
+false
+	
+禁用：不可聚焦、可辨识；清除按钮隐藏
+Events
+事件
+	
+参数
+	
+触发时机
+
+
+update:modelValue
+	
+value: string
+	
+防抖后派发输入值；disabled 不派发
+
+
+search
+	
+payload: { keyword: string }
+	
+焦点在输入区按 Enter 时派发一次
+
+
+clear
+	
+无
+	
+点击清除按钮派发，随后 modelValue 置空
+Slots
+插槽
+	
+用途
+	
+必需
+
+
+无
+	
+值经 v-model、图标 / 清除按钮由组件渲染；label 经 FmFormField
+	
+—
+明确不设：不设「搜索结果」插槽（结果展示属页面 / FmTable，职责分离）；不设边界 / focus 样式插槽（继承 FmInput 三状态硬约束）；不设自定义清除图标样式（经 FmFormField / 复用 token）。
+5. 批次二验收对照、复用落地与待处理事项
+5.1 全局验收项对照（《30》§5.4，本批相关）
+《30》§5.4 全局项
+	
+批次二状态
+
+
+范围（12 类 / 36 SFC）
+	
+本批取序号 7～18 共 12 个（C-05 3 + C-06 9），与《30》§4.4 逐名一致；未新增、未改名、未删减；全库 36 SFC 不变
+
+
+Layer 2 / Layer 3
+	
+§1 续表 #71～#116 共 46 行，全部 var() 映射 Layer 2、无 Layer 1 直引 / 字面值；复用方不另起别名（U-5）；全库累计 116 行连续（脚本 C 组核验）
+
+
+WCAG 2.1 AA / a11y 矩阵
+	
+§2.1 对《30》§5.4.1 矩阵 9 行（本批相关）逐行给具体验收；三状态 §3 沿用《25》/《20》已批准规范；标准归因不降标准、按钮文字 1.4.3 分层、focus ring ≥3:1 为项目强化；色值零新增（脚本 H 组核验）
+
+
+组件复用
+	
+§4 逐卡「复用关系」字段 + §5.2 U-1～U-6 落地；FmConfirm/FmDrawer 继承 FmModal、C-06 各控件继承 FmFormField、FmSearchInput 继承 FmInput、FmStepper 继承 FmButton；无第二份重复规范、无新增共享基座
+
+
+双端
+	
+12 卡 PC / 手机变体齐备；触控 ≥44×44（输入 / 开关 / 步进 / 弹窗关闭）；375 / 390 / 430 逐卡写明；抽屉含 iOS 安全区
+
+
+i18n
+	
+12 卡逐卡 key 清单登记；无写死文案 / 拼接翻译；本步不产出译文文件
+
+
+数据契约
+	
+输入框值字符串 / 数量整数、禁浮点；地址 mock 与真实模型同构；金额四字段与 currencyCode 属后续批次（C-11）本批不涉及；零 Dexie 访问声明
+
+
+P 组承接
+	
+本批 C-05 / C-06 无 P 组直接承接项；P 组 5 项仍不纳入（脚本 H 组核验）
+
+
+本轮红线
+	
+无代码 / 无样机 / 无 CSS 正式版 / 无图片生成 / 无种子数据 / 无页面设计 / 四图未改；《19b》仍 DRAFT、本批零写入
+
+
+闸门
+	
+批次二提交后停止、等待 GPT 独立审核；批次三未启动；自检通过不构成放行
+5.2 复用关系落地（U-1～U-6 · 批次二）
+约束
+	
+批次二落地
+
+
+U-1 唯一定义处
+	
+FmModal = 浮层机制唯一定义处；FmInput = 输入框三状态唯一定义处；FmFormField = 字段容器 / 校验提示唯一定义处；FmCheckbox = 勾选框边界 / aria-checked 约定定义处
+
+
+U-2 数量与归属不变
+	
+本批 12 个 SFC 与《30》§4.4 序号 7～18 一致，未新增共享基座、P 组仍 5 项不纳入
+
+
+U-3 规范条目承载
+	
+弹窗 / 表单的共用规则写在基座卡 + §2 / §3 规范条目，不新建基座 SFC
+
+
+U-4 引用基座验收编号
+	
+FmConfirm/FmDrawer 引用 M-01～M-06；FmTextarea/FmSearchInput 引用 S-01～S-07；FmRadio/FmSwitch 引用 CB-01～CB-05；FmStepper 引用 B-01～B-08；继承结论不重复实测、另测差异态
+
+
+U-5 别名按基座归属
+	
+--fm-modal-* 只在 FmModal 定义、--fm-input-* 只在 FmInput 定义、--fm-field-* 只在 FmFormField 定义、--fm-checkbox-* 只在 FmCheckbox 定义；复用方不另起重复别名（本批 46 行无重复）
+
+
+U-6 不产生新组件
+	
+本批未用 P 组承接位产生任何新组件；FmPagination 仍只属 C-04（批次三），本批不涉及
+5.3 待处理事项登记（TBD · 批次二新增）
+登记原则同《34》§7：如实列出、不在组件层就地解决（L3-5）；未获批前只写「未固化、待确认」口径、不写占位数值、不进映射表、不写任何 .css。本批沿用《34》TBD-01～04（线宽 / 退款字典 / 小字号 / 危险按钮 hover），新增 TBD-05。
+编号
+	
+事项
+	
+核验事实（来源）
+	
+本轮处置（组件层）
+	
+回流去向
+
+
+TBD-05
+	
+遮罩背景半透明色 Token 缺失（§4.1 FmModal / §4.2 FmConfirm / §4.3 FmDrawer）
+	
+《19b》Layer 1 / Layer 2 无独立遮罩背景色 Token（仅有 --z-mask 层级；--shadow-* 中的 rgba(26,26,26,·) 属阴影色、语义不同，不得挪作遮罩底）；《16》V1.6 亦无独立遮罩色
+	
+三卡只通过 --fm-modal-mask-z 定义遮罩层级；遮罩背景色写「未固化，待 TBD-05 Token 确认」，不写任何具体 HEX / rgba 值、不入 §1 映射表、不写 .css；遮罩对 AT 隐藏（aria-hidden）的 a11y 规则照常落实
+	
+①-1 Design Tokens 层变更（建议新增 Layer 2 遮罩背景色，如半透明中性色），并纳入《19b》与《20》核验；获批前组件层不落地具体色值
+本登记不构成对 ①-1 已批准 Token 的修改：《19》《19b》《16》《20》《25》及《34》《35》本批零写入；上表仅记录待决项与组件层的未固化口径。
+6. 后续批次计划（预告，本批不执行）
+批次
+	
+内容
+	
+SFC 数
+
+
+批次三（T-04 上）
+	
+C-02 FmProductCard + C-04 FmTable FmPagination（P-03 承接说明）
+	
+3
+
+
+批次四（T-04 下）
+	
+C-07 六件 + C-11 四件（金额四字段 / 派生均价）+ C-12 三件（FmCarousel 按 §5.4.2）+ P-01 / P-02 组合补齐
+	
+13
+
+
+批次五（T-05 + T-06）
+	
+八项交叉核验 + 对比度补测 + 验收对照表 + 送审包汇总
+	
+0
+批次三尚未开始：本批 V1.0 提交后须先经 GPT 独立审核通过；自检脚本通过不构成放行，不得自动开始批次三（T-04 上）。全库累计批次一 8 + 批次二 12 + 批次三 3 + 批次四 13 = 36，与《30》§4.4 一致。
+文档结束 · 批次二（T-03）：共 12 张规范卡（§4.1～§4.12）、续表映射 46 行（#71～#116）、§5.4.1 矩阵逐行落实（§2）、三状态实测表（§3）、验收对照与复用落地（§5）、TBD-05（§5.3）。自检记录见《37》。提交后停止，等待 GPT 独立审核；批次三未启动。
+
+========================================================================
+《37》37-①-2正式设计批次二交付与自检记录.md（CHK-①-2-B2）
+========================================================================
+
+37-①-2正式设计批次二交付与自检记录
+《37》①-2 正式设计 · 批次二交付与自检记录（V1.0）
+项
+	
+内容
+
+
+记录编号
+	
+CHK-①-2-B2-20261116-01（批次二 · T-03 首版）
+
+
+发生日期
+	
+2026-11-16
+
+
+触发
+	
+GPT 已完成《34》《35》V1.2 最终独立审核，正式通过 ①-2 批次一（8 个组件）、允许启动批次二（T-03）；用户 6 项执行要求：①严格按《30》V1.3 范围不增删组件；②沿用《34》模板完整定义全字段；③输入框三状态沿用已批准规范；④无障碍矩阵逐项落实不只写原则；⑤不写代码 / 样机 / CSS 正式版 / 页面设计；⑥提交完整批次二文档 + 自检记录后停止、不自动启动批次三
+
+
+依据
+	
+《30》V1.3 §4.4 序号 7～18 / §4.6 / §5.3 / §5.4 / §5.4.1 矩阵 / §5.4.2；《34》V1.2 模板与映射 #1～#70；《25》输入框三状态规则（沿用）；《20》§5.2 三状态实测；《19》《19b》Layer 1～2（仍 DRAFT，本批零写入）；《16》V1.6 色值
+
+
+本批交付
+	
+《36》（SPEC-①-2-20261116-02-B2，V1.0）：§1 续表映射 #71～#116（46 行） + §2 §5.4.1 矩阵逐行落实（9 行）+ §3 输入框三状态实测表 + §4 12 张规范卡（序号 7～18） + §5 验收对照 / 复用落地 / TBD-05 + §6 后续批次预告
+
+
+文档组织
+	
+独立分册：批次一《34》《35》已获 GPT 最终通过并冻结，其 120 项自检脚本读取《34》全文并按「8 卡 / 70 行」断言；若把批次二追加进《34》将使已通过脚本失效。故本批独立成册（《36》/《37》），模板 / Layer 3 编号 / 验收编号续接《34》而不重叠，《34》《35》零改动、脚本保持可复现
+
+
+本批红线
+	
+无组件代码（未创建 src/ 与任何 .vue/.ts/.css）、无样机、CSS 不固化、P 组零纳入、不新增组件、不改色值 / 基线 / 四图、不进入页面设计；三状态规则逐字沿用未改、未引入 B #949494 为首选
+
+
+停止点
+	
+提交《36》《37》后停止，等待 GPT 独立审核通过后才开始批次三；自检脚本通过不构成放行
+1. 先行核验结论（用户 6 项要求，逐条成立）
+#
+	
+用户要求
+	
+核验结果
+
+
+1
+	
+严格按《30》V1.3 范围、不增删组件
+	
+成立。本批取序号 7～18 共 12 个（C-05 三件 + C-06 九件），与《30》§4.4 逐名对账（脚本 A2）；全库 36 SFC 未变（A6）；P 组 5 项零纳入（H4）
+
+
+2
+	
+沿用《34》模板、完整定义全字段
+	
+成立。每张卡 11 字段齐全（A3）+ 契约明细子节（Props/Events/Slots，A4/B 组）+「明确不设」负向条目（A5）；模板字段与《34》§3 一致
+
+
+3
+	
+输入框三状态沿用已批准规范
+	
+成立。§3 逐字沿用《25》/《20》：S1/S2/S3 三项实测值（4.54:1 / 15.96:1 / 7.56:1 / 6.94:1）如实转录（D2），兜底 A #707070 唯一首选四底全 ≥3:1（D3）、B #949494 暂不作为首选（D4）；FmSearchInput 继承结论不重复实测（D6）
+
+
+4
+	
+无障碍矩阵逐项落实、不只写原则
+	
+成立。§2.1 对《30》§5.4.1 矩阵本批 9 行逐行给出对比度 / 焦点 / 禁用态 / 键盘语义的具体验收（E1/E2），每行有编号化验收项与卡内编号互引；标准归因逐字沿用未降标准（E5）
+
+
+5
+	
+不写代码 / 样机 / CSS 正式版 / 页面设计
+	
+成立。《19b》头部 DRAFT 未动（H1）；无 .vue/.ts/.css 实现文件（H2）；未进入页面设计（H9）
+
+
+6
+	
+提交后停止、不自动启动批次三
+	
+成立。§6 明示批次三未启动、自检通过不构成放行（A8/H7）
+1.1 本批如实登记（不隐藏）
+#
+	
+事项
+	
+处置
+
+
+1
+	
+遮罩背景半透明色无 Token
+	
+《19b》《16》均无独立遮罩色 Token（只有 --z-mask 层级与阴影 rgba，语义不同）。按 L3-5 不在组件层造值：三卡只定义遮罩层级，遮罩背景色写「未固化，待 TBD-05 Token 确认」、不进映射表、不写 .css（脚本 G1～G3）
+
+
+2
+	
+未覆盖对比度组合
+	
+下拉箭头在浅底、FmSwitch 轨道与底等《20》未穷举组合，逐处标「批次五补测」，不冒充已测、不写估值（E7）
+
+
+3
+	
+数值来源
+	
+三状态与对比度数值为《20》已有程序实测的如实转录，非本批新测（D7）；①-2 为规范文档、无代码可渲染
+
+
+4
+	
+复用不重复实测
+	
+FmConfirm/FmDrawer 继承 FmModal、C-06 各控件继承 FmFormField、FmSearchInput 继承 FmInput、FmStepper 继承 FmButton；引用基座验收编号、只测差异态（F 组）
+2. 第一批内容一览
+规范卡
+	
+类 / 序号
+	
+要点
+	
+契约与验收落点
+
+
+FmModal
+	
+C-05 / 7
+	
+浮层机制唯一定义处；焦点陷阱 / Esc / 关闭返回
+	
+§4.1.1 全契约；M-01～M-08；映射 #71～#82
+
+
+FmConfirm
+	
+C-05 / 8
+	
+二次确认；tone 三档；危险态初始焦点落「取消」
+	
+§4.2.1；CF-01～CF-06；复用 M-01～M-06
+
+
+FmDrawer
+	
+C-05 / 9
+	
+底部 / 侧滑抽屉；iOS 安全区
+	
+§4.3.1；D-01～D-06；复用浮层机制
+
+
+FmFormField
+	
+C-06 / 10
+	
+字段容器 / 校验提示唯一定义处；label / id / aria 关联
+	
+§4.4.1；FF-01～FF-06；映射 #89～#93
+
+
+FmInput
+	
+C-06 / 11
+	
+输入框三状态基座；S1/S2/S3 + 兜底 A
+	
+§4.5.1；S-01～S-09；映射 #94～#105
+
+
+FmTextarea
+	
+C-06 / 12
+	
+多行；差异态下三状态仍成立
+	
+§4.6.1；TA-01～TA-05；复用 S-01～S-07
+
+
+FmSelect
+	
+C-06 / 13
+	
+下拉；listbox / 方向键 / aria-expanded
+	
+§4.7.1；SEL-01～SEL-07；映射 #107～#109
+
+
+FmCheckbox
+	
+C-06 / 14
+	
+勾选框边界 ≥3:1 定义处；indeterminate
+	
+§4.8.1；CB-01～CB-06；映射 #110～#113
+
+
+FmRadio
+	
+C-06 / 15
+	
+方向键组内切换；复用 checkbox 边界
+	
+§4.9.1；R-01～R-05；无新增别名
+
+
+FmSwitch
+	
+C-06 / 16
+	
+role=switch；轨道 / 滑块边界
+	
+§4.10.1；SW-01～SW-06；映射 #114～#116
+
+
+FmStepper
+	
+C-06 / 17
+	
+spinbutton；min/max 禁用；复用按钮基座
+	
+§4.11.1；ST-01～ST-07；引用 B-01～B-08
+
+
+FmSearchInput
+	
+C-06 / 18
+	
+搜索图标 / 清除；继承三状态不重复实测
+	
+§4.12.1；SI-01～SI-06；无新增别名
+另含：§1 续表映射 46 行（#71～#116）、§2 §5.4.1 矩阵逐行落实 9 行、§3 三状态实测表、§5 验收对照 / 复用落地 / TBD-05、§6 后续批次预告。
+3. 复核脚本与结果（正文 == stdout，可逐字复现）
+stdout（逐字）：
+判读：95/95 PASS、EXIT=0。A 组（12 卡结构 / 序号对账《30》§4.4 / 11 字段 / 契约明细）、B 组（12 卡 Props/Events/Slots 契约完整性）、C 组（续表 46 行映射纯度 / 序号连续 / placeholder→#707070）、D 组（三状态规则逐字沿用《20》：实测值 / 兜底 A/B / 不凭浅灰底判定 / 复用不重复实测）、E 组（§5.4.1 矩阵 9 行逐项落实 / 焦点归因 / 按钮分层 / aria 语义 / 批次五补测）、F 组（U-1～U-6 复用落地）、G 组（TBD-05 遮罩色如实登记 / 不造值）、H 组（边界 / 红线 / 闸门）为本批重点校验项。
+4. 只读核验（零写入与无实现文件）
+项
+	
+结果
+
+
+docs/ 文件数
+	
+38（本轮新增《36》《37》两份，其余零改动）
+
+
+零写入抽查
+	
+《34》《35》V1.2 保持原样（脚本 H6）；《30》V1.3、《19》《19b》《16》《20》《25》全部零写入（脚本 G2 / H1）
+
+
+实现文件
+	
+src/ 不存在；全库无 .vue / .ts / vite.config.*（零组件代码、零样机）
+
+
+CSS Variables
+	
+《19b》头部仍为 DRAFT / 草案 · 未固化 · 未经用户确认；本轮未写入任何 .css
+
+
+组件范围
+	
+12 类不减不改名；36 SFC 逐名未变（本批取序号 7～18，共 12 个）
+
+
+P 组
+	
+5 项仍不纳入；本批无 P 组承接项
+
+
+色值
+	
+已确认色值零改动；三状态沿用 #707070 兜底 A、B 不作首选；未新增任何基础设计值
+5. 如实说明（不隐藏）
+1.
+范围：序号 7～18 共 12 个组件，逐名 / 类 / 序号对账《30》§4.4，未增删改名；批次三（3 件）与批次四（13 件）未开始。
+2.
+三状态不改写：S1/S2/S3 与兜底 A/B 全部逐字沿用《25》/《20》已批准规则与实测值，本批只做组件层落实，未改任何色值、未降低任何标准、未引入 B 为首选。
+3.
+矩阵不只是原则：§2.1 对矩阵每行给具体验收（对比度数值、焦点归因、禁用态、键盘 / aria 语义），并与卡内编号互引；未覆盖组合标批次五补测，不以估值记达标。
+4.
+遮罩色缺失如实登记：《19b》无独立遮罩背景色 Token，按 L3-5 不造值，登记 TBD-05 回流 ①-1，组件层只写未固化口径。
+5.
+复用不复制规范：继承方只写差异并引用基座验收编号，不复制整段规范、不另起重复 Layer 3 别名（U-1/U-4/U-5）。
+6.
+自检通过 ≠ 放行：本批《36》《37》提交后须先经 GPT 独立审核通过；批次三（T-04 上）继续保持未启动。
+6. 停止点
+提交《36》《37》后停止，等待 GPT 独立审核。 审核通过后才开始批次三（T-04 上：C-02 FmProductCard + C-04 FmTable FmPagination + P-03 承接说明，共 3 件）；①-2 全部批次完成后仍单独送审、单独等待用户确认（X-15 那一次）。本轮未修改《34》《35》或任何已通过文件，批次三未启动。
