@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奇幻购 Fantasy Mall｜①-3 首批页面模板视觉稿</title>
+<style>
+/* ============================================================
+   色板：全部取自《16-Q02 V1.6》已确认色值，未在稿内造新色
+   ============================================================ */
+:root{
+  --brand:#5146A6;          /* 主色：品牌识别 / 通用交互 */
+  --brand-dark:#312E7F;     /* 深色辅助：最高权重主 CTA */
+  --brand-light:#6D66D8;    /* 浅色辅助：高亮 / 倒计时胶囊 */
+  --brand-promo:#343594;    /* 营销主色块（非全站主色），仅活动氛围 */
+  --brand-decor:#A089F2;    /* 装饰紫，禁承载白字 */
+  --brand-50:#F4F1FC;
+  --brand-100:#EDE6F5;
+  --brand-200:#D1D2ED;
+  --promo-bright:#FC5A57;   /* 促销亮红：标签底 */
+  --cta-red:#FB4D4C;        /* 加入购物车 CTA */
+  --price-red:#EC3C3E;      /* 价格大字号 */
+  --safe-red:#C2332E;       /* 普通小字号红字（安全色） */
+  --promo-line:#FD9A95;
+  --member-gold:#A37B4B;
+  --hero1:#EEF5FD; --hero2:#D6E5FA; --hero3:#B5D3F7; --hero4:#C1DAF8;
+  --surface:#FFFFFF;
+  --bg:#F5F5F5; --bg-cool:#F7F7F9;
+  --info-bg:#F8F9FD;
+  --border:#EDEDED; --border-strong:#E2E2E2;
+  --t1:#1A1A1A; --t2:#3A3A3A; --t3:#666666; --t4:#707070;
+  --success:#197A4E; --warning:#9A5B0C; --danger:#C2332E; --info:#2E6FC4;
+  --disabled-bg:#D9D9D9; --disabled-t:#667085;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:#20213a;color:var(--t1);line-height:1.5;-webkit-font-smoothing:antialiased}
+
+/* ---------- 稿纸外层 ---------- */
+.sheet-wrap{max-width:1480px;margin:0 auto;padding:24px 20px 80px}
+.doc-head{background:linear-gradient(120deg,var(--brand-dark),var(--brand) 60%,var(--brand-light));color:#fff;border-radius:14px;padding:30px 34px;margin-bottom:34px;box-shadow:0 10px 30px rgba(20,18,60,.35)}
+.doc-head h1{font-size:25px;letter-spacing:.5px;margin-bottom:6px}
+.doc-head .sub{font-size:13.5px;opacity:.92;margin-bottom:18px}
+.doc-head .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 22px;font-size:12px}
+.doc-head .meta div{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 12px}
+.doc-head .meta b{display:block;font-size:10.5px;opacity:.75;letter-spacing:1px;margin-bottom:2px}
+.notice{background:#fff8e6;border:1px solid #ffe09a;color:#7a5b12;border-radius:8px;padding:10px 14px;font-size:11.5px;margin-top:16px;line-height:1.7}
+
+/* ---------- Section 标题 ---------- */
+.sec{margin:0 0 46px}
+.sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.sec-head .no{font-size:12px;font-weight:700;color:#c9d0ff;background:#33356e;border-radius:6px;padding:3px 9px}
+.sec-head h2{color:#fff;font-size:19px}
+.sec-desc{color:#b9bdd8;font-size:12.5px;margin:0 0 16px 2px;line-height:1.8}
+.sec-desc code{background:#33356e;color:#e6e9ff;padding:1px 6px;border-radius:4px;font-size:11px}
+
+/* ---------- 设备外框 ---------- */
+.stage{background:#fff;border-radius:14px;padding:18px;overflow:auto;box-shadow:0 12px 34px rgba(0,0,0,.28)}
+.stage-label{font-size:11px;font-weight:700;color:var(--brand);letter-spacing:.6px;margin:2px 0 10px;display:flex;align-items:center;gap:8px}
+.stage-label::before{content:"";width:14px;height:3px;background:var(--brand);border-radius:2px}
+.duo{display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap}
+
+/* ---------- 组件角标 ---------- */
+.cmp{position:absolute;font-size:8.5px;font-weight:600;line-height:1;color:#fff;background:rgba(81,70,166,.92);padding:2px 5px;border-radius:0 0 0 5px;letter-spacing:.2px;z-index:20;pointer-events:none}
+.cmp.r{right:0;top:0;border-radius:0 0 0 5px}
+.cmp.l{left:0;top:0;border-radius:0 0 5px 0}
+.cmp.b{right:0;bottom:0;border-radius:5px 0 0 0}
+.rel{position:relative}
+
+/* ---------- 图片占位块 ---------- */
+.imgph{background:repeating-linear-gradient(45deg,var(--brand-50),var(--brand-50) 9px,var(--brand-100) 9px,var(--brand-100) 18px);border:1px dashed var(--brand-200);border-radius:6px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--brand);font-size:10px;padding:6px;line-height:1.4}
+.imgph .ico{font-size:20px;display:block;opacity:.75;margin-bottom:2px}
+.imgph.dark{background:repeating-linear-gradient(45deg,#3a3b7a,#3a3b7a 9px,#45468c 9px,#45468c 18px);border-color:#6d6ec0;color:#dfe1ff}
+
+/* ============================================================
+   PC 商城首页 F-01 / TP-01
+   ============================================================ */
+.pc-page{width:100%;max-width:1168px;background:var(--bg-cool);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:0 auto}
+.topbar{height:30px;background:#f0f0f4;display:flex;align-items:center;justify-content:flex-end;gap:16px;padding:0 22px;font-size:10.5px;color:var(--t3)}
+.topbar .hi{color:var(--brand);font-weight:700}
+.navbar{height:66px;background:var(--surface);display:flex;align-items:center;gap:20px;padding:0 22px;border-bottom:2px solid var(--brand)}
+.logo{font-size:19px;font-weight:800;color:var(--brand);white-space:nowrap;letter-spacing:-.5px}
+.logo small{display:block;font-size:8px;letter-spacing:2.5px;color:var(--brand-light);font-weight:600}
+.search{flex:1;display:flex;height:36px;border:2px solid var(--brand);border-radius:6px;overflow:hidden;max-width:460px}
+.search input{flex:1;border:0;outline:0;padding:0 12px;font-size:12px;color:var(--t1)}
+.search button{width:82px;background:var(--brand);color:#fff;border:0;font-size:12px;font-weight:700;cursor:pointer}
+.allcat{height:36px;background:var(--brand);color:#fff;border-radius:6px;padding:0 16px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px}
+.top-links{margin-left:auto;display:flex;gap:16px;font-size:11px;color:var(--t2)}
+.subnav{height:34px;background:#fff;display:flex;align-items:center;gap:26px;padding:0 22px;font-size:11.5px;color:var(--t2);border-bottom:1px solid var(--border)}
+.subnav b{color:var(--brand)}
+.pc-body{padding:16px 22px 24px}
+.hero{height:250px;border-radius:8px;background:linear-gradient(115deg,var(--hero1),var(--hero2) 45%,var(--hero3));display:flex;align-items:center;justify-content:space-between;padding:0 40px;position:relative;overflow:hidden}
+.hero .txt h3{font-size:30px;color:var(--brand-dark);letter-spacing:1px}
+.hero .txt p{font-size:14px;color:var(--brand);margin-top:8px}
+.hero .pill{background:var(--brand-dark);color:#fff;font-size:12px;font-weight:700;padding:8px 18px;border-radius:20px;margin-top:16px;display:inline-block}
+.hero .dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:7px}
+.hero .dots i{width:18px;height:5px;border-radius:3px;background:rgba(81,70,166,.28)}
+.hero .dots i.on{background:var(--brand)}
+.hero .art{width:290px;height:190px;border-radius:10px}
+.blk{margin-top:18px;background:var(--surface);border-radius:8px;border:1px solid var(--border);overflow:hidden}
+.blk-h{height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid var(--border)}
+.blk-h b{font-size:14px;color:var(--t1)}
+.blk-h b em{font-style:normal;color:var(--brand);font-size:11px;margin-left:8px;font-weight:500}
+.blk-h span{font-size:10.5px;color:var(--t3)}
+.cats{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;padding:16px}
+.cat{text-align:center;font-size:10.5px;color:var(--t2)}
+.cat .ci{width:48px;height:48px;border-radius:50%;background:var(--brand-50);margin:0 auto 6px;display:flex;align-items:center;justify-content:center}
+.secbanner{background:var(--brand-promo);color:#fff;height:52px;display:flex;align-items:center;gap:14px;padding:0 16px;border-radius:6px 6px 0 0}
+.secbanner b{font-size:15px}
+.cd{background:var(--brand-light);color:#fff;font-size:11px;font-weight:700;border-radius:14px;padding:4px 12px}
+.cd .seg{background:rgba(0,0,0,.25);border-radius:4px;padding:2px 5px;margin:0 2px;font-variant-numeric:tabular-nums}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:14px}
+.prod{border:1px solid var(--border);border-radius:8px;overflow:hidden;background:#fff}
+.prod .pimg{height:118px}
+.prod .pinfo{padding:8px 10px}
+.prod .ptitle{font-size:11.5px;color:var(--t1);height:32px;overflow:hidden;line-height:1.4}
+.prod .tag{display:inline-block;background:var(--promo-bright);color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-bottom:4px}
+.prod .price{color:var(--price-red);font-size:17px;font-weight:800;margin-top:4px}
+.prod .price small{font-size:11px}
+.prod .orig{color:var(--t3);font-size:10px;text-decoration:line-through;margin-left:6px}
+.prod .meta{font-size:9.5px;color:var(--t4);margin-top:3px}
+.foot{background:#2b2c46;color:#a9add0;font-size:10.5px;padding:20px 22px;display:flex;justify-content:space-between;gap:20px}
+.foot b{color:#dfe1ff}
+
+/* ============================================================
+   手机首页 F-01 / TP-01
+   ============================================================ */
+.phone{width:390px;min-height:780px;background:var(--bg);border:10px solid #2b2c46;border-radius:34px;overflow:hidden;position:relative;box-shadow:0 14px 34px rgba(0,0,0,.4);flex:0 0 auto}
+.m-searchbar{height:52px;background:var(--brand-50);display:flex;align-items:center;gap:8px;padding:0 14px}
+.m-searchbox{flex:1;height:32px;background:#fff;border-radius:16px;display:flex;align-items:center;padding:0 12px;color:var(--t4);font-size:11.5px;gap:6px}
+.m-lang{color:var(--brand);font-size:11px;font-weight:700;white-space:nowrap}
+.m-hero{height:170px;margin:10px 12px 0;border-radius:10px;background:linear-gradient(115deg,var(--hero1),var(--hero2) 48%,var(--hero3));position:relative;display:flex;align-items:center;padding:0 20px;overflow:hidden}
+.m-hero h3{font-size:19px;color:var(--brand-dark)}
+.m-hero p{font-size:11px;color:var(--brand);margin-top:5px}
+.m-hero .dots{position:absolute;bottom:9px;left:50%;transform:translateX(-50%);display:flex;gap:5px}
+.m-hero .dots i{width:14px;height:4px;border-radius:2px;background:rgba(81,70,166,.25)}
+.m-hero .dots i.on{background:var(--brand)}
+.m-cats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px 4px;padding:14px 10px;background:#fff;margin:10px 12px 0;border-radius:10px}
+.m-cat{text-align:center;font-size:9.5px;color:var(--t2)}
+.m-cat .ci{width:40px;height:40px;border-radius:50%;background:var(--brand-50);margin:0 auto 5px}
+.m-flash{margin:10px 12px 0;border-radius:10px;overflow:hidden;background:#fff}
+.m-flash .fh{height:46px;background:var(--brand-promo);color:#fff;display:flex;align-items:center;gap:10px;padding:0 12px}
+.m-flash .fh b{font-size:13px}
+.m-flash .fh .cd{font-size:9.5px;padding:3px 8px}
+.m-prods{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px}
+.m-prod{border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.m-prod .pimg{height:96px}
+.m-prod .pinfo{padding:7px 8px}
+.m-prod .ptitle{font-size:10.5px;height:28px;overflow:hidden;line-height:1.35}
+.m-prod .price{color:var(--price-red);font-size:15px;font-weight:800;margin-top:3px}
+.m-prod .price small{font-size:10px}
+.m-bottomnav{position:absolute;bottom:0;left:0;right:0;height:58px;background:#fff;border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);align-items:center;padding-bottom:env(safe-area-inset-bottom)}
+.m-bottomnav div{text-align:center;font-size:9.5px;color:var(--t3)}
+.m-bottomnav div.on{color:var(--brand);font-weight:700}
+.m-bottomnav .ni{font-size:17px;display:block;line-height:1.1}
+.phone-scroll{padding-bottom:64px}
+
+/* ============================================================
+   商品详情 F-04 / TP-03
+   ============================================================ */
+.detail-pc{width:100%;max-width:1168px;background:var(--bg-cool);margin:0 auto;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.crumb{height:36px;background:#fff;display:flex;align-items:center;gap:8px;padding:0 22px;font-size:10.5px;color:var(--t3);border-bottom:1px solid var(--border)}
+.crumb b{color:var(--t2)}
+.detail-main{background:#fff;display:grid;grid-template-columns:44% 1fr;gap:24px;padding:20px 24px}
+.gallery{display:grid;grid-template-columns:70px 1fr;gap:10px}
+.gallery .thumbs{display:flex;flex-direction:column;gap:8px}
+.gallery .thumbs .imgph{height:64px}
+.gallery .big{height:340px}
+.dtitle{font-size:18px;font-weight:700;color:var(--t1);line-height:1.4}
+.dsub{font-size:11.5px;color:var(--t3);margin-top:6px}
+.pricebox{background:var(--brand-50);border-radius:8px;padding:14px 16px;margin-top:14px}
+.pricebox .now{color:var(--price-red);font-size:30px;font-weight:800}
+.pricebox .now small{font-size:15px}
+.pricebox .was{color:var(--t3);text-decoration:line-through;font-size:12px;margin-left:10px}
+.pricebox .promo{font-size:10.5px;color:var(--safe-red);margin-top:6px}
+.pricebox .rule{font-size:10px;color:var(--t3);margin-top:4px}
+.specrow{display:flex;align-items:flex-start;gap:10px;margin-top:14px;font-size:11.5px}
+.specrow .k{color:var(--t3);width:52px;flex:0 0 auto;padding-top:5px}
+.specrow .opts{display:flex;gap:8px;flex-wrap:wrap}
+.specrow .opt{border:1px solid var(--border-strong);border-radius:5px;padding:5px 12px;font-size:11px;color:var(--t2);background:#fff}
+.specrow .opt.on{border-color:var(--brand);color:var(--brand);background:var(--brand-50);font-weight:700}
+.coupon{display:inline-block;border:1px dashed var(--promo-line);color:var(--safe-red);font-size:10.5px;padding:3px 10px;border-radius:4px;background:#fff8f7}
+.buyrow{display:flex;align-items:center;gap:10px;margin-top:18px}
+.stepper{display:flex;border:1px solid var(--border-strong);border-radius:6px;overflow:hidden;height:38px;align-items:center}
+.stepper button{width:34px;height:100%;border:0;background:#fafafa;font-size:16px;color:var(--t2);cursor:pointer}
+.stepper span{width:44px;text-align:center;font-size:13px;font-variant-numeric:tabular-nums}
+.btn{height:42px;border:0;border-radius:6px;font-size:13px;font-weight:700;color:#fff;cursor:pointer;padding:0 24px}
+.btn-cart{background:var(--cta-red)}
+.btn-buy{background:var(--brand-dark)}
+.btn-sm{height:36px;padding:0 18px;font-size:11.5px}
+.data-note{background:var(--info-bg);border-left:3px solid var(--info);color:var(--t2);font-size:10px;padding:8px 12px;border-radius:0 6px 6px 0;margin-top:16px;line-height:1.7}
+.data-note code{color:var(--brand);font-weight:700}
+
+/* 手机详情 */
+.m-detail{width:390px;min-height:780px}
+.m-dimg{height:300px;margin:0;border-radius:0}
+.m-dinfo{background:#fff;padding:14px 14px 0}
+.m-dinfo .ptitle{font-size:15px;line-height:1.4}
+.m-dbar{position:absolute;bottom:0;left:0;right:0;height:60px;background:#fff;border-top:1px solid var(--border);display:flex;align-items:center;gap:8px;padding:0 12px;padding-bottom:env(safe-area-inset-bottom)}
+.m-dbar .btn{flex:1;padding:0}
+.m-dbar .icobtn{width:44px;text-align:center;font-size:9px;color:var(--t3)}
+.m-dbar .icobtn .ni{font-size:17px;display:block;color:var(--brand)}
+
+/* ============================================================
+   后台商品管理 A-02 / TA-02
+   ============================================================ */
+.admin{width:100%;max-width:1168px;background:var(--bg);margin:0 auto;border:1px solid var(--border);border-radius:8px;overflow:hidden;display:grid;grid-template-columns:210px 1fr;min-height:520px}
+.side{background:var(--brand-dark);padding:14px 0;color:#fff}
+.side .brandline{font-size:14px;font-weight:800;padding:0 18px 14px;letter-spacing:.5px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:8px}
+.side .brandline small{display:block;font-size:8px;opacity:.6;letter-spacing:2px;font-weight:500}
+.side .mi{padding:9px 18px;font-size:11.5px;color:#c9cbe8;display:flex;align-items:center;gap:9px}
+.side .mi.on{background:rgba(255,255,255,.13);color:#fff;border-left:3px solid var(--brand-light);font-weight:700;padding-left:15px}
+.side .mi .d{width:6px;height:6px;border-radius:50%;background:var(--brand-light)}
+.admin-main{display:flex;flex-direction:column}
+.admin-top{height:52px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 18px}
+.admin-top .t{font-size:14px;font-weight:700}
+.admin-top .tools{font-size:10.5px;color:var(--t3);display:flex;gap:12px}
+.admin-top .tools b{color:var(--brand)}
+.admin-content{padding:14px 18px}
+.filterbar{background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.finput{height:32px;border:1px solid var(--border-strong);border-radius:5px;padding:0 10px;font-size:11px;color:var(--t3);display:flex;align-items:center;min-width:120px}
+.fselect{height:32px;border:1px solid var(--border-strong);border-radius:5px;padding:0 10px;font-size:11px;color:var(--t2);display:flex;align-items:center;gap:6px;background:#fff}
+.btn-add{height:32px;background:var(--brand);color:#fff;border:0;border-radius:5px;font-size:11px;font-weight:700;padding:0 14px;cursor:pointer;margin-left:auto}
+.table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-top:12px;font-size:11px}
+.table th{background:var(--brand-50);color:var(--t2);text-align:left;padding:9px 10px;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap}
+.table td{padding:9px 10px;border-bottom:1px solid var(--border);color:var(--t2);white-space:nowrap}
+.table tr:last-child td{border-bottom:0}
+.badge{font-size:9.5px;padding:2px 8px;border-radius:10px;font-weight:700;display:inline-block}
+.badge.g{background:#e7f5ee;color:var(--success)}
+.badge.o{background:#fdf1e3;color:var(--warning)}
+.badge.r{background:#fdecec;color:var(--danger)}
+.badge.b{background:var(--brand-50);color:var(--brand)}
+.timg{width:34px;height:34px;border-radius:4px;display:inline-flex;vertical-align:middle;margin-right:6px}
+.tlink{color:var(--brand);font-size:10.5px}
+.pager{display:flex;justify-content:flex-end;align-items:center;gap:6px;margin-top:12px;font-size:11px;color:var(--t3)}
+.pager .pg{min-width:28px;height:28px;border:1px solid var(--border-strong);border-radius:5px;display:flex;align-items:center;justify-content:center;background:#fff;padding:0 6px}
+.pager .pg.on{background:var(--brand);color:#fff;border-color:var(--brand);font-weight:700}
+
+/* 手机后台 */
+.m-admin{width:390px;background:var(--bg);min-height:780px}
+.m-admin-top{height:50px;background:var(--brand-dark);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:13px;font-weight:700}
+.m-admin-tabs{height:38px;background:#fff;display:flex;align-items:center;padding:0 10px;gap:6px;border-bottom:1px solid var(--border)}
+.m-admin-tabs .finput{flex:1}
+.m-card{background:#fff;border:1px solid var(--border);border-radius:8px;margin:10px 12px 0;padding:10px}
+.m-card .row1{display:flex;gap:10px}
+.m-card .pimg{width:62px;height:62px;flex:0 0 auto}
+.m-card .tt{font-size:12px;font-weight:700;color:var(--t1);line-height:1.4}
+.m-card .pp{color:var(--price-red);font-size:14px;font-weight:800;margin-top:3px}
+.m-card .row2{display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);font-size:10px;color:var(--t3)}
+
+/* 图例 */
+.legend{background:#fff;border-radius:10px;padding:16px 20px;margin-top:16px;font-size:11px;color:var(--t2)}
+.legend h4{font-size:12px;color:var(--brand);margin-bottom:8px}
+.legend .row{display:flex;gap:10px 22px;flex-wrap:wrap;margin-bottom:8px}
+.legend .row span{background:var(--brand-50);border-radius:5px;padding:3px 9px;color:var(--brand);font-weight:600}
+.legend .note{color:var(--t3);font-size:10.5px;line-height:1.75}
+.legend .note b{color:var(--safe-red)}
+</style>
+</head>
+<body>
+<div class="sheet-wrap">
+
+  <!-- 稿纸说明 -->
+  <div class="doc-head">
+    <h1>奇幻购 Fantasy Mall｜①-3 页面模板 · 首批视觉稿</h1>
+    <div class="sub">Templates Visual Draft · Batch 1 · 供审阅的设计效果（非定稿，据反馈调整）</div>
+    <div class="meta">
+      <div><b>稿纸编号</b>VISUAL-①-3-20261116-01</div>
+      <div><b>对应方案</b>《46》①-3 页面模板设计启动方案</div>
+      <div><b>色值来源</b>《16》Q-02 V1.6（唯一色值源，稿内零造色）</div>
+      <div><b>组件来源</b>《43》36 SFC（区块角标标注调用组件）</div>
+      <div><b>模板族</b>TP-01 首页 · TP-03 详情 · TA-02 后台管理列表</div>
+      <div><b>覆盖页面</b>F-01 / F-04 / A-02（真实业务页面）</div>
+      <div><b>双端</b>PC 1168 容器 · 手机 390 视口（独立布局，非缩放）</div>
+      <div><b>状态</b>待 GPT 独立审核 + 用户查看视觉效果</div>
+    </div>
+    <div class="notice">
+      <b>图片位处理声明：</b>本稿所有图片区域均为「结构化占位块」，块内文字标注其真实业务含义（如 Sku 主图 / 轮播活动位 / 分类图标）。这是为遵守「图片必须对应实际页面结构与功能、不用无关图片代替、未经同意不用 AI 图」——阶段一③素材分库尚未建立，待素材就位或获授权后再替换为真实商品图。<b>本稿为静态视觉稿，不是前端代码实现，不生成 src/、不接数据源。</b>
+    </div>
+  </div>
+
+  <!-- ===================== Section 1: PC 首页 ===================== -->
+  <div class="sec">
+    <div class="sec-head"><span class="no">稿 01</span><h2>PC 商城首页 · F-01 / 模板族 TP-01</h2></div>
+    <p class="sec-desc">路由 <code>#/</code> · 布局：顶导 + 主导航 + 搜索 + 内容容器(1200/1440) + 页脚 · 双列以上宽屏结构。紫为主色，营销横幅用营销块色 <code>#343594</code>。</p>
+    <div class="stage">
+      <div class="stage-label">PC · 1168 容器</div>
+      <div class="pc-page">
+        <div class="topbar rel"><span class="cmp l">FmLocaleSwitch</span>
+          <span>你好，请登录　免费注册</span><span>我的订单</span><span>帮助中心</span><span class="hi">简体中文 ▾</span>
+        </div>
+        <div class="navbar rel">
+          <div class="logo">奇幻购<small>FANTASY MALL</small></div>
+          <div class="search rel"><span class="cmp r">FmSearchInput</span><input placeholder="搜索商品 / 品牌 / 分类"><button>搜索</button></div>
+          <div class="allcat rel"><span class="cmp b">FmButton</span>☰　全部分类</div>
+          <div class="top-links"><span>优惠券中心</span><span>我的购物车</span></div>
+        </div>
+        <div class="subnav rel"><span class="cmp r">FmHeaderNav</span>
+          <b>首页</b><span>限时秒杀</span><span>手机数码</span><span>家居生活</span><span>服饰美妆</span><span>奇幻专区</span><span>品牌馆</span>
+        </div>
+        <div class="pc-body">
+          <div class="hero rel"><span class="cmp l">FmCarousel</span>
+            <div class="txt"><h3>盛夏狂欢 · 全场大促</h3><p>精选好物 低至 5 折 · 领券再减</p><span class="pill">立即抢购 →</span></div>
+            <div class="imgph art dark"><div><span class="ico">▧</span>轮播主视觉位<br>活动规则位 / 生效时间<br>（营销氛围块）</div></div>
+            <div class="dots"><i class="on"></i><i></i><i></i><i></i></div>
+          </div>
+
+          <div class="blk rel"><span class="cmp r">FmGrid</span>
+            <div class="blk-h"><b>商品分类<em>全部分类 →</em></b><span>一级 / 二级分类树</span></div>
+            <div class="cats">
+              <div class="cat"><div class="ci imgph">图</div>手机数码</div>
+              <div class="cat"><div class="ci imgph">图</div>电脑办公</div>
+              <div class="cat"><div class="ci imgph">图</div>家居生活</div>
+              <div class="cat"><div class="ci imgph">图</div>服饰鞋包</div>
+              <div class="cat"><div class="ci imgph">图</div>美妆个护</div>
+              <div class="cat"><div class="ci imgph">图</div>运动户外</div>
+              <div class="cat"><div class="ci imgph">图</div>母婴玩具</div>
+              <div class="cat"><div class="ci imgph">图</div>奇幻专区</div>
+            </div>
+          </div>
+
+          <div class="blk">
+            <div class="secbanner rel"><span class="cmp l">FmCountdown</span>
+              <b>⚡ 限时秒杀</b><span class="cd">距结束 <span class="seg">02</span>:<span class="seg">15</span>:<span class="seg">48</span></span><span style="font-size:11px;opacity:.85">SKU 级活动展示价（派生只读）</span>
+            </div>
+            <div class="prod-grid rel"><span class="cmp l">FmProductCard ×4</span>
+              <div class="prod"><div class="pimg imgph"><div><span class="ico">▢</span>商品主图位<br>Sku.image · @error 占位</div></div><div class="pinfo">
+                <span class="tag">热销</span><div class="ptitle">轻量无线蓝牙耳机 主动降噪 长续航</div>
+                <div class="price"><small>¥</small>399.00<span class="orig">¥599.00</span></div><div class="meta">已售 2.3万 · ★4.9 · 库存充足</div></div></div>
+              <div class="prod"><div class="pimg imgph"><div><span class="ico">▢</span>商品主图位<br>Sku.image</div></div><div class="pinfo">
+                <span class="tag">新品</span><div class="ptitle">智能手表 运动健康监测 多功能表盘</div>
+                <div class="price"><small>¥</small>799.00<span class="orig">¥999.00</span></div><div class="meta">已售 8,120 · ★4.8 · 库存充足</div></div></div>
+              <div class="prod"><div class="pimg imgph"><div><span class="ico">▢</span>商品主图位<br>Sku.image</div></div><div class="pinfo">
+                <div class="ptitle">便携咖啡机 家用迷你 一键萃取</div>
+                <div class="price"><small>¥</small>259.00<span class="orig">¥329.00</span></div><div class="meta">已售 5,604 · ★4.7</div></div></div>
+              <div class="prod"><div class="pimg imgph"><div><span class="ico">▢</span>商品主图位<br>Sku.image</div></div><div class="pinfo">
+                <span class="tag">限时</span><div class="ptitle">人体工学办公椅 久坐舒适 可调节</div>
+                <div class="price"><small>¥</small>1,299.00<span class="orig">¥1,799.00</span></div><div class="meta">已售 1,988 · ★4.9</div></div></div>
+            </div>
+          </div>
+
+          <div class="blk">
+            <div class="blk-h"><b>为你推荐 · 热销榜<em>查看全部 →</em></b><span>商品流（支持 3000 量级 · 分页加载）</span></div>
+            <div class="prod-grid">
+              <div class="prod"><div class="pimg imgph"><div><span class="ico">▢</span>商品主图位</div></div><div class="pinfo"><div class="ptitle">商品名称 · 派生展示价 · 库存/销量/评分</div><div class="price"><small>¥</small>129.00</div></div></div>
+              <div class="prod"><div class="pimg imgph"><div><span class="ico">▢</span>商品主图位</div></div><div class="pinfo"><div class="ptitle">商品名称 · 活动规则位单独成组件</div><div class="price"><small>¥</small>239.00</div></div></div>
+              <div class="prod"><div class="pimg imgph"><div><span class="ico">▢</span>商品主图位</div></div><div class="pinfo"><div class="ptitle">商品名称 · 不生成「到手价」位</div><div class="price"><small>¥</small>89.00</div></div></div>
+              <div class="prod"><div class="pimg imgph"><div><span class="ico">▢</span>商品主图位</div></div><div class="pinfo"><div class="ptitle">商品名称 · 价格红大文本门槛</div><div class="price"><small>¥</small>459.00</div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="foot"><div><b>奇幻购 Fantasy Mall</b>　虚拟电商演示站点 · 商品与品牌均为虚构</div><div>帮助中心　|　虚拟物流声明　|　数据边界说明　|　简体中文</div></div>
+      </div>
+    </div>
+    <div class="legend">
+      <h4>本稿组件与数据位标注（对应《43》36 SFC）</h4>
+      <div class="row"><span>FmLocaleSwitch</span><span>FmHeaderNav</span><span>FmSearchInput</span><span>FmButton</span><span>FmCarousel</span><span>FmGrid</span><span>FmCountdown</span><span>FmProductCard ×8</span><span>FmPrice</span><span>FmStatusBadge</span></div>
+      <div class="note">数据位：轮播项（规则 ID / 生效时间）· 分类树（多级）· <b>商品卡价格取 Sku 派生展示价、库存取 Inventory</b> · SKU 级活动价标 <code>derived</code>；订单级活动只给规则 / 门槛位，不与商品价相加、无「到手价」。浅紫三阶 <code>#F4F1FC/#EDE6F5/#D1D2ED</code> 仅作浅底 / 分隔 / 占位。</div>
+    </div>
+  </div>
+
+  <!-- ===================== Section 2: 手机首页 ===================== -->
+  <div class="sec">
+    <div class="sec-head"><span class="no">稿 02</span><h2>手机商城首页 · F-01 / 模板族 TP-01</h2></div>
+    <p class="sec-desc">视口 390 · 布局：顶部搜索入口 + 竖排内容 + 触屏分类宫格 + 双列商品卡 + <code>固定底部导航 + safe-area</code>。非 PC 缩放，独立布局。</p>
+    <div class="stage">
+      <div class="stage-label">手机 · 390 视口</div>
+      <div class="phone">
+        <div class="m-searchbar rel"><span class="cmp l">FmSearchInput</span>
+          <div class="m-searchbox">⌕　搜索商品 / 品牌</div><div class="m-lang rel"><span class="cmp r">FmLocaleSwitch</span>中 ▾</div>
+        </div>
+        <div class="m-hero rel"><span class="cmp l">FmCarousel</span>
+          <div><h3>盛夏狂欢</h3><p>全场低至 5 折 · 领券再减</p></div>
+          <div class="dots"><i class="on"></i><i></i><i></i></div>
+        </div>
+        <div class="m-cats rel"><span class="cmp r">FmGrid</span>
+          <div class="m-cat"><div class="ci imgph">图</div>数码</div>
+          <div class="m-cat"><div class="ci imgph">图</div>家居</div>
+          <div class="m-cat"><div class="ci imgph">图</div>服饰</div>
+          <div class="m-cat"><div class="ci imgph">图</div>美妆</div>
+          <div class="m-cat"><div class="ci imgph">图</div>食品</div>
+          <div class="m-cat"><div class="ci imgph">图</div>运动</div>
+          <div class="m-cat"><div class="ci imgph">图</div>母婴</div>
+          <div class="m-cat"><div class="ci imgph">图</div>奇幻</div>
+          <div class="m-cat"><div class="ci imgph">图</div>图书</div>
+          <div class="m-cat"><div class="ci imgph">图</div>更多</div>
+        </div>
+        <div class="m-flash rel"><span class="cmp r">FmCountdown</span>
+          <div class="fh"><b>⚡ 限时抢购</b><span class="cd">02:15:48</span><span style="font-size:9px;opacity:.85;margin-left:auto">营销主色块 #343594</span></div>
+          <div class="m-prods rel"><span class="cmp l">FmProductCard ×N</span>
+            <div class="m-prod"><div class="pimg imgph"><div><span class="ico">▢</span>商品主图位<br>Sku.image</div></div><div class="pinfo"><div class="ptitle">轻量无线蓝牙耳机 主动降噪</div><div class="price"><small>¥</small>399.00</div></div></div>
+            <div class="m-prod"><div class="pimg imgph"><div><span class="ico">▢</span>商品主图位</div></div><div class="pinfo"><div class="ptitle">智能手表 健康监测</div><div class="price"><small>¥</small>799.00</div></div></div>
+            <div class="m-prod"><div class="pimg imgph"><div><span class="ico">▢</span>商品主图位</div></div><div class="pinfo"><div class="ptitle">便携咖啡机 一键萃取</div><div class="price"><small>¥</small>259.00</div></div></div>
+            <div class="m-prod"><div class="pimg imgph"><div><span class="ico">▢</span>商品主图位</div></div><div class="pinfo"><div class="ptitle">人体工学办公椅</div><div class="price"><small>¥</small>1,299.00</div></div></div>
+          </div>
+        </div>
+        <div class="phone-scroll"></div>
+        <div class="m-bottomnav rel"><span class="cmp l">FmBottomNav</span>
+          <div class="on"><span class="ni">⌂</span>首页</div>
+          <div><span class="ni">▦</span>分类</div>
+          <div><span class="ni">▤</span>购物车</div>
+          <div><span class="ni">◉</span>我的</div>
+        </div>
+      </div>
+    </div>
+    <div class="legend">
+      <h4>本稿组件与数据位标注</h4>
+      <div class="row"><span>FmSearchInput</span><span>FmLocaleSwitch</span><span>FmCarousel</span><span>FmGrid</span><span>FmCountdown</span><span>FmProductCard</span><span>FmBottomNav（safe-area）</span></div>
+      <div class="note">与 PC 首页共用同一 Token 与组件语义；差异仅在布局（竖排 feeds + 双列卡片 + 底导航）。触控区 ≥44×44px；轮播不自动播放 / 不循环（沿用《40》FmCarousel 定案）；分类图标底用 <code>#F4F1FC</code>，活动卡底 <code>#F4F1FC</code>。</div>
+    </div>
+  </div>
+
+  <!-- ===================== Section 3: 商品详情双端 ===================== -->
+  <div class="sec">
+    <div class="sec-head"><span class="no">稿 03</span><h2>商品详情 · F-04 / 模板族 TP-03（PC + 手机）</h2></div>
+    <p class="sec-desc">路由 <code>#/product/:id</code> · PC：图集 + 规格 + 价格库存 + 领券 + 评价 + 相关推荐；手机：大图轮播 + 信息区 + <code>底部固定购买栏</code>。价格红 <code>#EC3C3E</code> 大文本门槛，主 CTA 统一 <code>#312E7F</code>。</p>
+    <div class="stage duo">
+      <div style="flex:1;min-width:560px">
+        <div class="stage-label">PC · 详情</div>
+        <div class="detail-pc">
+          <div class="crumb rel"><span class="cmp r">FmBreadcrumb</span>首页　/　手机数码　/　<b>轻量无线蓝牙耳机</b></div>
+          <div class="detail-main">
+            <div class="gallery rel"><span class="cmp l">FmImage</span>
+              <div class="thumbs"><div class="imgph">图1</div><div class="imgph">图2</div><div class="imgph">图3</div><div class="imgph">图4</div></div>
+              <div class="big imgph"><div><span class="ico">▢</span>商品主图集位（多图）<br>Sku.image[] · 统一 @error 占位</div></div>
+            </div>
+            <div>
+              <div class="dtitle">轻量无线蓝牙耳机 主动降噪 长续航 通话清晰</div>
+              <div class="dsub">品牌：星澜数码　|　销量 2.3万　|　评价 9,876　|　虚拟物流</div>
+              <div class="pricebox rel"><span class="cmp r">FmPrice</span>
+                <div class="now"><small>¥</small>399.00 <span class="was">¥599.00</span></div>
+                <div class="promo">SKU 级活动展示价（derived 只读）· 优惠券 满199减30</div>
+                <div class="rule">优惠分摊 discountBreakdown：活动 -100 / 券 -30 / 积分 -0</div>
+              </div>
+              <div class="specrow"><div class="k">颜色</div><div class="opts rel"><span class="cmp l">FmRadio</span><span class="opt on">曜石黑</span><span class="opt">月光白</span><span class="opt">星空蓝</span></div></div>
+              <div class="specrow"><div class="k">版本</div><div class="opts"><span class="opt on">标准版</span><span class="opt">Pro 版</span></div></div>
+              <div class="specrow"><div class="k">配送</div><div class="opts" style="font-size:11px;color:var(--t2)">配送中心：天堂仓 / 地心仓　<span class="badge b">虚拟物流</span></div></div>
+              <div class="specrow"><div class="k">优惠</div><div><span class="coupon">满199减30</span>　<span class="coupon">满699减60</span></div></div>
+              <div class="buyrow rel"><span class="cmp l">FmStepper</span>
+                <div class="stepper"><button>−</button><span>1</span><button>+</button></div>
+                <button class="btn btn-cart rel"><span class="cmp r">FmButton</span>加入购物车</button>
+                <button class="btn btn-buy">立即购买</button>
+              </div>
+              <div class="data-note">
+                <b>数据位说明：</b>价格取 <code>Sku.price</code> 唯一可写源；库存取 <code>Inventory.available</code> 唯一源；<code>skuId</code> / 规格组合齐备；活动展示价只读派生并标 <code>derived</code>；<code>currencyCode</code> 冻结 CNY（展示偏好只改格式、不换汇）；订单级活动仅在结算页给规则 / 门槛，不在此生成「到手价」。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:0 0 auto">
+        <div class="stage-label">手机 · 详情</div>
+        <div class="phone m-detail">
+          <div class="m-dimg imgph dark rel"><span class="cmp l">FmCarousel</span><div><span class="ico">▢</span>大图轮播位<br>Sku.image[] 多图</div></div>
+          <div class="m-dinfo">
+            <div class="ptitle">轻量无线蓝牙耳机 主动降噪 长续航 通话清晰</div>
+            <div class="pricebox" style="padding:10px 12px;margin-top:10px">
+              <div class="now" style="font-size:25px"><small>¥</small>399.00 <span class="was">¥599.00</span></div>
+              <div class="promo">活动价（derived）· 满199减30</div>
+            </div>
+            <div class="specrow" style="font-size:10.5px"><div class="k">颜色</div><div class="opts"><span class="opt on">曜石黑</span><span class="opt">月光白</span></div></div>
+            <div class="specrow" style="font-size:10.5px"><div class="k">配送</div><div class="opts"><span class="badge b">虚拟物流</span><span style="color:var(--t3)">天堂仓 / 地心仓</span></div></div>
+            <div class="data-note" style="margin-top:12px">评价列表 / 相关推荐向下延伸 · 数据位同 PC</div>
+          </div>
+          <div class="m-dbar rel"><span class="cmp l">FmButton ×2</span>
+            <div class="icobtn"><span class="ni">♡</span>收藏</div>
+            <div class="icobtn" style="color:var(--brand)"><span class="ni">▤</span>购物车</div>
+            <button class="btn btn-cart btn-sm">加入购物车</button>
+            <button class="btn btn-buy btn-sm">立即购买</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="legend">
+      <h4>本稿组件与数据位标注</h4>
+      <div class="row"><span>FmBreadcrumb</span><span>FmImage</span><span>FmCarousel（手机图集）</span><span>FmPrice</span><span>FmRadio</span><span>FmStepper</span><span>FmButton（cart/buy）</span><span>FmCountdown</span></div>
+      <div class="note">主 CTA「立即购买」统一 <code>#312E7F</code>（V1.6 跨页口径）；次 CTA「加入购物车」<code>#FB4D4C</code> 保留原色 + 白字加粗大字号（大文本 3:1 达标）；手机底部固定购买栏为独立布局，与 PC 同 Token、同组件语义。</div>
+    </div>
+  </div>
+
+  <!-- ===================== Section 4: 后台商品管理 ===================== -->
+  <div class="sec">
+    <div class="sec-head"><span class="no">稿 04</span><h2>后台 · 商品管理 · A-02 / 模板族 TA-02（PC + 手机）</h2></div>
+    <p class="sec-desc">路由 <code>#/admin/products</code> · PC：侧栏(约240) + 顶栏(约64) + 内容区(搜索/筛选/表格/分页/抽屉)；手机：卡片列表 + 抽屉筛选 + 分步表单，<code>禁止缩小 PC 表格</code>。演示级管理员入口声明常驻。</p>
+    <div class="stage duo">
+      <div style="flex:1;min-width:560px">
+        <div class="stage-label">后台 PC · 1168</div>
+        <div class="admin">
+          <div class="side rel"><span class="cmp l">FmSideNav</span>
+            <div class="brandline">奇幻购 · 管理后台<small>ADMIN CONSOLE</small></div>
+            <div class="mi">⌂　后台首页</div>
+            <div class="mi on"><span class="d"></span>商品管理</div>
+            <div class="mi">▦　分类与品牌</div>
+            <div class="mi">▤　库存管理</div>
+            <div class="mi">▧　优惠券管理</div>
+            <div class="mi">⚡　营销活动</div>
+            <div class="mi">▤　订单管理</div>
+            <div class="mi">◉　支付记录</div>
+            <div class="mi">▥　数据统计</div>
+            <div class="mi">⚙　系统设置</div>
+          </div>
+          <div class="admin-main">
+            <div class="admin-top rel"><span class="cmp r">FmHeaderNav</span>
+              <div class="t">商品管理</div>
+              <div class="tools"><span>演示级管理员入口 · 非真实安全认证</span><span class="b">简体中文 ▾</span></div>
+            </div>
+            <div class="admin-content">
+              <div class="filterbar rel"><span class="cmp l">FmSearchInput + FmSelect</span>
+                <div class="finput">⌕　搜索商品名 / SKU</div>
+                <div class="fselect">分类 ▾</div>
+                <div class="fselect">品牌 ▾</div>
+                <div class="fselect">状态 ▾</div>
+                <button class="btn-add rel"><span class="cmp r">FmButton</span>+ 新增商品</button>
+              </div>
+              <table class="table rel"><span class="cmp l">FmTable</span>
+                <thead><tr><th style="width:44px"><input type="checkbox"></th><th>商品</th><th>分类 / 品牌</th><th>销售价</th><th>库存</th><th>状态</th><th>操作</th></tr></thead>
+                <tbody>
+                  <tr><td><input type="checkbox"></td><td><span class="timg imgph">图</span>轻量无线蓝牙耳机</td><td>手机数码 / 星澜</td><td>¥399.00</td><td>1,280</td><td><span class="badge g">在售</span></td><td><span class="tlink">编辑</span>　<span class="tlink">停用</span></td></tr>
+                  <tr><td><input type="checkbox"></td><td><span class="timg imgph">图</span>智能手表 运动健康</td><td>手机数码 / 星澜</td><td>¥799.00</td><td>356</td><td><span class="badge g">在售</span></td><td><span class="tlink">编辑</span>　<span class="tlink">停用</span></td></tr>
+                  <tr><td><input type="checkbox"></td><td><span class="timg imgph">图</span>便携咖啡机 迷你</td><td>家居生活 / 悦家</td><td>¥259.00</td><td><span class="badge o">预警 12</span></td><td><span class="badge g">在售</span></td><td><span class="tlink">编辑</span>　<span class="tlink">停用</span></td></tr>
+                  <tr><td><input type="checkbox"></td><td><span class="timg imgph">图</span>旧款蓝牙音箱</td><td>手机数码 / 星澜</td><td>¥199.00</td><td>0</td><td><span class="badge b">归档</span></td><td><span class="tlink">查看</span></td></tr>
+                  <tr><td><input type="checkbox"></td><td><span class="timg imgph">图</span>人体工学办公椅</td><td>家居生活 / 悦家</td><td>¥1,299.00</td><td>640</td><td><span class="badge r">停用</span></td><td><span class="tlink">编辑</span>　<span class="tlink">启用</span></td></tr>
+                </tbody>
+              </table>
+              <div class="pager rel"><span class="cmp r">FmPagination</span>
+                <span>共 3,000 条 · 每页 20 条 ▾</span>
+                <span class="pg">‹</span><span class="pg on">1</span><span class="pg">2</span><span class="pg">3</span><span class="pg">…</span><span class="pg">150</span><span class="pg">›</span>
+              </div>
+              <div class="data-note">表单只编辑 <code>Sku.price</code> / <code>Inventory</code>，Product 无价格 / 库存可写字段、无活动价字段；生命周期状态（在售/停用/归档）与「已被历史订单引用」标记齐备，删除前引用检查提示。<code>FmPagination</code> 单页上限 20 / 档位 10·20·50·100（唯一定义在 C-04）。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:0 0 auto">
+        <div class="stage-label">后台手机 · 390</div>
+        <div class="phone m-admin">
+          <div class="m-admin-top rel"><span class="cmp l">FmHeaderNav</span>商品管理　<span style="font-size:10px;font-weight:400">演示模式 ▾</span></div>
+          <div class="m-admin-tabs rel"><span class="cmp r">FmDrawer（筛选）</span>
+            <div class="finput">⌕　搜索商品</div><div class="fselect">筛选 ▾</div>
+          </div>
+          <div class="m-card rel"><span class="cmp r">FmTable（手机卡片式）</span>
+            <div class="row1"><div class="pimg imgph">主图</div><div><div class="tt">轻量无线蓝牙耳机 主动降噪</div><div class="pp">¥399.00</div><div style="font-size:9.5px;color:var(--t3);margin-top:2px">手机数码 / 星澜</div></div></div>
+            <div class="row2"><span><span class="badge g">在售</span>　库存 1,280</span><span><span class="tlink">编辑</span>　<span class="tlink">停用</span></span></div>
+          </div>
+          <div class="m-card">
+            <div class="row1"><div class="pimg imgph">主图</div><div><div class="tt">智能手表 运动健康监测</div><div class="pp">¥799.00</div><div style="font-size:9.5px;color:var(--t3);margin-top:2px">手机数码 / 星澜</div></div></div>
+            <div class="row2"><span><span class="badge g">在售</span>　库存 356</span><span><span class="tlink">编辑</span>　<span class="tlink">停用</span></span></div>
+          </div>
+          <div class="m-card">
+            <div class="row1"><div class="pimg imgph">主图</div><div><div class="tt">便携咖啡机 家用迷你</div><div class="pp">¥259.00</div><div style="font-size:9.5px;color:var(--t3);margin-top:2px">家居生活 / 悦家</div></div></div>
+            <div class="row2"><span><span class="badge o">库存预警</span></span><span><span class="tlink">编辑</span></span></div>
+          </div>
+          <div style="text-align:center;font-size:10px;color:var(--t3);margin-top:12px">下拉加载更多 · 每页上限 20</div>
+        </div>
+      </div>
+    </div>
+    <div class="legend">
+      <h4>本稿组件与数据位标注</h4>
+      <div class="row"><span>FmSideNav</span><span>FmHeaderNav</span><span>FmSearchInput</span><span>FmSelect</span><span>FmTable</span><span>FmPagination</span><span>FmButton</span><span>FmStatusBadge</span><span>FmDrawer（手机筛选）</span></div>
+      <div class="note">PC 完整表格 + 分页，手机为卡片式列表 + 抽屉筛选，禁用缩小 PC 表格；支持 3000 量级（分页 / 筛选 / 排序，单页上限 20）；表格列头文案走 i18n；重要操作（删除 / 停用）调 <code>FmConfirm</code> 二次确认并写操作记录（本稿为静态效果，未画弹层）。</div>
+    </div>
+  </div>
+
+  <div class="doc-head" style="background:linear-gradient(120deg,#33356e,#5146A6)">
+    <div class="sub" style="margin:0">稿纸结束 · 本稿为《46》①-3 启动方案的配套视觉稿。待 GPT 独立审核 + 用户查看后据反馈调整；通过后按分批启动正式模板规范设计。不写前端代码 · 不建 src/ · 不进入 ①-4。</div>
+  </div>
+
+</div>
+</body>
+</html>
