@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fantasy Mall ①-2 正式设计批次二（《36》基础组件规范文档·批次二 + 《37》交付与自检记录）</title>
+<title>Fantasy Mall ①-2 正式设计批次二 V1.1（《36》基础组件规范文档·批次二 + 《37》交付与自检记录）</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#fff;color:#1f2329;font-family:Consolas,'Courier New','Microsoft YaHei',monospace}
@@ -17,80 +17,183 @@ pre{white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.7;fo
 </head>
 <body>
 <header>
-  <div class="t">Fantasy Mall ①-2 正式设计批次二（《36》基础组件规范文档·批次二 + 《37》交付与自检记录）</div>
-  <a class="btn" href="batch2-combined.txt" download>下载 .txt</a>
+  <div class="t">Fantasy Mall ①-2 正式设计批次二 V1.1（《36》基础组件规范文档·批次二 + 《37》交付与自检记录）</div>
+  <a class="btn" href="batch2v11-combined.txt" download>下载 .txt</a>
 </header>
-<main><pre id="raw">【分享页正文 / WorkBuddy ①-2 正式设计批次二（T-03）提交说明】
+<main><pre id="raw">【分享页正文 / WorkBuddy ①-2 正式设计批次二 V1.1 契约矛盾修正提交说明】
 
 询问内容是什么
 内容由 AI 生成，请核实重要信息
 
-GPT 已完成《34》V1.2 和《35》V1.2 的最终独立审核。
+GPT 已完成《36》批次二 V1.0 和《37》自检记录的独立审核。
 
 ﻿
 
 
-**正式审核通过：①-2 批次一（8 个组件）。**
+整体结构、12 个组件范围、46 行 Token 映射、输入框三状态、复用关系及无障碍矩阵基本通过。
 
 ﻿
 
 
-现在允许启动批次二（T-03）。
+但发现 4 处契约问题，需要修正后再复审。
 
 ﻿
 
 
-执行要求：
-
-1. 严格按《30》V1.3 已批准的范围完成批次二，不擅自增删组件。
-
-2. 继续使用《34》现有的规范卡模板，完整定义 Props / Events / Slots、PC / 手机变体、状态、交互、Token、i18n、数据契约、验收及复用关系。
-
-3. 输入框三状态规则必须沿用已批准规范。
-
-4. 无障碍矩阵逐项落实，不得只写原则、不定义具体验收。
-
-5. 继续保持不写代码、不做样机、不正式化 CSS Variables、不进入页面设计。
-
-6. 完成后提交完整批次二文档及自检记录，停止并等待 GPT 独立审核，不自动启动批次三。
+**1. FmInput 前后缀契约**
 
 ﻿
 
 
-请开始批次二设计。
+§4.5 摘要称前后缀通过 Props 提供，但 §4.5.1 没有定义 prefix/suffix，且明确说明本批不新增。
 
-12:57
+﻿
+
+
+请统一为：本批 FmInput 不支持 prefix/suffix Props，删除摘要中的矛盾描述。未来如需扩展，再单独提交变更并重新验证三状态。
+
+﻿
+
+
+**2. FmInput number 类型输入规则**
+
+﻿
+
+
+目前 type=&#x27;number&#x27;、modelValue 为字符串，但文档称禁止浮点。字符串存储本身不能阻止小数输入。
+
+﻿
+
+
+请明确：
+
+- 如果本组件只允许整数，定义整数输入限制、非法输入处理、空值及边界值规则。
+
+- 如果允许小数，则删除禁止浮点的说法，并明确数值精度与数据处理边界。
+
+- 不能只依赖原生 input type=number 就声称实现了整数限制。
+
+- 不要把金额计算或复杂数值格式化功能提前放入 FmInput。
+
+﻿
+
+
+同步 Props、Events、数据契约和验收标准。
+
+﻿
+
+
+**3. FmSelect 空值契约**
+
+﻿
+
+
+当前 modelValue 为 string | number，但 update:modelValue 又允许 null。
+
+﻿
+
+
+请统一：
+
+- 明确无选中值和清除后的空值表示。
+
+- 如果使用 null，modelValue 类型必须同步包含 null。
+
+- 明确默认值。
+
+- 明确清除操作是否同时触发 change，以及事件 payload。
+
+- 保证 Props、Events、摘要和验收一致。
+
+﻿
+
+
+**4. FmDrawer 无标题时的 accessible name**
+
+﻿
+
+
+当前无 titleKey 时允许 aria-labelledby 指向关闭按钮或正文首标题，不能保证所有场景都有准确、可理解的 dialog 名称。
+
+﻿
+
+
+请明确无标题情况下的处理：
+
+- 提供可访问名称的 aria-label 契约，或
+
+- 要求正文必须提供可关联标题。
+
+不能把关闭按钮的“关闭”作为默认对话框名称。
+
+﻿
+
+
+同步 Props、交互与可访问性、验收标准。
+
+﻿
+
+
+**另外，TBD-05 治理要求：**
+
+﻿
+
+
+遮罩背景色继续保持未固化状态。①-1 已关闭，不得直接修改已批准文档。TBD-05 作为待提交的 Token 变更议题登记，等待后续正式授权。
+
+﻿
+
+
+**修改边界：**
+
+1. 只修改《36》和《37》。
+
+2. 不修改《30》V1.3、《34》《35》及其他已通过文件。
+
+3. 不新增组件、不写代码、不做样机、不正式化 CSS Variables。
+
+4. 批次三继续保持未启动。
+
+5. 提交完整 V1.1 文档和自检记录，等待 GPT 独立复审。
+
+﻿
+
+
+本轮只处理上述问题，不再扩展新的修改范围。
+
+13:16
 WorkBuddy
-已完成 7m50s
+已完成 6m24s
 
-批次二（T-03）设计完成并提交，现已停止等待 GPT 独立审核。
+批次二《36》《37》已升 V1.1，4 处契约矛盾与 TBD-05 治理全部修正完毕，现已停止等待 GPT 独立复审。
 
-交付内容
-《36》批次二规范文档：12 张规范卡（序号 7–18）—— C-05 三件（FmModal/FmConfirm/FmDrawer）+ C-06 九件（FmFormField/FmInput/FmTextarea/FmSelect/FmCheckbox/FmRadio/FmSwitch/FmStepper/FmSearchInput）。每卡 11 字段 + 契约明细（Props/Events/Slots）+「明确不设」；含续表映射 46 行（#71–#116）、§5.4.1 矩阵逐行落实 9 行、三状态实测表、复用落地、TBD-05。
-《37》自检记录：6 项要求逐条核验 + 可复现脚本，95/95 PASS、EXIT=0、正文==stdout 逐字一致。
-对 6 项要求的落实
-范围：12 组件逐名对账《30》§4.4，全库 36 SFC 未增删改；P 组零纳入。
-模板：沿用《34》全字段 + 逐卡契约明细。
-三状态：逐字沿用《25》/《20》——S1 4.54:1 / S2 15.96:1 / S3 7.56·6.94:1，兜底 A #707070 四底全 ≥3:1、B 不作首选；FmSearchInput 继承结论不重复实测。
-矩阵逐项落实：9 行每行给出对比度数值、焦点归因（SC 2.4.7 + 项目强化 ≥3:1）、禁用态、键盘/aria 语义的具体验收，并与卡内编号互引；未覆盖组合标批次五补测。
-红线：无代码/样机、CSS 仍 DRAFT、未进页面设计。
-停止点：批次三未启动，自检通过不构成放行。
-两点需你知道的判断
-独立分册决策：批次一《34》《35》已通过冻结，其 120 项脚本读《34》全文按「8 卡/70 行」断言；若把批次二追加进《34》会破坏已通过脚本。故采用《36》《37》独立分册，编号续接不重叠——已复验批次一脚本仍 120/120 PASS，《34》《35》零改动。
-TBD-05 遮罩色：《19b》无独立遮罩背景色 Token（仅 --z-mask 层级，阴影 rgba 语义不同），按 L3-5 不造值，组件层只写「未固化，待 TBD-05 Token 确认」，回流 ①-1 层。
+先做的判断（未盲从）
 
-边界终检：docs 38 份（新增 2）、src/ 不存在、实现文件 0、基线文件时间戳全部未动。等待 GPT 对批次二的独立审核，批次三（T-04 上，3 件）继续保持未启动。​
+4 项契约问题 + 治理要求逐条核验均成立（判断过程写入《37》新 §1.0）：其中前后缀是&quot;描述了不存在的契约&quot;、number 的&quot;字符串存储≠禁浮点&quot;确属两回事、FmSelect 空值口径前后不一致、关闭按钮「关闭」确实不能当 dialog 名称。第二项按 GPT 给的第二条路处理。
+
+四项修正 + 治理落点
+FmInput 前后缀：删除摘要「前后缀经 props 提供」，本批明确无 prefix/suffix Props/插槽；扩展须单独变更并重验三状态。同步摘要、Slots、明确不设、验收 S-10。
+FmInput number：改为允许小数、删除&quot;禁浮点&quot;误述——值以字符串原样透传（为避 JS number 精度丢失，非禁浮点）、空值 &#x27;&#x27;；数值解析/取整/最小单位换算/格式化交调用方业务层，不把金额计算提前塞进输入基座。项目金额最小单位整数口径未动一字，仍由 C-11/utils/money 承担。同步 Props/Events/数据契约/验收 S-10。
+FmSelect 空值：modelValue 统一 string | number | null、默认 null（唯一空值哨兵）；清除时 update:modelValue(null) 且同时 change({ value: null, option: null })。摘要/Props/Events/数据契约/验收 SEL-08 五处一致。
+FmDrawer 名称：新增 dialogLabelKey prop 作 aria-label 兜底；有标题→aria-labelledby、无标题→dialogLabelKey、二者皆缺视为实现错误且不渲染无名称 dialog；严禁复用 fm.drawer.close。同步 Props/交互/i18n/验收 D-07。
+TBD-05 治理：删除「建议新增 Layer 2 遮罩色」措辞，改为待提交 Token 变更议题、等待后续正式授权；①-1 已关闭，本批零写入、不新增 Token、不造值、不给候选色值。
+自检与边界
+《37》复核脚本新增 I 组 18 项专项断言，并同步 G5/H8 的 V1.1 文案；结果 113/113 PASS、EXIT=0、正文==stdout 逐字一致。
+双脚本复验：批次二《37》113/113、批次一《35》仍 120/120 PASS——独立分册未破坏已通过成果。
+边界终检：docs 38 份；仅《36》(13:19)/《37》(13:21) 改动，《34》(12:46)/《35》(12:48)/《30》V1.3/全部 ①-1 文档/色值源时间戳未动；src/ 不存在、实现文件 0、《19b》仍 DRAFT。
+
+批次三（T-04 上，3 件）继续保持未启动，自检通过不构成放行——等待 GPT 对 V1.1 的独立复审。
 
 37-①-2正式设计批次二交付与自检记录.md
-26.3 KB
+35.7 KB
 36-阶段一第二步-基础组件规范文档-批次二.md
-82.9 KB
+89.1 KB
 Hy4 flash
-13:05
+13:22
 
 
 ========================================================================
-《36》36-阶段一第二步-基础组件规范文档-批次二.md（T-03，12 张规范卡 §4.1～§4.12，序号 7–18）
+《36》36-阶段一第二步-基础组件规范文档-批次二.md（T-03，V1.1 契约矛盾修正，12 张规范卡 §4.1～§4.12，序号 7–18）
 ========================================================================
 
 36-阶段一第二步-基础组件规范文档-批次二
@@ -107,7 +210,12 @@ SPEC-①-2-20261116-02-B2（批次二 · T-03）
 
 版本
 	
-V1.0 · 批次二首版（2026-11-16）。批次一为《34》V1.2（已获 GPT 最终独立审核通过）。本批以独立分册交付，模板 / Layer 3 编号 / 验收编号续接《34》，不改《34》《35》任何字节
+V1.1 · 契约矛盾修正版（2026-11-16）；V1.0 为批次二首版。批次一为《34》V1.2（已获 GPT 最终独立审核通过）。本批以独立分册交付，模板 / Layer 3 编号 / 验收编号续接《34》，不改《34》《35》任何字节
+
+
+本轮修正（V1.1）
+	
+GPT 独立审核 V1.0 后提出 4 处契约问题 + TBD-05 治理，逐项核验成立并修正：① 删除 FmInput 摘要「前后缀经 props 提供」的矛盾描述（本批不支持 prefix/suffix Props，明确不设）；② FmInput type=&#x27;number&#x27; 改为允许小数、删除「禁浮点」误述（值以字符串原样保存避免 JS number 精度丢失；数值解析 / 整数化 / 金额最小单位换算 / 格式化交调用方业务层，不提前塞入本组件；项目金额整数口径不变，仍由 C-11 / utils/money 承担）；③ FmSelect modelValue 统一为 string | number | null（默认 null，无选中 / 清除后为 null，明确清除同时派发 change({ value: null, option: null })）；④ FmDrawer 新增 dialogLabelKey prop 作 aria-label 兜底（无标题时必须有可访问名称，禁止用关闭按钮「关闭」文案作 dialog 名称）；⑤ TBD-05 改为待提交 Token 变更议题（①-1 已关闭，不直接改已批准文档，等待后续正式授权）。本轮仅改上述项，未扩范围、未新增组件
 
 
 依据
@@ -117,7 +225,7 @@ V1.0 · 批次二首版（2026-11-16）。批次一为《34》V1.2（已获 GPT 
 
 触发
 	
-GPT 已完成《34》《35》V1.2 最终独立审核，正式通过 ①-2 批次一（8 个组件），允许启动批次二（T-03）；用户 2026-11-16 指令 6 项执行要求：①严格按《30》V1.3 范围不增删组件；②沿用《34》规范卡模板、完整定义全字段；③输入框三状态沿用已批准规范；④无障碍矩阵逐项落实、不只写原则；⑤不写代码 / 样机 / CSS 正式版 / 页面设计；⑥提交完整批次二文档 + 自检记录后停止、不自动启动批次三
+GPT 已完成《34》《35》V1.2 最终独立审核，正式通过 ①-2 批次一（8 个组件），允许启动批次二（T-03）；用户 2026-11-16 指令 6 项执行要求：①严格按《30》V1.3 范围不增删组件；②沿用《34》规范卡模板、完整定义全字段；③输入框三状态沿用已批准规范；④无障碍矩阵逐项落实、不只写原则；⑤不写代码 / 样机 / CSS 正式版 / 页面设计；⑥提交完整批次二文档 + 自检记录后停止、不自动启动批次三。V1.1 触发：GPT 完成 V1.0 独立审核，整体通过、提出 4 处契约矛盾 + TBD-05 治理要求，用户指令「只处理上述问题、不扩展修改范围」
 
 
 文件性质
@@ -137,12 +245,12 @@ T-03 全部 = 12 张规范卡：序号 7～18 —— C-05 FmModal(7) FmConfirm(8
 
 状态闸门
 	
-①-1 已收尾；批次一（8 卡）已 GPT 通过；①-2 批次二进行中（批次 2 / 5，V1.0 待 GPT 独立审核）；批次三（T-04 上）继续保持未启动；①-2 整体完成后仍单独送审、单独确认（X-15 那一次）；①-3 / ①-4 未开始
+①-1 已收尾；批次一（8 卡）已 GPT 通过；①-2 批次二进行中（批次 2 / 5，V1.1 待 GPT 独立复审）；批次三（T-04 上）继续保持未启动；①-2 整体完成后仍单独送审、单独确认（X-15 那一次）；①-3 / ①-4 未开始
 
 
 停止点
 	
-提交《36》《37》后停止，等待 GPT 独立审核通过后才开始批次三；自检脚本通过不构成放行
+提交《36》《37》V1.1 后停止，等待 GPT 独立复审通过后才开始批次三；自检脚本通过不构成放行
 1. 批次二 Layer 3 → Layer 2 映射表（续表 #71～#116，覆盖率必须 100%）
 规则同《34》§1.3：本表续接《34》#1～#70（#70 为 --fm-image-radius），本批新增 #71～#116；每行映射列只准 var(--…Layer 2…) 形式，禁止 Layer 1 直引、禁止字面 HEX / px / 阴影 / 时长值（L3-1～L3-6）。复用方不另起重复别名（U-5）：FmConfirm/FmDrawer 复用 --fm-modal-*，C-06 各控件复用 --fm-field-* 与 --fm-input-*，FmSearchInput 复用 --fm-input-*，FmStepper 复用 --fm-btn-*。确需新值回 ①-1 Tokens 层走变更流程（见 §5 TBD-05 遮罩背景色）。本批不写入任何 .css / .vue 文件。
 1.1 C-05 弹窗 / 确认框 / 抽屉（#71～#92）
@@ -1378,7 +1486,7 @@ Slots
 	
 Props / Events / Slots
 	
-完整契约见 §4.3.1。摘要 —— Props：modelValue（boolean，必填）、placement（&#x27;bottom&#x27; / &#x27;left&#x27; / &#x27;right&#x27;，默认 &#x27;bottom&#x27;）、titleKey（string，可选）、closable（默认 true）、closeOnMask（默认 true）、closeOnEsc（默认 true）；Events：update:modelValue、open、close(reason)；Slots：默认（正文，必需）、title、footer。
+完整契约见 §4.3.1。摘要 —— Props：modelValue（boolean，必填）、placement（&#x27;bottom&#x27; / &#x27;left&#x27; / &#x27;right&#x27;，默认 &#x27;bottom&#x27;）、titleKey（string，可选）、dialogLabelKey（string，可选，无标题时必填，作 aria-label 可访问名称兜底）、closable（默认 true）、closeOnMask（默认 true）、closeOnEsc（默认 true）；Events：update:modelValue、open、close(reason)；Slots：默认（正文，必需）、title、footer。可访问名称硬约束：有标题 → aria-labelledby 指向标题；无标题 → 必须由 dialogLabelKey 提供 aria-label；二者皆缺视为实现错误，严禁用关闭按钮「关闭」文案作 dialog 名称。
 
 
 3
@@ -1406,7 +1514,7 @@ PC 变体
 	
 交互与可访问性
 	
-复用 FmModal 焦点陷阱 / 初始焦点 / Esc / 关闭返回（引用 M-01～M-03）；role=dialog + aria-modal=true + aria-labelledby（若有标题）；若关闭按钮为图标-only，须 aria-label（key fm.drawer.close，对应 §2.1「图标-only aria-label」）；焦点可见（2.4.7）；按钮文字 1.4.3 分层；遮罩色见 TBD-05。滑入为进出场过渡，不作为持续动画。
+复用 FmModal 焦点陷阱 / 初始焦点 / Esc / 关闭返回（引用 M-01～M-03）；role=dialog + aria-modal=true；可访问名称二选一（必须成立其一）：① 有 titleKey / title 插槽 → aria-labelledby 指向标题元素；② 无标题 → dialogLabelKey 提供 aria-label（组件内 t(dialogLabelKey)，如「筛选条件」「商品详情」）。若二者皆缺，视为实现错误（开发态告警），不得渲染出无名称 dialog；严禁用关闭按钮 key fm.drawer.close（「关闭」）作 dialog 的 aria-label/aria-labelledby——关闭按钮自身的 aria-label 仍为 fm.drawer.close（对应 §2.1「图标-only aria-label」），二者用途不同、不得混用；焦点可见（2.4.7）；按钮文字 1.4.3 分层；遮罩色见 TBD-05。滑入为进出场过渡，不作为持续动画。
 
 
 7
@@ -1420,7 +1528,7 @@ Token 依赖
 	
 i18n
 	
-titleKey 由调用方传 key；内置 key fm.drawer.close（关闭按钮 aria-label）；正文 / footer 经插槽由调用方 t()；无写死文案。
+titleKey / dialogLabelKey 由调用方传 key（后者供无标题时 aria-label）；内置 key fm.drawer.close（仅关闭按钮 aria-label，不得复用为 dialog 名称）；正文 / footer 经插槽由调用方 t()；无写死文案、无拼接翻译。
 
 
 9
@@ -1434,7 +1542,7 @@ titleKey 由调用方传 key；内置 key fm.drawer.close（关闭按钮 aria-la
 	
 验收标准
 	
-D-01 继承浮层机制并引用 M-01～M-06；D-02 placement 三档形态正确、手机底部抽屉安全区生效；D-03 图标关闭按钮 aria-label 100% 存在（§2.1 图标行）；D-04 焦点陷阱与关闭返回有效；D-05 reduced-motion 无持续动画；D-06 双端 375/390/430 不溢出。对应全局：《30》§5.4 a11y 矩阵「弹窗」行 / 双端。
+D-01 继承浮层机制并引用 M-01～M-06；D-02 placement 三档形态正确、手机底部抽屉安全区生效；D-03 图标关闭按钮 aria-label 100% 存在（§2.1 图标行）；D-04 焦点陷阱与关闭返回有效；D-05 reduced-motion 无持续动画；D-06 双端 375/390/430 不溢出；D-07 可访问名称：有标题时 aria-labelledby 指向标题、无标题时 dialogLabelKey 生成 aria-label，二者皆缺时开发态告警且不渲染无名称 dialog；断言任何情况下 dialog 名称 ≠ 关闭按钮「关闭」文案。对应全局：《30》§5.4 a11y 矩阵「弹窗」行 / 双端 / i18n。
 
 
 11
@@ -1485,7 +1593,18 @@ string
 	
 无默认值
 	
-标题 i18n key；缺省时抽屉无标题，aria-labelledby 可指向关闭按钮或正文首标题
+标题 i18n key；有值时渲染标题并以 aria-labelledby 指向它。不再允许「缺省时指向关闭按钮或正文首标题」的兜底
+
+
+dialogLabelKey
+	
+string
+	
+否（无 titleKey 且无 title 插槽时必填）
+	
+无默认值
+	
+无标题时 dialog 可访问名称的 i18n key，组件内 t(dialogLabelKey) 作 aria-label（如「筛选条件」）。与 titleKey 至少存在一个，否则视为实现错误；严禁用 fm.drawer.close 兜底
 
 
 closable
@@ -1573,7 +1692,7 @@ footer
 底部操作区
 	
 否
-明确不设：不设浮层机制 / 遮罩色插槽（继承 FmModal）；不设「滑入时长」可配插槽（动效时长经 Layer 3 别名统一管理、reduced-motion 下强制趋零）。
+明确不设：不设浮层机制 / 遮罩色插槽（继承 FmModal）；不设「滑入时长」可配插槽（动效时长经 Layer 3 别名统一管理、reduced-motion 下强制趋零）；不设「关闭按钮文字作 dialog 名称」的兜底路径——无标题时必须经 dialogLabelKey 提供准确名称，二者皆缺视为实现错误，不做「指向正文首标题 / 关闭按钮」的隐式推断。
 4.4 FmFormField（C-06 · 序号 10）
 #
 	
@@ -1783,7 +1902,7 @@ error
 	
 Props / Events / Slots
 	
-完整契约见 §4.5.1。摘要 —— Props：modelValue（string，v-model）、id（string，必填，与 FmFormField.forId 关联）、placeholderKey（string，可选）、type（&#x27;text&#x27; / &#x27;password&#x27; / &#x27;tel&#x27; / &#x27;email&#x27; / &#x27;number&#x27;，默认 &#x27;text&#x27;）、disabled（默认 false）、readonly（默认 false）、invalid（默认 false）、maxlength（number，可选）；Events：update:modelValue、focus、blur、enter；Slots：无（前后缀经 props 提供，见契约明细）。
+完整契约见 §4.5.1。摘要 —— Props：modelValue（string，v-model）、id（string，必填，与 FmFormField.forId 关联）、placeholderKey（string，可选）、type（&#x27;text&#x27; / &#x27;password&#x27; / &#x27;tel&#x27; / &#x27;email&#x27; / &#x27;number&#x27;，默认 &#x27;text&#x27;）、disabled（默认 false）、readonly（默认 false）、invalid（默认 false）、maxlength（number，可选）；Events：update:modelValue、focus、blur、enter；Slots：无（本批不支持 prefix / suffix 前后缀 Props，未定义相关契约；未来扩展须单独提交变更并重新验证三状态）。
 
 
 3
@@ -1832,14 +1951,14 @@ placeholderKey 由调用方传 key（t(placeholderKey)）；占位文案可翻�
 	
 数据契约
 	
-modelValue 为字符串；type=&#x27;number&#x27; 时值为字符串形式（避免浮点，金额 / 数量格式化交 FmNumber 等，见《30》C-11）；不访问 Dexie；地址 / 表单字段与真实模型同构（mock 同构）。
+modelValue 恒为字符串（含 type=&#x27;number&#x27;，允许小数），值以用户输入原样保存——这是为避免 JS number 二进制浮点精度丢失，不是「禁止浮点」语义。组件不做数值解析 / 取整 / 金额最小单位换算 / 千分位与精度格式化；整数化、金额最小货币单位整数运算（utils/money）与格式化属业务层职责，由 C-11 金额类组件 / 调用方 Service 承担（《30》C-11），不在本输入基座提前实现。空值统一为 &#x27;&#x27;；合法数值字符集与 max / min / 步长等约束由调用方按需校验并经 FmFormField 提示，本组件不替业务做数值合法性判定。不访问 Dexie；地址 / 表单字段与真实模型同构（mock 同构）。
 
 
 10
 	
 验收标准
 	
-S-01 S1 空白实测通过（§3）；S-02 S2 已填写实测通过；S-03 S3 焦点实测且失焦后 S1/S2 仍成立；S-04 边界承担识别功能时 ≥3:1（兜底 A 唯一首选）；S-05 disabled 可辨不可聚焦、readonly 可聚焦不可改；S-06 aria-invalid/aria-describedby 经 FormField 注入正确；S-07 未靠浅灰底 / Label / 间距直接判达标；S-08 双端 375/390/430 与触控达标、字号 ≥16px；S-09 全部文案走 key。对应全局：《30》§5.4 WCAG / a11y 矩阵「FmInput」行 / 数据契约。
+S-01 S1 空白实测通过（§3）；S-02 S2 已填写实测通过；S-03 S3 焦点实测且失焦后 S1/S2 仍成立；S-04 边界承担识别功能时 ≥3:1（兜底 A 唯一首选）；S-05 disabled 可辨不可聚焦、readonly 可聚焦不可改；S-06 aria-invalid/aria-describedby 经 FormField 注入正确；S-07 未靠浅灰底 / Label / 间距直接判达标；S-08 双端 375/390/430 与触控达标、字号 ≥16px；S-09 全部文案走 key；S-10 type=&#x27;number&#x27; 值以字符串原样透传（含小数）、空值为 &#x27;&#x27;、组件不做取整 / 最小单位换算 / 格式化（断言 Props/Events 中无「禁浮点」表述、无 prefix/suffix 契约），数值合法性由调用方校验。对应全局：《30》§5.4 WCAG / a11y 矩阵「FmInput」行 / 数据契约。
 
 
 11
@@ -1868,7 +1987,7 @@ string
 	
 &#x27;&#x27;
 	
-输入值，v-model 受控；type=&#x27;number&#x27; 时仍为字符串形式（禁浮点）
+输入值，v-model 受控；恒为字符串、type=&#x27;number&#x27; 时允许小数并以用户输入原样透传（避免 JS number 精度丢失，非「禁浮点」）；空值为 &#x27;&#x27;；不做取整 / 换算 / 格式化
 
 
 id
@@ -1901,7 +2020,7 @@ type
 	
 &#x27;text&#x27;
 	
-原生输入类型；仅五值；number 保持字符串值
+原生输入类型；仅五值；number 为通用数值输入、允许小数、值仍为字符串；组件不声称实现整数限制，整数 / 金额最小单位换算交调用方业务层
 
 
 disabled
@@ -1990,10 +2109,10 @@ Slots
 
 无
 	
-文案经 placeholderKey，前后缀图标 / 单位经 props（prefix/suffix 见下方「明确不设」说明：本批不引入新插槽，前后缀留待后续按需增补且须回归三状态）
+文案经 placeholderKey；值经 v-model；本批无前后缀插槽、无 prefix / suffix Props（契约中未定义，不存在「经 props 提供」的路径）
 	
 —
-明确不设：不设「边界颜色 / focus 样式」可替换插槽（三状态与兜底 A 是无障碍硬约束，不可被业务绕过）；不设自定义 label 插槽（label 由 FmFormField 承担、须持久可见）；不设文本插槽（值经 v-model）。前后缀图标若后续引入，须回归三状态验收，不在本批新增。
+明确不设：不设「边界颜色 / focus 样式」可替换插槽（三状态与兜底 A 是无障碍硬约束，不可被业务绕过）；不设自定义 label 插槽（label 由 FmFormField 承担、须持久可见）；不设文本插槽（值经 v-model）；不设 prefix / suffix 前后缀 Props 或插槽。前后缀若后续需要，须单独提交变更并重新验证三状态（焦点 / 边界 / 占位关系），不在本批新增、不再出现「前后缀经 props 提供」的表述。
 4.6 FmTextarea（C-06 · 序号 12）
 #
 	
@@ -2247,7 +2366,7 @@ Slots
 	
 Props / Events / Slots
 	
-完整契约见 §4.7.1。摘要 —— Props：modelValue（string / number）、id（必填）、options（Array&lt;{value,labelKey}&gt;，必填）、placeholderKey（可选）、disabled（默认 false）、invalid（默认 false）、clearable（默认 false）；Events：update:modelValue、open、close、change(payload)；Slots：option（自定义选项渲染，可选）。
+完整契约见 §4.7.1。摘要 —— Props：modelValue（string | number | null，默认 null）、id（必填）、options（Array&lt;{value,labelKey}&gt;，必填）、placeholderKey（可选）、disabled（默认 false）、invalid（默认 false）、clearable（默认 false）；Events：update:modelValue、open、close、change(payload)；Slots：option（自定义选项渲染，可选）。空值口径：无选中 / 清除后均为 null，modelValue 与 update:modelValue 类型一致；清除同时派发 change({ value: null, option: null })。
 
 
 3
@@ -2296,14 +2415,14 @@ options[].labelKey / placeholderKey 全走 t()；选项标签动态数据用 I18
 	
 数据契约
 	
-options 为 {value, labelKey}[]，value 与业务模型同类型（string / number）；不访问 Dexie；选项列表由调用方注入（如地址省市区、筛选项）。
+options 为 {value, labelKey}[]，value 与业务模型同类型（string / number）；modelValue 为 string | number | null、默认 null，null 是唯一空值哨兵（未选中与清除后同值，不引入 &#x27;&#x27;/undefined 等第二套空值）；不访问 Dexie；选项列表由调用方注入（如地址省市区、筛选项）。
 
 
 10
 	
 验收标准
 	
-SEL-01 键盘全流程（展开 / 导航 / 选中 / Esc）可达；SEL-02 aria-expanded/listbox/option/aria-selected 齐全；SEL-03 展开 / 收起焦点可见且 ≥3:1；SEL-04 选项文字 4.5:1、边界 / 箭头 3:1（未覆盖组合标批次五补测）；SEL-05 disabled 项可辨不可选；SEL-06 手机面板不溢出 / 不被遮挡；SEL-07 文案全走 key。对应全局：《30》§5.4 a11y 矩阵「FmSelect」行。
+SEL-01 键盘全流程（展开 / 导航 / 选中 / Esc）可达；SEL-02 aria-expanded/listbox/option/aria-selected 齐全；SEL-03 展开 / 收起焦点可见且 ≥3:1；SEL-04 选项文字 4.5:1、边界 / 箭头 3:1（未覆盖组合标批次五补测）；SEL-05 disabled 项可辨不可选；SEL-06 手机面板不溢出 / 不被遮挡；SEL-07 文案全走 key；SEL-08 空值契约：默认 null、清除后 update:modelValue(null) 且同时派发 change({ value: null, option: null })，modelValue 与 update:modelValue 类型均含 null（断言摘要 / Props / Events / 数据契约四处口径一致）。对应全局：《30》§5.4 a11y 矩阵「FmSelect」行 / 数据契约。
 
 
 11
@@ -2326,13 +2445,13 @@ Props
 
 modelValue
 	
-string | number
+string | number | null
 	
 否
 	
-无默认值
+null
 	
-选中值；与 options[].value 同类型
+选中值；有选中时与 options[].value 同类型（string / number），无选中 / 清除后为 null（唯一空值哨兵）；与 update:modelValue 类型一致
 
 
 id
@@ -2398,7 +2517,7 @@ boolean
 	
 false
 	
-是否显示清除入口（清除派发 update:modelValue 空值）；清除按钮图标-only 须 aria-label（key fm.select.clear）
+是否显示清除入口；清除时派发 update:modelValue(null) 并同时派发 change({ value: null, option: null })；清除按钮图标-only 须 aria-label（key fm.select.clear）
 Events
 事件
 	
@@ -2411,7 +2530,7 @@ update:modelValue
 	
 value: string | number | null
 	
-选中 / 清除时派发
+选中时派发选项 value；清除时派发 null（与 modelValue 类型一致）
 
 
 open
@@ -2430,9 +2549,9 @@ close
 
 change
 	
-payload: { value, option }
+payload: { value: string | number | null; option: Option | null }
 	
-选中项变化时派发一次（区别于 update:modelValue）
+选中项变化时派发一次；清除时同样派发，payload 为 { value: null, option: null }（区别于 update:modelValue，但二者在清除时同时触发）；Option = { value, labelKey, disabled? }
 Slots
 插槽
 	
@@ -3448,7 +3567,7 @@ i18n
 
 数据契约
 	
-输入框值字符串 / 数量整数、禁浮点；地址 mock 与真实模型同构；金额四字段与 currencyCode 属后续批次（C-11）本批不涉及；零 Dexie 访问声明
+FmInput 值恒为字符串、type=&#x27;number&#x27; 允许小数并原样透传（不做取整 / 最小单位换算 / 格式化，数值处理交业务层）；FmStepper 数量为整数、步长整数；FmSelect 空值为 null（唯一哨兵）。地址 mock 与真实模型同构；金额四字段与 currencyCode 属后续批次（C-11）本批不涉及，项目金额最小单位整数口径不变；零 Dexie 访问声明
 
 
 P 组承接
@@ -3517,10 +3636,10 @@ TBD-05
 	
 《19b》Layer 1 / Layer 2 无独立遮罩背景色 Token（仅有 --z-mask 层级；--shadow-* 中的 rgba(26,26,26,·) 属阴影色、语义不同，不得挪作遮罩底）；《16》V1.6 亦无独立遮罩色
 	
-三卡只通过 --fm-modal-mask-z 定义遮罩层级；遮罩背景色写「未固化，待 TBD-05 Token 确认」，不写任何具体 HEX / rgba 值、不入 §1 映射表、不写 .css；遮罩对 AT 隐藏（aria-hidden）的 a11y 规则照常落实
+三卡只通过 --fm-modal-mask-z 定义遮罩层级；遮罩背景色写「未固化，待 TBD-05 Token 确认」，不写任何具体 HEX / rgba 值、不入 §1 映射表、不写 .css；遮罩对 AT 隐藏（aria-hidden）的 a11y 规则照常落实。遮罩背景色继续保持未固化
 	
-①-1 Design Tokens 层变更（建议新增 Layer 2 遮罩背景色，如半透明中性色），并纳入《19b》与《20》核验；获批前组件层不落地具体色值
-本登记不构成对 ①-1 已批准 Token 的修改：《19》《19b》《16》《20》《25》及《34》《35》本批零写入；上表仅记录待决项与组件层的未固化口径。
+治理口径（V1.1）：TBD-05 作为待提交的 Token 变更议题登记，等待后续正式授权。①-1 已关闭、本批不直接修改任何已批准文档（《19》《19b》《16》《20》《25》及《34》《35》均零写入）、不新增 Token、不造值、不给出任何候选色值。授权后另行走 ①-1 Design Tokens 层变更流程并纳入《19b》与《20》核验；获批前组件层持续不落地具体色值
+本登记不构成对 ①-1 已批准 Token 的修改：①-1 已关闭，《19》《19b》《16》《20》《25》及《34》《35》本批零写入；上表仅记录待决议题与组件层的未固化口径，TBD-05 等待后续正式授权后才进入 Token 变更流程，本批不触发任何 ①-1 文档改动。
 6. 后续批次计划（预告，本批不执行）
 批次
 	
@@ -3548,15 +3667,15 @@ C-07 六件 + C-11 四件（金额四字段 / 派生均价）+ C-12 三件（FmC
 八项交叉核验 + 对比度补测 + 验收对照表 + 送审包汇总
 	
 0
-批次三尚未开始：本批 V1.0 提交后须先经 GPT 独立审核通过；自检脚本通过不构成放行，不得自动开始批次三（T-04 上）。全库累计批次一 8 + 批次二 12 + 批次三 3 + 批次四 13 = 36，与《30》§4.4 一致。
+批次三尚未开始：本批 V1.1 提交后须先经 GPT 独立复审通过；自检脚本通过不构成放行，不得自动开始批次三（T-04 上）。全库累计批次一 8 + 批次二 12 + 批次三 3 + 批次四 13 = 36，与《30》§4.4 一致。
 文档结束 · 批次二（T-03）：共 12 张规范卡（§4.1～§4.12）、续表映射 46 行（#71～#116）、§5.4.1 矩阵逐行落实（§2）、三状态实测表（§3）、验收对照与复用落地（§5）、TBD-05（§5.3）。自检记录见《37》。提交后停止，等待 GPT 独立审核；批次三未启动。
 
 ========================================================================
-《37》37-①-2正式设计批次二交付与自检记录.md（CHK-①-2-B2）
+《37》37-①-2正式设计批次二交付与自检记录.md（CHK-①-2-B2，V1.1）
 ========================================================================
 
 37-①-2正式设计批次二交付与自检记录
-《37》①-2 正式设计 · 批次二交付与自检记录（V1.0）
+《37》①-2 正式设计 · 批次二交付与自检记录（V1.1 契约矛盾修正）
 项
 	
 内容
@@ -3564,7 +3683,7 @@ C-07 六件 + C-11 四件（金额四字段 / 派生均价）+ C-12 三件（FmC
 
 记录编号
 	
-CHK-①-2-B2-20261116-01（批次二 · T-03 首版）
+CHK-①-2-B2-20261116-02（批次二 · T-03 · V1.1 契约矛盾修正）；V1.0 为 CHK-①-2-B2-20261116-01
 
 
 发生日期
@@ -3574,7 +3693,7 @@ CHK-①-2-B2-20261116-01（批次二 · T-03 首版）
 
 触发
 	
-GPT 已完成《34》《35》V1.2 最终独立审核，正式通过 ①-2 批次一（8 个组件）、允许启动批次二（T-03）；用户 6 项执行要求：①严格按《30》V1.3 范围不增删组件；②沿用《34》模板完整定义全字段；③输入框三状态沿用已批准规范；④无障碍矩阵逐项落实不只写原则；⑤不写代码 / 样机 / CSS 正式版 / 页面设计；⑥提交完整批次二文档 + 自检记录后停止、不自动启动批次三
+GPT 已完成《34》《35》V1.2 最终独立审核，正式通过 ①-2 批次一（8 个组件）、允许启动批次二（T-03）；用户 6 项执行要求：①严格按《30》V1.3 范围不增删组件；②沿用《34》模板完整定义全字段；③输入框三状态沿用已批准规范；④无障碍矩阵逐项落实不只写原则；⑤不写代码 / 样机 / CSS 正式版 / 页面设计；⑥提交完整批次二文档 + 自检记录后停止、不自动启动批次三。V1.1 触发：GPT 完成 V1.0 独立审核——整体结构 / 12 组件范围 / 46 行映射 / 三状态 / 复用 / 矩阵基本通过，提出 4 处契约问题 + TBD-05 治理；用户指令「只处理上述问题、不扩展修改范围」
 
 
 依据
@@ -3584,7 +3703,12 @@ GPT 已完成《34》《35》V1.2 最终独立审核，正式通过 ①-2 批次
 
 本批交付
 	
-《36》（SPEC-①-2-20261116-02-B2，V1.0）：§1 续表映射 #71～#116（46 行） + §2 §5.4.1 矩阵逐行落实（9 行）+ §3 输入框三状态实测表 + §4 12 张规范卡（序号 7～18） + §5 验收对照 / 复用落地 / TBD-05 + §6 后续批次预告
+《36》（SPEC-①-2-20261116-02-B2，V1.1 契约矛盾修正版；V1.0 为首版）：§1 续表映射 #71～#116（46 行） + §2 §5.4.1 矩阵逐行落实（9 行）+ §3 输入框三状态实测表 + §4 12 张规范卡（序号 7～18） + §5 验收对照 / 复用落地 / TBD-05（待授权议题） + §6 后续批次预告。本轮仅修正 4 处契约矛盾 + TBD-05 治理，未扩范围
+
+
+本轮修正（V1.1）
+	
+① FmInput 摘要删除「前后缀经 props 提供」，明确本批无 prefix/suffix；② FmInput type=&#x27;number&#x27; 允许小数、删「禁浮点」误述、明确字符串原样透传 + 数值处理交业务层（项目金额整数口径仍由 C-11/utils/money 承担，未改）；③ FmSelect modelValue 统一 string | number | null、默认 null、清除同时 change({value:null,option:null})；④ FmDrawer 新增 dialogLabelKey 作 aria-label 兜底、禁关闭按钮文案作 dialog 名称；⑤ TBD-05 改为待授权 Token 变更议题、①-1 零写入
 
 
 文档组织
@@ -3599,7 +3723,7 @@ GPT 已完成《34》《35》V1.2 最终独立审核，正式通过 ①-2 批次
 
 停止点
 	
-提交《36》《37》后停止，等待 GPT 独立审核通过后才开始批次三；自检脚本通过不构成放行
+提交《36》《37》V1.1 后停止，等待 GPT 独立复审通过后才开始批次三；自检脚本通过不构成放行
 1. 先行核验结论（用户 6 项要求，逐条成立）
 #
 	
@@ -3648,6 +3772,60 @@ GPT 已完成《34》《35》V1.2 最终独立审核，正式通过 ①-2 批次
 提交后停止、不自动启动批次三
 	
 成立。§6 明示批次三未启动、自检通过不构成放行（A8/H7）
+1.0 本轮 V1.1 四项修正先行核验（GPT 意见逐条判断）
+按协作约定，转来 GPT 意见先自行核验合理性再执行。4 项契约问题 + TBD-05 治理逐条核验成立，处置方向如下；未盲从、未扩范围。
+#
+	
+GPT 意见
+	
+自行核验判断
+	
+处置（本轮落点）
+
+
+1
+	
+FmInput 摘要称前后缀经 props 提供，但 §4.5.1 未定义 prefix/suffix、且明确本批不新增
+	
+成立：摘要与契约明细／明确不设三处自相矛盾，属&quot;描述了不存在的契约&quot;
+	
+删摘要中「前后缀经 props 提供」；摘要、Slots 表、明确不设统一为「本批无前后缀、无 prefix/suffix」；扩展须单独变更并重验三状态（《36》§4.5 字段 2/10、§4.5.1）；验收 S-10
+
+
+2
+	
+type=&#x27;number&#x27; + 字符串值却称禁浮点，字符串存储阻止不了小数
+	
+成立：字符串存储只避免 JS number 精度丢失，与&quot;禁浮点&quot;是两回事；原生 type=number 也不构成整数限制
+	
+采 GPT 第二条路：允许小数、删「禁浮点」误述，明确值字符串原样透传、空值 &#x27;&#x27;、数值解析／取整／最小单位换算／格式化交调用方业务层（C-11／utils/money）；不把金额计算提前塞入本组件；项目金额整数口径未改（《36》§4.5 字段 2/9/10、§4.5.1；验收 S-10）
+
+
+3
+	
+FmSelect modelValue 为 string | number，但 update:modelValue 允许 null
+	
+成立：Props 与 Events 空值口径不一致，清除后值无合法落点
+	
+统一 string | number | null、默认 null（唯一空值哨兵）；清除派发 update:modelValue(null) 且同时 change({value:null,option:null})；摘要／Props／Events／数据契约／验收五处一致（《36》§4.7；验收 SEL-08）
+
+
+4
+	
+FmDrawer 无标题时指向关闭按钮／正文首标题，无法保证准确可理解的 dialog 名称
+	
+成立：关闭按钮「关闭」不是 dialog 名称；正文首标题无契约保证必存在
+	
+新增 dialogLabelKey prop 作 aria-label 兜底；有标题→aria-labelledby、无标题→dialogLabelKey、二者皆缺为实现错误；严禁复用 fm.drawer.close（《36》§4.3 字段 2/6/8/10、§4.3.1；验收 D-07）
+
+
+5
+	
+TBD-05 治理：遮罩色保持未固化、①-1 已关闭不得直接改、作为待授权议题登记
+	
+成立：V1.0「建议新增 Layer 2 遮罩色」措辞有被误读为造值／直接改 ①-1 的风险
+	
+删该措辞，改为「待提交的 Token 变更议题、等待后续正式授权」；①-1 已关闭、本批零写入、不新增 Token、不造值；组件层持续未固化（《36》§5.3；脚本 G5/G6）
 1.1 本批如实登记（不隐藏）
 #
 	
@@ -3660,7 +3838,7 @@ GPT 已完成《34》《35》V1.2 最终独立审核，正式通过 ①-2 批次
 	
 遮罩背景半透明色无 Token
 	
-《19b》《16》均无独立遮罩色 Token（只有 --z-mask 层级与阴影 rgba，语义不同）。按 L3-5 不在组件层造值：三卡只定义遮罩层级，遮罩背景色写「未固化，待 TBD-05 Token 确认」、不进映射表、不写 .css（脚本 G1～G3）
+《19b》《16》均无独立遮罩色 Token（只有 --z-mask 层级与阴影 rgba，语义不同）。按 L3-5 不在组件层造值：三卡只定义遮罩层级，遮罩背景色写「未固化，待 TBD-05 Token 确认」、不进映射表、不写 .css（脚本 G1～G3）。V1.1 治理：①-1 已关闭，TBD-05 作为待授权 Token 变更议题登记，不直接改已批准文档、不给候选色值（脚本 G5/G6）
 
 
 2
@@ -3714,9 +3892,9 @@ FmDrawer
 	
 C-05 / 9
 	
-底部 / 侧滑抽屉；iOS 安全区
+底部 / 侧滑抽屉；iOS 安全区；无标题时 dialogLabelKey 作 dialog 名称（禁用关闭按钮文案）
 	
-§4.3.1；D-01～D-06；复用浮层机制
+§4.3.1；D-01～D-07；复用浮层机制
 
 
 FmFormField
@@ -3732,9 +3910,9 @@ FmInput
 	
 C-06 / 11
 	
-输入框三状态基座；S1/S2/S3 + 兜底 A
+输入框三状态基座；S1/S2/S3 + 兜底 A；无前后缀 props、number 允许小数且原样透传
 	
-§4.5.1；S-01～S-09；映射 #94～#105
+§4.5.1；S-01～S-10；映射 #94～#105
 
 
 FmTextarea
@@ -3750,9 +3928,9 @@ FmSelect
 	
 C-06 / 13
 	
-下拉；listbox / 方向键 / aria-expanded
+下拉；listbox / 方向键 / aria-expanded；空值 null 唯一哨兵、清除触发 change
 	
-§4.7.1；SEL-01～SEL-07；映射 #107～#109
+§4.7.1；SEL-01～SEL-08；映射 #107～#109
 
 
 FmCheckbox
@@ -3801,7 +3979,7 @@ C-06 / 18
 另含：§1 续表映射 46 行（#71～#116）、§2 §5.4.1 矩阵逐行落实 9 行、§3 三状态实测表、§5 验收对照 / 复用落地 / TBD-05、§6 后续批次预告。
 3. 复核脚本与结果（正文 == stdout，可逐字复现）
 stdout（逐字）：
-判读：95/95 PASS、EXIT=0。A 组（12 卡结构 / 序号对账《30》§4.4 / 11 字段 / 契约明细）、B 组（12 卡 Props/Events/Slots 契约完整性）、C 组（续表 46 行映射纯度 / 序号连续 / placeholder→#707070）、D 组（三状态规则逐字沿用《20》：实测值 / 兜底 A/B / 不凭浅灰底判定 / 复用不重复实测）、E 组（§5.4.1 矩阵 9 行逐项落实 / 焦点归因 / 按钮分层 / aria 语义 / 批次五补测）、F 组（U-1～U-6 复用落地）、G 组（TBD-05 遮罩色如实登记 / 不造值）、H 组（边界 / 红线 / 闸门）为本批重点校验项。
+判读：113/113 PASS、EXIT=0（V1.0 为 95/95，本轮新增 I 组 18 项针对 4 项修正 + TBD-05 治理的专项断言）。A～H 组覆盖原有结构 / 契约 / 映射 / 三状态 / 矩阵 / 复用 / TBD 登记 / 边界；I 组（I1～I18）逐项锁定本轮修正：FmInput 前后缀删除与 number 允许小数 + 数值边界交业务层（I1～I7）、FmSelect 空值 null 与清除 change 契约一致性（I8～I11）、FmDrawer dialogLabelKey 名称兜底与禁用关闭按钮文案（I12～I15）、TBD-05 待授权治理与不造值（I16～I17）、版本升级与批次三仍未启动（I18）。原 G5/H8 断言按 V1.1 文案同步更新。
 4. 只读核验（零写入与无实现文件）
 项
 	
@@ -3815,7 +3993,7 @@ docs/ 文件数
 
 零写入抽查
 	
-《34》《35》V1.2 保持原样（脚本 H6）；《30》V1.3、《19》《19b》《16》《20》《25》全部零写入（脚本 G2 / H1）
+《34》《35》V1.2 保持原样（脚本 H6）；《30》V1.3、《19》《19b》《16》《20》《25》全部零写入（脚本 G2 / H1）；本轮仅改《36》《37》两份，其余文档时间戳未动
 
 
 实现文件
@@ -3849,13 +4027,15 @@ P 组
 3.
 矩阵不只是原则：§2.1 对矩阵每行给具体验收（对比度数值、焦点归因、禁用态、键盘 / aria 语义），并与卡内编号互引；未覆盖组合标批次五补测，不以估值记达标。
 4.
-遮罩色缺失如实登记：《19b》无独立遮罩背景色 Token，按 L3-5 不造值，登记 TBD-05 回流 ①-1，组件层只写未固化口径。
+契约矛盾如实修正（V1.1）：4 项均经自行核验成立后才执行——前后缀「描述了不存在的契约」属实删之；number 字符串存储与「禁浮点」是两回事，按 GPT 第二条路改允许小数、不把金额计算提前塞入输入基座（项目金额最小单位整数口径仍由 C-11/utils/money 承担、未改一字）；FmSelect 空值统一 null 哨兵；FmDrawer 禁用「关闭」作 dialog 名称。详见 §1.0。
 5.
-复用不复制规范：继承方只写差异并引用基座验收编号，不复制整段规范、不另起重复 Layer 3 别名（U-1/U-4/U-5）。
+遮罩色治理（V1.1）：《19b》无独立遮罩色 Token，按 L3-5 不造值；①-1 已关闭，TBD-05 作为待授权议题登记，组件层持续未固化，不直接改已批准文档、不给候选色值。
 6.
-自检通过 ≠ 放行：本批《36》《37》提交后须先经 GPT 独立审核通过；批次三（T-04 上）继续保持未启动。
+复用不复制规范：继承方只写差异并引用基座验收编号，不复制整段规范、不另起重复 Layer 3 别名（U-1/U-4/U-5）。
+7.
+自检通过 ≠ 放行：本批《36》《37》V1.1 提交后须先经 GPT 独立复审通过；批次三（T-04 上）继续保持未启动。
 6. 停止点
-提交《36》《37》后停止，等待 GPT 独立审核。 审核通过后才开始批次三（T-04 上：C-02 FmProductCard + C-04 FmTable FmPagination + P-03 承接说明，共 3 件）；①-2 全部批次完成后仍单独送审、单独等待用户确认（X-15 那一次）。本轮未修改《34》《35》或任何已通过文件，批次三未启动。
+提交《36》《37》V1.1 后停止，等待 GPT 独立复审。 复审通过后才开始批次三（T-04 上：C-02 FmProductCard + C-04 FmTable FmPagination + P-03 承接说明，共 3 件）；①-2 全部批次完成后仍单独送审、单独等待用户确认（X-15 那一次）。本轮仅修改《36》《37》两份，未改《34》《35》/《30》V1.3/任何 ①-1 文档或其他已通过文件，批次三未启动。
 </pre></main>
 </body>
 </html>
