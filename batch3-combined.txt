@@ -1,0 +1,1635 @@
+【分享页正文 / WorkBuddy ①-2 正式设计批次三（T-04 上）提交说明】
+
+询问内容是什么
+内容由 AI 生成，请核实重要信息
+
+GPT 已完成《36》V1.1 和《37》V1.1 的最终独立审核。
+
+﻿
+
+
+**正式审核通过：①-2 批次二（12 个组件）。**
+
+﻿
+
+
+现在允许启动批次三（T-04 上，3 个组件）。
+
+﻿
+
+
+执行要求：
+
+﻿
+
+
+1. 严格按照《30》V1.3 已批准的组件范围，完成 C-02 FmProductCard、C-04 FmTable、FmPagination。
+
+2. 继续采用现有 11 字段规范卡模板，完整定义 Props / Events / Slots、PC / 手机变体、状态、交互、Token 依赖、i18n、数据契约、验收及复用关系。
+
+3. FmPagination 必须遵守批次一已批准的唯一组件定义与复用规则，不重复定义。
+
+4. 3000 商品场景继续使用分页、筛选、排序和合理页容量承接，不新增 FmVirtualList。
+
+5. 严格遵守已批准的 Token、无障碍标准和项目边界。
+
+6. TBD-05 继续保持待授权，不得擅自新增遮罩色 Token。
+
+7. 不写代码、不做样机、不正式化 CSS Variables、不进入页面设计。
+
+8. 完成后提交完整批次三规范文档和自检记录，停止等待 GPT 独立审核，不自动启动批次四。
+
+﻿
+
+
+请开始批次三设计。
+
+13:31
+WorkBuddy
+已完成 5m37s
+
+批次三（T-04 上）设计完成并提交，现已停止等待 GPT 独立审核。
+
+交付内容
+《38》批次三规范文档：3 张规范卡（序号 3/5/6）—— C-02 FmProductCard、C-04 FmTable、FmPagination。每卡 11 字段 + 契约明细（Props/Events/Slots）+「明确不设」；含续表映射 29 行（#117–#145，全库累计 145 行）、§5.4.1 矩阵命中 3 行逐行落实、§3 3000 商品承接方案、验收对照与复用落地、TBD-01/TBD-05 登记。
+《39》自检记录：8 项要求先行核验 + 可复现脚本，81/81 PASS、EXIT=0、正文==stdout 逐字一致。
+对 8 项要求的落实
+范围：3 组件逐名对账《30》§4.4 序号 3/5/6，全库 36 SFC 未增删改。
+11 字段模板：沿用《30》§5.3 +《34》《36》体例，逐卡全字段 + 契约明细。
+FmPagination 唯一定义：本卡即全库唯一定义处（归属 C-04）；C-09 与 FmTable 只引用规范位、不另立卡/别名、不复制实现（U-6）。
+3000 商品承接：PC FmTable + 手机卡片列表 + FmPagination + 筛选/排序 + 单页上限（默认 20 / 档位 10·20·50·100 / 上限 100）；页容量明确为交互契约参数而非 Token；未新增 FmVirtualList。
+Token/无障碍/边界：29 行映射全部 var() 引用已批准 Layer 2、零造值；矩阵 3 行逐项给出对比度数值、焦点归因（2.4.7 + 项目强化 ≥3:1）、禁用态与 aria 语义。
+TBD-05：保持待授权变更议题，本批组件不涉遮罩、不新增遮罩色 Token。
+红线：无代码/样机、CSS 仍 DRAFT、未进页面设计。
+停止点：批次四未启动，自检通过不构成放行。
+两点需你知道的判断
+独立分册延续：批次一/二已冻结（脚本读全文按固定卡数/行数断言），追加会使已通过脚本失效。故《38》《39》独立成册、编号续接——三脚本复验全绿：批次一 120/120、批次二 113/113、批次三 81/81。
+三状态与价格红：商品卡价格红严格按门槛分层（大文本 --color-price-red / 小字号 --color-text-safe-red），brand-200 仅作浅底不承载文字；SKU 活动价只读派生标 derived，订单级无「到手价」位——均与已批准基线一致。
+
+边界终检：docs 40 份（新增 2）；仅《38》《39》为本轮新文件，《34》《35》《36》《37》《30》V1.3、全部 ①-1 文档与色值源时间戳未动；src/ 不存在、实现文件 0。等待 GPT 对批次三的独立审核，批次四（T-04 下，13 件）继续保持未启动。​
+
+39-①-2正式设计批次三交付与自检记录.md
+17.3 KB
+38-阶段一第二步-基础组件规范文档-批次三.md
+46.9 KB
+Hy4 flash
+13:37
+
+
+========================================================================
+《38》38-阶段一第二步-基础组件规范文档-批次三.md（T-04 上，3 张规范卡 §4.1～§4.3，序号 3/5/6：C-02 FmProductCard + C-04 FmTable + FmPagination）
+========================================================================
+
+38-阶段一第二步-基础组件规范文档-批次三
+《38》阶段一第二步 · 基础组件规范文档（批次三 · T-04 上 · 3 张）
+项
+	
+内容
+
+
+记录编号
+	
+SPEC-①-2-20261116-03-B3（批次三 · T-04 上）
+
+
+版本
+	
+V1.0 · 批次三首版（2026-11-16）。批次一《34》V1.2、批次二《36》V1.1 均已获 GPT 独立审核通过。本批以独立分册交付，模板 / Layer 3 编号 / 验收编号续接《34》《36》，不改任何已通过文件字节
+
+
+依据
+	
+《30》V1.3（GPT 最终审核通过）§4.4 序号 3/5/6 / §4.5.2 P-03 承接 / §4.6.1～§4.6.3 复用与 U-1～U-6 / §5.3 规范卡模板 / §5.4 全局验收 / §5.4.1 交互控件无障碍覆盖矩阵；《34》V1.2（规范卡模板 + Layer 3 映射 #1～#70 + §2 统一面板规则）；《36》V1.1（映射 #71～#116 + 矩阵落实体例）；《19》§2.4 / §5～§13；《19b》Layer 1～2（仍 DRAFT，本批零写入）；《20》全组合对比度；《16》V1.6 色值；《01》《02》数据字典
+
+
+触发
+	
+GPT 已完成《36》《37》V1.1 最终独立审核，正式通过 ①-2 批次二（12 个组件），允许启动批次三（T-04 上）；用户 2026-11-16 指令 8 项执行要求：①严格按《30》V1.3 范围完成 C-02 FmProductCard / C-04 FmTable / FmPagination；②沿用 11 字段规范卡模板完整定义全字段；③FmPagination 遵守批次一唯一组件定义与复用规则、不重复定义；④3000 商品用分页 / 筛选 / 排序 + 合理页容量承接、不新增 FmVirtualList；⑤遵守已批准 Token / 无障碍标准 / 项目边界；⑥TBD-05 保持待授权、不新增遮罩色 Token；⑦不写代码 / 样机 / CSS 正式版 / 页面设计；⑧提交完整批次三文档 + 自检记录后停止、不自动启动批次四
+
+
+文件性质
+	
+①-2 正式规范文档 · 批次三独立分册（只交付规范，不交付代码）。沿用独立分册决策：批次一《34》《35》与批次二《36》《37》已获 GPT 通过并冻结，其自检脚本分别读取全文按固定卡数 / 映射行数断言；追加会使已通过脚本失效。故本批独立成册，已通过文件零改动、脚本保持可复现，编号体系续接而不重叠
+
+
+本批范围
+	
+T-04 上全部 = 3 张规范卡：序号 3 FmProductCard（C-02）、序号 5 FmTable（C-04）、序号 6 FmPagination（C-04，唯一规范定义处，C-09 直接复用不另立卡）。另含 §1 续表映射 #117～#145、§2 §5.4.1 矩阵逐行落实、§3 3000 商品承接方案、§4 验收对照、§5 复用落地 / TBD
+
+
+本批不做
+	
+批次四～五组件（序号 19～24 / 30～36 等）；T-05 交叉核验汇总 / T-06 送审包；P 组 5 项（含 FmVirtualList）；不生成任何 .vue / .ts / .css 实现文件、不做样机、不固化 CSS、不新增组件、不进入页面模板 / 页面设计、不改色值 / 基线 / 四张 V5 图
+
+
+状态闸门
+	
+①-1 已收尾；批次一（8 卡）、批次二（12 卡）已 GPT 通过；①-2 批次三进行中（批次 3 / 5，V1.0 待 GPT 独立审核）；批次四（T-04 下）继续保持未启动；①-2 整体完成后仍单独送审、单独确认（X-15 那一次）；①-3 / ①-4 未开始
+
+
+停止点
+	
+提交《38》《39》后停止，等待 GPT 独立审核通过后才开始批次四；自检脚本通过不构成放行
+1. 批次三 Layer 3 → Layer 2 映射表（续表 #117～#145，覆盖率必须 100%）
+规则同《34》§1.3 /《36》§1：本表续接《36》#1～#116（#116 为 --fm-switch-thumb），本批新增 #117～#145；每行映射列只准 var(--…Layer 2…) 形式，禁止 Layer 1 直引、禁止字面 HEX / px / 阴影 / 时长值（L3-1～L3-6）。复用方不另起重复别名（U-5）：FmProductCard 复用 FmCard 容器 / FmImage 图片 / FmPrice·FmNumber 格式化能力（后续批次定义，本批只引用其规范位），只列商品卡自身差异别名；FmPagination 为唯一定义处，C-09 直接复用不另起别名。确需新值回 ①-1 Tokens 层走变更流程（TBD-01 线宽 / TBD-05 遮罩色均待授权，本批不造值）。本批不写入任何 .css / .vue 文件。
+1.1 C-02 商品卡（#117～#127）
+#
+	
+Layer 3 别名
+	
+映射（Layer 2）
+	
+用途
+	
+所属组件
+
+
+117
+	
+--fm-productcard-bg
+	
+var(--color-surface)
+	
+商品卡底
+	
+FmProductCard
+
+
+118
+	
+--fm-productcard-radius
+	
+var(--radius-lg)
+	
+商品卡圆角
+	
+FmProductCard
+
+
+119
+	
+--fm-productcard-shadow
+	
+var(--shadow-card)
+	
+商品卡阴影（三级 shadow-card）
+	
+FmProductCard
+
+
+120
+	
+--fm-productcard-pad
+	
+var(--space-4)
+	
+商品卡内边距
+	
+FmProductCard
+
+
+121
+	
+--fm-productcard-title
+	
+var(--color-text-primary)
+	
+商品标题文字
+	
+FmProductCard
+
+
+122
+	
+--fm-productcard-sub
+	
+var(--color-text-secondary)
+	
+副信息 / 销量文字
+	
+FmProductCard
+
+
+123
+	
+--fm-productcard-price
+	
+var(--color-price-red)
+	
+价格红（大文本门槛 ≥24px 常规 / ≥18.66px 粗体）
+	
+FmProductCard
+
+
+124
+	
+--fm-productcard-price-sm
+	
+var(--color-text-safe-red)
+	
+小字号价格红（小字号唯一收敛点）
+	
+FmProductCard
+
+
+125
+	
+--fm-productcard-badge-bg
+	
+var(--color-brand-200)
+	
+SKU 活动标浅底（brand-200 仅占位 / 分隔 / 选中浅底，不承载文字）
+	
+FmProductCard
+
+
+126
+	
+--fm-productcard-badge-text
+	
+var(--color-text-brand)
+	
+活动标文字（活动标文字色，非 brand-200 底承载）
+	
+FmProductCard
+
+
+127
+	
+--fm-productcard-focus-ring
+	
+var(--color-focus-ring)
+	
+卡片可点击态焦点 ring（项目强化 ≥3:1）
+	
+FmProductCard
+1.2 C-04 表格与分页（#128～#145）
+#
+	
+Layer 3 别名
+	
+映射（Layer 2）
+	
+用途
+	
+所属组件
+
+
+128
+	
+--fm-table-bg
+	
+var(--color-surface)
+	
+表格底
+	
+FmTable
+
+
+129
+	
+--fm-table-sticky-z
+	
+var(--z-sticky)
+	
+吸顶表头层级
+	
+FmTable
+
+
+130
+	
+--fm-table-header-text
+	
+var(--color-text-secondary)
+	
+表头列标题文字
+	
+FmTable
+
+
+131
+	
+--fm-table-cell-text
+	
+var(--color-text-primary)
+	
+单元格正文
+	
+FmTable
+
+
+132
+	
+--fm-table-row-hover-bg
+	
+var(--color-brand-50)
+	
+行 hover 浅底
+	
+FmTable
+
+
+133
+	
+--fm-table-row-selected-bg
+	
+var(--color-brand-50)
+	
+选中行浅底
+	
+FmTable
+
+
+134
+	
+--fm-table-row-selected-mark
+	
+var(--color-text-brand)
+	
+选中行标识色
+	
+FmTable
+
+
+135
+	
+--fm-table-sort-icon
+	
+var(--color-text-tertiary)
+	
+排序箭头图标色（必要图标 ≥3:1 需实测）
+	
+FmTable
+
+
+136
+	
+--fm-table-focus-ring
+	
+var(--color-focus-ring)
+	
+可交互单元格 / 行焦点 ring（项目强化 ≥3:1）
+	
+FmTable
+
+
+137
+	
+--fm-table-disabled
+	
+var(--color-text-disabled)
+	
+禁用态文字 / 图标
+	
+FmTable
+
+
+138
+	
+--fm-pagination-bg
+	
+var(--color-surface)
+	
+分页容器底
+	
+FmPagination
+
+
+139
+	
+--fm-pagination-text
+	
+var(--color-text-secondary)
+	
+页码 / 上下页文字
+	
+FmPagination
+
+
+140
+	
+--fm-pagination-current-bg
+	
+var(--color-brand-primary-cta)
+	
+当前页填充（主 CTA）
+	
+FmPagination
+
+
+141
+	
+--fm-pagination-current-text
+	
+var(--color-text-inverse)
+	
+当前页文字（反白）
+	
+FmPagination
+
+
+142
+	
+--fm-pagination-hover-bg
+	
+var(--color-brand-50)
+	
+页码 hover 浅底
+	
+FmPagination
+
+
+143
+	
+--fm-pagination-focus-ring
+	
+var(--color-focus-ring)
+	
+页码焦点 ring（项目强化 ≥3:1）
+	
+FmPagination
+
+
+144
+	
+--fm-pagination-disabled
+	
+var(--color-text-disabled)
+	
+上 / 下页边界禁用态
+	
+FmPagination
+
+
+145
+	
+--fm-pagination-divider
+	
+var(--color-border)
+	
+分页纯装饰分隔（1.17:1 豁免，纯装饰）
+	
+FmPagination
+复用不另起别名（U-5）：FmProductCard 的圆角 / 阴影 / 内边距 / 图片占位 / 价格格式化**复用 FmCard（容器）/ FmImage（@error 占位）/ FmPrice·FmNumber（Intl 格式化、最小货币单位整数、tabular-nums）**的既有规范位——其中 FmCard/FmImage 在批次一（C-03/C-10，序号 4/29）、FmPrice/FmNumber 在批次四（C-11，序号 30/33）定义；本批只引用其规范位与映射，不复制实现、不另起重复别名（#117～#127 仅商品卡自身差异）。FmTable 手机卡片式列表复用 FmProductCard/FmCard 形态与 FmPagination（§4.2）；FmPagination 是唯一定义处（#138～#145），C-09 直接复用、不得另起别名或第二份规范（U-6）。
+核对声明：#117～#145 共 29 行，映射列全部为 var(--…) 形式、无 Layer 1 直引、无字面 HEX / px / 阴影 / 时长值（脚本核验见《39》§3）。#123 --fm-productcard-price → var(--color-price-red)（大文本价格红）、#124 → var(--color-text-safe-red)（小字号收敛点）、#125 → var(--color-brand-200)（仅占位 / 浅底、不承载文字）均为《16》V1.6 已确认色值的既有 Layer 2 别名，无新增 Layer 2 / Layer 1 值。全库累计 #1～#145 共 145 行（《34》70 + 《36》46 + 本批 29），序号连续、无重名。
+2. §5.4.1 交互控件无障碍覆盖矩阵 · 批次三逐行落实
+2.0 标准归因说明（逐字沿用《30》V1.3 §5.4.1 /《36》§2.0，不降低任何标准）
+焦点可见：SC 2.4.7 Focus Visible（WCAG 2.1 AA）只要求"键盘可操作的 UI 具有可见的焦点指示模式"，不规定统一数值对比度。本项目 focus ring ≥3:1 为项目强化验收标准（数值口径参照 SC 1.4.11），不写作 2.4.7 原文要求，不引用 WCAG 2.2 条款。
+文字与图标分层：SC 1.4.3 普通文本 ≥4.5:1、大文本（≥18pt 或 ≥14pt 粗体）≥3:1；SC 1.4.11 必要图标与 UI 组件边界 ≥3:1。按钮 / 页码文字不得统一按 3:1 验收：普通文字 4.5:1，仅大文本 3:1，必要图标 / UI 边界 3:1。
+价格红门槛：价格红满足大文本门槛（≥24px 常规 / ≥18.66px 粗体用 --color-price-red），小字号用 --color-text-safe-red（唯一收敛点）。色值一律沿用《16》V1.6 /《20》，不新增、不修改。
+不达标项：给调整值或降级用法，不以目测 / 估算记达标；未覆盖组合标「批次五补测」。
+2.1 矩阵逐行落实表（本批相关行）
+矩阵行（《30》§5.4.1）
+	
+本批组件
+	
+对比度实测结论
+	
+焦点可见性
+	
+禁用态辨识
+	
+键盘 / 状态语义
+	
+继承来源
+
+
+导航 / FmTabs / FmLocaleSwitch / FmPagination
+	
+FmPagination
+	
+页码文字 ≥4.5:1（1.4.3）；当前页 --fm-pagination-current-bg 对 --fm-pagination-current-text 反白组合 ≥4.5:1；上 / 下页必要箭头图标 ≥3:1（1.4.11，未覆盖组合批次五补测）
+	
+上 / 下页、页码逐项 2.4.7 焦点可见；focus ring ≥3:1 为项目强化
+	
+上 / 下页到第 1 页 / 末页时禁用可辨且不可聚焦（--fm-pagination-disabled）
+	
+Tab 逐项可达；aria-current='page' 标识当前页；上 / 下页 aria-label（走 i18n）；可选用 nav + aria-label 包裹
+	
+导航组共用规范条目（aria-current 语义），不新建导航基座 SFC；与《34》导航组件共用条目
+
+
+C-02 价格红门槛（§4.3 主表 + §5.4 WCAG）
+	
+FmProductCard
+	
+价格大文本（≥24px 常规 / ≥18.66px 粗体）用 --color-price-red ≥3:1（1.4.3 大文本）；小字号价格用 --color-text-safe-red ≥4.5:1；标题 / 副信息文字 ≥4.5:1；活动标文字 ≥4.5:1（不靠 brand-200 底承载）
+	
+可点击卡片 2.4.7 焦点可见；focus ring ≥3:1 为项目强化；卡片内操作按钮各自可见
+	
+停用 / 归档商品卡可辨（降低不透明度 + 文字态，非仅颜色）；操作按钮 disabled 可辨不可聚焦
+	
+卡片整体可点击时 role=link / 原生 <a> + 键盘 Enter；收藏等按钮独立 aria-label；活动价标 derived（只读派生）
+	
+FmCard 容器 + FmImage 占位 + FmPrice/FmNumber 格式化（批次一 / 四定义，本批引用规范位）
+
+
+C-04 排序 / 选中 / 空 / 加载 / 分页 + 吸顶表头（§4.3 主表）
+	
+FmTable
+	
+表头 / 单元格文字 ≥4.5:1（1.4.3）；排序箭头必要图标 ≥3:1（1.4.11）；选中行标识 --fm-table-row-selected-mark 不靠颜色作唯一线索（配 aria-selected）；未覆盖组合批次五补测
+	
+可交互表头（排序）/ 行（选中）/ 操作单元格 2.4.7 焦点可见；focus ring ≥3:1 为项目强化；吸顶表头不遮挡焦点行
+	
+排序 / 行选择禁用态可辨不可聚焦（--fm-table-disabled）
+	
+列头排序 aria-sort（ascending/descending/none）；行选中 aria-selected；键盘 Tab 到交互单元、Enter / Space 触发；空 / 加载态有可访问文本
+	
+表格自身为 C-04 规范；手机卡片式列表复用 FmProductCard 形态；分页复用 FmPagination
+落实判据：本批 3 组件命中的矩阵行均逐行给出对比度数值、焦点归因（2.4.7 + 项目强化 ≥3:1）、禁用态、键盘 / aria 语义与继承来源；与 §4 各卡"交互与可访问性"及"验收标准"字段编号互相引用（脚本 D 组核验）。FmPagination 与导航组共用条目但不另建基座 SFC；价格红门槛不新增色值；色值一律沿用《16》V1.6 /《20》。
+3. 3000 商品场景承接方案（P-03 · 不新增 FmVirtualList）
+依据《30》§4.5.2 P-03 行：列表须支持真实数量级，不允许只适配 3～5 条样例。承接组件 = FmTable（PC）/ 手机卡片式列表 + FmPagination + 筛选 / 排序（数据由页面经 Service 提供，组件只给交互与展示契约）；规范中定义合理单页渲染数量上限。P-03 FmVirtualList 仍移出范围、不新增（U-2 / 本批红线 4）。
+承接要素
+	
+本批规范落点
+	
+组件职责边界
+	
+验收要点
+
+
+PC 列表
+	
+FmTable（§4.2）支持排序 / 选中 / 空 / 加载 / 分页状态；吸顶表头 --fm-table-sticky-z
+	
+组件只渲染"当前页"传入的数据片段，不持有全量 3000 条数据源；数据由页面经 Service 提供
+	
+表格只渲染当前页数据；不因 3000 量级推翻 PC 布局
+
+
+手机列表
+	
+FmTable 手机变体 = 卡片式列表（复用 FmProductCard/FmCard 形态），不得出现缩小版 PC 表格
+	
+同上，仅呈现当前页片段；筛选入口用 FmDrawer（批次二已定义，本批引用规范位）
+	
+375 / 390 / 430 无横向溢出；手机无缩版表格；卡片触控 ≥44×44
+
+
+分页
+	
+FmPagination（§4.3，唯一定义处）承接页码 / 上下页 / 当前页标识
+	
+组件只做分页 UI 与事件（页码变更交调用方），不做数据切片；total/pageSize/current 由调用方传入
+	
+上 / 下页边界禁用可辨；aria-current='page'；页码变更事件参数正确
+
+
+筛选 / 排序
+	
+FmTable 列头排序（aria-sort）；筛选交互契约由页面经 Service 提供（FmDrawer 承载筛选面板）
+	
+组件只给交互与展示契约（排序状态 / 事件、筛选入口），不自行执行数据筛选 / 排序、不访问 Dexie
+	
+排序三态语义正确；筛选 / 排序均可用；数据由调用方注入
+
+
+合理单页渲染数量上限
+	
+规范给出单页渲染数量上限口径：默认页容量 20 条/页，允许调用方在有限档位（如 10 / 20 / 50）内配置，单页上限 100 条；此值为组件展示 / 交互契约参数，不是设计 Token，不进 Layer 3 映射表、不写 .css
+	
+超过上限由调用方分页拆分；组件不一次性渲染全量
+	
+单页数量有规范上限；不要求一次性渲染 3000 条；mock 需含 3000 量级数据位（数据位由页面 Mock 层承接，本批只声明契约）
+
+
+不新增组件
+	
+全部由现有 3 卡 + 已批准 FmDrawer / FmCard / FmImage / FmPrice / FmNumber 规范位承接
+	
+P 组 5 项（含 FmVirtualList）零纳入；不做虚拟化组件、不引入大型 UI 库
+	
+全库仍 36 SFC；P 组零出现；无 FmVirtualList
+如实说明：页容量默认 20 / 上限 100 属展示与交互契约的合理值（为了给"单页数量上限"一个可验收的明确口径），非设计 Token、非新增色值 / 字号 / 间距，不违反 L3-1～L3-6；调用方可在有限档位内配置，超过上限须分页拆分。若后续实测 3000 量级有性能问题，属阶段二数据层 / 页面层职责，不通过本批新增虚拟化组件解决。
+4. 第三批组件规范卡（3 张 · 序号 3 / 5 / 6）
+每卡 11 字段齐全（《30》§5.3 模板，缺一视为未完成）；Props / Events / Slots 逐项定义（类型 / 必填 / 默认值 / 合法枚举 / 行为）。a11y「实测结论」数值以《20》为准，未覆盖组合标「批次五补测」；每张卡「交互与可访问性」与「验收标准」字段编号与 §2.1 矩阵行互相引用。
+4.1 FmProductCard（C-02 · 序号 3）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+商品列表最小单元：展示单个商品的图 / 标题 / 价格 / 销量 / 活动标 / 操作（收藏、加购）。纯展示 + 事件，不持有数据源、不访问 Dexie / Repository（数据经 Props 注入）。不负责：通用容器（→ FmCard）、图片渲染与 @error 占位（→ FmImage）、价格格式化（→ FmPrice/FmNumber 纯函数）、订单级活动规则（→ 页面 / C-11）、列表分页与筛选（→ FmTable / FmPagination）。
+
+
+2
+	
+Props / Events / Slots
+	
+完整契约见 §4.1.1。摘要 —— Props：product（ProductView，必填，含 sku展示价 / 库存等派生展示字段）、status（'onsale' / 'disabled' / 'archived'，默认 'onsale'）、selectable（默认 false）、selected（默认 false）、showActivity（默认 true）；Events：click、favorite(payload)、addCart(payload)；Slots：badge（覆盖活动标，可选）、actions（覆盖操作区，可选）。
+
+
+3
+	
+PC 变体
+	
+卡片底 --fm-productcard-bg、圆角 --fm-productcard-radius、阴影 --fm-productcard-shadow、内边距 --fm-productcard-pad（容器规则复用 FmCard）；标题 --fm-productcard-title、副信息 --fm-productcard-sub；价格大文本 --fm-productcard-price（大文本门槛）、小字号 --fm-productcard-price-sm；图片区尺寸 / 裁剪由调用方定义（FmImage）；网格布局列数由页面容器决定，卡片自身不固定宽。
+
+
+4
+	
+手机变体
+	
+独立布局非缩放；单列 / 双列由页面容器决定；图片与价格区不溢出；触控目标（收藏 / 加购 / 卡片点击）≥44×44；375 / 390 / 430 逐档不横向溢出、文字不重叠；固定底部导航不遮挡卡片操作；价格字号满足移动可读性且保持大文本门槛。
+
+
+5
+	
+状态矩阵
+	
+status：在售 onsale / 停用 disabled / 归档 archived（停用 / 归档可辨且操作不可聚焦）；缺图兜底（复用 FmImage 统一 @error 占位）；可点卡片 default / hover / focus-visible / active；selectable 时 selected / unselected；收藏 selected / unselected；价格加载中（骨架由 FmSkeleton 承接，本卡只留数据位）。禁用态须可辨且不可聚焦。
+
+
+6
+	
+交互与可访问性
+	
+卡片整体可点击时用原生 <a> / role=link + tabindex=0，Enter 激活；焦点可见（2.4.7，ring --fm-productcard-focus-ring 项目强化 ≥3:1）；收藏 / 加购按钮各自独立可聚焦、aria-label（key fm.productcard.favorite / fm.productcard.addCart），选中态 aria-pressed；价格红按大文本 / 小字号分层（1.4.3），不得把价格文字统一按 3:1；活动标文字 --fm-productcard-badge-text ≥4.5:1，不靠 brand-200 底承载文字；停用 / 归档态可辨且不可聚焦；reduced-motion 下 hover 位移 / 阴影过渡趋零（延续《19》V1.4 第 4 条）。对应 §2.1「C-02 价格红门槛」行。
+
+
+7
+	
+Token 依赖
+	
+本批映射 #117～#127（§1.1）；复用 FmCard 容器规则、FmImage 的 @error 占位、FmPrice/FmNumber 的 Intl 格式化与最小货币单位整数口径（批次一 / 四定义，本批只引用规范位、不复制别名，U-5）；Layer 2 间接依赖 --color-surface / --shadow-card / --radius-lg / --color-price-red / --color-text-safe-red / --color-brand-200 等，不直引 Layer 1。
+
+
+8
+	
+i18n
+	
+静态文案（收藏 / 加购 / 活动标 / 销量单位 / 缺图占位说明）全走 t()；内置 key 前缀 fm.productcard.*；商品标题 / 规格等动态数据用 I18nText（含多语言字段）；价格 / 数字经 FmPrice/FmNumber 按 locale + currency 格式化，不做字符串拼接翻译。
+
+
+9
+	
+数据契约
+	
+product 为展示视图模型：skuLevelPrice（SKU 派生展示价，derived 只读）、stock（取 Inventory）、title / image / sales 等展示字段；SKU 级活动价为只读派生值，不回写 Sku.price；订单级活动只给规则 / 门槛进度位，本卡不产生「到手价」数据位；金额以最小货币单位整数传入、由 FmPrice 格式化；currencyCode 实际交易币种（V1 固定 CNY）；不访问 Dexie；mock 与真实模型同构、需含 3000 量级数据位（数据位由页面 Mock 层承接）。
+
+
+10
+	
+验收标准
+	
+PC-01 状态三档（在售 / 停用 / 归档）可辨、禁用不可聚焦；PC-02 价格红分层正确（大文本 --color-price-red / 小字号 --color-text-safe-red）、≥门槛实测；PC-03 活动标文字 ≥4.5:1 且不靠 brand-200 底承载、SKU 活动价标 derived；PC-04 无「到手价」数据位、订单级活动不产生到手价；PC-05 缺图 @error 占位生效（复用 FmImage）；PC-06 卡片 / 收藏 / 加购焦点可见 ≥3:1、键盘可达；PC-07 复用 FmCard/FmImage/FmPrice 规范位未复制实现；PC-08 双端 375/390/430 不溢出、触控 ≥44×44；PC-09 全部文案走 key。对应全局：《30》§5.4 WCAG / 双端 / i18n / 数据契约 / 矩阵「C-02 价格红门槛」行。
+
+
+11
+	
+复用关系
+	
+基座 = FmCard（容器圆角 / 阴影 / 内边距 / 标题分隔）+ FmImage（@error 占位、外链非必要依赖）+ FmPrice/FmNumber（Intl 格式化、最小货币单位整数、tabular-nums、价格红门槛）（§30 §4.6.2；U-1 / U-4 / U-5）：复用各自规范与实测结论，只写商品卡自身差异（商品数据视图、活动标、收藏 / 加购、状态三档），Layer 3 别名仅 #117～#127；FmTable 手机卡片式列表复用本卡形态（§4.2）。
+4.1.1 契约明细（Props / Events / Slots）
+Props
+名称
+	
+类型
+	
+必填
+	
+默认值
+	
+合法枚举 / 行为
+
+
+product
+	
+ProductView
+	
+是
+	
+无默认值
+	
+商品展示视图模型（skuLevelPrice / stock / title / image / sales 等派生展示字段）；组件只读、不改写
+
+
+status
+	
+'onsale' / 'disabled' / 'archived'
+	
+否
+	
+'onsale'
+	
+在售 / 停用 / 归档；停用 / 归档态可辨且操作不可聚焦；不改变数据本身
+
+
+selectable
+	
+boolean
+	
+否
+	
+false
+	
+卡片是否可选（列表批量场景）；true 时渲染选中态与 aria-selected
+
+
+selected
+	
+boolean
+	
+否
+	
+false
+	
+选中态；仅 selectable=true 时有意义，组件受控不改值
+
+
+showActivity
+	
+boolean
+	
+否
+	
+true
+	
+是否显示活动标 / SKU 活动价；只影响展示，不生成「到手价」位
+Events
+事件
+	
+参数
+	
+触发时机
+
+
+click
+	
+payload: { product: ProductView }
+	
+卡片整体被激活（点击 / Enter）时派发；业务动作（跳转详情等）由调用方处理
+
+
+favorite
+	
+payload: { productId: string; favorited: boolean }
+	
+收藏按钮切换时派发；status 非 onsale 时不派发
+
+
+addCart
+	
+payload: { skuId: string; quantity: number }
+	
+加购按钮点击时派发；数量整数；库存判断由调用方 / 业务服务处理
+Slots
+插槽
+	
+用途
+	
+必需
+
+
+badge
+	
+覆盖活动标渲染（作用域插槽，参数含 activity）；仍须满足对比度与 i18n
+	
+否
+
+
+actions
+	
+覆盖操作区（作用域插槽，参数含 product）；自定义按钮须满足焦点可见 / 触控 / aria-label
+	
+否
+明确不设：不设「价格数值 / 格式化」props（价格由 product.skuLevelPrice 经 FmPrice 格式化，不在卡内做金额计算）；不设「到手价」props / 插槽（订单级活动不生成到手价位，见 §9 / 验收 PC-04）；不设图片渲染插槽（统一走 FmImage 的 @error 占位）；不设「自定义边界 / 焦点样式」插槽（状态与焦点是无障碍硬约束）。
+4.2 FmTable（C-04 · 序号 5）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+数据列表：PC 表格 / 手机卡片式列表，支持排序 / 选中 / 空 / 加载 / 分页状态。只渲染调用方传入的"当前页"数据片段，不持有全量数据源、不访问 Dexie / Repository、不自行执行数据筛选 / 排序（数据由页面经 Service 提供）。不负责：数据切片 / 分页逻辑（→ 页面 + FmPagination）、筛选面板（→ FmDrawer，批次二已定义）、商品卡内容（→ FmProductCard）、空态 / 骨架视觉（→ FmEmptyState/FmSkeleton，批次一 / 二，本卡引用规范位）。
+
+
+2
+	
+Props / Events / Slots
+	
+完整契约见 §4.2.1。摘要 —— Props：columns（ColumnDef[]，必填）、rows（Row[]，必填，仅当前页数据）、rowKey（string，必填）、selectable（默认 false）、selectedKeys（Array<string|number>，默认 []）、sort（{ key, order: 'asc'/'desc'/null }，可选）、loading（默认 false）、emptyKey（可选）、stickyHeader（默认 true）、pageSize（number，默认 20，展示 / 交互契约参数）；Events：sortChange(payload)、selectionChange(payload)、rowClick(payload)；Slots：按列作用域插槽 cell(<column>)、empty、loading。
+
+
+3
+	
+PC 变体
+	
+表格底 --fm-table-bg；吸顶表头层级 --fm-table-sticky-z（--z-sticky），表头文字 --fm-table-header-text、单元格 --fm-table-cell-text；行 hover --fm-table-row-hover-bg、选中行 --fm-table-row-selected-bg + 标识 --fm-table-row-selected-mark；排序箭头 --fm-table-sort-icon；列宽 / 表格布局由 columns 定义、容器 1200 / 1440 内自适应；分隔线宽受 TBD-01 约束（未固化，待 TBD-01 Token 确认，不写 1px）。
+
+
+4
+	
+手机变体
+	
+独立卡片式列表布局，不得出现缩小版 PC 表格（《30》§4.4 C-04 / §5.4 双端）；卡片形态复用 FmProductCard/FmCard（§4.1 / 批次一规范位）；排序入口收进顶部排序控件、aria-sort 语义不变；筛选入口用 FmDrawer（批次二）；触控 ≥44×44；375 / 390 / 430 无横向溢出、底部导航不遮挡内容。
+
+
+5
+	
+状态矩阵
+	
+排序：asc / desc / none（三态，aria-sort 同步）；选中：选中 / 未选中 / 全选 / 部分选（aria-selected）；数据：有数据 / 空（emptyKey，复用 FmEmptyState 规范位）/ 加载（loading，复用 FmSkeleton 规范位）/ 错误（由页面 / FmToast 承接）；分页：当前页 / 上下页边界（交 FmPagination）；行 / 表头 default / hover / focus-visible / disabled（--fm-table-disabled，可辨不可聚焦）。
+
+
+6
+	
+交互与可访问性
+	
+语义表格用原生 <table> + <th scope='col'> / <td>；列头排序按钮 aria-sort（ascending/descending/none）且三态可辨、键盘 Enter / Space 触发；行选中 aria-selected、可多选时提供全选表头；Tab 逐项到可交互单元、焦点可见（2.4.7，ring --fm-table-focus-ring 项目强化 ≥3:1）；表头 / 单元格文字 ≥4.5:1（1.4.3），排序箭头必要图标 ≥3:1（1.4.11）；选中态不靠颜色作唯一线索（配 aria-selected + 标识）；空 / 加载态有可访问文本（role=status）；吸顶表头不遮挡焦点行；reduced-motion 下 hover 过渡趋零。对应 §2.1「C-04 表格」行。
+
+
+7
+	
+Token 依赖
+	
+本批映射 #128～#137（§1.2）；复用 FmPagination（#138～#145，§4.3）分页规范、FmProductCard/FmCard 手机卡片形态、FmEmptyState/FmSkeleton 空 / 加载规范位（批次一 / 二，U-5 不另起别名）；Layer 2 间接依赖 --color-surface / --z-sticky / --color-brand-50 / --color-focus-ring / --color-text-disabled 等；分隔线宽登记 TBD-01（未固化不造值）。
+
+
+8
+	
+i18n
+	
+columns[].titleKey / emptyKey / 排序与全选 aria-label / 空态说明全走 t()；内置 key 前缀 fm.table.*（全选 / 未选 / 排序升高 / 降序 / 取消排序）；单元格动态数据用 I18nText；列头文案长度自适应不截断；本步不产出译文文件。
+
+
+9
+	
+数据契约
+	
+columns 为 ColumnDef[]（key / titleKey / sortable / 对齐等）；rows 为当前页数据行（Row[]，每行含 rowKey 指定键）；sort / selectedKeys 受控、组件经事件请求变更、不自行改数据；组件只渲染传入片段，不一次性渲染全量 3000 条；金额 / 数字列由调用方经 FmPrice/FmNumber 格式化后传入（最小货币单位整数、tabular-nums）；不访问 Dexie；mock 与真实模型同构、含 3000 量级数据位（页面 Mock 层承接）；分页 / 筛选 / 排序数据由调用方 Service 提供。
+
+
+10
+	
+验收标准
+	
+TB-01 排序三态 + aria-sort 正确、键盘可触发；TB-02 行选中 / 全选 / 部分选 aria-selected 语义正确、非颜色唯一线索；TB-03 空 / 加载 / 错误态有可访问文本且复用既有规范位；TB-04 吸顶表头层级正确、不遮挡焦点行；TB-05 表头 / 单元格文字 ≥4.5:1、排序图标 ≥3:1（未覆盖批次五补测）；TB-06 焦点可见 ≥3:1、禁用可辨不可聚焦；TB-07 手机为卡片式列表、非缩版表格、375/390/430 不溢出、触控 ≥44×44；TB-08 只渲染当前页数据、不渲染全量 3000 条、页容量上限口径在册（§3）；TB-09 分页复用 FmPagination、不重写分页规范；TB-10 全部文案走 key。对应全局：《30》§5.4 WCAG / 双端 / i18n / 数据契约 / 矩阵「C-04」行 / P-03 承接。
+
+
+11
+	
+复用关系
+	
+基座 = FmPagination（分页 UI / 事件 / aria-current，§4.3，U-6）+ FmProductCard/FmCard（手机卡片形态，§4.1 / 批次一）+ FmEmptyState/FmSkeleton（空 / 加载视觉，批次一 / 二）：分页与手机卡片只引用规范位、不复制实现、不另起别名；表格自身差异（列定义 / 排序 / 选中 / 吸顶表头）写本卡；Layer 3 别名仅 #128～#137。
+4.2.1 契约明细（Props / Events / Slots）
+Props
+名称
+	
+类型
+	
+必填
+	
+默认值
+	
+合法枚举 / 行为
+
+
+columns
+	
+ColumnDef[]
+	
+是
+	
+无默认值
+	
+列定义：{ key, titleKey, sortable?, align?, width? }；titleKey 走 t()
+
+
+rows
+	
+Row[]
+	
+是
+	
+无默认值
+	
+当前页数据行（非全量）；每行含 rowKey 指定键；组件只读不改
+
+
+rowKey
+	
+string
+	
+是
+	
+无默认值
+	
+行唯一键字段名；用于 selectedKeys 匹配与 aria-selected
+
+
+selectable
+	
+boolean
+	
+否
+	
+false
+	
+是否显示选择列（复选框）与全选表头；选中态语义见 selectedKeys
+
+
+selectedKeys
+	
+Array<string | number>
+	
+否
+	
+[]
+	
+受控选中键集合；组件经 selectionChange 请求变更、不自改
+
+
+sort
+	
+{ key: string; order: 'asc' | 'desc' | null } | null
+	
+否
+	
+null
+	
+受控排序状态；order=null 表示未排序（aria-sort='none'）
+
+
+loading
+	
+boolean
+	
+否
+	
+false
+	
+加载态：复用 FmSkeleton 规范位、显示可访问文本
+
+
+emptyKey
+	
+string
+	
+否
+	
+无默认值
+	
+空态文案 i18n key；复用 FmEmptyState 规范位
+
+
+stickyHeader
+	
+boolean
+	
+否
+	
+true
+	
+表头是否吸顶（PC）；层级 --fm-table-sticky-z
+
+
+pageSize
+	
+number
+	
+否
+	
+20
+	
+单页展示容量契约（默认 20 / 上限 100，见 §3）；非设计 Token，仅用于分页契约声明与展示
+Events
+事件
+	
+参数
+	
+触发时机
+
+
+sortChange
+	
+payload: { key: string; order: 'asc' | 'desc' | null }
+	
+列头排序切换时派发；三态循环 asc→desc→null；数据排序由调用方处理
+
+
+selectionChange
+	
+payload: { selectedKeys: Array<string | number>; added?: string | number; removed?: string | number }
+	
+行 / 全选选择变化时派发；added/removed 标识本次增量
+
+
+rowClick
+	
+payload: { row: Row; key: string | number }
+	
+行被激活（点击 / Enter）时派发；业务动作由调用方处理
+Slots
+插槽
+	
+用途
+	
+必需
+
+
+cell(<column.key>)
+	
+按列自定义单元格渲染（作用域插槽，参数含 row / value / column）；自定义内容须满足对比度与 i18n
+	
+否
+
+
+empty
+	
+覆盖空态渲染（仍走 i18n）
+	
+否
+
+
+loading
+	
+覆盖加载态渲染（仍走 i18n）
+	
+否
+明确不设：不设「全量数据 / 自动分页」props（组件只收当前页片段，分页与数据切片属页面 / Service）；不设「内置筛选面板」插槽（筛选由 FmDrawer 承接）；不设「表格线宽 / 焦点样式」插槽（分隔线宽受 TBD-01 约束、焦点是无障碍硬约束）；不设缩小版 PC 表格的手机插槽（手机固定卡片式列表）。
+4.3 FmPagination（C-04 · 序号 6）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+分页导航：页码 / 上一页 / 下一页 / 当前页标识（必要时首页 / 末页、每页条数切换）。本卡是 FmPagination 在全库的唯一规范定义处（§30 §4.6.1 / U-6）：归属 C-04，C-09（空态 / 骨架 / Toast 组）直接复用本规范，不得另写第二份分页卡或第二套别名。纯展示 + 事件，不持有数据源、不访问 Dexie。不负责：数据切片 / 请求（→ 页面 + Service）、筛选 / 排序（FmTable）、列表渲染（FmTable）。
+
+
+2
+	
+Props / Events / Slots
+	
+完整契约见 §4.3.1。摘要 —— Props：total（number，必填，总条数）、pageSize（number，默认 20，展示 / 交互契约参数）、current（number，默认 1，受控当前页）、maxVisible（number，默认 7，可见页码窗口）、showSize（默认 false）、disabled（默认 false）；Events：update:current、change(payload)、sizeChange(payload)；Slots：无（文案全经 key）。
+
+
+3
+	
+PC 变体
+	
+容器底 --fm-pagination-bg；页码文字 --fm-pagination-text；当前页填充 --fm-pagination-current-bg + 文字 --fm-pagination-current-text（反白）；页码 hover --fm-pagination-hover-bg；上 / 下页边界禁用 --fm-pagination-disabled；焦点 ring --fm-pagination-focus-ring；纯装饰分隔 --fm-pagination-divider（1.17:1 豁免，仅装饰）。页码窗口居中、宽度随内容自适应。
+
+
+4
+	
+手机变体
+	
+独立布局非缩放；页码触控 ≥44×44；375 / 390 / 430 页码窗口收缩（maxVisible 可减小）不溢出、不换行错乱；上 / 下页按钮触控达标；必要时省略中间页码用省略号（省略号为纯文本、非可聚焦、不承载关键语义）；底部导航不遮挡分页。
+
+
+5
+	
+状态矩阵
+	
+页码：default / hover / focus-visible / current（aria-current='page'）/ disabled；上 / 下页：可用 / 到第 1 页禁用 / 到末页禁用（禁用可辨且不可聚焦）；数据：total=0 时整组隐藏或显示空态（由调用方决定，aria 语义一致）；disabled=true 整组禁用；reduced-motion 下 hover 过渡趋零。
+
+
+6
+	
+交互与可访问性
+	
+用 <nav aria-label='fm.pagination.label'> 包裹（key 走 i18n）；页码为按钮列表，当前页 aria-current='page'；上 / 下页 aria-label（key fm.pagination.prev/fm.pagination.next）；键盘 Tab 逐项可达、Enter / Space 切换，焦点可见（2.4.7，ring --fm-pagination-focus-ring 项目强化 ≥3:1）；页码文字 ≥4.5:1（1.4.3，普通文字不按 3:1）、当前页反白组合 ≥4.5:1、上 / 下页必要箭头图标 ≥3:1（1.4.11，未覆盖组合批次五补测）；上 / 下页边界禁用可辨且不可聚焦；选中 / 当前态不靠颜色作唯一线索（aria-current 承载语义）。对应 §2.1「导航 / FmPagination」行。
+
+
+7
+	
+Token 依赖
+	
+本批映射 #138～#145（§1.2，唯一定义处，C-09 复用本组不另起别名）；Layer 2 间接依赖 --color-surface / --color-brand-primary-cta / --color-text-inverse / --color-brand-50 / --color-focus-ring / --color-text-disabled / --color-border 等；与导航组共用 aria-current 规范条目（不建导航基座 SFC）。
+
+
+8
+	
+i18n
+	
+内置 key 前缀 fm.pagination.*：label（nav 名称）、prev / next（上下页）、page（第 n 页）、size（每页 n 条）、current（当前第 n / 共 m 页）；全部走 t()，无写死文案、无字符串拼接翻译；动态页码 / 总数用 I18nText 插值。
+
+
+9
+	
+数据契约
+	
+total / pageSize / current / maxVisible 均为展示 / 交互参数（非设计 Token）；页容量默认 20 / 上限 100 口径见 §3；组件经 update:current / change 请求页码变更，数据切片与请求由调用方处理；total=0 由调用方决定隐藏或空态；不访问 Dexie；mock 含 3000 量级数据位（页面 Mock 层承接，本卡只声明分页契约）。
+
+
+10
+	
+验收标准
+	
+PG-01 <nav> + aria-current='page' + 上下页 aria-label 语义齐全（矩阵导航行）；PG-02 页码文字 ≥4.5:1、当前页反白组合 ≥4.5:1、箭头图标 ≥3:1（未覆盖批次五补测）；PG-03 上 / 下页到边界禁用可辨且不可聚焦；PG-04 键盘 Tab / Enter 可达、焦点可见 ≥3:1；PG-05 当前页不靠颜色唯一线索；PG-06 双端 375/390/430 不溢出、触控 ≥44×44；PG-07 FmPagination 唯一定义处、C-09 直接复用无第二份规范 / 别名（U-6）；PG-08 页容量口径在册、不渲染全量数据；PG-09 全部文案走 key。对应全局：《30》§5.4 a11y 矩阵「导航 / FmPagination」行 / 双端 / i18n / 组件复用（U-6）。
+
+
+11
+	
+复用关系
+	
+唯一基座定义处（U-1 / U-6）：本卡是 FmPagination 全库唯一规范 + 别名定义（#138～#145）；FmTable（§4.2）与 C-09（空态 / 骨架 / Toast 组，批次一）直接复用本卡规范与验收 PG-01～PG-09，不另立卡、不另起别名、不复制实现；与导航组（FmTabs/FmLocaleSwitch 等，批次四）共用 aria-current 语义条目，但不新建导航基座 SFC。
+4.3.1 契约明细（Props / Events / Slots）
+Props
+名称
+	
+类型
+	
+必填
+	
+默认值
+	
+合法枚举 / 行为
+
+
+total
+	
+number
+	
+是
+	
+无默认值
+	
+总条数（非负整数）；total=0 时整组隐藏或空态由调用方决定
+
+
+pageSize
+	
+number
+	
+否
+	
+20
+	
+每页条数（展示 / 交互契约参数，默认 20 / 上限 100，见 §3）；非设计 Token
+
+
+current
+	
+number
+	
+否
+	
+1
+	
+受控当前页（1～总页数）；组件经事件请求变更、不自改
+
+
+maxVisible
+	
+number
+	
+否
+	
+7
+	
+可见页码窗口大小；手机可减小；非正整数按 7 处理
+
+
+showSize
+	
+boolean
+	
+否
+	
+false
+	
+是否显示每页条数切换（有限档位 10 / 20 / 50 / 100）
+
+
+disabled
+	
+boolean
+	
+否
+	
+false
+	
+整组禁用：所有页码 / 上下页不可聚焦、可辨识
+Events
+事件
+	
+参数
+	
+触发时机
+
+
+update:current
+	
+value: number
+	
+页码变更请求时派发（受控 v-model:current 语义）
+
+
+change
+	
+payload: { current: number; previous: number }
+	
+当前页实际变化时派发一次（previous 为变更前页码）
+
+
+sizeChange
+	
+payload: { pageSize: number; current: number }
+	
+每页条数切换时派发；切换后当前页重置策略由调用方处理
+Slots
+插槽
+	
+用途
+	
+必需
+
+
+无
+	
+页码 / 上下页 / 文案全由组件按 i18n key 渲染，防绕过翻译与唯一规范（U-6）
+	
+—
+明确不设：不设「自定义页码 / 上下页」插槽（唯一定义处的视觉与 a11y 是硬约束，开放替换会破坏 U-6 与无障碍保证，且 C-09 复用依赖此唯一性）；不设「数据切片 / 自动请求」props（数据层职责，组件只做分页 UI）；不设缩小版 / 自定义焦点样式插槽。
+5. 批次三验收对照、复用落地与待处理事项
+5.1 全局验收项对照（《30》§5.4，本批相关）
+《30》§5.4 全局项
+	
+批次三状态
+
+
+范围（12 类 / 36 SFC）
+	
+本批取序号 3 / 5 / 6 共 3 个（C-02 1 + C-04 2），与《30》§4.4 逐名一致；未新增、未改名、未删减；全库 36 SFC 不变（脚本 A 组核验）
+
+
+Layer 2 / Layer 3
+	
+§1 续表 #117～#145 共 29 行，全部 var() 映射 Layer 2、无 Layer 1 直引 / 字面值；复用方不另起别名（U-5）；全库累计 145 行连续（脚本 C 组核验）
+
+
+WCAG 2.1 AA / a11y 矩阵
+	
+§2.1 对《30》§5.4.1 本批命中 3 行逐行给具体验收（价格红门槛 / 表格排序选中 / 导航分页）；标准归因不降标准、按钮 / 页码文字 1.4.3 分层、focus ring ≥3:1 为项目强化；色值零新增（脚本 D 组核验）
+
+
+组件复用
+	
+§4 逐卡「复用关系」字段 + §5.2 U-1～U-6 落地；FmProductCard 复用 FmCard/FmImage/FmPrice、FmTable 复用 FmPagination+手机卡片形态、FmPagination 唯一定义处且 C-09 直接复用；无第二份重复规范、无新增共享基座（脚本 F 组核验）
+
+
+双端
+	
+3 卡 PC / 手机变体齐备；手机表格为卡片式列表（非缩版 PC 表格）；触控 ≥44×44；375 / 390 / 430 逐卡写明；底部导航不遮挡
+
+
+i18n
+	
+3 卡逐卡 key 清单登记（fm.productcard.*/fm.table.*/fm.pagination.*）；无写死文案 / 拼接翻译；本步不产出译文文件
+
+
+数据契约
+	
+SKU 活动价只读派生、订单级无「到手价」位（FmProductCard）；金额最小单位整数经 FmPrice/FmNumber 格式化；FmTable 只渲染当前页片段、FmPagination 只做分页 UI 不做切片；零 Dexie 访问声明
+
+
+P 组承接（P-03）
+	
+§3 逐要素承接：PC FmTable + 手机卡片列表 + FmPagination + 筛选 / 排序 + 单页上限 20/100；不新增 FmVirtualList；mock 含 3000 量级数据位契约声明（脚本 E 组核验）
+
+
+本轮红线
+	
+无代码 / 无样机 / 无 CSS 正式版 / 无图片生成 / 无种子数据 / 无页面设计 / 四图未改；《19b》仍 DRAFT、本批零写入；TBD-05 保持待授权、未新增遮罩色 Token（脚本 G/H 组核验）
+
+
+闸门
+	
+批次三提交后停止、等待 GPT 独立审核；批次四未启动；自检通过不构成放行
+5.2 复用关系落地（U-1～U-6 · 批次三）
+约束
+	
+批次三落地
+
+
+U-1 唯一定义处
+	
+FmPagination = 全库唯一规范与别名定义处（C-04），C-09 直接复用不另立卡；FmProductCard 的商品数据视图 / 活动标在该卡定义一次；FmTable 的列 / 排序 / 选中在该卡定义一次
+
+
+U-2 数量与归属不变
+	
+本批 3 个 SFC 与《30》§4.4 序号 3/5/6 一致，未新增共享基座、P 组仍 5 项不纳入（含 FmVirtualList）
+
+
+U-3 规范条目承载
+	
+C-09 对分页的需求由本卡唯一规范承载、不新建 C-09 分页卡；导航组 aria-current 共用规范条目、不建导航基座 SFC
+
+
+U-4 引用基座验收编号
+	
+FmTable 引用 FmPagination 的 PG-01～PG-09（分页部分）与 FmProductCard PC-01～PC-09（手机卡片部分）；FmProductCard 引用 FmCard/FmImage/FmPrice 规范位；继承结论不重复实测、只写自身差异
+
+
+U-5 别名按基座归属
+	
+--fm-productcard-*（#117～#127）只在 FmProductCard 定义、--fm-table-*（#128～#137）只在 FmTable 定义、--fm-pagination-*（#138～#145）只在 FmPagination 定义；C-09 复用 --fm-pagination-* 不另起别名（本批 29 行无重复）
+
+
+U-6 不产生新组件
+	
+FmPagination 唯一归属 C-04、C-09 引用不另立卡；P 组承接位（含 3000 量级）只引用现有组件的数据位，不产生 FmVirtualList 等新组件
+5.3 待处理事项与如实登记（TBD · 批次三）
+沿用《34》TBD-01～04 与《36》TBD-05 登记；本批不新增 TBD、不改任何已批准文件。登记原则：如实列出、不在组件层就地解决（L3-5）；未获批前只写"未固化、待确认"口径、不写占位数值、不进映射表、不写任何 .css。
+编号
+	
+事项
+	
+本批相关性
+	
+本轮处置
+
+
+TBD-01
+	
+通用边框宽度 Token 缺失
+	
+FmTable 表格分隔线宽（§4.2 字段 3）
+	
+分隔线宽写「线宽：未固化，待 TBD-01 Token 确认。」，不写 1px、不进映射表、不写 .css；本批不造值
+
+
+TBD-05
+	
+遮罩背景半透明色 Token 缺失
+	
+本批 3 组件不涉遮罩（筛选 FmDrawer 属批次二、本批只引用规范位）
+	
+继续保持待授权：①-1 已关闭、不直接改已批准文档；TBD-05 作为待提交的 Token 变更议题登记，等待后续正式授权；本批不新增遮罩色 Token、不造值、不给候选值
+
+
+TBD-02 / 03 / 04
+	
+退款字典 / 小字号档 / 危险按钮 hover
+	
+本批组件不直接涉及
+	
+沿用《34》登记，本批零改动
+本登记不构成对 ①-1 已批准 Token 的修改：《19》《19b》《16》《20》《25》《34》《35》《36》《37》本批零写入；TBD-05 保持待授权议题状态，不新增遮罩色 Token。
+6. 后续批次计划（预告，本批不执行）
+批次
+	
+内容
+	
+SFC 数
+
+
+批次四（T-04 下）
+	
+C-07 六件（FmHeaderNav/FmSideNav/FmBottomNav/FmTabs/FmBreadcrumb/FmLocaleSwitch）+ C-11 四件（金额四字段 / 派生均价）+ C-12 三件（FmCarousel 按 §5.4.2）+ P-01 / P-02 组合补齐
+	
+13
+
+
+批次五（T-05 + T-06）
+	
+八项交叉核验 + 对比度补测 + 验收对照表 + 送审包汇总
+	
+0
+批次四尚未开始：本批 V1.0 提交后须先经 GPT 独立审核通过；自检脚本通过不构成放行，不得自动开始批次四（T-04 下）。全库累计批次一 8 + 批次二 12 + 批次三 3 + 批次四 13 = 36，与《30》§4.4 一致。
+文档结束 · 批次三（T-04 上）：共 3 张规范卡（§4.1～§4.3）、续表映射 29 行（#117～#145）、§5.4.1 矩阵逐行落实（§2）、3000 商品承接方案（§3）、验收对照与复用落地（§5）、TBD-01 / TBD-05 如实登记（§5.3）。自检记录见《39》。提交后停止，等待 GPT 独立审核；批次四未启动。
+
+========================================================================
+《39》39-①-2正式设计批次三交付与自检记录.md（CHK-①-2-B3）
+========================================================================
+
+39-①-2正式设计批次三交付与自检记录
+《39》①-2 正式设计 · 批次三交付与自检记录（V1.0）
+项
+	
+内容
+
+
+记录编号
+	
+CHK-①-2-B3-20261116-01（批次三 · T-04 上首版）
+
+
+发生日期
+	
+2026-11-16
+
+
+触发
+	
+GPT 已完成《36》《37》V1.1 最终独立审核，正式通过 ①-2 批次二（12 个组件）、允许启动批次三（T-04 上）；用户 8 项执行要求：①按《30》V1.3 范围完成 C-02 FmProductCard / C-04 FmTable / FmPagination；②沿用 11 字段规范卡模板；③FmPagination 遵守唯一组件定义与复用规则、不重复定义；④3000 商品用分页 / 筛选 / 排序 + 页容量承接、不新增 FmVirtualList；⑤遵守已批准 Token / 无障碍 / 边界；⑥TBD-05 保持待授权、不新增遮罩色 Token；⑦不写代码 / 样机 / CSS 正式版 / 页面设计；⑧提交后停止、不自动启动批次四
+
+
+本批交付
+	
+《38》（SPEC-①-2-20261116-03-B3，V1.0）：§1 续表映射 #117～#145（29 行） + §2 §5.4.1 矩阵逐行落实（本批命中 3 行）+ §3 3000 商品承接方案 + §4 3 张规范卡（序号 3/5/6） + §5 验收对照 / 复用落地 / TBD-01·TBD-05 登记 + §6 后续批次预告
+
+
+本轮动作
+	
+新建《38》+ 本《39》两份独立分册；docs/ 其余文件（含《34》《35》V1.2、《36》《37》V1.1、《30》V1.3、全部 ①-1 文档、四份基线、四张 V5 图）一律零写入
+
+
+当前状态
+	
+①-1 已收尾；批次一、批次二已 GPT 通过；①-2 批次三进行中（批次 3 / 5，V1.0 待 GPT 独立审核）；批次四（T-04 下）尚未开始；①-2 整体完成后仍单独送审、单独确认（X-15）；CSS Variables 仍 DRAFT
+
+
+本批红线
+	
+无组件代码（未创建 src/ 与任何 .vue / .ts / .css）、无样机、CSS 不固化、P 组零纳入（含 FmVirtualList）、不新增组件、不改色值 / 基线 / 四图、TBD-05 不新增遮罩色 Token
+
+
+停止点
+	
+提交《38》《39》后停止，等待 GPT 独立审核通过后才开始批次四；自检脚本通过不构成放行
+1. 先行核验结论（先判断 GPT 要求与边界，再执行）
+#
+	
+事项
+	
+核验判断
+
+
+1
+	
+范围 = C-02 FmProductCard + C-04 FmTable / FmPagination
+	
+成立：《30》§4.4 序号 3 / 5 / 6 逐名一致，全库 36 SFC 未增删改；P 组 5 项零纳入
+
+
+2
+	
+11 字段规范卡模板
+	
+成立：沿用《30》§5.3 模板 +《34》《36》体例，3 卡每卡 11 字段 + 契约明细（Props/Events/Slots）+「明确不设」
+
+
+3
+	
+FmPagination 唯一定义、不重复
+	
+成立且为关键：《30》§4.6.1 / U-6 明确唯一规范卡归属 C-04、C-09 直接复用；本卡按唯一定义处写全，FmTable 与 C-09 只引用规范位、不另立卡 / 别名
+
+
+4
+	
+3000 商品承接
+	
+成立：《30》§4.5.2 P-03 = FmTable(PC)/手机卡片列表 + FmPagination + 筛选/排序 + 单页上限；FmVirtualList 仍移出；页容量 20/100 为展示契约参数、非 Token
+
+
+5
+	
+Token / 无障碍 / 边界
+	
+成立：映射 #117～#145 全部 var() 引用已批准 Layer 2、无造值；矩阵命中 3 行逐行落实；色值沿用《16》V1.6 /《20》
+
+
+6
+	
+TBD-05 待授权
+	
+成立：①-1 已关闭，TBD-05 保持待提交 Token 变更议题、等待正式授权；本批组件不涉遮罩，不新增遮罩色 Token
+1.1 本批如实登记（不隐藏）
+#
+	
+事项
+	
+处置
+
+
+1
+	
+遮罩色 TBD-05 保持待授权
+	
+本批 3 组件不涉遮罩（筛选 FmDrawer 属批次二、仅引用规范位）；TBD-05 作为待提交议题登记、不新增 Token / 候选值（脚本 H1～H4）
+
+
+2
+	
+表格分隔线宽 TBD-01
+	
+Layer 2 无通用边框宽度 Token，《38》§4.2 表格分隔线写「未固化，待 TBD-01 Token 确认」，不写 1px、不造值（脚本 H5～H6）
+
+
+3
+	
+页容量 20/100 非 Token
+	
+属展示 / 交互契约参数（给"单页数量上限"可验收口径），不进 Layer 3 映射表、不写 .css，不违反 L3-1～L3-6（脚本 E6～E7）
+
+
+4
+	
+独立分册决策
+	
+《34》《35》《36》《37》已冻结、自检脚本读全文按固定卡数 / 行数断言；本批独立成册避免追加破坏已通过脚本，编号续接不重叠（脚本 A6）
+
+
+5
+	
+商品数据视图与 Mock
+	
+FmProductCard/FmTable 声明展示视图模型与 3000 量级数据位契约；实际数据由页面经 Service / Mock 层提供，组件不持有数据源（脚本 G6 / E9～E10）
+
+
+6
+	
+对比度
+	
+①-2 是规范文档、无代码可渲染，对比度数值一律沿用《20》穷举结论；本批未覆盖组合标「批次五补测」，不冒充已测（脚本 D9）
+
+
+7
+	
+自检通过 ≠ 放行
+	
+本批《38》《39》提交后须先经 GPT 独立审核通过；批次四（T-04 下）继续保持未启动
+2. 内容一览表（本批 3 卡）
+组件
+	
+类 / 序号
+	
+重点
+	
+规范卡落点
+
+
+FmProductCard
+	
+C-02 / 3
+	
+SKU 派生活动价 / 价格红门槛 / 无到手价 / 缺图占位
+	
+§4.1.1；PC-01～PC-09；映射 #117～#127
+
+
+FmTable
+	
+C-04 / 5
+	
+排序三态 / 选中 / 空·加载 / 吸顶表头 / 手机卡片列表 / 当前页渲染
+	
+§4.2.1；TB-01～TB-10；映射 #128～#137
+
+
+FmPagination
+	
+C-04 / 6
+	
+唯一定义处 / aria-current / 上下页禁用 / C-09 复用
+	
+§4.3.1；PG-01～PG-09；映射 #138～#145
+3. 可复现自检脚本（可逐字复现）
+运行方式：将下方脚本保存为 .py 于项目根目录运行（读取 docs/38-...md）；输出应与 §3.1 stdout 逐字一致。脚本覆盖 A 结构范围 / B 契约明细 / C 映射表 / D 矩阵落实 / E 3000 商品承接 / F 唯一定义 U-6 / G 数据契约 / H TBD 与边界共 8 组。
+3.1 stdout（逐字）
+判读：81/81 PASS、EXIT=0。A 组（3 卡结构 / 序号对账《30》§4.4 / 11 字段 / 契约明细）、B 组（3 卡 Props/Events/Slots + 明确不设）、C 组（续表 29 行映射纯度 / 序号连续 / 价格红与 brand-200 token 正确）、D 组（§5.4.1 矩阵命中 3 行逐项落实 / 焦点归因 / 文字与图标分层 / aria 语义 / 批次五补测）、E 组（P-03 3000 商品承接 / 不新增 VirtualList / 页容量上限 / 非 Token / 不渲染全量）、F 组（FmPagination 唯一定义 U-6 / C-09 复用 / 不另立卡 / 不建基座）、G 组（SKU 派生 / 无到手价 / 当前页渲染 / 零 Dexie）、H 组（TBD-05 待授权 / TBD-01 未固化 / 边界红线）为本批重点校验项。
+4. 只读核验（已通过文件零写入）
+项
+	
+结论
+
+
+复验批次一《35》脚本
+	
+120/120 PASS（独立分册未破坏批次一成果）
+
+
+复验批次二《37》脚本
+	
+113/113 PASS（独立分册未破坏批次二成果）
+
+
+零写入抽查
+	
+《34》《35》V1.2、《36》《37》V1.1 保持原样；《30》V1.3、《19》《19b》《16》《20》《25》全部零写入
+
+
+实现文件
+	
+src/ 不存在；.vue / .ts / vite.config.* 实现文件数 = 0
+
+
+docs 文件数
+	
+38 → 40（新增《38》《39》两份）
+5. 停止点
+提交《38》《39》后停止，等待 GPT 独立审核。 审核通过后才开始批次四（T-04 下：C-07 六件 + C-11 四件 + C-12 三件 + P-01/P-02 组合补齐，共 13 件）；①-2 全部批次完成后仍单独送审、单独等待用户确认（X-15 那一次）。本轮未修改《34》《35》《36》《37》或任何已通过文件，批次四未启动。
