@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fantasy Mall ①-2 批次五定点修订（ISSUE-01 标题 #71～#88 + 《43》X-15 口径恢复）·《36》《37》《42》《43》《44》修订后完整原文</title>
+<title>Fantasy Mall ①-2 X-15 关闭 + ①-3 启动（《45》X-15 28/28 + 《46》启动方案 33/33 + 《47》首批视觉稿 + 视觉稿文字标注）</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#fff;color:#1f2329;font-family:Consolas,'Courier New','Microsoft YaHei',monospace}
@@ -17,2044 +17,1225 @@ pre{white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.7;fo
 </head>
 <body>
 <header>
-  <div class="t">Fantasy Mall ①-2 批次五定点修订（ISSUE-01 标题 #71～#88 + 《43》X-15 口径恢复）·《36》《37》《42》《43》《44》修订后完整原文</div>
-  <a class="btn" href="batch5fix-combined.txt" download>下载 .txt</a>
+  <div class="t">Fantasy Mall ①-2 X-15 关闭 + ①-3 启动（《45》X-15 28/28 + 《46》启动方案 33/33 + 《47》首批视觉稿 + 视觉稿文字标注）</div>
+  <a class="btn" href="batch6-combined.txt" download>下载 .txt</a>
+  <a class="btn" href="batch6-visual.html" target="_blank">查看视觉稿</a>
 </header>
-<main><pre id="raw">【分享页对话正文 / GPT 两项修订意见（ISSUE-01 标题修正 + 《43》X-15 流程修正）+ WorkBuddy 交付说明；后附《36》《37》《42》《43》《44》修订后完整原文，含可复现自检脚本 stdout】
+<main><pre id="raw">【分享页对话正文 / 用户确认 ①-2 通过并执行 X-15、启动 ①-3 + WorkBuddy 交付说明；后附《45》《46》《47》完整原文 + 视觉稿文字标注（含可复现自检脚本 stdout）。视觉稿 HTML 原稿见同目录 batch6-visual.html】
 
 询问内容是什么
 内容由 AI 生成，请核实重要信息
 
-GPT 已完成《42》《43》批次五完整原文独立审核。
+用户已明确表示继续推进后续工作，确认 ①-2 基础组件规范整体成果正式通过。请执行 X-15 最终确认记录。
 
 ﻿
 
 
-总体结论：T-05 八项交叉核验和 T-06 送审包主体通过，36 个组件、229 条映射及各项跨批规范没有发现新的实质性冲突。
+一、X-15 收尾
+
+1. 将用户本轮明确确认记录为 ①-2 最终确认。
+
+2. 正式关闭 ①-2。
+
+3. 整理最终状态、交付文件索引和遗留事项。
+
+4. 不修改已经通过的组件规范及 Token。
 
 ﻿
 
 
-但正式关闭 ①-2 前，需要处理以下两项：
+二、准备启动 ①-3 页面模板设计
 
 ﻿
 
 
-**问题一：ISSUE-01 标题修正**
+严格遵循此前已批准的项目方案和既定范围，不重新定义项目技术路线。
 
 ﻿
 
 
-经核对，《36》V1.1 §1.1 标题的映射区间写为 #71～#92，但实际映射行是 #71～#88，下一节 §1.2 从 #89 开始。
+本轮先提交页面模板设计的启动方案，包含：
+
+1. 页面模板分类和复用关系。
+
+2. PC 与手机端的布局规划。
+
+3. 各模板覆盖哪些实际业务页面。
+
+4. 模板与已通过 36 个基础组件的对应关系。
+
+5. 页面模板的设计顺序和分批交付计划。
 
 ﻿
 
 
-请将：
-
-- 《36》§1.1 标题区间修正为 #71～#88。
-
-- 检查《37》是否引用了错误区间，如有，仅同步修正对应说明。
-
-- 不修改任何实际 Token 映射行、别名、映射值或编号。
+三、视觉设计要求
 
 ﻿
 
 
-**问题二：修正《43》的 X-15 最终确认流程**
+在进入实际前端实现之前，先提供与真实业务页面对应的视觉设计稿。
 
 ﻿
 
 
-《43》§8 当前写明 GPT 审核通过即为 ①-2 整体通过，之后不再另设用户授权闸门。
+要求：
+
+- 使用 Fantasy Mall 已确定的偏紫靛蓝色视觉方向。
+
+- PC 与手机端风格保持统一。
+
+- 图片必须对应实际页面结构和功能，不允许用无关图片代替。
+
+- 不同页面之间保持统一的 Design Tokens 和组件规范。
+
+- 先提供可供用户审阅的设计效果，再根据反馈调整。
 
 ﻿
 
 
-这与既定《30》V1.3 的 X-15 最终确认流程不一致。
+四、本轮停止点
 
 ﻿
 
 
-请恢复正确表述：
+本轮只提交：
 
-- GPT 独立审核通过，是 ①-2 整体成果的审核通过。
+- X-15 最终确认记录。
 
-- 之后仍须执行 X-15 最终确认。
+- ①-3 页面模板设计启动方案。
 
-- X-15 完成后，才正式关闭 ①-2。
-
-- ①-3 仍需按照既定流程另行启动，不得自动进入。
+- 对应的首批页面模板视觉方案及设计稿。
 
 ﻿
 
 
-**修改边界：**
-
-1. 仅修正上述问题及直接关联文字。
-
-2. 《42》T-05 核验结论和统计不需要重做；如需更新引用，仅作必要同步。
-
-3. 不修改四批组件规范的其他内容。
-
-4. 不修改《30》V1.3、①-1、Token 值、映射数据和技术基线。
-
-5. TBD-01、TBD-05、Q-10 等继续保持原状态。
-
-6. 不写代码、不做样机、不进入 ①-3。
-
-7. 提交修订后的完整《36》《37》《43》及变更记录，等待 GPT 最终复审。
+暂不编写正式前端代码，不自动铺开全部页面，不进入 ①-4。
 
 ﻿
 
 
-本次授权仅限以上两项修正，不代表 ①-2 已经最终关闭。
+完成后停止，等待 GPT 独立审核并让用户查看视觉效果。
 
-16:08
+16:30
 WorkBuddy
-已完成 12m32s
+已完成 8m22s
 
-两项修正已完成，先说判断与边界，再报结果。
+全部完成。先说判断与边界，再报结果。
 
 判断（执行前核验）
 
-GPT 两项意见均成立：①《36》§1.1 标题写 #71～#92，实际映射行止于 #88、§1.2 从 #89 起；②《43》§8&quot;GPT 审核通过即整体通过、不再另设授权闸门&quot;与《30》V1.3 的 X-15 定义冲突。额外核出一处必须同步点：《42》K1 是&quot;记录用&quot;断言，直接读取《36》当前标题，若不改期望值，78/78 脚本会 FAIL——这属授权边界 2 的&quot;必要同步&quot;，不算重做核验。
+本轮三项要求逐条核验均成立：①用户明确&quot;确认 ①-2 整体成果正式通过&quot;即《43》§8 恢复的 X-15 用户最终确认，与 GPT 审核通过（审核层结论）两步齐备，可关闭 ①-2；②X-15 后 ①-3 可按既定流程启动，但用户要求&quot;本轮先提交启动方案&quot;+等 GPT 审核，故本轮只交方案 + 供审阅视觉稿，不交正式模板规范、不写前端代码、不进 ①-4；③①-2&quot;不做样机&quot;是组件阶段红线，本轮明确要视觉稿属新授权，仅限本轮。
 
-改动（5 份，主版本号不变、加定点修订说明行留痕）
-文件	改动
-《36》	§1.1 标题 #71～#92→#71～#88（唯一实质修正）；映射行/别名/编号 #71～#116 全部零改动
-《37》	精确核对全文无 #71～#92 错误引用（仅用 #71～#116/#71～#82/#89～#93），正文与断言零改；仅加核查说明行
-《43》	§8 恢复 X-15 口径 + 同步遗留事项/交叉核验结论/需裁定事项状态；GPT 审核通过=审核层结论≠关闭；仍须 X-15 用户确认；X-15 后关闭 ①-2；①-3 另行启动
-《42》	K1 记录用断言期望 (71,92)→(71,88)（断言名与 stdout 行名不变），§4.1/§5/§6/头部同步；八项结论与 78/78 统计不变，T-05 发现事实保留为历史记录
-《44》	新增变更记录，含合理性判断、两项明细、边界遵守声明、自检复核结果
+一、X-15 收尾（《45》）
+登记用户本轮确认为 ①-2 最终确认，正式关闭 ①-2；四步闸门表推进至第 3 步。
+整理最终状态（36 SFC / 229 映射 / 逐批自检 120·113·118·161 / T-05 78/78 / T-06 41/41）、16 份交付文件索引、遗留事项（TBD-01/05、Q-10、CSS DRAFT 等原状态保留）。
+复核 28/28、stdout 逐字一致。已通过文档、Token、色值、四图零写入。
+二、①-3 启动方案（《46》，自检 33/33）
+要求	落实
+模板分类与复用	13 族：前台 TP-01～09、后台 TA-01～04；复用沿用 U-1～U-6，不建基座
+PC/手机布局	容器 1200/1440、断点、375/390/430、底导航 safe-area；双端独立布局不缩放
+覆盖页面	13 族覆盖 34 主页面（前台 20 + 后台 14）+ 地址子页双端 2 = 70 套对账成立
+与 36 组件对应	逐族组件对应矩阵，角标到 Fm*；不新增组件
+顺序与分批	三批（前台核心 / 前台交易账户 / 后台）+ 收尾核验；每批送审，全量后单独 X-15
+三、首批视觉稿（《47》+ HTML）
 
-关键防混淆已写入《44》：区分《30》V1.3&quot;启动正式设计前不再另设授权闸门&quot;（开工口径，保留）与&quot;正式成果完成后的 X-15 用户确认&quot;（本次恢复），两者不冲突。
+4 张可直接查看的稿已打开预览：PC 首页(F-01)、手机首页(F-01)、商品详情双端(F-04)、后台商品管理双端(A-02)​。
 
+色值全取《16》V1.6（CSS 变量集中），废止色 #3457D5 未用；促销红/CTA/浅紫分区符合分用途规则。
+图片位为结构化占位块 + 真实业务标注（如&quot;Sku.image / @error 占位&quot;&quot;活动规则位&quot;），不用无关图片、不用 AI 图——这是遵守基线&quot;未经同意不用 AI 图&quot;与&quot;图片须对应实际结构功能&quot;。
+各区块角标标注调用组件，证明模板由 36 SFC 组合；双端同 Token、同组件语义。
 验证与边界
-三份自检脚本重跑全绿：《37》113/113、《42》78/78、《43》41/41；《42》《43》文档内 stdout 与实际输出逐字一致（含 K1 行名）。
-零越界：四批组件规范其他内容、《30》V1.3、①-1、Token 值、映射数据、色值源《16》、基线、四图、TBD-01/TBD-05/Q-10 全部原状；无 src/、无实现文件、无临时脚本残留。
+三份文档自检全绿；《45》28/28、《46》33/33；HTML 结构校验 div 310/310 闭合、无外部资源依赖、4 稿齐全。
+零越界：本轮仅新增《45》《46》《47》+ 1 份视觉稿；已通过组件规范、Token、映射、色值源、基线、四图、TBD-01/05/Q-10 全部原状；无 src/、无前端代码、无临时脚本、无临时服务器残留。
 
-已停止，等待 GPT 最终复审。本次不代表 ①-2 已关闭（须待 X-15 最终确认），不批准进入 ①-3，自检通过不构成放行。​
+已停止，等待 GPT 独立审核并供你查看视觉效果。​ ①-2 已正式关闭；①-3 正式模板规范尚未启动，自检通过不构成放行；据反馈调整后再固化模板规范，不自动铺开全部页面、不进入 ①-4。
+
+一个提示供你审阅时留意：《16》中 #343594 只用作限时抢购/营销氛围块，我在首页与手机稿的抢购区按此处理；如你希望营销块用得更克制或更突出，这两处是最直接的调整点。
 
 
 ========================================================================
-《36》36-阶段一第二步-基础组件规范文档-批次二.md（修订后：§1.1 标题 #71～#92 → #71～#88；映射行/别名/编号 #71～#116 零改动）
+《45》45-阶段一第二步-X15最终确认记录与①-2正式关闭.md（X15-①-2-20261116-01，①-2 正式关闭，自检 28/28 PASS）
 ========================================================================
 
-# 《36》阶段一第二步 · 基础组件规范文档（批次二 · T-03 · 12 张）
+# 《45》阶段一 ①-2｜X-15 最终确认记录与 ①-2 正式关闭（V1.0）
 
 | 项 | 内容 |
 | --- | --- |
-| 记录编号 | **`SPEC-①-2-20261116-02-B2`**（批次二 · T-03） |
-| 版本 | **V1.1 · 契约矛盾修正版（2026-11-16）**；V1.0 为批次二首版。批次一为《34》V1.2（已获 GPT 最终独立审核通过）。本批以**独立分册**交付，模板 / Layer 3 编号 / 验收编号续接《34》，不改《34》《35》任何字节 |
-| 本轮修正（V1.1） | GPT 独立审核 V1.0 后提出 4 处契约问题 + TBD-05 治理，逐项核验成立并修正：**① 删除 `FmInput` 摘要「前后缀经 props 提供」的矛盾描述**（本批不支持 `prefix`/`suffix` Props，明确不设）；**② `FmInput` `type=&#x27;number&#x27;` 改为允许小数、删除「禁浮点」误述**（值以字符串原样保存避免 JS number 精度丢失；数值解析 / 整数化 / 金额最小单位换算 / 格式化交调用方业务层，不提前塞入本组件；项目金额整数口径不变，仍由 C-11 / `utils/money` 承担）；**③ `FmSelect` `modelValue` 统一为 `string \| number \| null`**（默认 `null`，无选中 / 清除后为 `null`，明确清除同时派发 `change({ value: null, option: null })`）；**④ `FmDrawer` 新增 `dialogLabelKey` prop 作 `aria-label` 兜底**（无标题时必须有可访问名称，禁止用关闭按钮「关闭」文案作 dialog 名称）；**⑤ TBD-05 改为待提交 Token 变更议题**（①-1 已关闭，不直接改已批准文档，等待后续正式授权）。**本轮仅改上述项，未扩范围、未新增组件** |
-| ISSUE-01 定点修订（2026-11-16） | 据 GPT 对批次五《42》《43》完整原文审核意见与用户授权，将 §1.1 标题区间由 `#71～#92` 更正为 `#71～#88`（与实际映射行 #71～#88、紧随的 §1.2 起点 #89 首尾相接）；**仅更正标题区间文字，全部 Layer 3 映射行 / 别名 / 映射值 / 编号 #71～#116、组件契约与验收编号零改动**；主版本号不变，《37》自检脚本按原样可复现。变更记录另见《44》 |
-| 依据 | 《30》V1.3（GPT 最终审核通过）§4.4 序号 7～18 / §4.6 复用关系 / §5.3 规范卡模板 / §5.4 全局验收 / **§5.4.1 交互控件无障碍覆盖矩阵** / §5.4.2；《34》V1.2（规范卡模板 + Layer 3 映射 #1～#70 + §2 统一面板规则）；《19》§2.4 输入框规则 / §5～§13；《19b》Layer 1～2（**仍 DRAFT，本批零写入**）；《20》§5.2 三状态实测 / 全组合对比度；《25》输入框三状态规则（**沿用已批准规范**）；《16》V1.6 色值；《01》§4.8 /《02》§4 状态机 |
-| 触发 | GPT 已完成《34》《35》V1.2 最终独立审核，**正式通过 ①-2 批次一（8 个组件）**，允许启动批次二（T-03）；用户 2026-11-16 指令 6 项执行要求：①严格按《30》V1.3 范围不增删组件；②沿用《34》规范卡模板、完整定义全字段；③输入框三状态沿用已批准规范；④无障碍矩阵逐项落实、不只写原则；⑤不写代码 / 样机 / CSS 正式版 / 页面设计；⑥提交完整批次二文档 + 自检记录后停止、不自动启动批次三。**V1.1 触发**：GPT 完成 V1.0 独立审核，整体通过、提出 4 处契约矛盾 + TBD-05 治理要求，用户指令「只处理上述问题、不扩展修改范围」 |
-| 文件性质 | **①-2 正式规范文档 · 批次二独立分册**（只交付规范，不交付代码）。采用独立分册的原因：批次一《34》《35》已获 GPT 最终通过并冻结，其 120 项自检脚本读取《34》全文并按 8 卡 / 70 行断言；若把批次二卡片追加进《34》，将使已通过的批次一脚本失效。故本批独立成册，**《34》《35》零改动、脚本保持可复现**，编号体系续接而不重叠 |
-| 本批范围 | **T-03 全部 = 12 张规范卡**：序号 7～18 —— C-05 `FmModal`(7) `FmConfirm`(8) `FmDrawer`(9)；C-06 `FmFormField`(10) `FmInput`(11) `FmTextarea`(12) `FmSelect`(13) `FmCheckbox`(14) `FmRadio`(15) `FmSwitch`(16) `FmStepper`(17) `FmSearchInput`(18)。另含 §1 续表映射 #71～#116、§2 §5.4.1 矩阵逐行落实、§3 输入框三状态实测表、§4 验收对照、§5 复用落地 |
-| 本批不做 | 批次三～五组件（序号 3/5/6/19～24/30～36 等）；T-05 交叉核验汇总 / T-06 送审包；P 组 5 项；**不生成任何 `.vue` / `.ts` / `.css` 实现文件、不做样机、不固化 CSS、不新增组件、不进入页面模板 / 页面设计、不改色值 / 基线 / 四张 V5 图** |
-| 状态闸门 | ①-1 已收尾；批次一（8 卡）已 GPT 通过；**①-2 批次二进行中（批次 2 / 5，V1.1 待 GPT 独立复审）**；批次三（T-04 上）**继续保持未启动**；①-2 整体完成后仍单独送审、单独确认（X-15 那一次）；①-3 / ①-4 未开始 |
-| 停止点 | **提交《36》《37》V1.1 后停止，等待 GPT 独立复审通过后才开始批次三；自检脚本通过不构成放行** |
-
----
-
-## 1. 批次二 Layer 3 → Layer 2 映射表（续表 #71～#116，覆盖率必须 100%）
-
-&gt; 规则同《34》§1.3：本表**续接《34》#1～#70**（#70 为 `--fm-image-radius`），本批新增 #71～#116；每行映射列**只准 `var(--…Layer 2…)` 形式**，禁止 Layer 1 直引、禁止字面 HEX / px / 阴影 / 时长值（L3-1～L3-6）。**复用方不另起重复别名**（U-5）：`FmConfirm`/`FmDrawer` 复用 `--fm-modal-*`，C-06 各控件复用 `--fm-field-*` 与 `--fm-input-*`，`FmSearchInput` 复用 `--fm-input-*`，`FmStepper` 复用 `--fm-btn-*`。确需新值回 ①-1 Tokens 层走变更流程（见 §5 TBD-05 遮罩背景色）。**本批不写入任何 `.css` / `.vue` 文件。**
-
-### 1.1 C-05 弹窗 / 确认框 / 抽屉（#71～#88）
-
-| # | Layer 3 别名 | 映射（Layer 2） | 用途 | 所属组件 |
-| --- | --- | --- | --- | --- |
-| 71 | `--fm-modal-z` | `var(--z-modal)` | 模态内容层级 | FmModal |
-| 72 | `--fm-modal-mask-z` | `var(--z-mask)` | 遮罩层级（遮罩色见 §5 TBD-05） | FmModal |
-| 73 | `--fm-modal-shadow` | `var(--shadow-modal)` | 模态阴影 | FmModal |
-| 74 | `--fm-modal-bg` | `var(--color-surface)` | 模态底 | FmModal |
-| 75 | `--fm-modal-radius` | `var(--radius-lg)` | 模态圆角 | FmModal |
-| 76 | `--fm-modal-pad-pc` | `var(--space-5)` | PC 模态内边距 | FmModal |
-| 77 | `--fm-modal-pad-mobile` | `var(--space-4)` | 手机模态内边距 | FmModal |
-| 78 | `--fm-modal-title-color` | `var(--color-text-primary)` | 标题文字 | FmModal |
-| 79 | `--fm-modal-title-size` | `var(--font-size-h3)` | 标题字号 | FmModal |
-| 80 | `--fm-modal-body-color` | `var(--color-text-secondary)` | 正文文字 | FmModal |
-| 81 | `--fm-modal-focus-ring` | `var(--color-focus-ring)` | 焦点 ring（项目强化 ≥3:1） | FmModal |
-| 82 | `--fm-modal-duration` | `var(--motion-duration-slow)` | 进出场时长（320ms，《30》§4.3 C-05） | FmModal |
-| 83 | `--fm-confirm-icon-danger` | `var(--color-danger)` | 危险确认图标语义色 | FmConfirm |
-| 84 | `--fm-confirm-icon-warning` | `var(--color-warning)` | 警示确认图标语义色 | FmConfirm |
-| 85 | `--fm-drawer-radius-top` | `var(--radius-xl)` | 手机底部抽屉顶部圆角 | FmDrawer |
-| 86 | `--fm-drawer-pad` | `var(--space-4)` | 抽屉内边距 | FmDrawer |
-| 87 | `--fm-drawer-safe-bottom` | `var(--space-safe-bottom)` | 抽屉底部 iOS 安全区 | FmDrawer |
-| 88 | `--fm-drawer-duration` | `var(--motion-duration-slow)` | 抽屉滑入时长 | FmDrawer |
-
-&gt; **`FmConfirm`（序号 8）** 复用 `--fm-modal-*`（#71～#82）不另立浮层别名，仅 #83～#84 为图标语义色差异。**`FmDrawer`（序号 9）** 复用 `--fm-modal-z` / `--fm-modal-mask-z` / `--fm-modal-shadow` / `--fm-modal-bg` 浮层机制，仅 #85～#88 为形态差异（U-1 / U-5）。
-
-### 1.2 C-06 表单 / 输入 / 选择器（#89～#116）
-
-| # | Layer 3 别名 | 映射（Layer 2） | 用途 | 所属组件 |
-| --- | --- | --- | --- | --- |
-| 89 | `--fm-field-label-color` | `var(--color-text-primary)` | 字段 label 文字 | FmFormField |
-| 90 | `--fm-field-label-size` | `var(--font-size-body-sm)` | 字段 label 字号（14px） | FmFormField |
-| 91 | `--fm-field-hint-color` | `var(--color-text-tertiary)` | 辅助说明文字 | FmFormField |
-| 92 | `--fm-field-error-color` | `var(--color-text-safe-red)` | 校验错误文字（小字号红字唯一收敛点） | FmFormField |
-| 93 | `--fm-field-gap` | `var(--space-2)` | label / 控件 / 提示间距 | FmFormField |
-| 94 | `--fm-input-bg` | `var(--color-surface)` | 输入框底 | FmInput |
-| 95 | `--fm-input-bg-disabled` | `var(--color-disabled-bg)` | 禁用底 | FmInput |
-| 96 | `--fm-input-text` | `var(--color-text-primary)` | 已填值文字（S2） | FmInput |
-| 97 | `--fm-input-placeholder` | `var(--color-text-quaternary)` | 占位文字（S1；`#707070` 兜底 A） | FmInput |
-| 98 | `--fm-input-border` | `var(--color-border-strong)` | 输入区边界（承担识别功能须独立 ≥3:1） | FmInput |
-| 99 | `--fm-input-border-focus` | `var(--color-focus-ring)` | 焦点态边界 / ring（S3） | FmInput |
-| 100 | `--fm-input-focus-width` | `var(--color-focus-outline-width)` | focus ring 宽度 | FmInput |
-| 101 | `--fm-input-focus-offset` | `var(--color-focus-outline-offset)` | focus ring 偏移 | FmInput |
-| 102 | `--fm-input-radius` | `var(--radius-md)` | 输入区圆角 | FmInput |
-| 103 | `--fm-input-height-pc` | `var(--space-6)` | PC 输入区高度 | FmInput |
-| 104 | `--fm-input-height-mobile` | `var(--space-7)` | 手机输入区高度（48px ≥44 触控达标） | FmInput |
-| 105 | `--fm-input-error-border` | `var(--color-text-safe-red)` | 错误态边界（红，配合图标 / 文案非唯一线索） | FmInput |
-| 106 | `--fm-textarea-min-height` | `var(--space-8)` | 多行输入最小高度（64px） | FmTextarea |
-| 107 | `--fm-select-option-hover-bg` | `var(--color-brand-50)` | 下拉项 hover 浅底 | FmSelect |
-| 108 | `--fm-select-option-selected-color` | `var(--color-text-brand)` | 下拉选中项文字 / 勾选色 | FmSelect |
-| 109 | `--fm-select-arrow-color` | `var(--color-text-tertiary)` | 下拉箭头图标色（必要图标 ≥3:1 需实测） | FmSelect |
-| 110 | `--fm-checkbox-size` | `var(--space-4)` | 勾选框边长（16px） | FmCheckbox |
-| 111 | `--fm-checkbox-checked-bg` | `var(--color-brand-primary-cta)` | 勾选态填充（主 CTA 色） | FmCheckbox |
-| 112 | `--fm-checkbox-border` | `var(--color-border-strong)` | 未勾选边界（≥3:1） | FmCheckbox |
-| 113 | `--fm-checkbox-checkmark` | `var(--color-text-inverse)` | 勾选标记（反白） | FmCheckbox |
-| 114 | `--fm-switch-track-on` | `var(--color-brand-primary-cta)` | 开关开态轨道 | FmSwitch |
-| 115 | `--fm-switch-track-off` | `var(--color-border-strong)` | 开关关态轨道 | FmSwitch |
-| 116 | `--fm-switch-thumb` | `var(--color-text-inverse)` | 开关滑块（反白） | FmSwitch |
-
-&gt; **复用不另起别名（U-5）**：`FmTextarea` 复用 `--fm-input-*`（#94～#105）+ `--fm-field-*`（#89～#93），仅 #106 为多行最小高度差异；`FmSelect` 复用 `--fm-input-border` / `--fm-input-border-focus` / `--fm-field-*`，仅 #107～#109 为下拉项差异；`FmRadio` 复用 `--fm-checkbox-*`（#110～#113，radio 圆点形态差异在卡内描述、不新增色值）；`FmStepper` 复用 `--fm-btn-*`（《34》#1～#27）+ `--fm-input-text` + `--fm-field-*`，无本批新增别名；`FmSearchInput` 复用 `--fm-input-*`（#94～#105）全部三状态结论，仅搜索图标 / 清除按钮复用 `--fm-select-arrow-color` 的语义（不另起重复别名）。
-
-&gt; **核对声明**：#71～#116 共 **46 行**，映射列全部为 `var(--…)` 形式、无 Layer 1 直引、无字面 HEX / px / 阴影 / 时长值（脚本核验见《37》§3）。**#97 `--fm-input-placeholder` → `var(--color-text-quaternary)`（#707070 兜底 A）为《16》V1.6 已确认色值的既有 Layer 2 别名，非新增基础值**；全区无新增 Layer 2 / Layer 1 值。全库累计 #1～#116 共 116 行（《34》70 + 本批 46），序号连续、无重名。
-
----
-
-## 2. §5.4.1 交互控件无障碍覆盖矩阵 · 批次二逐行落实
-
-&gt; 依据《30》V1.3 §5.4.1 矩阵。**完成判据**：矩阵每一行涉及本批组件的，逐行给出可勾选的具体验收与实测口径，**不只写原则**；不达标项给调整值或降级用法，不得以目测 / 估算记达标；焦点可见按 SC 2.4.7 判定、focus ring ≥3:1 按**项目强化标准**判定、按钮文字按 1.4.3 文字规则判定、图标 / 边界按 1.4.11 判定，**不得混用条款**；色值一律沿用《16》V1.6 /《20》，不新增、不修改（标准归因说明逐字沿用《30》§5.4.1，见本节§2.0）。
-
-### 2.0 标准归因说明（逐字沿用《30》V1.3 §5.4.1，不降低任何标准）
-
-- **焦点可见**：`SC 2.4.7 Focus Visible`（WCAG 2.1 AA）只要求「键盘可操作的 UI 具有可见的焦点指示模式」，**不规定统一数值对比度**。本项目 focus ring ≥3:1 为**项目强化验收标准**，数值口径参照 `SC 1.4.11`（WCAG 2.1 AA，UI 组件视觉信息 ≥3:1），**不写作 2.4.7 原文要求**。
-- **版本与条款准确性**：`SC 2.4.11`（WCAG 2.2 AA，焦点不被完全遮挡）非对比度条款、`SC 2.4.13`（WCAG 2.2 AAA，焦点外观）属 AAA；本项目基线 WCAG 2.1 AA，**不将 2.2 条款作为本轮验收依据**。
-- **文字与图标分层**：`SC 1.4.3`（AA）普通文本 ≥4.5:1、大文本 ≥3:1；`SC 1.4.11`（AA）必要图标与 UI 组件边界 ≥3:1。**按钮文字不得统一按 3:1**：普通按钮文字 4.5:1，大文本按钮文字 3:1，必要图标 / 边界 3:1。
-
-### 2.1 矩阵逐行落实表（本批相关行）
-
-| 矩阵行（《30》§5.4.1） | 本批涉及组件 | 对比度具体验收 | 焦点可见性具体验收 | 禁用态辨识具体验收 | 键盘 / 状态语义具体验收 | 实测结论落点 |
-| --- | --- | --- | --- | --- | --- | --- |
-| `FmInput`（基座·定义处） | FmInput | 空白 placeholder `--fm-input-placeholder`(#707070)≥4.5:1；已填值 `--fm-input-text`≥4.5:1；边界 `--fm-input-border` 承担识别功能须 ≥3:1（否则按 §3 三状态判定） | 聚焦时 `--fm-input-border-focus`(→focus ring)≥3:1；2.4.7 焦点可见 | disabled 底 `--fm-input-bg-disabled` + 字 `--color-text-disabled` 可辨且 `tabindex=-1` 不可聚焦 | `aria-invalid` / `aria-describedby`（由 `FmFormField` 注入）、`readonly` 语义 | §3 三状态表 + 卡 §5.5 |
-| `FmTextarea` | FmTextarea | 同 FmInput（继承实测结论，不重复实测）；多行内文字同 `--fm-input-text` | 同 FmInput（继承） | 同 FmInput + `readonly` 态可辨（继承 + 自身差异态实测） | 多行输入 Tab 聚焦、方向键在文本内移动（浏览器原生） | 引用 FmInput 三状态结论 + 卡 §5.8 差异态 |
-| `FmSelect` | FmSelect | 控件边界 ≥3:1；展开项文字 / 选中项 `--fm-select-option-selected-color` ≥4.5:1；下拉箭头必要图标 ≥3:1（未覆盖组合批次五补测） | 展开 / 收起时焦点始终可见（2.4.7，≥3:1 项目强化） | 禁用项文字 `--color-text-disabled` 可辨且不可选 | 方向键导航、`Enter`/`Esc` 选择 / 收起、`aria-expanded`/`role=listbox`/`aria-selected` | 卡 §5.9 |
-| `FmCheckbox` | FmCheckbox | 勾选框边界 `--fm-checkbox-border` ≥3:1；标签文字 ≥4.5:1；勾选态 `--fm-checkbox-checked-bg` 与底可辨 | 覆盖整个可点区（label + 框）聚焦可见 | disabled + `indeterminate` 两态均可辨且不可聚焦 | `Space` 切换、`aria-checked`（`true`/`false`/`mixed`） | 卡 §5.10 |
-| `FmRadio` | FmRadio | 同 FmCheckbox（继承边界 ≥3:1 + 标签 ≥4.5:1）；选中圆点 `--fm-checkbox-checked-bg` 可辨 | 同 FmCheckbox（继承） | 同 FmCheckbox（继承） | 方向键在同名组内切换、`aria-checked`、组 `role=radiogroup` | 卡 §5.11 |
-| `FmSwitch` | FmSwitch | 开 / 关两态轨道 `--fm-switch-track-on/off` 与底边界 ≥3:1；滑块 `--fm-switch-thumb` 反白与轨道 ≥3:1（未覆盖组合批次五补测） | 同 FmCheckbox（继承，覆盖可点区） | 同 FmCheckbox（继承） | `Space` 切换、`role=switch` + `aria-checked` | 卡 §5.12 |
-| `FmStepper` | FmStepper | 加减按钮文字 4.5:1 / 边界 3:1（继承 `FmButton` 分层，不统一按 3:1）；数值文字 `--fm-input-text` ≥4.5:1 | 加 / 减按钮**分别**可见（2.4.7） | 到 min / max 时对应按钮 disabled 可辨且不可聚焦 | `ArrowUp`/`ArrowDown` 调整、`aria-valuenow`/`aria-valuemin`/`aria-valuemax`、`role=spinbutton` | 卡 §5.13 |
-| `FmModal` / `FmConfirm` / `FmDrawer` 相关操作 | 三件 | 关闭 / 确认 / 取消按钮文字 4.5:1（普通文字）/ 边界 3:1（继承 `FmButton` 分层） | **焦点陷阱**：初始焦点落在对话框内、Tab / Shift+Tab 不逸出、关闭后焦点返回触发元素（2.4.7 逐焦点可见） | 确认按钮在校验未通过时 disabled 可辨且不可聚焦 | `Esc` 关闭、Tab 不逸出、`role=dialog` + `aria-modal=true` + `aria-labelledby`（标题）；`FmDrawer` 同机制（继承） | 卡 §5.1～§5.3 |
-| `FmButton` / `FmIconButton`（按钮基座·本批为继承方） | FmStepper / 弹窗操作按钮 | 普通按钮文字 4.5:1、大文本 3:1；必要图标 / 边界 3:1（继承《34》#1～#27 与按钮基座实测，不重复实测） | 继承按钮基座 focus ring（项目强化 ≥3:1） | 继承按钮基座 disabled 规则 | `Enter`/`Space`；图标-only `aria-label`（本批 drawer 关闭按钮若图标-only 须 `aria-label`） | 引用《34》§3.1 + 卡 §5.13 |
-
-&gt; **落实判据**：上表每一行须在对应规范卡「交互与可访问性」与「验收标准」字段有编号化验收项（本节行 → 卡内编号互相引用）；未覆盖色值组合（如下拉箭头在浅底、`FmSwitch` 轨道与底）标「《20》未覆盖组合 → 批次五补测」，不冒充已测。**色值零新增**：本批所有对比度结论只用《16》V1.6 已确认色值；遮罩背景色缺失登记 TBD-05，不在组件层造值。
-
----
-
-## 3. 输入框三状态可辨认性实测表（沿用《25》/《20》已批准规范）
-
-&gt; **来源与边界**：本节**逐字沿用**《25》§2 +《20》§5.2.2 已批准的三状态规则与实测数值，**不修改任何色值、不降低任何标准、不引入 B `#949494` 为首选**。三状态（空白 / 已填写 / 焦点）**全部通过**方可主张「边界不再是唯一识别线索」；任一状态不通过即视为「边界仍承担必要识别功能」，须独立 ≥3:1。**不得**仅凭浅灰填充底色、外部 Label 或形状间距认定符合 SC 1.4.11。本表为批次二 `FmInput`（基座）与全部继承控件（`FmTextarea` / `FmSelect` / `FmSearchInput` 等）的验收依据。
-
-| 状态 | 判定条件（《20》§5.2.2） | 实测值（《20》程序实测，非估算） | 结论 | 本批落点 |
-| --- | --- | --- | --- | --- |
-| **S1 空白**（placeholder / 未输入） | 无输入值时边界 / 可输入范围仍可辨；placeholder 不替代持久可见 label | placeholder `#707070`（`--color-text-quaternary`）on `#F5F5F5` = **4.54:1**（文字达标）；填充底对白底仅 1.09:1，**不能据此判定边界可辨** | 文字达标；边界按「承担识别功能须独立 ≥3:1」判定 | FmInput 卡 §5.5 状态矩阵 + 验收 S-01 |
-| **S2 已填写** | 已填值文字达标；不得因「框内有字」认定框可辨 | 已填值 `#1A1A1A` on `#F5F5F5` = **15.96:1**（文字达标）；边界判定同 S1、不因有值放宽 | 文字达标；边界独立判定 | FmInput 验收 S-02 |
-| **S3 焦点** | focus ring 与紧邻颜色达标；失焦后 S1 / S2 仍须成立 | `--color-focus-ring #5146A6` on 白底 **7.56:1**、on `#F5F5F5` **6.94:1**，均达标；**焦点态达标不豁免非焦点态边界判定** | 达标；不豁免 | FmInput 验收 S-03 |
-| **兜底 A（唯一首选）** | 三状态未通过、边界仍是必要识别线索时，边界独立 ≥3:1 | `#707070`：白底 **4.95:1**、`#F5F5F5` **4.54:1**、`#F7F7F9` **4.63:1**、`#F4F1FC` **4.44:1**，四种常见底全部 ≥3:1 | **唯一首选，零新增色值**（`--color-text-quaternary` 既有） | FmInput 卡 Token #97 |
-| **兜底 B（暂不作为首选）** | 新增建议值 | `#949494`：`#F5F5F5` 2.78:1 / `#F7F7F9` 2.84:1 / `#F4F1FC` 2.72:1（浅底 &lt;3:1） | **暂不作为首选**；具体色值与实测仅见《20》§5.2，本批不引入该 HEX | 不进 Token 表、不作为本批实现依据 |
-| **优先路径（保留）** | 填充底 + 持久可见 label + 输入区形状 / 内边距 + focus ring | `#E2E2E2` 对白底 1.30:1，**不得作为识别输入框的唯一视觉线索** | 做法本身不等于达标，须经三状态验收通过 | FmInput 卡 §5.5 |
-| **继承结论** | `FmTextarea` / `FmSelect` / `FmSearchInput` 继承 FmInput 三状态基础结论 | 继承，不重复实测；仅测自身差异态（多行 / 下拉 / 搜索图标与清除按钮） | 继承有效（U-4） | 各卡复用关系字段 |
-
-&gt; **实测口径纪律**：上表数值为《20》已有程序实测的**如实转录**，非本批新测；①-2 为规范文档、无代码可渲染，任何未在《20》覆盖的新组合统一标「批次五补测」，不得以估值记达标（脚本核验见《37》§3 J 组）。
-
----
-
-## 4. 第二批组件规范卡（12 张 · 序号 7～18）
-
-&gt; 每卡 11 字段齐全（《30》§5.3 模板，缺一视为未完成）；Props / Events / Slots 逐项定义（类型 / 必填 / 默认值 / 合法枚举 / 行为）。a11y「实测结论」数值以《20》为准，未覆盖组合标「批次五补测」；每张卡「交互与可访问性」与「验收标准」字段的编号与 §2.1 矩阵行互相引用。
-
-### 4.1 FmModal（C-05 · 序号 7）
-
-| # | 字段 | 内容 |
-| --- | --- | --- |
-| 1 | **组件职责与边界** | 居中模态对话框：承载需要用户短暂专注的浮层内容（表单、详情、提示）。**浮层机制（遮罩 / z-index / 焦点陷阱 / Esc / reduced-motion）的唯一定义处**，被 `FmConfirm`(8)、`FmDrawer`(9) 继承（U-1）。不负责：轻量反馈（→ `FmToast`）、二次确认文案组合（→ `FmConfirm`）、手机底部抽屉形态（→ `FmDrawer`）。 |
-| 2 | **Props / Events / Slots** | 完整契约见 **§4.1.1**。摘要 —— Props：`modelValue`（`boolean`，`v-model` 开合，**必填**）、`titleKey`（`string`，**必填**，标题 i18n key）、`closable`（`boolean`，默认 `true`）、`closeOnMask`（`boolean`，默认 `true`）、`closeOnEsc`（`boolean`，默认 `true`）、`size`（`&#x27;md&#x27;` / `&#x27;lg&#x27;`，默认 `&#x27;md&#x27;`）；Events：`update:modelValue`、`open`、`close(reason)`；Slots：默认（正文，**必需**）、`title`（覆盖标题，可选）、`footer`（底部操作区，可选）。 |
-| 3 | **PC 变体** | 居中模态，宽高自适应内容；底 `--fm-modal-bg`、阴影 `--fm-modal-shadow`、圆角 `--fm-modal-radius`、内边距 `--fm-modal-pad-pc`；标题 `--fm-modal-title-size` / `--fm-modal-title-color`、正文 `--fm-modal-body-color`；层级 `--fm-modal-z`，遮罩 `--fm-modal-mask-z`（遮罩色见 §5 TBD-05）；容器 1200 / 1440 内居中，不写死宽。 |
-| 4 | **手机变体** | 独立布局非缩放；内边距 `--fm-modal-pad-mobile`；375 / 390 / 430 宽度自适应（左右留白），不溢出；弹层避开 iOS 安全区；触控关闭按钮 ≥44×44；modal 形态在手机仍为居中（底部抽屉用 `FmDrawer`）。 |
-| 5 | **状态矩阵** | 开（visible）/ 关（closed）/ entering / leaving；无 hover / disabled（浮层非内联控件）；关闭按钮 default / hover / focus-visible / disabled（`closable=false` 时不渲染）；`reduced-motion` 下进出场过渡趋零、不保留持续性动画（延续《19》V1.4 第 4 条），但内容可达性不变。 |
-| 6 | **交互与可访问性** | 打开时焦点移入对话框内（`initialFocus` 目标或首个可聚焦元素）；**Tab / Shift+Tab 焦点陷阱不逸出**；`Esc` 关闭（默认，见 `closeOnEsc`）；关闭后**焦点返回触发元素**（对应 §2.1「弹窗相关操作」行）。`role=dialog` + `aria-modal=true` + `aria-labelledby`（指向标题）；关闭按钮 `aria-label`（key `fm.modal.close`）。焦点全程可见（2.4.7，ring `--fm-modal-focus-ring`，≥3:1 项目强化）；按钮文字按 1.4.3 分层（普通 4.5:1，不统一按 3:1）；文字 / 底组合以《20》为准、未覆盖组合批次五补测。遮罩层对 AT 隐藏（`aria-hidden`），不做焦点停靠。 |
-| 7 | **Token 依赖** | 本批映射 #71～#82（§1.1）；复用按钮基座 `--fm-btn-*`（《34》#1～#27）用于关闭按钮；Layer 2 间接依赖 `--z-modal` / `--z-mask` / `--shadow-modal` / `--color-surface` / `--color-focus-ring` 等（经映射，不直引 Layer 1）。 |
-| 8 | **i18n** | `titleKey` 由调用方传 i18n key、组件内 `t(titleKey)`；内置 key 仅 `fm.modal.close`（关闭按钮 `aria-label`）；正文 / footer 经插槽由调用方 `t()` 注入；无写死文案、无字符串拼接翻译；标题过长自适应不截断（必要时换行）。 |
-| 9 | **数据契约** | 无业务数据字段；开合状态经 `v-model` 由调用方持有；不访问 Dexie / Repository；浮层内容所需业务数据由调用方经插槽注入。 |
-| 10 | **验收标准** | M-01 焦点移入 + 陷阱 Tab 不逸出 + 关闭后返回触发元素（对应 §2.1 弹窗行）；M-02 `Esc` / 遮罩 / 关闭按钮三种关闭路径与 `close.reason` 正确；M-03 `role=dialog` + `aria-modal` + `aria-labelledby` 齐全；M-04 焦点 ring 项目强化 ≥3:1；M-05 按钮文字按 1.4.3 分层实测；M-06 `reduced-motion` 下无持续动画且内容可达；M-07 双端 375/390/430 不溢出、遮罩层级正确；M-08 无硬编码文案。对应全局：《30》§5.4 WCAG / 双端 / i18n / a11y 矩阵「弹窗」行。 |
-| 11 | **复用关系** | **浮层基座（定义处）**。`FmConfirm`(8)、`FmDrawer`(9) 继承本卡的遮罩 / z-index / 焦点陷阱 / Esc / reduced-motion 机制（§1.1，U-1 / U-5），只在各自卡写差异；复用方验收项引用 M-01～M-06。 |
-
-#### 4.1.1 契约明细（Props / Events / Slots）
-
-**Props**
-
-| 名称 | 类型 | 必填 | 默认值 | 合法枚举 / 行为 |
-| --- | --- | --- | --- | --- |
-| `modelValue` | `boolean` | **是** | 无默认值 | 开合受控值；`true` 显示、`false` 关闭；组件不自行改写，经 `update:modelValue` 通知调用方 |
-| `titleKey` | `string` | **是** | 无默认值 | 标题 i18n key，组件内 `t(titleKey)`；缺失视为实现错误（标题参与 `aria-labelledby`） |
-| `closable` | `boolean` | 否 | `true` | 是否渲染关闭按钮与启用关闭路径；`false` 时不渲染关闭按钮，`closeOnMask` / `closeOnEsc` 仍可独立配置 |
-| `closeOnMask` | `boolean` | 否 | `true` | 点击遮罩是否关闭；`close.reason=&#x27;mask&#x27;`（非 `manual`） |
-| `closeOnEsc` | `boolean` | 否 | `true` | `Esc` 是否关闭；`close.reason=&#x27;esc&#x27;` |
-| `size` | `&#x27;md&#x27;` / `&#x27;lg&#x27;` | 否 | `&#x27;md&#x27;` | 模态宽度档；仅两值，均随内容自适应、不写死 px |
-
-**Events**
-
-| 事件 | 参数 | 触发时机 |
-| --- | --- | --- |
-| `update:modelValue` | `value: boolean` | 任一关闭路径触发时派发 `false`；打开由调用方置 `true` |
-| `open` | 无 | 进入 visible、焦点移入完成后派发一次 |
-| `close` | `reason: &#x27;manual&#x27; / &#x27;mask&#x27; / &#x27;esc&#x27;` | 进入 leaving 之前派发一次；三值对应关闭按钮 / 遮罩 / Esc（**与 Toast 的 `replaced` 无关**） |
-
-**Slots**
-
-| 插槽 | 用途 | 必需 |
-| --- | --- | --- |
-| 默认 | 弹层正文（调用方 `t()` 注入文案） | **是** |
-| `title` | 覆盖标题渲染；仍须参与 `aria-labelledby`、仍经 `t()` | 否 |
-| `footer` | 底部操作区（放 `FmButton` / `FmConfirm` 操作按钮） | 否 |
-
-&gt; **明确不设**：不设「遮罩色 / z-index / 焦点陷阱行为」插槽（浮层机制是基座能力，开放替换会破坏 U-1 与无障碍保证）；不设「自定义样式」插槽，样式一律经 Layer 3 别名。
-
-### 4.2 FmConfirm（C-05 · 序号 8）
-
-| # | 字段 | 内容 |
-| --- | --- | --- |
-| 1 | **组件职责与边界** | 重要操作的二次确认对话框（删除、清空、不可逆提交等）。基于 `FmModal` 浮层机制，**只增确认 / 取消按钮组合与二次确认文案**（U-1）。不负责：普通信息展示模态（→ `FmModal`）、表单录入（→ `FmModal` + 表单组件）。 |
-| 2 | **Props / Events / Slots** | 完整契约见 **§4.2.1**。摘要 —— Props：`modelValue`（`boolean`，**必填**）、`titleKey`（**必填**）、`messageKey`（**必填**，确认正文 key）、`tone`（`&#x27;danger&#x27;` / `&#x27;warning&#x27;` / `&#x27;default&#x27;`，默认 `&#x27;default&#x27;`）、`confirmKey`（默认 `fm.confirm.ok`）、`cancelKey`（默认 `fm.confirm.cancel`）、`loading`（默认 `false`）、`disabled`（默认 `false`）；Events：`update:modelValue`、`confirm`、`cancel`；Slots：无（文案全经 key）。 |
-| 3 | **PC 变体** | 复用 `FmModal` 居中形态与 `--fm-modal-*`（#71～#82）；语义图标色：`tone=&#x27;danger&#x27;` → `--fm-confirm-icon-danger`，`&#x27;warning&#x27;` → `--fm-confirm-icon-warning`，`&#x27;default&#x27;` 无图标；确认 / 取消按钮用 `FmButton` 基座，危险确认用 `--fm-btn-bg-danger`。 |
-| 4 | **手机变体** | 继承 `FmModal` 手机行为（居中、宽度自适应、触控 ≥44×44、安全区）；按钮双端通栏或并排按内容自适应；375 / 390 / 430 不溢出。 |
-| 5 | **状态矩阵** | 同 `FmModal` 开合状态（继承）；确认按钮 default / hover / focus-visible / disabled / loading：`disabled=true` 或 `loading=true` 时确认不可点击（防重复提交）、可辨识且不可聚焦；取消按钮始终可用（除非 `closable` 语义禁用）。 |
-| 6 | **交互与可访问性** | 完全继承 `FmModal` 的焦点陷阱 / 初始焦点 / Esc / 关闭返回（引用 M-01～M-03，**不重复定义浮层机制**）；确认按钮默认获得初始焦点（危险操作默认落在「取消」更安全，规范卡定 `tone=&#x27;danger&#x27;` 时初始焦点落取消按钮，防误触）；确认 / 取消按钮文字按 1.4.3 普通文本 4.5:1；tone 图标为装饰，不作为唯一语义线索（语义由文案承载）；`aria-describedby` 关联正文（对应 §2.1 弹窗行）。 |
-| 7 | **Token 依赖** | 复用 `--fm-modal-*`（#71～#82）+ 本批 #83～#84 图标语义色 + `FmButton` 基座 `--fm-btn-*`（《34》#1～#27）；危险按钮色 `--fm-btn-bg-danger` / `--fm-btn-text-on-danger`。 |
-| 8 | **i18n** | `titleKey` / `messageKey` / `confirmKey` / `cancelKey` 全为 key，组件内 `t()`；内置默认 key `fm.confirm.ok` / `fm.confirm.cancel`；缺失回退 zh-CN；无写死文案；确认文案含变量名时用 `I18nText` 插值，不拼接翻译。 |
-| 9 | **数据契约** | 无业务数据字段；确认结果经事件传出、不访问 Dexie；`messageKey` 所指文案可含动态数据（由调用方经插值参数提供）。 |
-| 10 | **验收标准** | CF-01 继承浮层机制且引用 M-01～M-06（不重复实测）；CF-02 `tone` 三档图标色正确；CF-03 危险确认初始焦点落「取消」防误触；CF-04 confirm / cancel 事件参数正确、`loading`/`disabled` 防重复提交；CF-05 `aria-describedby` 关联正文；CF-06 双端与文案 i18n 齐备。对应全局：《30》§5.4 a11y 矩阵「弹窗」行 / i18n。 |
-| 11 | **复用关系** | **基座 = `FmModal`**（U-1 / U-4）：继承遮罩 / z-index / 焦点陷阱 / Esc / reduced-motion（M-01～M-06），自身差异仅「确认 / 取消按钮组合 + tone 图标 + 二次确认文案 + 危险态初始焦点策略」；Layer 3 别名仅 #83～#84 差异色。 |
-
-#### 4.2.1 契约明细（Props / Events / Slots）
-
-**Props**
-
-| 名称 | 类型 | 必填 | 默认值 | 合法枚举 / 行为 |
-| --- | --- | --- | --- | --- |
-| `modelValue` | `boolean` | **是** | 无默认值 | 开合受控值；复用 `FmModal` 的 `v-model` 语义 |
-| `titleKey` | `string` | **是** | 无默认值 | 标题 i18n key |
-| `messageKey` | `string` | **是** | 无默认值 | 确认正文 i18n key，经 `aria-describedby` 关联 |
-| `tone` | `&#x27;danger&#x27;` / `&#x27;warning&#x27;` / `&#x27;default&#x27;` | 否 | `&#x27;default&#x27;` | 语义档：危险 / 警示 / 默认；决定图标色与按钮变体，**`danger` 时初始焦点落取消按钮** |
-| `confirmKey` | `string` | 否 | `&#x27;fm.confirm.ok&#x27;` | 确认按钮文案 key；调用方可覆盖 |
-| `cancelKey` | `string` | 否 | `&#x27;fm.confirm.cancel&#x27;` | 取消按钮文案 key |
-| `loading` | `boolean` | 否 | `false` | 确认处理中：确认按钮 `aria-busy` 且不可重复点击 |
-| `disabled` | `boolean` | 否 | `false` | 确认按钮禁用（如前置校验未通过），可辨且不可聚焦 |
-
-**Events**
-
-| 事件 | 参数 | 触发时机 |
-| --- | --- | --- |
-| `update:modelValue` | `value: boolean` | 确认 / 取消 / 关闭路径派发 `false`（复用基座语义） |
-| `confirm` | 无 | 点击确认按钮派发一次；`loading`/`disabled` 时不派发；业务动作由调用方执行 |
-| `cancel` | 无 | 点击取消 / Esc / 遮罩关闭时派发一次 |
-
-**Slots**
-
-| 插槽 | 用途 | 必需 |
-| --- | --- | --- |
-| **无** | 文案全经 key 注入（防绕过 i18n）；确认 / 取消按钮由组件按 `tone` 渲染 | — |
-
-&gt; **明确不设**：不设正文 / 按钮插槽（文案一律经 key，防绕过翻译与 tone 语义）；不设浮层机制插槽（继承 `FmModal`，见 §4.1）。
-
-### 4.3 FmDrawer（C-05 · 序号 9）
-
-| # | 字段 | 内容 |
-| --- | --- | --- |
-| 1 | **组件职责与边界** | 抽屉式浮层：手机底部抽屉（筛选、详情、操作面板）与 PC 侧滑抽屉。基于 `FmModal` 浮层机制，**只增形态（底部 / 侧滑）、尺寸与滑入动效差异**（U-1）。不负责：二次确认（→ `FmConfirm`）、居中模态（→ `FmModal`）。 |
-| 2 | **Props / Events / Slots** | 完整契约见 **§4.3.1**。摘要 —— Props：`modelValue`（`boolean`，**必填**）、`placement`（`&#x27;bottom&#x27;` / `&#x27;left&#x27;` / `&#x27;right&#x27;`，默认 `&#x27;bottom&#x27;`）、`titleKey`（`string`，可选）、`dialogLabelKey`（`string`，可选，**无标题时必填**，作 `aria-label` 可访问名称兜底）、`closable`（默认 `true`）、`closeOnMask`（默认 `true`）、`closeOnEsc`（默认 `true`）；Events：`update:modelValue`、`open`、`close(reason)`；Slots：默认（正文，**必需**）、`title`、`footer`。**可访问名称硬约束**：有标题 → `aria-labelledby` 指向标题；无标题 → 必须由 `dialogLabelKey` 提供 `aria-label`；二者皆缺视为实现错误，**严禁用关闭按钮「关闭」文案作 dialog 名称**。 |
-| 3 | **PC 变体** | 侧滑抽屉（`placement=&#x27;left&#x27;/&#x27;right&#x27;`），底 `--fm-modal-bg`、阴影 `--fm-modal-shadow`、层级复用 `--fm-modal-z`；内边距 `--fm-modal-pad-pc`；宽度随内容自适应、不写死。 |
-| 4 | **手机变体** | 主形态为底部抽屉（`placement=&#x27;bottom&#x27;`）：顶部圆角 `--fm-drawer-radius-top`、内边距 `--fm-drawer-pad`、底部安全区 `--fm-drawer-safe-bottom`；滑入时长 `--fm-drawer-duration`；触控拖柄 / 关闭按钮 ≥44×44；375 / 390 / 430 通栏不溢出。 |
-| 5 | **状态矩阵** | 开 / 关 / entering / leaving（继承 `FmModal`）；关闭按钮 hover / focus-visible；`reduced-motion` 下滑入趋零、不保留持续动画（引用 M-06，不重复定义）。 |
-| 6 | **交互与可访问性** | 复用 `FmModal` 焦点陷阱 / 初始焦点 / Esc / 关闭返回（引用 M-01～M-03）；`role=dialog` + `aria-modal=true`；**可访问名称二选一（必须成立其一）**：① 有 `titleKey` / `title` 插槽 → `aria-labelledby` 指向标题元素；② 无标题 → `dialogLabelKey` 提供 `aria-label`（组件内 `t(dialogLabelKey)`，如「筛选条件」「商品详情」）。**若二者皆缺，视为实现错误（开发态告警），不得渲染出无名称 dialog；严禁用关闭按钮 key `fm.drawer.close`（「关闭」）作 dialog 的 `aria-label`/`aria-labelledby`——关闭按钮自身的 `aria-label` 仍为 `fm.drawer.close`（对应 §2.1「图标-only `aria-label`」），二者用途不同、不得混用**；焦点可见（2.4.7）；按钮文字 1.4.3 分层；遮罩色见 TBD-05。滑入为进出场过渡，不作为持续动画。 |
-| 7 | **Token 依赖** | 复用 `--fm-modal-z` / `--fm-modal-mask-z` / `--fm-modal-shadow` / `--fm-modal-bg` / `--fm-modal-focus-ring`（#71～#74、#81）+ 本批 #85～#88 形态差异别名；按钮复用 `--fm-btn-*`。 |
-| 8 | **i18n** | `titleKey` / `dialogLabelKey` 由调用方传 key（后者供无标题时 `aria-label`）；内置 key `fm.drawer.close`（**仅**关闭按钮 `aria-label`，不得复用为 dialog 名称）；正文 / footer 经插槽由调用方 `t()`；无写死文案、无拼接翻译。 |
-| 9 | **数据契约** | 无业务数据字段；开合经 `v-model`；筛选类抽屉的筛选条件由调用方持有、经事件回传；不访问 Dexie。 |
-| 10 | **验收标准** | D-01 继承浮层机制并引用 M-01～M-06；D-02 `placement` 三档形态正确、手机底部抽屉安全区生效；D-03 图标关闭按钮 `aria-label` 100% 存在（§2.1 图标行）；D-04 焦点陷阱与关闭返回有效；D-05 `reduced-motion` 无持续动画；D-06 双端 375/390/430 不溢出；**D-07 可访问名称：有标题时 `aria-labelledby` 指向标题、无标题时 `dialogLabelKey` 生成 `aria-label`，二者皆缺时开发态告警且不渲染无名称 dialog；断言任何情况下 dialog 名称 ≠ 关闭按钮「关闭」文案**。对应全局：《30》§5.4 a11y 矩阵「弹窗」行 / 双端 / i18n。 |
-| 11 | **复用关系** | **基座 = `FmModal`**（U-1 / U-4）：继承遮罩 / z-index / 焦点陷阱 / Esc / reduced-motion，自身差异仅「底部 / 侧滑形态 + 顶部圆角 + 滑入动效 + 安全区」；Layer 3 别名仅 #85～#88 差异项，不复制浮层机制。 |
-
-#### 4.3.1 契约明细（Props / Events / Slots）
-
-**Props**
-
-| 名称 | 类型 | 必填 | 默认值 | 合法枚举 / 行为 |
-| --- | --- | --- | --- | --- |
-| `modelValue` | `boolean` | **是** | 无默认值 | 开合受控值；复用 `FmModal` 语义 |
-| `placement` | `&#x27;bottom&#x27;` / `&#x27;left&#x27;` / `&#x27;right&#x27;` | 否 | `&#x27;bottom&#x27;` | 抽屉方位；手机主形态 `bottom`，PC 用 `left`/`right`；仅三值 |
-| `titleKey` | `string` | 否 | 无默认值 | 标题 i18n key；有值时渲染标题并以 `aria-labelledby` 指向它。**不再允许「缺省时指向关闭按钮或正文首标题」的兜底** |
-| `dialogLabelKey` | `string` | 否（**无 `titleKey` 且无 `title` 插槽时必填**） | 无默认值 | 无标题时 dialog 可访问名称的 i18n key，组件内 `t(dialogLabelKey)` 作 `aria-label`（如「筛选条件」）。与 `titleKey` 至少存在一个，否则视为实现错误；**严禁用 `fm.drawer.close` 兜底** |
-| `closable` | `boolean` | 否 | `true` | 是否渲染关闭按钮 |
-| `closeOnMask` | `boolean` | 否 | `true` | 点击遮罩关闭，`close.reason=&#x27;mask&#x27;` |
-| `closeOnEsc` | `boolean` | 否 | `true` | `Esc` 关闭，`close.reason=&#x27;esc&#x27;` |
-
-**Events**
-
-| 事件 | 参数 | 触发时机 |
-| --- | --- | --- |
-| `update:modelValue` | `value: boolean` | 关闭路径派发 `false` |
-| `open` | 无 | 进入 visible、焦点移入后派发一次 |
-| `close` | `reason: &#x27;manual&#x27; / &#x27;mask&#x27; / &#x27;esc&#x27;` | 进入 leaving 前派发一次 |
-
-**Slots**
-
-| 插槽 | 用途 | 必需 |
-| --- | --- | --- |
-| 默认 | 抽屉正文（调用方 `t()` 注入） | **是** |
-| `title` | 覆盖标题渲染 | 否 |
-| `footer` | 底部操作区 | 否 |
-
-&gt; **明确不设**：不设浮层机制 / 遮罩色插槽（继承 `FmModal`）；不设「滑入时长」可配插槽（动效时长经 Layer 3 别名统一管理、`reduced-motion` 下强制趋零）；**不设「关闭按钮文字作 dialog 名称」的兜底路径**——无标题时必须经 `dialogLabelKey` 提供准确名称，二者皆缺视为实现错误，不做「指向正文首标题 / 关闭按钮」的隐式推断。
-
----
-
-### 4.4 FmFormField（C-06 · 序号 10）
-
-| # | 字段 | 内容 |
-| --- | --- | --- |
-| 1 | **组件职责与边界** | 字段容器：统一 label / 必填标记 / 控件槽 / 辅助说明 / 校验提示的关联与布局；**字段容器与校验提示机制的唯一定义处**（U-1），被 C-06 各输入控件复用。不负责：控件自身的输入交互（→ `FmInput` 等各控件卡）、表单整体提交（→ 调用方）。 |
-| 2 | **Props / Events / Slots** | 完整契约见 **§4.4.1**。摘要 —— Props：`labelKey`（`string`，**必填**）、`required`（默认 `false`）、`errorKey`（`string`，可选）、`hintKey`（`string`，可选）、`forId`（`string`，**必填**，用于 label / 控件 / 提示关联）；Events：无（纯容器）；Slots：默认（控件，**必需**）、`hint`、`error`。 |
-| 3 | **PC 变体** | label 用 `--fm-field-label-color` / `--fm-field-label-size`；辅助说明 `--fm-field-hint-color`；错误提示 `--fm-field-error-color`（小字号红字收敛点 `--color-text-safe-red`）；各区间距 `--fm-field-gap`；必填标记在 label 后、语义由文字 / `aria` 承载而非仅颜色。 |
-| 4 | **手机变体** | 同视觉规范；label 与提示不缩小到 &lt;12px；375 / 390 / 430 标签与控件不重叠、错误提示换行不溢出；触控区由内部控件保证 ≥44×44。 |
-| 5 | **状态矩阵** | default / error / disabled（经内部控件传导）/ readonly；error 态显示校验提示并设 `aria-invalid`/`aria-describedby`；无 hover / focus（容器非交互件，焦点在内部控件）。 |
-| 6 | **交互与可访问性** | `&lt;label for=forId&gt;` 与控件 id 关联（持久可见 label，**不依赖 placeholder**）；错误提示经 `aria-describedby` 关联到控件，控件 `aria-invalid=true`；必填经 `aria-required` 或 label 文字（非仅颜色）；错误文字 `--fm-field-error-color` ≥4.5:1（1.4.3 普通文本）；提示 icon 若存在为装饰、不作唯一线索（对应 §2.1 `FmInput` 行 `aria-invalid`/`aria-describedby`）。 |
-| 7 | **Token 依赖** | 本批 #89～#93；内部控件复用各自 `--fm-input-*` / `--fm-checkbox-*` 等；不新增色值。 |
-| 8 | **i18n** | `labelKey` / `errorKey` / `hintKey` 全为 key、组件内 `t()`；内置必填标记 key `fm.field.required`（供 aria / 视觉）；动态错误文案用 `I18nText` 插值，不拼接翻译。 |
-| 9 | **数据契约** | 无业务数据字段；`forId` 由调用方保证同表单内唯一；校验结果由调用方经 `errorKey` 传入；不访问 Dexie。地址 mock 与真实模型同构（《30》§4.3 C-06）。 |
-| 10 | **验收标准** | FF-01 label / 控件 / 提示三者 `for`/`id`/`aria-describedby` 关联正确；FF-02 error 态 `aria-invalid` 同步且提示文字 ≥4.5:1；FF-03 必填语义非仅颜色；FF-04 错误文字用 `--color-text-safe-red` 收敛点；FF-05 双端标签与提示不重叠 / 不溢出；FF-06 全部文案走 key。对应全局：《30》§5.4 WCAG / a11y 矩阵「FmInput」行 / i18n。 |
-| 11 | **复用关系** | **字段容器基座（定义处）**。`FmTextarea`/`FmSelect`/`FmCheckbox`/`FmRadio`/`FmSwitch`/`FmStepper` 复用 label 关联 / 校验提示 / 错误态 `aria-describedby`（§1.2；U-1 / U-5）；`FmInput` 的 `aria-invalid`/`aria-describedby` 由本容器注入（§2.1）。 |
-
-#### 4.4.1 契约明细（Props / Events / Slots）
-
-**Props**
-
-| 名称 | 类型 | 必填 | 默认值 | 合法枚举 / 行为 |
-| --- | --- | --- | --- | --- |
-| `labelKey` | `string` | **是** | 无默认值 | 字段 label 的 i18n key；组件内 `t(labelKey)`，持久可见 |
-| `forId` | `string` | **是** | 无默认值 | 关联内部控件 id；同表单内唯一；`&lt;label for&gt;` / `aria-describedby` 依赖此值 |
-| `required` | `boolean` | 否 | `false` | 必填标记；语义由文字 / `aria-required` 承载，非仅颜色 |
-| `errorKey` | `string` | 否 | 无默认值 | 校验错误文案 key；提供时进入 error 态并注入 `aria-invalid` / `aria-describedby` |
-| `hintKey` | `string` | 否 | 无默认值 | 辅助说明 key；与 `errorKey` 同时存在时 error 优先呈现、hint 可保留 |
-
-**Events**
-
-| 事件 | 参数 | 触发时机 |
-| --- | --- | --- |
-| **无** | — | 纯容器；不派发事件，输入 / 校验事件由内部控件与调用方处理 |
-
-**Slots**
-
-| 插槽 | 用途 | 必需 |
-| --- | --- | --- |
-| 默认 | 输入控件（由调用方放入 `FmInput` 等，并绑定 `forId` 对应 id） | **是** |
-| `hint` | 覆盖辅助说明渲染（仍经 `t()`） | 否 |
-| `error` | 覆盖错误提示渲染（仍经 `t()`） | 否 |
-
-&gt; **明确不设**：不设「校验逻辑」prop / 插槽（校验属业务服务，组件只呈现调用方传入的 `errorKey`）；不设「label 显隐」开关（持久可见 label 是三状态规则硬要求）。
-
-### 4.5 FmInput（C-06 · 序号 11）
-
-| # | 字段 | 内容 |
-| --- | --- | --- |
-| 1 | **组件职责与边界** | 单行文本输入框；**输入框基础样式、空白 / 已填写 / 焦点三状态与无障碍规则的唯一定义处**（U-1），被 `FmTextarea` / `FmSelect` / `FmSearchInput` 继承。不负责：多行（→ `FmTextarea`）、搜索语义 / 清除（→ `FmSearchInput`）、label 与校验提示布局（→ `FmFormField`）。 |
-| 2 | **Props / Events / Slots** | 完整契约见 **§4.5.1**。摘要 —— Props：`modelValue`（`string`，`v-model`）、`id`（`string`，**必填**，与 `FmFormField.forId` 关联）、`placeholderKey`（`string`，可选）、`type`（`&#x27;text&#x27;` / `&#x27;password&#x27;` / `&#x27;tel&#x27;` / `&#x27;email&#x27;` / `&#x27;number&#x27;`，默认 `&#x27;text&#x27;`）、`disabled`（默认 `false`）、`readonly`（默认 `false`）、`invalid`（默认 `false`）、`maxlength`（`number`，可选）；Events：`update:modelValue`、`focus`、`blur`、`enter`；Slots：**无**（本批不支持 `prefix` / `suffix` 前后缀 Props，未定义相关契约；未来扩展须单独提交变更并重新验证三状态）。 |
-| 3 | **PC 变体** | 高度 `--fm-input-height-pc`、圆角 `--fm-input-radius`、底 `--fm-input-bg`；已填值 `--fm-input-text`、占位 `--fm-input-placeholder`；边界 `--fm-input-border`（承担识别功能须独立 ≥3:1）；focus 边界 `--fm-input-border-focus`、宽 / 偏移 `#100`/`#101`；错误边界 `--fm-input-error-border`。 |
-| 4 | **手机变体** | 高度 `--fm-input-height-mobile`（48px ≥44 触控达标）；字号 ≥16px 避免 iOS 聚焦缩放；375 / 390 / 430 输入区通栏自适应、不溢出；placeholder 不替代持久 label。 |
-| 5 | **状态矩阵** | **三状态必检（沿用《25》/《20》已批准规范，见 §3）**：S1 空白（placeholder `#707070`，文字 4.54:1）、S2 已填写（`#1A1A1A` 15.96:1）、S3 焦点（ring `#5146A6` 白底 7.56:1 / 浅底 6.94:1，且失焦后 S1/S2 仍成立）。另：hover / disabled（底 `--fm-input-bg-disabled` + 禁用文字，不可聚焦可辨识）/ readonly（可聚焦可复制但不可改，`aria-readonly=true`）/ error（`--fm-input-error-border` + `aria-invalid=true`，**红边界非唯一线索**，配图标与文案）。 |
-| 6 | **交互与可访问性** | Tab 聚焦、焦点可见（2.4.7，focus ring ≥3:1 项目强化）；**不得**仅凭浅灰填充底 / 外部 Label / 形状间距认定符合 SC 1.4.11（§3）；边界承担识别功能须独立 ≥3:1，兜底 A `#707070`（`--fm-input-placeholder` / `--color-text-quaternary`，四底全 ≥3:1）为唯一首选、B 不作首选；`aria-invalid` / `aria-describedby` 由 `FmFormField` 注入（§2.1）；文字 1.4.3 ≥4.5:1、边界 / 图标 1.4.11 ≥3:1；未覆盖组合批次五补测。 |
-| 7 | **Token 依赖** | 本批 #94～#105；复用 `--fm-field-*`（#89～#93）；Layer 2 间接依赖 `--color-text-quaternary`(#707070) / `--color-focus-ring` / `--color-border-strong` / `--color-disabled-bg` 等；**不新增色值**。 |
-| 8 | **i18n** | `placeholderKey` 由调用方传 key（`t(placeholderKey)`）；占位文案可翻译、长度自适应；动态值经 `I18nText`；无写死文案。 |
-| 9 | **数据契约** | `modelValue` 恒为字符串（含 `type=&#x27;number&#x27;`，**允许小数**），值以用户输入原样保存——这是为避免 JS `number` 二进制浮点精度丢失，**不是**「禁止浮点」语义。**组件不做数值解析 / 取整 / 金额最小单位换算 / 千分位与精度格式化**；整数化、金额最小货币单位整数运算（`utils/money`）与格式化属业务层职责，由 C-11 金额类组件 / 调用方 Service 承担（《30》C-11），**不在本输入基座提前实现**。空值统一为 `&#x27;&#x27;`；合法数值字符集与 max / min / 步长等约束由调用方按需校验并经 `FmFormField` 提示，本组件不替业务做数值合法性判定。不访问 Dexie；地址 / 表单字段与真实模型同构（mock 同构）。 |
-| 10 | **验收标准** | S-01 S1 空白实测通过（§3）；S-02 S2 已填写实测通过；S-03 S3 焦点实测且失焦后 S1/S2 仍成立；S-04 边界承担识别功能时 ≥3:1（兜底 A 唯一首选）；S-05 disabled 可辨不可聚焦、readonly 可聚焦不可改；S-06 `aria-invalid`/`aria-describedby` 经 FormField 注入正确；S-07 未靠浅灰底 / Label / 间距直接判达标；S-08 双端 375/390/430 与触控达标、字号 ≥16px；S-09 全部文案走 key；**S-10 `type=&#x27;number&#x27;` 值以字符串原样透传（含小数）、空值为 `&#x27;&#x27;`、组件不做取整 / 最小单位换算 / 格式化（断言 Props/Events 中无「禁浮点」表述、无 `prefix`/`suffix` 契约），数值合法性由调用方校验**。对应全局：《30》§5.4 WCAG / a11y 矩阵「FmInput」行 / 数据契约。 |
-| 11 | **复用关系** | **输入框基座（定义处）**。`FmTextarea`（§4.6）、`FmSelect`（§4.7）、`FmSearchInput`（§4.12）继承三状态基础样式与 a11y 规则，**不重复实测三状态、只测自身差异态**（U-4）；复用方验收项引用 S-01～S-07；Layer 3 别名 `--fm-input-*` 归本卡，复用方不另起重复别名（U-5）。 |
-
-#### 4.5.1 契约明细（Props / Events / Slots）
-
-**Props**
-
-| 名称 | 类型 | 必填 | 默认值 | 合法枚举 / 行为 |
-| --- | --- | --- | --- | --- |
-| `modelValue` | `string` | 否 | `&#x27;&#x27;` | 输入值，`v-model` 受控；恒为字符串、`type=&#x27;number&#x27;` 时**允许小数**并以用户输入**原样透传**（避免 JS number 精度丢失，非「禁浮点」）；空值为 `&#x27;&#x27;`；不做取整 / 换算 / 格式化 |
-| `id` | `string` | **是** | 无默认值 | 原生 id；与 `FmFormField.forId` 关联；缺失视为实现错误（label / `aria-describedby` 依赖） |
-| `placeholderKey` | `string` | 否 | 无默认值 | 占位文案 i18n key；**不替代持久可见 label** |
-| `type` | `&#x27;text&#x27;` / `&#x27;password&#x27;` / `&#x27;tel&#x27;` / `&#x27;email&#x27;` / `&#x27;number&#x27;` | 否 | `&#x27;text&#x27;` | 原生输入类型；仅五值；`number` 为通用数值输入、**允许小数**、值仍为字符串；组件不声称实现整数限制，整数 / 金额最小单位换算交调用方业务层 |
-| `disabled` | `boolean` | 否 | `false` | 禁用：不可聚焦、底 `--fm-input-bg-disabled`、禁用文字、可辨识（`tabindex=-1`） |
-| `readonly` | `boolean` | 否 | `false` | 只读：可聚焦 / 可选中复制、不可改，`aria-readonly=true` |
-| `invalid` | `boolean` | 否 | `false` | 错误态：边界 `--fm-input-error-border` + `aria-invalid=true`；非唯一线索，须配 `FmFormField` 错误文案 |
-| `maxlength` | `number` | 否 | 无默认值 | 原生最大长度；非整数 / 负数按无限制处理并开发态告警 |
-
-**Events**
-
-| 事件 | 参数 | 触发时机 |
-| --- | --- | --- |
-| `update:modelValue` | `value: string` | 输入值变化时派发；`disabled` / `readonly` 时不派发 |
-| `focus` | `payload: FocusEvent` | 获得焦点时派发（S3 焦点态） |
-| `blur` | `payload: FocusEvent` | 失去焦点时派发（触发 S1/S2 复核：失焦后仍须成立） |
-| `enter` | 无 | 焦点在输入框内按 Enter 时派发（如提交，业务由调用方处理） |
-
-**Slots**
-
-| 插槽 | 用途 | 必需 |
-| --- | --- | --- |
-| **无** | 文案经 `placeholderKey`；值经 `v-model`；**本批无前后缀插槽、无 `prefix` / `suffix` Props**（契约中未定义，不存在「经 props 提供」的路径） | — |
-
-&gt; **明确不设**：不设「边界颜色 / focus 样式」可替换插槽（三状态与兜底 A 是无障碍硬约束，不可被业务绕过）；不设自定义 label 插槽（label 由 `FmFormField` 承担、须持久可见）；不设文本插槽（值经 `v-model`）；**不设 `prefix` / `suffix` 前后缀 Props 或插槽**。前后缀若后续需要，须**单独提交变更**并**重新验证三状态**（焦点 / 边界 / 占位关系），不在本批新增、不再出现「前后缀经 props 提供」的表述。
-
-### 4.6 FmTextarea（C-06 · 序号 12）
-
-| # | 字段 | 内容 |
-| --- | --- | --- |
-| 1 | **组件职责与边界** | 多行文本输入。继承 `FmInput` 三状态与 a11y 基础 + `FmFormField` 容器机制，**自身差异仅多行形态 / 最小高度 / 行数**。不负责：单行输入（`FmInput`）、富文本（范围外）。 |
-| 2 | **Props / Events / Slots** | 完整契约见 **§4.6.1**。摘要 —— Props：`modelValue`（`string`）、`id`（**必填**）、`placeholderKey`（可选）、`rows`（`number`，默认 `3`）、`disabled`（默认 `false`）、`readonly`（默认 `false`）、`invalid`（默认 `false`）、`maxlength`（可选）、`autoHeight`（默认 `false`）；Events：`update:modelValue`、`focus`、`blur`；Slots：无。 |
-| 3 | **PC 变体** | 复用 `--fm-input-*` 样式；最小高度 `--fm-textarea-min-height`；底 / 文字 / 边界 / focus 同 `FmInput`；可拖拽改变大小遵循浏览器原生或调用方配置。 |
-| 4 | **手机变体** | 同 `FmInput` 手机规则（字号 ≥16px、触控区、通栏、安全区）；多行区高度自适应内容（`autoHeight`），375/390/430 不溢出。 |
-| 5 | **状态矩阵** | 继承 `FmInput` 三状态（S1/S2/S3，引用其结论不重复实测）+ hover / disabled / readonly / error；**自身差异态**：多行换行、`autoHeight` 增高、`rows` 行数 —— 三态须在这些差异下仍成立。 |
-| 6 | **交互与可访问性** | 继承 `FmInput` 焦点可见（2.4.7，≥3:1 项目强化）、边界 ≥3:1 判定、三状态规则（§3）；多行输入 Tab 聚焦、方向键在文本内移动（浏览器原生）；`aria-invalid`/`aria-describedby` 经 `FmFormField` 注入；`readonly` 可辨；文字 1.4.3 / 边界 1.4.11（对应 §2.1「FmTextarea」行）。 |
-| 7 | **Token 依赖** | 复用 `--fm-input-*`（#94～#105）+ `--fm-field-*`（#89～#93）+ 本批 #106 最小高度；不新增色值。 |
-| 8 | **i18n** | `placeholderKey` 走 `t()`；动态值 `I18nText`；无写死文案。 |
-| 9 | **数据契约** | `modelValue` 字符串；多行文本不参与金额 / 数值计算；不访问 Dexie。 |
-| 10 | **验收标准** | TA-01 继承 FmInput 三状态结论（引用 S-01～S-04，不重复实测）；TA-02 差异态（多行 / autoHeight / rows）下三状态仍成立；TA-03 readonly 可辨；TA-04 `aria-invalid`/`aria-describedby` 注入正确；TA-05 双端与触控达标。对应全局：《30》§5.4 a11y 矩阵「FmTextarea」行。 |
-| 11 | **复用关系** | **基座 = `FmInput` + `FmFormField`**（U-4）：继承三状态基础样式与 a11y 实测结论（引用 S-01～S-07）、字段容器 label / 校验机制；自身差异仅「多行 / 最小高度 / 行数 / autoHeight」（#106）；Layer 3 别名仅 #106，不重复定义 `--fm-input-*`。 |
-
-#### 4.6.1 契约明细（Props / Events / Slots）
-
-**Props**
-
-| 名称 | 类型 | 必填 | 默认值 | 合法枚举 / 行为 |
-| --- | --- | --- | --- | --- |
-| `modelValue` | `string` | 否 | `&#x27;&#x27;` | 多行值，`v-model` 受控 |
-| `id` | `string` | **是** | 无默认值 | 与 `FmFormField.forId` 关联 |
-| `placeholderKey` | `string` | 否 | 无默认值 | 占位文案 key，不替代持久 label |
-| `rows` | `number` | 否 | `3` | 初始可见行数；非正整数按 3 处理 |
-| `autoHeight` | `boolean` | 否 | `false` | 随内容增高；`true` 时最小高度仍为 `--fm-textarea-min-height` |
-| `disabled` | `boolean` | 否 | `false` | 禁用：不可聚焦、可辨识 |
-| `readonly` | `boolean` | 否 | `false` | 只读：可聚焦可选中、不可改 |
-| `invalid` | `boolean` | 否 | `false` | 错误态：边界红 + `aria-invalid=true` |
-| `maxlength` | `number` | 否 | 无默认值 | 最大长度；非法值按无限制处理 |
-
-**Events**
-
-| 事件 | 参数 | 触发时机 |
-| --- | --- | --- |
-| `update:modelValue` | `value: string` | 输入变化时；disabled / readonly 不派发 |
-| `focus` | `payload: FocusEvent` | 获得焦点 |
-| `blur` | `payload: FocusEvent` | 失去焦点 |
-
-**Slots**
-
-| 插槽 | 用途 | 必需 |
-| --- | --- | --- |
-| **无** | 同 `FmInput`，值经 `v-model`、label 经 `FmFormField` | — |
-
-&gt; **明确不设**：不设富文本 / 工具栏插槽（范围外）；不设边界样式插槽（继承 `FmInput` 三状态硬约束）。
-
-### 4.7 FmSelect（C-06 · 序号 13）
-
-| # | 字段 | 内容 |
-| --- | --- | --- |
-| 1 | **组件职责与边界** | 下拉选择器：单选下拉（选项列表展开选择）。继承 `--fm-input-border` / focus 与 `FmFormField` 容器机制，**自身差异仅下拉面板 / 选项 / 展开收起交互**。不负责：多选（范围外）、复选 / 单选组（→ `FmCheckbox`/`FmRadio`）。 |
-| 2 | **Props / Events / Slots** | 完整契约见 **§4.7.1**。摘要 —— Props：`modelValue`（`string \| number \| null`，默认 `null`）、`id`（**必填**）、`options`（`Array&lt;{value,labelKey}&gt;`，**必填**）、`placeholderKey`（可选）、`disabled`（默认 `false`）、`invalid`（默认 `false`）、`clearable`（默认 `false`）；Events：`update:modelValue`、`open`、`close`、`change(payload)`；Slots：`option`（自定义选项渲染，可选）。**空值口径**：无选中 / 清除后均为 `null`，`modelValue` 与 `update:modelValue` 类型一致；清除同时派发 `change({ value: null, option: null })`。 |
-| 3 | **PC 变体** | 触发区复用 `--fm-input-*` 边界 / 高度 / 圆角；展开面板底 `--color-surface`（经 Layer 2）、阴影 `--shadow-float`；hover 项 `--fm-select-option-hover-bg`、选中项 `--fm-select-option-selected-color`、箭头 `--fm-select-arrow-color`。 |
-| 4 | **手机变体** | 触发区高度 `--fm-input-height-mobile`（48px ≥44）；选项行高 ≥44 触控；展开面板在 375/390/430 内自适应、不溢出、必要时内部滚动；避免被软键盘 / 安全区遮挡。 |
-| 5 | **状态矩阵** | 收起 / 展开 / 选中 / hover 项 / disabled / error；选项 disabled 态可辨且不可选；无选项（empty）态显示占位文案。 |
-| 6 | **交互与可访问性** | 键盘：聚焦触发区、`Enter`/`Space`/`ArrowDown` 展开、`ArrowUp`/`ArrowDown` 导航、`Enter` 选中、`Esc` 收起；焦点全程可见（2.4.7，≥3:1 项目强化）；`aria-expanded`（展开态）、`role=listbox` / `role=option`、`aria-selected`（对应 §2.1「FmSelect」行）；控件边界 ≥3:1、展开项文字 ≥4.5:1、箭头必要图标 ≥3:1（未覆盖组合批次五补测）；disabled 项可辨不可选。 |
-| 7 | **Token 依赖** | 复用 `--fm-input-border` / `--fm-input-border-focus` / `--fm-input-height-*` / `--fm-input-radius`（#98～#99、#102～#104）+ `--fm-field-*`（#89～#93）+ 本批 #107～#109。 |
-| 8 | **i18n** | `options[].labelKey` / `placeholderKey` 全走 `t()`；选项标签动态数据用 `I18nText`；无写死文案。 |
-| 9 | **数据契约** | `options` 为 `{value, labelKey}[]`，`value` 与业务模型同类型（string / number）；`modelValue` 为 `string \| number \| null`、默认 `null`，**`null` 是唯一空值哨兵**（未选中与清除后同值，不引入 `&#x27;&#x27;`/`undefined` 等第二套空值）；不访问 Dexie；选项列表由调用方注入（如地址省市区、筛选项）。 |
-| 10 | **验收标准** | SEL-01 键盘全流程（展开 / 导航 / 选中 / Esc）可达；SEL-02 `aria-expanded`/`listbox`/`option`/`aria-selected` 齐全；SEL-03 展开 / 收起焦点可见且 ≥3:1；SEL-04 选项文字 4.5:1、边界 / 箭头 3:1（未覆盖组合标批次五补测）；SEL-05 disabled 项可辨不可选；SEL-06 手机面板不溢出 / 不被遮挡；SEL-07 文案全走 key；**SEL-08 空值契约：默认 `null`、清除后 `update:modelValue(null)` 且同时派发 `change({ value: null, option: null })`，`modelValue` 与 `update:modelValue` 类型均含 `null`（断言摘要 / Props / Events / 数据契约四处口径一致）**。对应全局：《30》§5.4 a11y 矩阵「FmSelect」行 / 数据契约。 |
-| 11 | **复用关系** | 基座 = `FmInput`（边界 / focus 基础）+ `FmFormField`（label / 校验）（U-4）：继承 `--fm-input-border`/focus 与三状态基础判定，自身差异为下拉面板 / 选项 / 展开交互；Layer 3 别名仅 #107～#109，不重复定义 `--fm-input-*`。 |
-
-#### 4.7.1 契约明细（Props / Events / Slots）
-
-**Props**
-
-| 名称 | 类型 | 必填 | 默认值 | 合法枚举 / 行为 |
-| --- | --- | --- | --- | --- |
-| `modelValue` | `string \| number \| null` | 否 | `null` | 选中值；有选中时与 `options[].value` 同类型（string / number），**无选中 / 清除后为 `null`**（唯一空值哨兵）；与 `update:modelValue` 类型一致 |
-| `id` | `string` | **是** | 无默认值 | 与 `FmFormField.forId` 关联 |
-| `options` | `Array&lt;{ value: string \| number; labelKey: string; disabled?: boolean }&gt;` | **是** | 无默认值 | 选项列表；`labelKey` 走 `t()`；`disabled` 项可辨不可选 |
-| `placeholderKey` | `string` | 否 | 无默认值 | 未选中占位文案 key |
-| `disabled` | `boolean` | 否 | `false` | 整体禁用 |
-| `invalid` | `boolean` | 否 | `false` | 错误态：`aria-invalid=true` |
-| `clearable` | `boolean` | 否 | `false` | 是否显示清除入口；清除时派发 `update:modelValue(null)` **并同时派发** `change({ value: null, option: null })`；清除按钮图标-only 须 `aria-label`（key `fm.select.clear`） |
-
-**Events**
-
-| 事件 | 参数 | 触发时机 |
-| --- | --- | --- |
-| `update:modelValue` | `value: string \| number \| null` | 选中时派发选项 `value`；清除时派发 `null`（与 `modelValue` 类型一致） |
-| `open` | 无 | 面板展开 |
-| `close` | 无 | 面板收起 |
-| `change` | `payload: { value: string \| number \| null; option: Option \| null }` | 选中项变化时派发一次；**清除时同样派发，payload 为 `{ value: null, option: null }`**（区别于 `update:modelValue`，但二者在清除时同时触发）；`Option` = `{ value, labelKey, disabled? }` |
-
-**Slots**
-
-| 插槽 | 用途 | 必需 |
-| --- | --- | --- |
-| `option` | 自定义单选项渲染（作用域插槽，参数含 option / selected）；仍须满足对比度与焦点要求 | 否 |
-
-&gt; **明确不设**：不设「多选」props（范围外，保持单选语义单纯）；不设面板 / 边界样式插槽（复用 `FmInput` 硬约束）。
-
-### 4.8 FmCheckbox（C-06 · 序号 14）
-
-| # | 字段 | 内容 |
-| --- | --- | --- |
-| 1 | **组件职责与边界** | 复选框：勾选框 + 标签，支持半选（indeterminate）。**勾选框边界 ≥3:1 与 `aria-checked` 语义的规范定义处**（Radio / Switch 复用其边界约定）。不负责：单选组（→ `FmRadio`）、开关语义（→ `FmSwitch`）。 |
-| 2 | **Props / Events / Slots** | 完整契约见 **§4.8.1**。摘要 —— Props：`modelValue`（`boolean`，`v-model`）、`labelKey`（**必填**）、`id`（**必填**）、`indeterminate`（默认 `false`）、`disabled`（默认 `false`）、`invalid`（默认 `false`）；Events：`update:modelValue`、`change(payload)`；Slots：无（标签经 key）。 |
-| 3 | **PC 变体** | 勾选框边长 `--fm-checkbox-size`；未勾边界 `--fm-checkbox-border`；勾选填充 `--fm-checkbox-checked-bg`、标记 `--fm-checkbox-checkmark`；标签文字 ≥4.5:1；标签与框间距 `--fm-field-gap`。 |
-| 4 | **手机变体** | 整个可点区（label + 框）触控 ≥44×44；375/390/430 标签换行不溢出；勾选框尺寸不缩小到不可辨。 |
-| 5 | **状态矩阵** | 未选 / 选中 / 半选（indeterminate）/ disabled / error；disabled 与 indeterminate 均可辨；无 hover 语义变化（焦点覆盖可点区）。 |
-| 6 | **交互与可访问性** | `Space` 切换（原生 checkbox 语义）；焦点覆盖整个可点区且可见（2.4.7，≥3:1 项目强化）；勾选框边界 `--fm-checkbox-border` ≥3:1、标签文字 4.5:1（对应 §2.1「FmCheckbox」行）；`aria-checked`（`true`/`false`/`mixed`，半选为 `mixed`）、`disabled` 时不可聚焦且可辨；勾选态不用颜色作唯一线索（勾选标记形状 + `aria-checked`）。 |
-| 7 | **Token 依赖** | 本批 #110～#113 + `--fm-field-*`（#89～#93）；不新增色值。 |
-| 8 | **i18n** | `labelKey` 走 `t()`；动态标签用 `I18nText`；无写死文案。 |
-| 9 | **数据契约** | `modelValue` 布尔；`indeterminate` 为展示态（不改变 `modelValue`，提交时按业务规则解释）；不访问 Dexie。 |
-| 10 | **验收标准** | CB-01 勾选框边界 ≥3:1、标签 ≥4.5:1；CB-02 `Space` 切换、`aria-checked` 三态（含 `mixed`）正确；CB-03 焦点覆盖可点区且可见；CB-04 disabled / indeterminate 可辨；CB-05 勾选态非仅颜色线索；CB-06 手机触控 ≥44×44、标签不溢出。对应全局：《30》§5.4 a11y 矩阵「FmCheckbox」行。 |
-| 11 | **复用关系** | 勾选框边界 ≥3:1 与 focus / disabled / `aria-checked` 约定被 `FmRadio`(15)、`FmSwitch`(16) 复用（U-4 / U-5），复用方引用 CB-01～CB-05；容器机制复用 `FmFormField`。Layer 3 别名 #110～#113 归本卡。 |
-
-#### 4.8.1 契约明细（Props / Events / Slots）
-
-**Props**
-
-| 名称 | 类型 | 必填 | 默认值 | 合法枚举 / 行为 |
-| --- | --- | --- | --- | --- |
-| `modelValue` | `boolean` | 否 | `false` | 勾选态，`v-model` 受控 |
-| `labelKey` | `string` | **是** | 无默认值 | 标签 i18n key，持久可见 |
-| `id` | `string` | **是** | 无默认值 | 与 `FmFormField.forId` 关联 |
-| `indeterminate` | `boolean` | 否 | `false` | 半选展示态；`aria-checked=&#x27;mixed&#x27;`，不改变 `modelValue` |
-| `disabled` | `boolean` | 否 | `false` | 禁用：不可聚焦、可辨识 |
-| `invalid` | `boolean` | 否 | `false` | 错误态（配合 FormField 提示） |
-
-**Events**
-
-| 事件 | 参数 | 触发时机 |
-| --- | --- | --- |
-| `update:modelValue` | `value: boolean` | 勾选态变化时；disabled 不派发 |
-| `change` | `payload: { checked: boolean }` | 用户切换时派发一次 |
-
-**Slots**
-
-| 插槽 | 用途 | 必需 |
-| --- | --- | --- |
-| **无** | 标签经 `labelKey`，防绕过 i18n | — |
-
-&gt; **明确不设**：不设「勾选框颜色」插槽（边界 ≥3:1 是硬约束）；不设自定义标签插槽（须经 key）。
-
-### 4.9 FmRadio（C-06 · 序号 15）
-
-| # | 字段 | 内容 |
-| --- | --- | --- |
-| 1 | **组件职责与边界** | 单选按钮：圆点 + 标签，同名组内互斥。边界 / focus / disabled / `aria-checked` 约定复用 `FmCheckbox`，**自身差异仅圆形形态与组内方向键导航**。不负责：下拉单选（→ `FmSelect`）、复选（→ `FmCheckbox`）。 |
-| 2 | **Props / Events / Slots** | 完整契约见 **§4.9.1**。摘要 —— Props：`modelValue`（`string` / `number`，当前选中值）、`value`（`string` / `number`，**必填**，本项值）、`name`（`string`，**必填**，组名）、`labelKey`（**必填**）、`disabled`（默认 `false`）；Events：`update:modelValue`、`change(payload)`；Slots：无。 |
-| 3 | **PC 变体** | 圆点边长复用 `--fm-checkbox-size`；选中圆点 `--fm-checkbox-checked-bg`；未选边界 `--fm-checkbox-border` ≥3:1；标签 ≥4.5:1；圆形形态为本组件差异（无新增色值别名）。 |
-| 4 | **手机变体** | 整个可点区触控 ≥44×44；375/390/430 标签不溢出；同组项间距 `--fm-field-gap`。 |
-| 5 | **状态矩阵** | 未选 / 选中 / disabled / error；disabled 可辨不可选；无 indeterminate（radio 无半选）。 |
-| 6 | **交互与可访问性** | `Space` 选中、`ArrowUp`/`ArrowDown`/`ArrowLeft`/`ArrowRight` 在同名组内切换（对应 §2.1「FmRadio」行）；焦点可见（2.4.7，≥3:1 项目强化）；边界 ≥3:1、标签 4.5:1（继承 CB-01）；`role=radiogroup`（组容器由调用方 / FormField 提供）+ `aria-checked`（`true`/`false`）；组语义用 `name` + 原生 radio 行为保证。 |
-| 7 | **Token 依赖** | 复用 `--fm-checkbox-*`（#110～#113）+ `--fm-field-*`（#89～#93）；**无本批新增别名**（U-5）。 |
-| 8 | **i18n** | `labelKey` 走 `t()`；动态标签 `I18nText`；无写死文案。 |
-| 9 | **数据契约** | `modelValue` 为当前选中项的 `value`（string / number）；`name` 同表单内唯一标识一组；不访问 Dexie。 |
-| 10 | **验收标准** | R-01 继承勾选框边界 / 标签对比度（引用 CB-01）；R-02 方向键组内切换 + `Space` 选中正确；R-03 `aria-checked` / `radiogroup` 语义正确；R-04 disabled 可辨不可选；R-05 手机触控 ≥44×44、标签不溢出。对应全局：《30》§5.4 a11y 矩阵「FmRadio」行。 |
-| 11 | **复用关系** | 基座 = `FmCheckbox`（边界 ≥3:1 / focus / disabled / `aria-checked` 约定）+ `FmFormField`（容器）（U-4 / U-5）：继承 CB-01～CB-05，自身差异仅「圆形形态 + 组内方向键 + 互斥 value/name」；**不新增 Layer 3 别名**（复用 #110～#113）。 |
-
-#### 4.9.1 契约明细（Props / Events / Slots）
-
-**Props**
-
-| 名称 | 类型 | 必填 | 默认值 | 合法枚举 / 行为 |
-| --- | --- | --- | --- | --- |
-| `modelValue` | `string \| number` | 否 | 无默认值 | 当前选中项的 `value`；`v-model` 受控 |
-| `value` | `string \| number` | **是** | 无默认值 | 本选项值；与 `modelValue` 比较决定选中 |
-| `name` | `string` | **是** | 无默认值 | 组名，同名互斥（原生 radio group 语义） |
-| `labelKey` | `string` | **是** | 无默认值 | 标签 i18n key |
-| `disabled` | `boolean` | 否 | `false` | 禁用：不可聚焦、可辨识 |
-
-**Events**
-
-| 事件 | 参数 | 触发时机 |
-| --- | --- | --- |
-| `update:modelValue` | `value: string \| number` | 选中本项时派发本项 `value` |
-| `change` | `payload: { value }` | 用户切换选中时派发一次 |
-
-**Slots**
-
-| 插槽 | 用途 | 必需 |
-| --- | --- | --- |
-| **无** | 标签经 `labelKey` | — |
-
-&gt; **明确不设**：不设半选 / indeterminate（radio 无此态）；不设边界 / 标签插槽（继承 `FmCheckbox` 硬约束）。
-
----
-
-### 4.10 FmSwitch（C-06 · 序号 16）
-
-| # | 字段 | 内容 |
-| --- | --- | --- |
-| 1 | **组件职责与边界** | 开关：两态即时生效的布尔切换（设置项开 / 关）。focus / disabled / `aria-checked` 约定复用 `FmCheckbox`，**自身差异仅轨道 + 滑块形态与 `role=switch`**。不负责：需要二次确认的危险开关（→ `FmConfirm`）、复选组（→ `FmCheckbox`）。 |
-| 2 | **Props / Events / Slots** | 完整契约见 **§4.10.1**。摘要 —— Props：`modelValue`（`boolean`，`v-model`）、`labelKey`（**必填**）、`id`（**必填**）、`disabled`（默认 `false`）、`loading`（默认 `false`）；Events：`update:modelValue`、`change(payload)`；Slots：无。 |
-| 3 | **PC 变体** | 开态轨道 `--fm-switch-track-on`、关态 `--fm-switch-track-off`、滑块 `--fm-switch-thumb`；轨道与底边界 ≥3:1（开关是 UI 组件，1.4.11）；开 / 关状态色不作为唯一线索（滑块位置 + `aria-checked` + 可选文字）。 |
-| 4 | **手机变体** | 可点区触控 ≥44×44；375/390/430 标签与开关不重叠、不溢出；开关尺寸不缩小到不可辨。 |
-| 5 | **状态矩阵** | 开 / 关 / disabled / loading；`loading` 时切换 pending、`aria-busy=true`；disabled 可辨不可聚焦。 |
-| 6 | **交互与可访问性** | `Space` 切换（对应 §2.1「FmSwitch」行）；焦点覆盖整个可点区且可见（2.4.7，≥3:1 项目强化）；`role=switch` + `aria-checked`（`true`/`false`）；开 / 关轨道与底边界 ≥3:1、滑块与轨道 ≥3:1（**未覆盖组合批次五补测**）；开 / 关非仅颜色线索（滑块位置 + `aria-checked`）；label 经 `FmFormField` 关联。 |
-| 7 | **Token 依赖** | 本批 #114～#116 + 复用 `--fm-field-*`（#89～#93）；无新增色值。 |
-| 8 | **i18n** | `labelKey` 走 `t()`；开 / 关可选文字（若有）内置 key `fm.switch.on`/`fm.switch.off`；无写死文案。 |
-| 9 | **数据契约** | `modelValue` 布尔；状态即时生效，持久化 / 提交由调用方业务服务处理；不访问 Dexie。 |
-| 10 | **验收标准** | SW-01 开 / 关轨道与边界 ≥3:1（未覆盖组合标批次五补测）；SW-02 `Space` 切换、`role=switch` + `aria-checked` 正确；SW-03 焦点覆盖可点区且可见；SW-04 开 / 关非仅颜色线索；SW-05 disabled / loading 可辨且防重复；SW-06 手机触控 ≥44×44。对应全局：《30》§5.4 a11y 矩阵「FmSwitch」行。 |
-| 11 | **复用关系** | 基座 = `FmCheckbox`（focus / disabled / `aria-checked` 约定）+ `FmFormField`（容器）（U-4 / U-5）：继承 CB-03～CB-05，自身差异仅「轨道 + 滑块形态 + `role=switch` + loading」；Layer 3 别名仅 #114～#116。 |
-
-#### 4.10.1 契约明细（Props / Events / Slots）
-
-**Props**
-
-| 名称 | 类型 | 必填 | 默认值 | 合法枚举 / 行为 |
-| --- | --- | --- | --- | --- |
-| `modelValue` | `boolean` | 否 | `false` | 开关态，`v-model` 受控 |
-| `labelKey` | `string` | **是** | 无默认值 | 标签 i18n key |
-| `id` | `string` | **是** | 无默认值 | 与 `FmFormField.forId` 关联 |
-| `disabled` | `boolean` | 否 | `false` | 禁用：不可聚焦、可辨识 |
-| `loading` | `boolean` | 否 | `false` | 切换 pending：`aria-busy=true`、防重复切换 |
-
-**Events**
-
-| 事件 | 参数 | 触发时机 |
-| --- | --- | --- |
-| `update:modelValue` | `value: boolean` | 切换时派发；disabled / loading 不派发 |
-| `change` | `payload: { checked: boolean }` | 用户切换时派发一次 |
-
-**Slots**
-
-| 插槽 | 用途 | 必需 |
-| --- | --- | --- |
-| **无** | 标签经 `labelKey` | — |
-
-&gt; **明确不设**：不设「轨道颜色」插槽（状态色 + ≥3:1 边界是硬约束）；不设三态（switch 仅开 / 关）。
-
-### 4.11 FmStepper（C-06 · 序号 17）
-
-| # | 字段 | 内容 |
-| --- | --- | --- |
-| 1 | **组件职责与边界** | 数量步进：加减按钮 + 数值显示（如购物车数量）。**加减按钮继承 `FmButton` 基座**，数值文字复用 `--fm-input-text`，容器复用 `FmFormField`。不负责：金额计算（→ `FmPrice`/`FmAmountBreakdown`）、库存判断（→ 业务服务传入 min/max）。 |
-| 2 | **Props / Events / Slots** | 完整契约见 **§4.11.1**。摘要 —— Props：`modelValue`（`number`，`v-model`）、`min`（默认 `1`）、`max`（`number`，**必填**）、`step`（默认 `1`）、`disabled`（默认 `false`）、`id`（可选）；Events：`update:modelValue`、`change(payload)`、`limitReached(payload)`；Slots：无。 |
-| 3 | **PC 变体** | 加减按钮复用 `FmButton` 尺寸 / focus ring / 触控别名（`--fm-btn-*`，《34》#1～#27）；数值文字 `--fm-input-text`；按钮边界 `--fm-btn-border-secondary`；按钮文字按 1.4.3 分层（普通 4.5:1，不统一按 3:1）。 |
-| 4 | **手机变体** | 加减按钮触控 ≥44×44（继承按钮基座手机档 `--fm-btn-height-mobile`）；375/390/430 不溢出；数值居中、不因长按缩放。 |
-| 5 | **状态矩阵** | default / 到 min（减按钮 disabled）/ 到 max（加按钮 disabled）/ disabled / error；min / max 边界按钮 **disabled 可辨且不可聚焦**（对应 §2.1「FmStepper」行）。 |
-| 6 | **交互与可访问性** | 加减按钮分别可聚焦、焦点各自可见（2.4.7，≥3:1 项目强化，引用按钮基座 B-05）；键盘 `ArrowUp`/`ArrowDown` 调整（数值区）、按钮 `Enter`/`Space`；`role=spinbutton` + `aria-valuenow`/`aria-valuemin`/`aria-valuemax`（对应 §2.1「FmStepper」行）；按钮文字 4.5:1 / 边界 3:1（继承按钮分层，不统一按 3:1）；数值变化经 `aria-live=polite` 播报（不过度打扰）。 |
-| 7 | **Token 依赖** | 复用 `FmButton` #1～#27 + `--fm-input-text`（#96）+ `--fm-field-*`（#89～#93）；**无本批新增别名**（U-5）。 |
-| 8 | **i18n** | 减 / 加按钮为图标-only 时须 `aria-label`（内置 key `fm.stepper.decrease`/`fm.stepper.increase`，含当前值可用 `I18nText` 插值）；播报文案走 key；无写死文案。 |
-| 9 | **数据契约** | `modelValue` 为整数（`step` 为整数步长）；**数量整数运算，禁浮点**（数量非金额，但同样避免浮点误差）；min/max 由调用方按库存 / 限购传入；不访问 Dexie。 |
-| 10 | **验收标准** | ST-01 加减按钮分别焦点可见（引用 B-05）；ST-02 `role=spinbutton` + `aria-valuenow/min/max` 齐全、键盘调整有效；ST-03 min/max 边界按钮 disabled 可辨不可聚焦；ST-04 按钮文字按 1.4.3 分层（引用按钮基座，不统一按 3:1）；ST-05 数值 `aria-live` 播报；ST-06 触控 ≥44×44、整数步进无浮点；ST-07 图标按钮 `aria-label` 100% 存在。对应全局：《30》§5.4 a11y 矩阵「FmStepper」+「FmButton」行。 |
-| 11 | **复用关系** | **基座 = `FmButton`（加减按钮）+ `FmFormField`（容器）**（U-4 / U-5）：继承按钮尺寸 / 状态 / focus ring / 触控（引用 B-01～B-08），数值文字复用 `--fm-input-text`；自身差异仅「min/max 边界禁用 + 数值播报 + `role=spinbutton`」；**不新增 Layer 3 别名**。 |
-
-#### 4.11.1 契约明细（Props / Events / Slots）
-
-**Props**
-
-| 名称 | 类型 | 必填 | 默认值 | 合法枚举 / 行为 |
-| --- | --- | --- | --- | --- |
-| `modelValue` | `number` | 否 | `min` | 当前数量，整数；`v-model` 受控 |
-| `min` | `number` | 否 | `1` | 最小值；到达时减按钮 disabled |
-| `max` | `number` | **是** | 无默认值 | 最大值；到达时加按钮 disabled；由库存 / 限购决定 |
-| `step` | `number` | 否 | `1` | 步长，正整数；非法值按 1 处理 |
-| `disabled` | `boolean` | 否 | `false` | 整体禁用 |
-| `id` | `string` | 否 | 无默认值 | 可选；用于与 `FmFormField` 关联（数值区） |
-
-**Events**
-
-| 事件 | 参数 | 触发时机 |
-| --- | --- | --- |
-| `update:modelValue` | `value: number` | 加减 / 键盘调整后派发，值钳制在 [min, max] |
-| `change` | `payload: { value: number; delta: number }` | 数量变化时派发一次，`delta` 为本次增量 |
-| `limitReached` | `payload: { limit: &#x27;min&#x27; \| &#x27;max&#x27; }` | 尝试越过边界被钳制时派发（供调用方提示库存 / 限购） |
-
-**Slots**
-
-| 插槽 | 用途 | 必需 |
-| --- | --- | --- |
-| **无** | 加减按钮与数值由组件渲染；按钮 `aria-label` 经内置 key | — |
-
-&gt; **明确不设**：不设「自定义加减按钮」插槽（继承 `FmButton` 基座，替换会破坏焦点 / 触控保证）；不设小数步长（数量整数，禁浮点）。
-
-### 4.12 FmSearchInput（C-06 · 序号 18）
-
-| # | 字段 | 内容 |
-| --- | --- | --- |
-| 1 | **组件职责与边界** | 搜索输入框：在 `FmInput` 基础上增搜索图标、清除按钮与搜索语义。**继承 `FmInput` 全部三状态基础样式与 a11y 规则（不重复实测）**，自身差异仅搜索图标 / 清除按钮 / 搜索触发（U-1）。不负责：搜索结果展示（→ 页面 / `FmTable`）、普通输入（→ `FmInput`）。 |
-| 2 | **Props / Events / Slots** | 完整契约见 **§4.12.1**。摘要 —— Props：`modelValue`（`string`）、`id`（**必填**）、`placeholderKey`（默认 `fm.search.placeholder`）、`disabled`（默认 `false`）、`clearable`（默认 `true`）、`debounce`（`number`，默认 `300`）；Events：`update:modelValue`、`search(payload)`、`clear`；Slots：无。 |
-| 3 | **PC 变体** | 复用 `--fm-input-*`（#94～#105）全部样式；搜索图标与清除按钮色复用 `--fm-select-arrow-color` 语义（必要图标 ≥3:1，**不另起重复别名**，U-5）；图标置于输入区前、清除按钮置于后。 |
-| 4 | **手机变体** | 同 `FmInput` 手机规则（字号 ≥16px、触控 ≥44×44、通栏、安全区）；清除按钮触控热区 ≥44×44；375/390/430 不溢出。 |
-| 5 | **状态矩阵** | 继承 `FmInput` 三状态（S1/S2/S3，引用其结论）+ hover / disabled / error；**自身差异态**：搜索图标常驻、清除按钮仅在有值且 `clearable` 时出现（`disabled` 时隐藏）；三状态须在这些差异下仍成立（对应 U-4「另测自身差异态」）。 |
-| 6 | **交互与可访问性** | 继承 `FmInput` 焦点可见（2.4.7，≥3:1 项目强化）、边界 ≥3:1 判定、三状态规则（§3，**不重复实测三状态**）；清除按钮图标-only 须 `aria-label`（key `fm.search.clear`）、焦点可见；搜索图标为装饰（`aria-hidden`，搜索语义由 `role=searchbox` / 输入语义承载）；`Enter` 触发 `search`；`aria-invalid`/`aria-describedby` 经 `FmFormField` 注入（对应 §2.1「FmInput」行）。 |
-| 7 | **Token 依赖** | 复用 `--fm-input-*`（#94～#105）+ `--fm-field-*`（#89～#93）+ `--fm-select-arrow-color`（#109，图标色）；**无本批新增别名**（U-5）。 |
-| 8 | **i18n** | `placeholderKey` 默认 `fm.search.placeholder`；内置 key `fm.search.clear`（清除按钮 `aria-label`）；动态值 `I18nText`；无写死文案。 |
-| 9 | **数据契约** | `modelValue` 字符串；`search` 事件携带当前词，搜索业务由调用方处理；`debounce` 仅控制 `update:modelValue` 的触发频率（非搜索请求节流的唯一手段）；不访问 Dexie。 |
-| 10 | **验收标准** | SI-01 继承 FmInput 三状态结论（引用 S-01～S-07，**不重复实测**）；SI-02 自身差异态（搜索图标常驻 / 清除按钮显隐）下三状态仍成立；SI-03 清除按钮 `aria-label` 100% 存在且焦点可见；SI-04 `Enter` 触发 `search`、`debounce` 行为正确；SI-05 `role=searchbox` 语义正确；SI-06 双端触控 ≥44×44、不溢出。对应全局：《30》§5.4 a11y 矩阵「FmInput」行 / U-4。 |
-| 11 | **复用关系** | **基座 = `FmInput` + `FmFormField`**（U-1 / U-4）：继承三状态基础样式与 a11y 实测结论（引用 S-01～S-07）、字段容器机制；自身差异仅「搜索图标 + 清除按钮 + 搜索事件 + debounce」；**不新增 Layer 3 别名**（复用 #94～#105、#109）。 |
-
-#### 4.12.1 契约明细（Props / Events / Slots）
-
-**Props**
-
-| 名称 | 类型 | 必填 | 默认值 | 合法枚举 / 行为 |
-| --- | --- | --- | --- | --- |
-| `modelValue` | `string` | 否 | `&#x27;&#x27;` | 搜索词，`v-model` 受控 |
-| `id` | `string` | **是** | 无默认值 | 与 `FmFormField.forId` 关联 |
-| `placeholderKey` | `string` | 否 | `&#x27;fm.search.placeholder&#x27;` | 占位文案 key |
-| `clearable` | `boolean` | 否 | `true` | 有值时显示清除按钮；图标-only 须 `aria-label` |
-| `debounce` | `number` | 否 | `300` | `update:modelValue` 触发的防抖毫秒；非正整数按 0 处理 |
-| `disabled` | `boolean` | 否 | `false` | 禁用：不可聚焦、可辨识；清除按钮隐藏 |
-
-**Events**
-
-| 事件 | 参数 | 触发时机 |
-| --- | --- | --- |
-| `update:modelValue` | `value: string` | 防抖后派发输入值；disabled 不派发 |
-| `search` | `payload: { keyword: string }` | 焦点在输入区按 `Enter` 时派发一次 |
-| `clear` | 无 | 点击清除按钮派发，随后 `modelValue` 置空 |
-
-**Slots**
-
-| 插槽 | 用途 | 必需 |
-| --- | --- | --- |
-| **无** | 值经 `v-model`、图标 / 清除按钮由组件渲染；label 经 `FmFormField` | — |
-
-&gt; **明确不设**：不设「搜索结果」插槽（结果展示属页面 / `FmTable`，职责分离）；不设边界 / focus 样式插槽（继承 `FmInput` 三状态硬约束）；不设自定义清除图标样式（经 `FmFormField` / 复用 token）。
-
----
-
-## 5. 批次二验收对照、复用落地与待处理事项
-
-### 5.1 全局验收项对照（《30》§5.4，本批相关）
-
-| 《30》§5.4 全局项 | 批次二状态 |
-| --- | --- |
-| 范围（12 类 / 36 SFC） | 本批取序号 7～18 共 12 个（`C-05` 3 + `C-06` 9），与《30》§4.4 逐名一致；**未新增、未改名、未删减**；全库 36 SFC 不变 |
-| Layer 2 / Layer 3 | §1 续表 #71～#116 共 46 行，全部 `var()` 映射 Layer 2、无 Layer 1 直引 / 字面值；复用方不另起别名（U-5）；全库累计 116 行连续（脚本 C 组核验） |
-| WCAG 2.1 AA / a11y 矩阵 | §2.1 对《30》§5.4.1 矩阵 9 行（本批相关）逐行给具体验收；三状态 §3 沿用《25》/《20》已批准规范；标准归因不降标准、按钮文字 1.4.3 分层、focus ring ≥3:1 为项目强化；色值零新增（脚本 H 组核验） |
-| 组件复用 | §4 逐卡「复用关系」字段 + §5.2 U-1～U-6 落地；`FmConfirm`/`FmDrawer` 继承 `FmModal`、C-06 各控件继承 `FmFormField`、`FmSearchInput` 继承 `FmInput`、`FmStepper` 继承 `FmButton`；无第二份重复规范、无新增共享基座 |
-| 双端 | 12 卡 PC / 手机变体齐备；触控 ≥44×44（输入 / 开关 / 步进 / 弹窗关闭）；375 / 390 / 430 逐卡写明；抽屉含 iOS 安全区 |
-| i18n | 12 卡逐卡 key 清单登记；无写死文案 / 拼接翻译；本步不产出译文文件 |
-| 数据契约 | `FmInput` 值恒为字符串、`type=&#x27;number&#x27;` 允许小数并原样透传（不做取整 / 最小单位换算 / 格式化，数值处理交业务层）；`FmStepper` 数量为整数、步长整数；`FmSelect` 空值为 `null`（唯一哨兵）。地址 mock 与真实模型同构；金额四字段与 `currencyCode` 属后续批次（C-11）本批不涉及，项目金额最小单位整数口径不变；零 Dexie 访问声明 |
-| P 组承接 | 本批 C-05 / C-06 无 P 组直接承接项；P 组 5 项仍不纳入（脚本 H 组核验） |
-| 本轮红线 | 无代码 / 无样机 / 无 CSS 正式版 / 无图片生成 / 无种子数据 / 无页面设计 / 四图未改；《19b》仍 DRAFT、本批零写入 |
-| 闸门 | 批次二提交后停止、等待 GPT 独立审核；批次三未启动；自检通过不构成放行 |
-
-### 5.2 复用关系落地（U-1～U-6 · 批次二）
-
-| 约束 | 批次二落地 |
-| --- | --- |
-| U-1 唯一定义处 | `FmModal` = 浮层机制唯一定义处；`FmInput` = 输入框三状态唯一定义处；`FmFormField` = 字段容器 / 校验提示唯一定义处；`FmCheckbox` = 勾选框边界 / `aria-checked` 约定定义处 |
-| U-2 数量与归属不变 | 本批 12 个 SFC 与《30》§4.4 序号 7～18 一致，未新增共享基座、P 组仍 5 项不纳入 |
-| U-3 规范条目承载 | 弹窗 / 表单的共用规则写在基座卡 + §2 / §3 规范条目，不新建基座 SFC |
-| U-4 引用基座验收编号 | `FmConfirm`/`FmDrawer` 引用 M-01～M-06；`FmTextarea`/`FmSearchInput` 引用 S-01～S-07；`FmRadio`/`FmSwitch` 引用 CB-01～CB-05；`FmStepper` 引用 B-01～B-08；继承结论不重复实测、另测差异态 |
-| U-5 别名按基座归属 | `--fm-modal-*` 只在 `FmModal` 定义、`--fm-input-*` 只在 `FmInput` 定义、`--fm-field-*` 只在 `FmFormField` 定义、`--fm-checkbox-*` 只在 `FmCheckbox` 定义；复用方不另起重复别名（本批 46 行无重复） |
-| U-6 不产生新组件 | 本批未用 P 组承接位产生任何新组件；`FmPagination` 仍只属 C-04（批次三），本批不涉及 |
-
-### 5.3 待处理事项登记（TBD · 批次二新增）
-
-&gt; 登记原则同《34》§7：如实列出、不在组件层就地解决（L3-5）；未获批前只写「未固化、待确认」口径、不写占位数值、不进映射表、不写任何 `.css`。本批沿用《34》TBD-01～04（线宽 / 退款字典 / 小字号 / 危险按钮 hover），新增 TBD-05。
-
-| 编号 | 事项 | 核验事实（来源） | 本轮处置（组件层） | 回流去向 |
-| --- | --- | --- | --- | --- |
-| **TBD-05** | **遮罩背景半透明色 Token 缺失**（§4.1 `FmModal` / §4.2 `FmConfirm` / §4.3 `FmDrawer`） | 《19b》Layer 1 / Layer 2 **无独立遮罩背景色 Token**（仅有 `--z-mask` 层级；`--shadow-*` 中的 rgba(26,26,26,·) 属阴影色、语义不同，不得挪作遮罩底）；《16》V1.6 亦无独立遮罩色 | 三卡只通过 `--fm-modal-mask-z` 定义遮罩**层级**；**遮罩背景色写「未固化，待 TBD-05 Token 确认」**，不写任何具体 HEX / rgba 值、不入 §1 映射表、不写 `.css`；遮罩对 AT 隐藏（`aria-hidden`）的 a11y 规则照常落实。遮罩背景色**继续保持未固化** | **治理口径（V1.1）**：TBD-05 作为**待提交的 Token 变更议题**登记，**等待后续正式授权**。①-1 已关闭、本批**不直接修改任何已批准文档**（《19》《19b》《16》《20》《25》及《34》《35》均零写入）、**不新增 Token、不造值、不给出任何候选色值**。授权后另行走 ①-1 Design Tokens 层变更流程并纳入《19b》与《20》核验；获批前组件层持续不落地具体色值 |
-
-&gt; **本登记不构成对 ①-1 已批准 Token 的修改**：①-1 已关闭，《19》《19b》《16》《20》《25》及《34》《35》本批**零写入**；上表仅记录待决议题与组件层的未固化口径，TBD-05 **等待后续正式授权**后才进入 Token 变更流程，本批不触发任何 ①-1 文档改动。
-
----
-
-## 6. 后续批次计划（预告，本批不执行）
-
-| 批次 | 内容 | SFC 数 |
-| --- | --- | --- |
-| 批次三（T-04 上） | C-02 `FmProductCard` + C-04 `FmTable` `FmPagination`（P-03 承接说明） | 3 |
-| 批次四（T-04 下） | C-07 六件 + C-11 四件（金额四字段 / 派生均价）+ C-12 三件（`FmCarousel` 按 §5.4.2）+ P-01 / P-02 组合补齐 | 13 |
-| 批次五（T-05 + T-06） | 八项交叉核验 + 对比度补测 + 验收对照表 + 送审包汇总 | 0 |
-
-&gt; **批次三尚未开始**：本批 V1.1 提交后须先经 GPT 独立复审通过；**自检脚本通过不构成放行**，不得自动开始批次三（T-04 上）。全库累计批次一 8 + 批次二 12 + 批次三 3 + 批次四 13 = **36**，与《30》§4.4 一致。
-
----
-
-&gt; **文档结束 · 批次二（T-03）**：共 12 张规范卡（§4.1～§4.12）、续表映射 46 行（#71～#116）、§5.4.1 矩阵逐行落实（§2）、三状态实测表（§3）、验收对照与复用落地（§5）、TBD-05（§5.3）。自检记录见《37》。**提交后停止，等待 GPT 独立审核；批次三未启动。**
-
-========================================================================
-《37》37-①-2正式设计批次二交付与自检记录.md（全文精确核对无 #71～#92 错误引用；正文与断言零改，仅加核查说明行；113/113 PASS）
-========================================================================
-
-# 《37》①-2 正式设计 · 批次二交付与自检记录（V1.1 契约矛盾修正）
-
-| 项 | 内容 |
-| --- | --- |
-| 记录编号 | **`CHK-①-2-B2-20261116-02`**（批次二 · T-03 · V1.1 契约矛盾修正）；V1.0 为 `CHK-①-2-B2-20261116-01` |
+| 记录编号 | **`X15-①-2-20261116-01`**（①-2 四步闸门第 2 步 · X-15 最终确认 · 首版） |
 | 发生日期 | 2026-11-16 |
-| 触发 | GPT 已完成《34》《35》V1.2 最终独立审核，**正式通过 ①-2 批次一（8 个组件）**、允许启动批次二（T-03）；用户 6 项执行要求：①严格按《30》V1.3 范围不增删组件；②沿用《34》模板完整定义全字段；③输入框三状态沿用已批准规范；④无障碍矩阵逐项落实不只写原则；⑤不写代码 / 样机 / CSS 正式版 / 页面设计；⑥提交完整批次二文档 + 自检记录后停止、不自动启动批次三。**V1.1 触发**：GPT 完成 V1.0 独立审核——整体结构 / 12 组件范围 / 46 行映射 / 三状态 / 复用 / 矩阵基本通过，提出 4 处契约问题 + TBD-05 治理；用户指令「只处理上述问题、不扩展修改范围」 |
-| 依据 | 《30》V1.3 §4.4 序号 7～18 / §4.6 / §5.3 / §5.4 / **§5.4.1 矩阵** / §5.4.2；《34》V1.2 模板与映射 #1～#70；《25》输入框三状态规则（沿用）；《20》§5.2 三状态实测；《19》《19b》Layer 1～2（**仍 DRAFT，本批零写入**）；《16》V1.6 色值 |
-| 本批交付 | **《36》**（`SPEC-①-2-20261116-02-B2`，**V1.1 契约矛盾修正版**；V1.0 为首版）：§1 续表映射 **#71～#116（46 行）** + §2 §5.4.1 矩阵逐行落实（9 行）+ §3 输入框三状态实测表 + §4 **12 张规范卡（序号 7～18）** + §5 验收对照 / 复用落地 / **TBD-05（待授权议题）** + §6 后续批次预告。**本轮仅修正 4 处契约矛盾 + TBD-05 治理，未扩范围** |
-| 本轮修正（V1.1） | ① `FmInput` 摘要删除「前后缀经 props 提供」，明确本批无 `prefix`/`suffix`；② `FmInput` `type=&#x27;number&#x27;` 允许小数、删「禁浮点」误述、明确字符串原样透传 + 数值处理交业务层（项目金额整数口径仍由 C-11/`utils/money` 承担，未改）；③ `FmSelect` `modelValue` 统一 `string \| number \| null`、默认 `null`、清除同时 `change({value:null,option:null})`；④ `FmDrawer` 新增 `dialogLabelKey` 作 `aria-label` 兜底、禁关闭按钮文案作 dialog 名称；⑤ TBD-05 改为待授权 Token 变更议题、①-1 零写入 |
-| ISSUE-01 核查（2026-11-16） | 按用户授权核查《36》§1.1 标题区间更正（#71～#92 → #71～#88）对本记录的影响：全文仅出现 `#71～#116` / `#71～#82` / `#89～#93` 等区间，**无 `#71～#92` 错误区间引用，无需修正说明**；§3 自检脚本 C2（序号 71..116 连续）/ C8（全库 #1～#116 口径）均按映射行而非标题断言，113/113 PASS 结论不受标题更正影响。主版本号不变，变更记录另见《44》 |
-| 文档组织 | **独立分册**：批次一《34》《35》已获 GPT 最终通过并冻结，其 120 项自检脚本读取《34》全文并按「8 卡 / 70 行」断言；若把批次二追加进《34》将使已通过脚本失效。故本批独立成册（《36》/《37》），**模板 / Layer 3 编号 / 验收编号续接《34》而不重叠，《34》《35》零改动、脚本保持可复现** |
-| 本批红线 | 无组件代码（未创建 `src/` 与任何 `.vue`/`.ts`/`.css`）、无样机、CSS 不固化、P 组零纳入、不新增组件、不改色值 / 基线 / 四图、不进入页面设计；**三状态规则逐字沿用未改、未引入 B `#949494` 为首选** |
-| 停止点 | **提交《36》《37》V1.1 后停止，等待 GPT 独立复审通过后才开始批次三；自检脚本通过不构成放行** |
+| 触发 | **用户本轮明确表示「继续推进后续工作，确认 ①-2 基础组件规范整体成果正式通过」**；该确认即《43》§8 恢复、《30》V1.3 §5.6 / §7 与《04》X-15 定义的「①-2 正式成果单独送审、单独确认」那一次用户最终确认 |
+| 确认前置 | ① GPT 已完成《42》《43》批次五完整原文独立审核并总体通过（T-05 八项交叉核验与 T-06 送审包主体通过，无新实质性冲突）；② 用户 2026-11-16 授权完成两项定点修订（《36》ISSUE-01 标题、《43》X-15 流程），已交付《44》并复验三脚本全绿；③ 本轮用户明确最终确认。**审核层结论 + X-15 用户确认两步齐备** |
+| 确认对象 | ①-2 正式设计完整成果：四批组件规范《34》V1.2 /《36》V1.1 /《38》V1.2 /《40》V1.1 + 四份自检记录《35》《37》《39》《41》 + T-05《42》 + T-06《43》 + 两项修订记录《44》；计划基线《30》V1.3 |
+| 本记录结论 | **①-2 基础组件规范整体成果正式通过，①-2 正式关闭。** 四步闸门第 2 步完成；①-3 页面模板为独立闸门，须按既定流程另行启动，**本记录不自动进入 ①-3、不进入 ①-4** |
+| 本轮零写入 | **不改**任何已通过组件规范（36 卡）、Token 值 / 映射数据 / 编号、色值源《16》、《30》V1.3、四份基线、四张 V5 图、①-1 全部文件、《42》《43》《44》；本记录为**新增**文档，历史文档保持冻结 |
+| 状态口径 | CSS Variables 仍 `DRAFT`；TBD-01 / TBD-05 / Q-10 / Q-05~Q-15 维持原状态；不铺种子数据、不建素材分库、不写业务代码、不建 `src/` |
 
 ---
 
-## 1. 先行核验结论（用户 6 项要求，逐条成立）
+## 1. 用户确认原文与核验（先判断、后登记）
 
-| # | 用户要求 | 核验结果 |
-| --- | --- | --- |
-| 1 | 严格按《30》V1.3 范围、不增删组件 | 成立。本批取序号 7～18 共 12 个（C-05 三件 + C-06 九件），与《30》§4.4 逐名对账（脚本 A2）；全库 36 SFC 未变（A6）；P 组 5 项零纳入（H4） |
-| 2 | 沿用《34》模板、完整定义全字段 | 成立。每张卡 11 字段齐全（A3）+ 契约明细子节（Props/Events/Slots，A4/B 组）+「明确不设」负向条目（A5）；模板字段与《34》§3 一致 |
-| 3 | 输入框三状态沿用已批准规范 | 成立。§3 逐字沿用《25》/《20》：S1/S2/S3 三项实测值（4.54:1 / 15.96:1 / 7.56:1 / 6.94:1）如实转录（D2），兜底 A `#707070` 唯一首选四底全 ≥3:1（D3）、B `#949494` 暂不作为首选（D4）；`FmSearchInput` 继承结论不重复实测（D6） |
-| 4 | 无障碍矩阵逐项落实、不只写原则 | 成立。§2.1 对《30》§5.4.1 矩阵本批 9 行逐行给出对比度 / 焦点 / 禁用态 / 键盘语义的具体验收（E1/E2），每行有编号化验收项与卡内编号互引；标准归因逐字沿用未降标准（E5） |
-| 5 | 不写代码 / 样机 / CSS 正式版 / 页面设计 | 成立。《19b》头部 DRAFT 未动（H1）；无 `.vue`/`.ts`/`.css` 实现文件（H2）；未进入页面设计（H9） |
-| 6 | 提交后停止、不自动启动批次三 | 成立。§6 明示批次三未启动、自检通过不构成放行（A8/H7） |
+| 项 | 内容 |
+| --- | --- |
+| 用户本轮确认（忠实摘要） | 「用户已明确表示继续推进后续工作，确认 ①-2 基础组件规范整体成果正式通过。请执行 X-15 最终确认记录。」 |
+| 独立核验 | **成立**。① 确认对象明确为 ①-2 整体成果，非单批、非启动授权；② 该确认发生在 GPT 审核通过与两项修订交付之后，顺序符合《43》§8 /《30》V1.3 §5.6「GPT 审核通过=审核层结论≠关闭；仍须 X-15 用户确认；X-15 后关闭」；③ 未提出任何需回改规范 / Token 的附带条件 |
+| 判断 | 两步前置齐备，X-15 条件满足。**登记为 ①-2 最终确认并正式关闭 ①-2**，不设额外闸门、不追溯修改已通过成果 |
 
-## 1.0 本轮 V1.1 四项修正先行核验（GPT 意见逐条判断）
+---
 
-&gt; 按协作约定，转来 GPT 意见先自行核验合理性再执行。4 项契约问题 + TBD-05 治理**逐条核验成立**，处置方向如下；未盲从、未扩范围。
+## 2. ①-2 最终状态
 
-| # | GPT 意见 | 自行核验判断 | 处置（本轮落点） |
+| 维度 | 最终结论 |
+| --- | --- |
+| 范围 | 12 类不减不改名、36 SFC 逐卡、P 组 5 项零新增（承接不新增组件） |
+| 规范卡分布 | 批次一 8 + 批次二 12 + 批次三 3 + 批次四 13 = **36**（独立分册，编号零改动） |
+| Layer 3 → Layer 2 映射 | 全库 **#1～#229 连续无缺、100% `var()`**、无 Layer 1 直引 / 字面值 |
+| 逐批自检 | 《35》120/120、《37》113/113、《39》118/118、《41》161/161，全部 EXIT=0；T-05《42》78/78、T-06《43》41/41 |
+| 交叉核验 | T-05 八项（范围 / Layer 映射 / WCAG / i18n / 双端 / 数据契约 / 70 套复用 / P 组与复用）全部通过；唯一 ISSUE-01 已按《44》闭环 |
+| 无越界 | 无组件代码、无样机、无 CSS 正式版、无图片 / Logo、无种子数据、无 `src/`；四张 V5 图未改；①-1 与四份基线零写入 |
+| 闸门 | ①-2 单独送审、单独审核、单独由用户确认（X-15）——**本次完成** |
+
+---
+
+## 3. 交付文件索引（①-2 完整归档）
+
+| # | 文档 | 角色 | 版本 / 状态 |
 | --- | --- | --- | --- |
-| 1 | `FmInput` 摘要称前后缀经 props 提供，但 §4.5.1 未定义 `prefix`/`suffix`、且明确本批不新增 | **成立**：摘要与契约明细／明确不设三处自相矛盾，属&quot;描述了不存在的契约&quot; | 删摘要中「前后缀经 props 提供」；摘要、Slots 表、明确不设统一为「本批无前后缀、无 `prefix`/`suffix`」；扩展须单独变更并重验三状态（《36》§4.5 字段 2/10、§4.5.1）；验收 S-10 |
-| 2 | `type=&#x27;number&#x27;` + 字符串值却称禁浮点，字符串存储阻止不了小数 | **成立**：字符串存储只避免 JS number 精度丢失，与&quot;禁浮点&quot;是两回事；原生 `type=number` 也不构成整数限制 | 采 GPT 第二条路：**允许小数**、删「禁浮点」误述，明确值字符串原样透传、空值 `&#x27;&#x27;`、数值解析／取整／最小单位换算／格式化交调用方业务层（C-11／`utils/money`）；**不把金额计算提前塞入本组件**；项目金额整数口径未改（《36》§4.5 字段 2/9/10、§4.5.1；验收 S-10） |
-| 3 | `FmSelect` `modelValue` 为 `string \| number`，但 `update:modelValue` 允许 `null` | **成立**：Props 与 Events 空值口径不一致，清除后值无合法落点 | 统一 `string \| number \| null`、默认 `null`（唯一空值哨兵）；清除派发 `update:modelValue(null)` 且同时 `change({value:null,option:null})`；摘要／Props／Events／数据契约／验收五处一致（《36》§4.7；验收 SEL-08） |
-| 4 | `FmDrawer` 无标题时指向关闭按钮／正文首标题，无法保证准确可理解的 dialog 名称 | **成立**：关闭按钮「关闭」不是 dialog 名称；正文首标题无契约保证必存在 | 新增 `dialogLabelKey` prop 作 `aria-label` 兜底；有标题→`aria-labelledby`、无标题→`dialogLabelKey`、二者皆缺为实现错误；严禁复用 `fm.drawer.close`（《36》§4.3 字段 2/6/8/10、§4.3.1；验收 D-07） |
-| 5 | TBD-05 治理：遮罩色保持未固化、①-1 已关闭不得直接改、作为待授权议题登记 | **成立**：V1.0「建议新增 Layer 2 遮罩色」措辞有被误读为造值／直接改 ①-1 的风险 | 删该措辞，改为「待提交的 Token 变更议题、等待后续正式授权」；①-1 已关闭、本批零写入、不新增 Token、不造值；组件层持续未固化（《36》§5.3；脚本 G5/G6） |
+| 1 | 《30》阶段一第二步正式设计任务计划与最终组件清单 | ①-2 计划基线 | V1.3 · GPT 通过 |
+| 2 | 《31》①-2 任务计划与组件清单 V1.1 修订记录 | 计划修订记录 | 归档 |
+| 3 | 《32》①-2 任务计划 V1.2 无障碍表述修订记录 | 计划修订记录 | 归档 |
+| 4 | 《33》①-2 任务计划 V1.3 轮播无障碍覆盖修订记录 | 计划修订记录 | 归档 |
+| 5 | 《34》基础组件规范文档 · 正式版（批次一 8 卡） | 组件规范 | V1.2 · 120/120 |
+| 6 | 《35》批次一交付与自检记录 | 自检记录 | V1.2 |
+| 7 | 《36》基础组件规范文档 · 批次二（12 卡） | 组件规范 | V1.1 · ISSUE-01 已修 |
+| 8 | 《37》批次二交付与自检记录 | 自检记录 | V1.1 · 113/113 |
+| 9 | 《38》基础组件规范文档 · 批次三（3 卡） | 组件规范 | V1.2 |
+| 10 | 《39》批次三交付与自检记录 | 自检记录 | V1.2 · 118/118 |
+| 11 | 《40》基础组件规范文档 · 批次四（13 卡） | 组件规范 | V1.1 |
+| 12 | 《41》批次四交付与自检记录 | 自检记录 | V1.1 · 161/161 |
+| 13 | 《42》T-05 交叉核验报告 | 交叉核验 | 78/78 · 八项通过 |
+| 14 | 《43》T-06 送审包 | 送审包 | 41/41 · X-15 口径已正 |
+| 15 | 《44》批次五两项定点修订变更记录 | 修订记录 | 三脚本全绿 |
+| 16 | **《45》本记录** | **X-15 最终确认** | **V1.0 · ①-2 关闭** |
 
-## 1.1 本批如实登记（不隐藏）
-
-| # | 事项 | 处置 |
-| --- | --- | --- |
-| 1 | **遮罩背景半透明色无 Token** | 《19b》《16》均无独立遮罩色 Token（只有 `--z-mask` 层级与阴影 rgba，语义不同）。按 L3-5 不在组件层造值：三卡只定义遮罩层级，**遮罩背景色写「未固化，待 TBD-05 Token 确认」**、不进映射表、不写 `.css`（脚本 G1～G3）。**V1.1 治理**：①-1 已关闭，TBD-05 作为待授权 Token 变更议题登记，不直接改已批准文档、不给候选色值（脚本 G5/G6） |
-| 2 | **未覆盖对比度组合** | 下拉箭头在浅底、`FmSwitch` 轨道与底等《20》未穷举组合，逐处标「批次五补测」，不冒充已测、不写估值（E7） |
-| 3 | **数值来源** | 三状态与对比度数值为《20》已有程序实测的如实转录，非本批新测（D7）；①-2 为规范文档、无代码可渲染 |
-| 4 | **复用不重复实测** | `FmConfirm`/`FmDrawer` 继承 `FmModal`、C-06 各控件继承 `FmFormField`、`FmSearchInput` 继承 `FmInput`、`FmStepper` 继承 `FmButton`；引用基座验收编号、只测差异态（F 组） |
+&gt; 合计：①-2 全过程归档 16 份（计划 4 + 规范 4 + 自检 4 + 核验 1 + 送审 1 + 修订 1 + 本确认 1）。所有已通过文档自本记录起**冻结**，任何后续变更须另起授权与变更记录。
 
 ---
 
-## 2. 第一批内容一览
+## 4. 遗留事项（如实登记，移交后续）
 
-| 规范卡 | 类 / 序号 | 要点 | 契约与验收落点 |
+| # | 事项 | 状态 | 处置口径 |
 | --- | --- | --- | --- |
-| `FmModal` | C-05 / 7 | 浮层机制唯一定义处；焦点陷阱 / Esc / 关闭返回 | §4.1.1 全契约；M-01～M-08；映射 #71～#82 |
-| `FmConfirm` | C-05 / 8 | 二次确认；tone 三档；危险态初始焦点落「取消」 | §4.2.1；CF-01～CF-06；复用 M-01～M-06 |
-| `FmDrawer` | C-05 / 9 | 底部 / 侧滑抽屉；iOS 安全区；**无标题时 `dialogLabelKey` 作 dialog 名称（禁用关闭按钮文案）** | §4.3.1；D-01～**D-07**；复用浮层机制 |
-| `FmFormField` | C-06 / 10 | 字段容器 / 校验提示唯一定义处；label / id / aria 关联 | §4.4.1；FF-01～FF-06；映射 #89～#93 |
-| `FmInput` | C-06 / 11 | **输入框三状态基座**；S1/S2/S3 + 兜底 A；**无前后缀 props、`number` 允许小数且原样透传** | §4.5.1；S-01～**S-10**；映射 #94～#105 |
-| `FmTextarea` | C-06 / 12 | 多行；差异态下三状态仍成立 | §4.6.1；TA-01～TA-05；复用 S-01～S-07 |
-| `FmSelect` | C-06 / 13 | 下拉；listbox / 方向键 / aria-expanded；**空值 `null` 唯一哨兵、清除触发 change** | §4.7.1；SEL-01～**SEL-08**；映射 #107～#109 |
-| `FmCheckbox` | C-06 / 14 | 勾选框边界 ≥3:1 定义处；indeterminate | §4.8.1；CB-01～CB-06；映射 #110～#113 |
-| `FmRadio` | C-06 / 15 | 方向键组内切换；复用 checkbox 边界 | §4.9.1；R-01～R-05；无新增别名 |
-| `FmSwitch` | C-06 / 16 | role=switch；轨道 / 滑块边界 | §4.10.1；SW-01～SW-06；映射 #114～#116 |
-| `FmStepper` | C-06 / 17 | spinbutton；min/max 禁用；复用按钮基座 | §4.11.1；ST-01～ST-07；引用 B-01～B-08 |
-| `FmSearchInput` | C-06 / 18 | 搜索图标 / 清除；继承三状态不重复实测 | §4.12.1；SI-01～SI-06；无新增别名 |
-
-另含：§1 续表映射 **46 行（#71～#116）**、§2 §5.4.1 矩阵逐行落实 **9 行**、§3 三状态实测表、§5 验收对照 / 复用落地 / **TBD-05**、§6 后续批次预告。
+| 1 | TBD-01 分隔线宽度 Token 缺失 | 未固化（组件层已清除 1px 占位） | 待授权走 ①-1 Token 变更流程；不造值 |
+| 2 | TBD-05 遮罩背景半透明色 Token 缺失 | 待授权 | 已登记待提交议题；不新增遮罩色 Token、不造值 |
+| 3 | Q-10 五语言完整译文 | 待确认（异步阶段一之后） | ①-2 只定 i18n key 契约，不产译文 JSON |
+| 4 | Q-05 / Q-06 / Q-07～Q-15 其余待确认项 | 待确认 | 与 ①-2 组件规范无直接阻塞，保持原状 |
+| 5 | CSS Variables 正式版 | `DRAFT` | 用户明确不固化；规范文档只写 Token 名称与映射 |
+| 6 | 素材分库 / 种子数据 / 真实图片 | 未建立（阶段一 ③ 及之后） | ①-3 视觉稿图片位用结构化占位 + 真实业务标注，不用无关图片、不用 AI 图 |
+| 7 | ①-3 页面模板 / ①-4 页面设计 | 独立闸门 | ①-3 本轮仅提交启动方案 + 首批视觉稿，待 GPT 审核；不自动进入 ①-4 |
 
 ---
 
-## 3. 复核脚本与结果（正文 == stdout，可逐字复现）
+## 5. 四步闸门状态（X-15 口径，引用《04》/《21》）
 
-```python
-# -*- coding: utf-8 -*-
-# 《36》批次二 V1.1 全量复核脚本（可逐字复现）
-import re, pathlib
-
-d = pathlib.Path(&quot;C:/Users/Administrator/WorkBuddy/2026-11-11-14-28-23/docs&quot;)
-s = (d / &quot;36-阶段一第二步-基础组件规范文档-批次二.md&quot;).read_text(encoding=&quot;utf-8&quot;)
-s34 = (d / &quot;34-阶段一第二步-基础组件规范文档-正式版.md&quot;).read_text(encoding=&quot;utf-8&quot;)
-css = (d / &quot;19b-阶段一第一步-CSS-Variables草案.css&quot;).read_text(encoding=&quot;utf-8&quot;)
-t20 = (d / &quot;20-阶段一第一步-全组合对比度核验表.md&quot;).read_text(encoding=&quot;utf-8&quot;)
-t25 = (d / &quot;25-①-1送审包V1.2最终完善记录与复核结果.md&quot;).read_text(encoding=&quot;utf-8&quot;)
-t30 = (d / &quot;30-阶段一第二步-正式设计任务计划与最终组件清单-GPT审核稿.md&quot;).read_text(encoding=&quot;utf-8&quot;)
-
-checks = []
-def ck(name, cond): checks.append((name, bool(cond)))
-
-def section(start_marker, end_marker):
-    seg = s[s.index(start_marker):]
-    i = seg.find(end_marker)
-    return seg[:i] if i &gt; 0 else seg
-
-def card_detail(i):
-    seg = s[s.index(&quot;#### 4.%d.1 契约明细&quot; % i):]
-    j = seg.find(&quot;\n### 4.&quot;)
-    return seg[:j] if j &gt; 0 else seg
-
-# ---------- A 批次二结构与范围 ----------
-cards = re.findall(r&quot;^### 4\.(\d+) (Fm\w+)（C-(\d{2}) · 序号 (\d+)）&quot;, s, re.M)
-ck(&quot;A1 规范卡数量 = 12&quot;, len(cards) == 12)
-expect = [
-    (&quot;1&quot;,&quot;FmModal&quot;,&quot;05&quot;,&quot;7&quot;),(&quot;2&quot;,&quot;FmConfirm&quot;,&quot;05&quot;,&quot;8&quot;),(&quot;3&quot;,&quot;FmDrawer&quot;,&quot;05&quot;,&quot;9&quot;),
-    (&quot;4&quot;,&quot;FmFormField&quot;,&quot;06&quot;,&quot;10&quot;),(&quot;5&quot;,&quot;FmInput&quot;,&quot;06&quot;,&quot;11&quot;),(&quot;6&quot;,&quot;FmTextarea&quot;,&quot;06&quot;,&quot;12&quot;),
-    (&quot;7&quot;,&quot;FmSelect&quot;,&quot;06&quot;,&quot;13&quot;),(&quot;8&quot;,&quot;FmCheckbox&quot;,&quot;06&quot;,&quot;14&quot;),(&quot;9&quot;,&quot;FmRadio&quot;,&quot;06&quot;,&quot;15&quot;),
-    (&quot;10&quot;,&quot;FmSwitch&quot;,&quot;06&quot;,&quot;16&quot;),(&quot;11&quot;,&quot;FmStepper&quot;,&quot;06&quot;,&quot;17&quot;),(&quot;12&quot;,&quot;FmSearchInput&quot;,&quot;06&quot;,&quot;18&quot;),
-]
-ck(&quot;A2 卡名/类/序号对账《30》§4.4（7~18）&quot;, cards == expect)
-ck(&quot;A3 11 字段齐全（12 张）&quot;, s.count(&quot;| 1 | **组件职责与边界** |&quot;) == 12 and s.count(&quot;| 11 | **复用关系** |&quot;) == 12)
-ck(&quot;A4 契约明细子节 = 12&quot;, len(re.findall(r&quot;^#### 4\.\d+\.1 契约明细（Props / Events / Slots）&quot;, s, re.M)) == 12)
-ck(&quot;A5 明确不设负向条目 ≥12&quot;, s.count(&quot;**明确不设**&quot;) &gt;= 12)
-ck(&quot;A6 全库 36 SFC 未变&quot;, &quot;8 + 12 + 3 + 13 = **36**&quot; in s or &quot;8 + 批次二 12 + 批次三 3 + 批次四 13 = **36**&quot; in s)
-ck(&quot;A7 C-05 三件 + C-06 九件&quot;, &quot;C-05 `FmModal`(7)&quot; in s and &quot;`FmSearchInput`(18)&quot; in s)
-ck(&quot;A8 批次三未启动&quot;, &quot;批次三尚未开始&quot; in s and &quot;不得自动开始批次三&quot; in s)
-
-# ---------- B 契约完整性 ----------
-for i in range(1, 13):
-    seg = card_detail(i)
-    ck(&quot;B%02d-a 卡%d Props 表头含类型/必填/默认值/枚举列&quot; % (i, i),
-       &quot;| 名称 | 类型 | 必填 | 默认值 | 合法枚举 / 行为 |&quot; in seg)
-    ck(&quot;B%02d-b 卡%d Events 表含参数/触发时机&quot; % (i, i),
-       &quot;| 事件 | 参数 | 触发时机 |&quot; in seg and &quot;**Events**&quot; in seg)
-    ck(&quot;B%02d-c 卡%d Slots 表含用途/必需&quot; % (i, i),
-       &quot;**Slots**&quot; in seg and &quot;| 插槽 | 用途 | 必需 |&quot; in seg)
-ck(&quot;B13 Props 表头 12 处&quot;, s.count(&quot;| 名称 | 类型 | 必填 | 默认值 | 合法枚举 / 行为 |&quot;) == 12)
-ck(&quot;B14 Events 表头 12 处&quot;, s.count(&quot;| 事件 | 参数 | 触发时机 |&quot;) == 12)
-ck(&quot;B15 Slots 表头 12 处&quot;, s.count(&quot;| 插槽 | 用途 | 必需 |&quot;) == 12)
-
-# ---------- C Layer 3 映射表（续表 #71~#116）----------
-rows = re.findall(r&quot;^\| (\d+) \| `(--fm-[\w-]+)` \| `(var\(--[\w-]+\))` \|&quot;, s, re.M)
-ck(&quot;C1 续表行数 = 46&quot;, len(rows) == 46)
-ck(&quot;C2 序号 71..116 连续&quot;, [int(i) for i,_,_ in rows] == list(range(71,117)))
-ck(&quot;C3 别名唯一不重复&quot;, len(set(a for _,a,_ in rows)) == 46)
-sec1 = section(&quot;### 1.1&quot;, &quot;### 1.2&quot;) + section(&quot;### 1.2&quot;, &quot;---\n\n## 2.&quot;)
-cells = re.findall(r&quot;^\| \d+ \| `--fm-[\w-]+` \| `([^`]*)` \|&quot;, sec1, re.M)
-ck(&quot;C4 映射列全部 var() 形式&quot;, all(c.startswith(&quot;var(--&quot;) and c.endswith(&quot;)&quot;) for c in cells))
-ck(&quot;C5 映射列无 Layer 1 直引&quot;, not any(&quot;primitive&quot; in c for c in cells))
-ck(&quot;C6 映射列无 HEX / px / 时长字面（shadow 为合法 Layer 2 token）&quot;, not any(re.search(r&quot;#[0-9A-Fa-f]{3,8}|\d+px|\d+ms&quot;, c) for c in cells))
-ck(&quot;C7 #97 placeholder → text-quaternary(#707070)&quot;, dict((a,b) for _,a,b in rows)[&quot;--fm-input-placeholder&quot;] == &quot;var(--color-text-quaternary)&quot;)
-ck(&quot;C8 全库累计 116 行口径在册&quot;, &quot;#71～#116 共 **46 行&quot; in s and &quot;全库累计 #1～#116 共 116 行&quot; in s)
-ck(&quot;C9 遮罩只定义 z 层不入映射色&quot;, &quot;--fm-modal-mask-z&quot; in s and &quot;遮罩背景色&quot; not in &quot;\n&quot;.join(cells))
-ck(&quot;C10 复用方不另起重复别名口径&quot;, &quot;复用方不另起重复别名&quot; in s and &quot;U-5&quot; in s)
-
-# ---------- D 三状态规则沿用《25》/《20》----------
-ck(&quot;D1 S1/S2/S3 全部在册&quot;, all(x in s for x in [&quot;**S1 空白**&quot;,&quot;**S2 已填写**&quot;,&quot;**S3 焦点**&quot;]))
-ck(&quot;D2 三状态实测值逐字沿用《20》&quot;, all(x in s for x in [&quot;4.54:1&quot;,&quot;15.96:1&quot;,&quot;7.56:1&quot;,&quot;6.94:1&quot;]))
-ck(&quot;D3 兜底 A #707070 唯一首选四底 ≥3:1&quot;, all(x in s for x in [&quot;4.95:1&quot;,&quot;4.54:1&quot;,&quot;4.63:1&quot;,&quot;4.44:1&quot;,&quot;唯一首选&quot;]))
-ck(&quot;D4 兜底 B #949494 暂不作为首选&quot;, &quot;#949494&quot; in s and &quot;暂不作为首选&quot; in s and &quot;浅底 &lt;3:1&quot; in s)
-ck(&quot;D5 不凭浅灰底/Label/间距判达标&quot;, &quot;不得**仅凭浅灰填充底色&quot; in s and &quot;形状间距&quot; in s)
-ck(&quot;D6 复用方不重复实测三状态&quot;, &quot;不重复实测三状态&quot; in s and &quot;另测自身差异态&quot; in s)
-ck(&quot;D7 数值来自《20》程序实测非本批新测&quot;, &quot;如实转录&quot; in s and &quot;非本批新测&quot; in s)
-ck(&quot;D8 《20》《25》三步规则来源在册&quot;, &quot;《25》§2&quot; in s and &quot;《20》§5.2.2&quot; in s and &quot;三状态必检&quot; in t20 and &quot;三状态&quot; in t25)
-
-# ---------- E §5.4.1 无障碍矩阵逐行落实 ----------
-sec2 = section(&quot;### 2.1&quot;, &quot;\n## 3.&quot;)
-matrix_rows = [
-    &quot;FmInput&quot;,&quot;FmTextarea&quot;,&quot;FmSelect&quot;,&quot;FmCheckbox&quot;,&quot;FmRadio&quot;,
-    &quot;FmSwitch&quot;,&quot;FmStepper&quot;,&quot;FmModal` / `FmConfirm` / `FmDrawer&quot;,&quot;FmButton` / `FmIconButton&quot;,
-]
-ck(&quot;E1 矩阵落实表含 9 行（本批相关）&quot;, all((&quot;`%s`&quot; % r) in sec2 for r in matrix_rows))
-ck(&quot;E2 每行有具体验收（非仅原则）&quot;, sec2.count(&quot;≥3:1&quot;) &gt;= 6 and sec2.count(&quot;4.5:1&quot;) &gt;= 6)
-ck(&quot;E3 焦点归因 SC 2.4.7 + 项目强化 ≥3:1&quot;, sec2.count(&quot;2.4.7&quot;) &gt;= 4 and &quot;项目强化&quot; in sec2)
-ck(&quot;E4 按钮文字 1.4.3 分层不统一按 3:1&quot;, &quot;不统一按 3:1&quot; in sec2 and &quot;普通按钮文字 4.5:1&quot; in sec2)
-ck(&quot;E5 标准归因说明逐字沿用未降标准&quot;, &quot;不降低任何标准&quot; in s and &quot;逐字沿用《30》V1.3 §5.4.1&quot; in s)
-ck(&quot;E6 aria 语义逐行落地&quot;, all(x in sec2 for x in [&quot;aria-invalid&quot;,&quot;aria-describedby&quot;,&quot;aria-expanded&quot;,&quot;aria-checked&quot;,&quot;aria-valuenow&quot;,&quot;aria-modal&quot;,&quot;role=listbox&quot;]))
-ck(&quot;E7 未覆盖组合标批次五补测&quot;, sec2.count(&quot;批次五补测&quot;) &gt;= 2)
-ck(&quot;E8 键盘可达逐行落地&quot;, all(x in sec2 for x in [&quot;方向键&quot;,&quot;Space&quot;,&quot;Esc&quot;,&quot;Tab&quot;]))
-ck(&quot;E9 焦点陷阱/关闭返回落弹窗行&quot;, &quot;焦点陷阱&quot; in sec2 and &quot;焦点返回触发元素&quot; in sec2)
-
-# ---------- F 复用关系 U-1~U-6 ----------
-ck(&quot;F1 U-1~U-6 六条齐备&quot;, all(&quot;U-%d&quot; % i in s for i in range(1,7)))
-ck(&quot;F2 Confirm 继承 Modal&quot;, &quot;**基座 = `FmModal`**&quot; in s and &quot;继承&quot; in s)
-ck(&quot;F3 Drawer 继承 Modal&quot;, &quot;FmDrawer&quot; in s and &quot;复用 `--fm-modal-z`&quot; in s)
-ck(&quot;F4 C-06 继承 FormField&quot;, &quot;FmFormField&quot; in s and &quot;字段容器基座&quot; in s)
-ck(&quot;F5 SearchInput 继承 Input&quot;, &quot;**基座 = `FmInput` + `FmFormField`**&quot; in s and &quot;不重复实测三状态&quot; in s)
-ck(&quot;F6 Stepper 继承 Button&quot;, &quot;基座 = `FmButton`（加减按钮）&quot; in s and &quot;引用 B-01～B-08&quot; in s)
-ck(&quot;F7 继承验收编号引用齐全&quot;, all(x in s for x in [&quot;M-01～M-06&quot;,&quot;S-01～S-07&quot;,&quot;CB-01～CB-05&quot;,&quot;B-01～B-08&quot;]))
-
-# ---------- G TBD-05 遮罩色如实登记 ----------
-ck(&quot;G1 TBD-05 已登记&quot;, &quot;TBD-05&quot; in s and &quot;遮罩背景半透明色 Token 缺失&quot; in s)
-ck(&quot;G2 CSS 无遮罩背景色 Token&quot;, &quot;--color-mask&quot; not in css and &quot;--mask-bg&quot; not in css)
-ck(&quot;G3 组件层不写遮罩色具体值&quot;, &quot;未固化，待 TBD-05 Token 确认&quot; in s and &quot;不写任何具体 HEX / rgba 值&quot; in s)
-ck(&quot;G4 沿用《34》TBD-01~04&quot;, &quot;沿用《34》TBD-01～04&quot; in s and &quot;TBD-01&quot; in s)
-ck(&quot;G5 TBD-05 待授权治理口径在册&quot;, &quot;待提交的 Token 变更议题&quot; in s and &quot;等待后续正式授权&quot; in s)
-
-# ---------- H 边界与红线 ----------
-ck(&quot;H1 CSS 仍 DRAFT&quot;, &quot;DRAFT / 草案 · 未固化 · 未经用户确认&quot; in css)
-ck(&quot;H2 无组件代码/样机声明&quot;, &quot;不生成任何 `.vue` / `.ts` / `.css` 实现文件&quot; in s and &quot;不做样机&quot; in s)
-ck(&quot;H3 12 类 36 SFC 未增未改名&quot;, &quot;未新增、未改名、未删减&quot; in s and &quot;全库 36 SFC 不变&quot; in s)
-ck(&quot;H4 P 组 5 项不纳入&quot;, &quot;P 组 5 项仍不纳入&quot; in s)
-ck(&quot;H5 不改色值/基线/四图&quot;, &quot;不改色值 / 基线 / 四张 V5 图&quot; in s)
-ck(&quot;H6 独立分册《34》《35》零写入&quot;, &quot;《34》《35》零改动&quot; in s and &quot;不改《34》《35》任何字节&quot; in s)
-ck(&quot;H7 闸门:GPT独立审核后放行&quot;, &quot;等待 GPT 独立审核&quot; in s and &quot;自检脚本通过不构成放行&quot; in s)
-ck(&quot;H8 本批范围 12 卡与续表声明&quot;, &quot;批次二独立分册&quot; in s and &quot;V1.1 · 契约矛盾修正版&quot; in s)
-ck(&quot;H9 未进入页面设计&quot;, &quot;不进入页面模板 / 页面设计&quot; in s)
-
-# ---------- I V1.1 契约矛盾修正专项核验 ----------
-s45 = section(&quot;### 4.5 FmInput&quot;, &quot;### 4.6 FmTextarea&quot;)
-s47 = section(&quot;### 4.7 FmSelect&quot;, &quot;### 4.8 FmCheckbox&quot;)
-s43 = section(&quot;### 4.3 FmDrawer&quot;, &quot;### 4.4 FmFormField&quot;)
-# 问题1 FmInput 前后缀
-ck(&quot;I1 FmInput 摘要已删前后缀经 props 矛盾描述&quot;, &quot;前后缀经 props 提供&quot; not in section(&quot;| 2 | **Props / Events / Slots**&quot;, &quot;| 3 | **PC 变体**&quot;) and &quot;本批不支持 `prefix` / `suffix` 前后缀 Props&quot; in s45)
-ck(&quot;I2 FmInput Props 无 prefix/suffix 契约&quot;, &quot;| `prefix`&quot; not in s45 and &quot;| `suffix`&quot; not in s45 and &quot;无 `prefix` / `suffix` Props&quot; in s45)
-ck(&quot;I3 FmInput 前后缀扩展须单独变更并重验三状态&quot;, &quot;单独提交变更&quot; in s45 and &quot;重新验证三状态&quot; in s45)
-# 问题2 FmInput number 规则
-ck(&quot;I4 FmInput 删除禁浮点误述并声明允许小数&quot;, &quot;禁浮点）、金额&quot; not in s45 and &quot;**允许小数**&quot; in s45 and &quot;非「禁浮点」&quot; in s45)
-ck(&quot;I5 FmInput 数值处理边界交业务层未提前塞金额&quot;, &quot;整数化、金额最小货币单位整数运算（`utils/money`）与格式化属业务层职责&quot; in s45 and &quot;C-11&quot; in s45 and &quot;不在本输入基座提前实现&quot; in s45)
-ck(&quot;I6 FmInput 空值与不解析原样透传契约&quot;, &quot;空值统一为 `&#x27;&#x27;`&quot; in s45 and &quot;原样透传&quot; in s45 and &quot;不做数值解析&quot; in s45)
-ck(&quot;I7 FmInput 验收 S-10 契约断言在册&quot;, &quot;S-10&quot; in s45 and &quot;无「禁浮点」表述&quot; in s45)
-# 问题3 FmSelect 空值
-ck(&quot;I8 FmSelect modelValue 统一含 null 且默认 null&quot;, &quot;`string \\| number \\| null` | 否 | `null`&quot; in s47 and &quot;唯一空值哨兵&quot; in s47)
-ck(&quot;I9 FmSelect update:modelValue 与 Props 类型一致&quot;, &quot;| `update:modelValue` | `value: string \\| number \\| null`&quot; in s47 and &quot;与 `modelValue` 类型一致&quot; in s47)
-ck(&quot;I10 FmSelect 清除同时派发 change(null)&quot;, &quot;`change({ value: null, option: null })`&quot; in s47 and &quot;同时派发&quot; in s47)
-ck(&quot;I11 FmSelect 摘要/数据契约/验收 SEL-08 口径一致&quot;, &quot;无选中 / 清除后均为 `null`&quot; in s47 and &quot;SEL-08&quot; in s47 and &quot;唯一空值哨兵&quot; in s47)
-# 问题4 FmDrawer 可访问名称
-ck(&quot;I12 FmDrawer 新增 dialogLabelKey prop&quot;, &quot;| `dialogLabelKey` |&quot; in s43 and &quot;aria-label&quot; in s43)
-ck(&quot;I13 FmDrawer 严禁关闭按钮作 dialog 名称&quot;, &quot;严禁用关闭按钮&quot; in s43 and &quot;fm.drawer.close&quot; in s43)
-ck(&quot;I14 FmDrawer 二者皆缺为实现错误不渲染无名称 dialog&quot;, &quot;视为实现错误&quot; in s43 and &quot;不渲染无名称 dialog&quot; in s43)
-ck(&quot;I15 FmDrawer 验收 D-07 在册&quot;, &quot;D-07&quot; in s43 and &quot;dialog 名称 ≠ 关闭按钮&quot; in s43)
-# TBD-05 治理
-ck(&quot;I16 TBD-05 待授权议题且 ①-1 零写入&quot;, &quot;待提交的 Token 变更议题&quot; in s and &quot;等待后续正式授权&quot; in s and &quot;不直接修改任何已批准文档&quot; in s)
-ck(&quot;I17 TBD-05 删除建议新增遮罩色造值措辞&quot;, &quot;建议新增 Layer 2 遮罩背景色&quot; not in s and &quot;不新增 Token、不造值&quot; in s)
-# 版本与范围不变量
-ck(&quot;I18 版本升 V1.1 且批次三仍未启动&quot;, &quot;V1.1 · 契约矛盾修正版&quot; in s and &quot;批次三尚未开始&quot; in s)
-
-for i,(name,val) in enumerate(checks,1):
-    print(&quot;[%03d] %-52s %s&quot; % (i, name, &quot;PASS&quot; if val else &quot;FAIL&quot;))
-n = sum(v for _,v in checks)
-print(&quot;TOTAL: %d/%d PASS  EXIT=%s&quot; % (n, len(checks), &quot;0&quot; if n == len(checks) else &quot;1&quot;))
-
-```
-
-**stdout（逐字）**：
-
-```
-[001] A1 规范卡数量 = 12                                        PASS
-[002] A2 卡名/类/序号对账《30》§4.4（7~18）                           PASS
-[003] A3 11 字段齐全（12 张）                                     PASS
-[004] A4 契约明细子节 = 12                                       PASS
-[005] A5 明确不设负向条目 ≥12                                      PASS
-[006] A6 全库 36 SFC 未变                                      PASS
-[007] A7 C-05 三件 + C-06 九件                                 PASS
-[008] A8 批次三未启动                                            PASS
-[009] B01-a 卡1 Props 表头含类型/必填/默认值/枚举列                      PASS
-[010] B01-b 卡1 Events 表含参数/触发时机                            PASS
-[011] B01-c 卡1 Slots 表含用途/必需                               PASS
-[012] B02-a 卡2 Props 表头含类型/必填/默认值/枚举列                      PASS
-[013] B02-b 卡2 Events 表含参数/触发时机                            PASS
-[014] B02-c 卡2 Slots 表含用途/必需                               PASS
-[015] B03-a 卡3 Props 表头含类型/必填/默认值/枚举列                      PASS
-[016] B03-b 卡3 Events 表含参数/触发时机                            PASS
-[017] B03-c 卡3 Slots 表含用途/必需                               PASS
-[018] B04-a 卡4 Props 表头含类型/必填/默认值/枚举列                      PASS
-[019] B04-b 卡4 Events 表含参数/触发时机                            PASS
-[020] B04-c 卡4 Slots 表含用途/必需                               PASS
-[021] B05-a 卡5 Props 表头含类型/必填/默认值/枚举列                      PASS
-[022] B05-b 卡5 Events 表含参数/触发时机                            PASS
-[023] B05-c 卡5 Slots 表含用途/必需                               PASS
-[024] B06-a 卡6 Props 表头含类型/必填/默认值/枚举列                      PASS
-[025] B06-b 卡6 Events 表含参数/触发时机                            PASS
-[026] B06-c 卡6 Slots 表含用途/必需                               PASS
-[027] B07-a 卡7 Props 表头含类型/必填/默认值/枚举列                      PASS
-[028] B07-b 卡7 Events 表含参数/触发时机                            PASS
-[029] B07-c 卡7 Slots 表含用途/必需                               PASS
-[030] B08-a 卡8 Props 表头含类型/必填/默认值/枚举列                      PASS
-[031] B08-b 卡8 Events 表含参数/触发时机                            PASS
-[032] B08-c 卡8 Slots 表含用途/必需                               PASS
-[033] B09-a 卡9 Props 表头含类型/必填/默认值/枚举列                      PASS
-[034] B09-b 卡9 Events 表含参数/触发时机                            PASS
-[035] B09-c 卡9 Slots 表含用途/必需                               PASS
-[036] B10-a 卡10 Props 表头含类型/必填/默认值/枚举列                     PASS
-[037] B10-b 卡10 Events 表含参数/触发时机                           PASS
-[038] B10-c 卡10 Slots 表含用途/必需                              PASS
-[039] B11-a 卡11 Props 表头含类型/必填/默认值/枚举列                     PASS
-[040] B11-b 卡11 Events 表含参数/触发时机                           PASS
-[041] B11-c 卡11 Slots 表含用途/必需                              PASS
-[042] B12-a 卡12 Props 表头含类型/必填/默认值/枚举列                     PASS
-[043] B12-b 卡12 Events 表含参数/触发时机                           PASS
-[044] B12-c 卡12 Slots 表含用途/必需                              PASS
-[045] B13 Props 表头 12 处                                    PASS
-[046] B14 Events 表头 12 处                                   PASS
-[047] B15 Slots 表头 12 处                                    PASS
-[048] C1 续表行数 = 46                                         PASS
-[049] C2 序号 71..116 连续                                     PASS
-[050] C3 别名唯一不重复                                           PASS
-[051] C4 映射列全部 var() 形式                                    PASS
-[052] C5 映射列无 Layer 1 直引                                   PASS
-[053] C6 映射列无 HEX / px / 时长字面（shadow 为合法 Layer 2 token）    PASS
-[054] C7 #97 placeholder → text-quaternary(#707070)        PASS
-[055] C8 全库累计 116 行口径在册                                    PASS
-[056] C9 遮罩只定义 z 层不入映射色                                    PASS
-[057] C10 复用方不另起重复别名口径                                     PASS
-[058] D1 S1/S2/S3 全部在册                                     PASS
-[059] D2 三状态实测值逐字沿用《20》                                    PASS
-[060] D3 兜底 A #707070 唯一首选四底 ≥3:1                          PASS
-[061] D4 兜底 B #949494 暂不作为首选                               PASS
-[062] D5 不凭浅灰底/Label/间距判达标                                 PASS
-[063] D6 复用方不重复实测三状态                                       PASS
-[064] D7 数值来自《20》程序实测非本批新测                                 PASS
-[065] D8 《20》《25》三步规则来源在册                                  PASS
-[066] E1 矩阵落实表含 9 行（本批相关）                                  PASS
-[067] E2 每行有具体验收（非仅原则）                                     PASS
-[068] E3 焦点归因 SC 2.4.7 + 项目强化 ≥3:1                         PASS
-[069] E4 按钮文字 1.4.3 分层不统一按 3:1                             PASS
-[070] E5 标准归因说明逐字沿用未降标准                                    PASS
-[071] E6 aria 语义逐行落地                                       PASS
-[072] E7 未覆盖组合标批次五补测                                       PASS
-[073] E8 键盘可达逐行落地                                          PASS
-[074] E9 焦点陷阱/关闭返回落弹窗行                                     PASS
-[075] F1 U-1~U-6 六条齐备                                      PASS
-[076] F2 Confirm 继承 Modal                                  PASS
-[077] F3 Drawer 继承 Modal                                   PASS
-[078] F4 C-06 继承 FormField                                 PASS
-[079] F5 SearchInput 继承 Input                              PASS
-[080] F6 Stepper 继承 Button                                 PASS
-[081] F7 继承验收编号引用齐全                                        PASS
-[082] G1 TBD-05 已登记                                        PASS
-[083] G2 CSS 无遮罩背景色 Token                                  PASS
-[084] G3 组件层不写遮罩色具体值                                       PASS
-[085] G4 沿用《34》TBD-01~04                                   PASS
-[086] G5 TBD-05 待授权治理口径在册                                  PASS
-[087] H1 CSS 仍 DRAFT                                       PASS
-[088] H2 无组件代码/样机声明                                        PASS
-[089] H3 12 类 36 SFC 未增未改名                                 PASS
-[090] H4 P 组 5 项不纳入                                        PASS
-[091] H5 不改色值/基线/四图                                        PASS
-[092] H6 独立分册《34》《35》零写入                                   PASS
-[093] H7 闸门:GPT独立审核后放行                                     PASS
-[094] H8 本批范围 12 卡与续表声明                                    PASS
-[095] H9 未进入页面设计                                           PASS
-[096] I1 FmInput 摘要已删前后缀经 props 矛盾描述                       PASS
-[097] I2 FmInput Props 无 prefix/suffix 契约                  PASS
-[098] I3 FmInput 前后缀扩展须单独变更并重验三状态                          PASS
-[099] I4 FmInput 删除禁浮点误述并声明允许小数                            PASS
-[100] I5 FmInput 数值处理边界交业务层未提前塞金额                          PASS
-[101] I6 FmInput 空值与不解析原样透传契约                              PASS
-[102] I7 FmInput 验收 S-10 契约断言在册                            PASS
-[103] I8 FmSelect modelValue 统一含 null 且默认 null             PASS
-[104] I9 FmSelect update:modelValue 与 Props 类型一致           PASS
-[105] I10 FmSelect 清除同时派发 change(null)                     PASS
-[106] I11 FmSelect 摘要/数据契约/验收 SEL-08 口径一致                  PASS
-[107] I12 FmDrawer 新增 dialogLabelKey prop                  PASS
-[108] I13 FmDrawer 严禁关闭按钮作 dialog 名称                       PASS
-[109] I14 FmDrawer 二者皆缺为实现错误不渲染无名称 dialog                  PASS
-[110] I15 FmDrawer 验收 D-07 在册                              PASS
-[111] I16 TBD-05 待授权议题且 ①-1 零写入                            PASS
-[112] I17 TBD-05 删除建议新增遮罩色造值措辞                             PASS
-[113] I18 版本升 V1.1 且批次三仍未启动                                PASS
-TOTAL: 113/113 PASS  EXIT=0
-```
-
-&gt; **判读**：**113/113 PASS、EXIT=0**（V1.0 为 95/95，本轮新增 I 组 18 项针对 4 项修正 + TBD-05 治理的专项断言）。A～H 组覆盖原有结构 / 契约 / 映射 / 三状态 / 矩阵 / 复用 / TBD 登记 / 边界；**I 组（I1～I18）逐项锁定本轮修正**：FmInput 前后缀删除与 `number` 允许小数 + 数值边界交业务层（I1～I7）、FmSelect 空值 `null` 与清除 `change` 契约一致性（I8～I11）、FmDrawer `dialogLabelKey` 名称兜底与禁用关闭按钮文案（I12～I15）、TBD-05 待授权治理与不造值（I16～I17）、版本升级与批次三仍未启动（I18）。原 G5/H8 断言按 V1.1 文案同步更新。
-
-## 4. 只读核验（零写入与无实现文件）
-
-| 项 | 结果 |
-| --- | --- |
-| `docs/` 文件数 | **38**（本轮新增《36》《37》两份，其余零改动） |
-| 零写入抽查 | **《34》《35》V1.2 保持原样**（脚本 H6）；**《30》V1.3、《19》《19b》《16》《20》《25》全部零写入**（脚本 G2 / H1）；**本轮仅改《36》《37》两份，其余文档时间戳未动** |
-| 实现文件 | `src/` **不存在**；全库无 `.vue` / `.ts` / `vite.config.*`（**零组件代码、零样机**） |
-| CSS Variables | 《19b》头部仍为 `DRAFT / 草案 · 未固化 · 未经用户确认`；**本轮未写入任何 `.css`** |
-| 组件范围 | 12 类不减不改名；36 SFC 逐名未变（本批取序号 7～18，共 12 个） |
-| P 组 | 5 项仍不纳入；本批无 P 组承接项 |
-| 色值 | 已确认色值零改动；三状态沿用 `#707070` 兜底 A、B 不作首选；**未新增任何基础设计值** |
-
-## 5. 如实说明（不隐藏）
-
-1. **范围**：序号 7～18 共 12 个组件，逐名 / 类 / 序号对账《30》§4.4，未增删改名；批次三（3 件）与批次四（13 件）未开始。
-2. **三状态不改写**：S1/S2/S3 与兜底 A/B 全部逐字沿用《25》/《20》已批准规则与实测值，本批只做组件层落实，**未改任何色值、未降低任何标准、未引入 B 为首选**。
-3. **矩阵不只是原则**：§2.1 对矩阵每行给具体验收（对比度数值、焦点归因、禁用态、键盘 / aria 语义），并与卡内编号互引；未覆盖组合标批次五补测，不以估值记达标。
-4. **契约矛盾如实修正（V1.1）**：4 项均经自行核验成立后才执行——前后缀「描述了不存在的契约」属实删之；`number` 字符串存储与「禁浮点」是两回事，按 GPT 第二条路改允许小数、**不把金额计算提前塞入输入基座**（项目金额最小单位整数口径仍由 C-11/`utils/money` 承担、未改一字）；`FmSelect` 空值统一 `null` 哨兵；`FmDrawer` 禁用「关闭」作 dialog 名称。详见 §1.0。
-5. **遮罩色治理（V1.1）**：《19b》无独立遮罩色 Token，按 L3-5 不造值；①-1 已关闭，TBD-05 作为**待授权议题**登记，组件层持续未固化，**不直接改已批准文档、不给候选色值**。
-6. **复用不复制规范**：继承方只写差异并引用基座验收编号，不复制整段规范、不另起重复 Layer 3 别名（U-1/U-4/U-5）。
-7. **自检通过 ≠ 放行**：本批《36》《37》V1.1 提交后须先经 GPT 独立复审通过；**批次三（T-04 上）继续保持未启动**。
-
-## 6. 停止点
-
-**提交《36》《37》V1.1 后停止，等待 GPT 独立复审。** 复审通过后才开始批次三（T-04 上：C-02 `FmProductCard` + C-04 `FmTable` `FmPagination` + P-03 承接说明，共 3 件）；①-2 全部批次完成后仍单独送审、单独等待用户确认（X-15 那一次）。本轮**仅修改《36》《37》两份**，未改《34》《35》/《30》V1.3/任何 ①-1 文档或其他已通过文件，批次三未启动。
-
-========================================================================
-《42》42-阶段一第二步-T05交叉核验报告.md（K1 记录用断言期望 (71,92)→(71,88) 同步；八项结论与 78/78 统计不变）
-========================================================================
-
-# 《42》①-2 正式设计 · T-05 交叉核验报告（V1.0）
-
-| 项 | 内容 |
-| --- | --- |
-| 记录编号 | **`XCHK-①-2-T05-20261116-01`**（T-05 八项交叉核验 · 首版） |
-| 发生日期 | 2026-11-16 |
-| 触发 | GPT 已完成《40》《41》V1.1 完整原文独立复审，**正式通过 ①-2 批次四（13 个组件）**；用户授权启动批次五（T-05 + T-06），6 项执行要求：①完成 T-05 八项交叉核验（四批组件规范 / Token 映射 / Props·Events·Slots / 复用关系 / 无障碍 / 数据契约 / 验收标准一致性）；②完成 T-06 送审包；③发现真实冲突先列位置·影响·建议、不擅自改已通过批次、需改时先交问题清单；④不写代码 / 样机 / 不正式化 CSS / 不进页面模板或页面设计；⑤TBD-01、TBD-05 保持未决、不新增 Token；⑥完成后提交完整送审材料、停止、等待 GPT 独立审核；本次只授权批次五，不代表 ①-2 整体完成、不批准进入 ①-3 |
-| 核验对象 | 四批规范文档《34》V1.2 /《36》V1.1 /《38》V1.2 /《40》V1.1 + 四份自检记录《35》《37》《39》《41》 + 计划《30》V1.3（只读）；**本轮对以上全部文件零写入** |
-| 本批交付 | 本《42》T-05 八项交叉核验报告（§2 八项逐项结论 + §3 一致性统计 + §4 问题清单 + §5 可复现自检脚本）；T-06 送审包见《43》 |
-| 当前状态 | ①-1 已收尾；批次一、二、三、四已 GPT 通过；**①-2 批次五（T-05 + T-06，0 新增 SFC）进行中，V1.0 待 GPT 独立审核**；①-2 整体完成后仍单独送审、单独确认（X-15）；CSS Variables 仍 DRAFT。**本次授权仅限批次五，不代表 ①-2 整体完成、不批准进入 ①-3** |
-| 本批红线 | 无组件代码（未创建 `src/` 与任何 `.vue` / `.ts` / `.css`）、无样机、CSS 不固化、P 组零纳入、不新增组件 / Token / 映射 / 编号、不改色值 / 基线 / 四图；TBD-01 / TBD-05 未决状态不变 |
-| 停止点 | **提交《42》《43》后停止，等待 GPT 独立审核；不自动进入 ①-3；自检脚本通过不构成放行** |
-| 定点修订说明（2026-11-16） | 据 GPT 完整原文审核意见与用户授权，ISSUE-01 已定点修订：《36》§1.1 标题 #71～#92 → #71～#88。本报告**仅同步引用**：§4.1 加处置行、§5 判读、§6 停止点、自检脚本 K1「记录用」断言期望 (71,92)→(71,88)；**八项核验结论、78/78 统计与核验逻辑均不变**，T-05 当时发现事实（标题声明 #71～#92）保留为历史记录。变更记录见《44》 |
-
----
-
-## 1. 先行判断（核验方法与边界）
-
-| # | 事项 | 判断 |
+| 步骤 | 状态 | 确认记录 |
 | --- | --- | --- |
-| 1 | T-05 性质 = **只读交叉核验**，非修订 | **成立**：`《30》§5.2` 定义 T-05 为「WCAG / i18n / 双端 / 数据契约 / 70 套复用覆盖 / Layer 3 映射 / P 组 / 组件复用」八项勾验，产出是**核验结论 + 问题清单**，不是改组件契约。本轮对四批已通过文档零写入 |
-| 2 | 核验以可复现脚本为主、人工判读为辅 | **成立**：脚本对「可机器判定」项（卡数 / 序号 / 映射连续性 / 编号唯一 / `var()` 纯度 / 关键词在册 / P 组零卡 / 边界声明）逐项断言；「语义一致性」项（无障碍归因准确性、数据契约口径、承接完整性）辅以人工逐段判读 |
-| 3 | 发现问题的处置顺序 | **成立**：先列具体位置 + 影响 + 建议（§4），**不擅自修改已通过批次**；需修改时以问题清单形式提交，待 GPT / 用户裁定后再动。本轮唯一发现为**文档标题段声明瑕疵（低严重度、不影响映射数据 / 契约 / 验收）**，已按此原则登记、未改《36》 |
-| 4 | 边界 | **成立**：TBD-01 / TBD-05 未决、不新增 Token；无代码 / 样机 / CSS 正式版；不进 ①-3 页面模板 / 页面设计；批次五 0 新增 SFC，36 SFC 与 229 映射保持不变 |
+| ①-1 Design Tokens | 已完成 · 已批准通过 · 已正式收尾 | 《21》§6 X-15，2026-11-15 |
+| **①-2 自研 SFC 基础组件** | **已完成 · GPT 审核通过 · 用户 X-15 最终确认 · 正式关闭** | **本记录《45》，2026-11-16** |
+| ①-3 页面模板 | 本轮提交启动方案 + 首批视觉稿，待 GPT 独立审核；**未正式通过、未进入正式模板规范设计** | 尚无（独立闸门） |
+| ①-4 页面设计 | 未开始 | 尚无 |
+| CSS Variables | `DRAFT / 未固化` | 《19》§13 /《19b》 |
 
 ---
 
-## 2. T-05 八项交叉核验结论
+## 6. 本轮边界声明
 
-&gt; 八项严格对应《30》§5.2 T-05 行。每项给「结论 / 证据 / 数据」，脚本断言编号见 §5。
-
-### 2.1 第一项 · WCAG（含 §5.4.1 交互控件无障碍覆盖矩阵）
-
-| 项 | 内容 |
-| --- | --- |
-| 结论 | **通过（跨批一致）** |
-| 证据 | 四批均在各自 §2 逐字沿用《30》V1.3 §5.4.1「标准归因说明」，均含 `SC 1.4.3`（文本 4.5:1 / 大文本 3:1）、`SC 1.4.11`（图标 / UI 边界 3:1）、`SC 2.4.7`（焦点可见，**不含数值**）、focus ring ≥3:1 **项目强化**声明；均不把 2.2 条款（2.4.11 / 2.4.13）写作本轮依据；按钮文字按「普通 4.5:1 / 大文本 3:1」分层，未统一按 3:1 放行（脚本 C1～C5） |
-| 覆盖 | 输入框三状态必检 + A `#707070` 唯一首选（批次二 §3）；`FmCarousel` §5.4.2 四项支持状态表逐项取明确值、SC 2.2.2 归因准确（批次四 §2.2，脚本 C6～C8）；`§5.4.1` 矩阵导航 / 按钮 / 轮播行在批次四同步「DOM 顺序 Tab + Enter」键盘口径（脚本 C9） |
-| 色值 | 全部沿用《16》V1.6 /《20》，零新增 / 零修改；`#C2332E` 小字号价格红、`--color-price-red` 大文本门槛口径一致 |
-
-### 2.2 第二项 · i18n
-
-| 项 | 内容 |
-| --- | --- |
-| 结论 | **通过（跨批一致）** |
-| 证据 | 四批均声明全部静态文案走 `t()` / `$t()` / i18n key，动态数据用 `I18nText`，禁硬编码与字符串拼接翻译；状态 key 前缀统一（`status.order.*` / `status.payment.*` / `status.logistics.*`）；五语言档 `zh-CN`/`en-US`/`zh-TW`/`ja-JP`/`ko-KR` 在册（脚本 D1～D4） |
-| 边界 | 本步只定 i18n key 契约与长度自适应，不产出译文 JSON（Q-10 仍为待确认项，如实保留） |
-
-### 2.3 第三项 · 双端 375 / 390 / 430
-
-| 项 | 内容 |
-| --- | --- |
-| 结论 | **通过（跨批一致）** |
-| 证据 | 四批每批规范卡手机变体 / 验收均覆盖 375 / 390 / 430 三视口无横向溢出；触控目标 ≥44×44 在册；手机表格为卡片式列表、非缩小版 PC 表格（批次三）；固定底导航 `env(safe-area-inset-bottom)` + `--space-safe-bottom` 在册（批次四，脚本 E-B1～E-B4 / E5～E7） |
-| 边界 | PC / 手机独立布局、同等验收、不缩放；本轮只核规范声明，不做真实设备渲染（属 ①-4 页面设计职责） |
-
-### 2.4 第四项 · 数据契约
-
-| 项 | 内容 |
-| --- | --- |
-| 结论 | **通过（跨批一致）** |
-| 证据 | 金额四字段（`listPrice` / `discountAllocation` / `lineTotal` 三字段持久化 + `unitPrice` 仅 `lineTotal ÷ quantity` 派生、不落库）在批次四 §3.3 逐项在册；最小货币单位整数、禁浮点；`currencyCode` 收窄为字面量 `&#x27;CNY&#x27;`、合法值仅 CNY、默认 CNY、不换汇、locale 不改数值（脚本 F1～F3 / F6 / F8）；订单级活动不生成「到手价」位、禁 `unitPrice × 退款数量`（脚本 F4～F5） |
-| 跨批一致性 | 批次三 `FmProductCard`（SKU 派生价 / 订单级无到手价）与批次四 `FmPrice` / `FmAmountBreakdown` 口径一致；活跃正文无 `currencyCode: string` 残留（唯一命中位于《40》§7 修订记录的历史引述，非现行契约，脚本 F7） |
-
-### 2.5 第五项 · 70 套视图复用覆盖
-
-| 项 | 内容 |
-| --- | --- |
-| 结论 | **通过（规范层承接完整；页面层属后续步骤，如实登记）** |
-| 证据 | 批次一 §2「面板标题与区块分隔统一规则」明确「本规则对全站 70 套视图生效（①-3 模板与 ①-4 页面必须复用）」；P-05 承接由 `FmCard` + 统一规范承担、页面不得自行设计（脚本 G1～G3）；36 SFC 作为唯一可复用组件集，前后台 / PC / 手机共用 |
-| 边界 | ①-3 页面模板与 ①-4 页面设计尚未开始（独立闸门），本轮**只核「规范是否声明 70 套视图复用约束」**，不虚构 70 套视图的逐套落地清单；不提前进入页面设计 |
-
-### 2.6 第六项 · Layer 3 映射 100%
-
-| 项 | 内容 |
-| --- | --- |
-| 结论 | **通过（全库 229 行逐行核验）** |
-| 数据 | 四批映射合计 **229 行**，编号 **#1～#229 连续无缺**、无重复编号、无重复别名；映射列 **100% 为 `var(--…Layer 2…)`**，无 Layer 1 直引、无字面 HEX / px / 阴影 / 时长值；分批段 #1～#70（70）/ #71～#116（46）/ #117～#145（29）/ #146～#229（84），各段内连续（脚本 B1～B8） |
-| 说明 | Layer 2 语义 Token 为正式来源（L3-1），Layer 3 别名仅映射、不造基础值（L3-2～L3-6）；《19b》CSS Variables 仍 DRAFT、本轮零写入 |
-
-### 2.7 第七项 · P 组承接
-
-| 项 | 内容 |
-| --- | --- |
-| 结论 | **通过（五行承接完整、零新增组件）** |
-| 证据 | P-01 虚拟物流 = `FmStatusBadge` + `FmDate` + `FmCard` + 文本位（明示虚拟物流、奇幻色不外溢）；P-02 订单满减 = `FmPrice` + `FmNumber` + 文字位（无进度条 / 无到手价 / `level=order`）；P-03 3000 商品 = `FmTable` / 手机卡片 + `FmPagination` + 筛选排序 + 单页上限、不新增 `FmVirtualList`；P-04 Tooltip 由 `FmFormField` 说明文字位承接；P-05 由 `FmCard` + 统一规范承接（脚本 I1～I6） |
-| 边界 | P 组 5 项零规范卡、零新增 SFC；提及均为「不新增 / 承接」语境（脚本 I1） |
-
-### 2.8 第八项 · 组件复用（U-1～U-6）
-
-| 项 | 内容 |
-| --- | --- |
-| 结论 | **通过（复用关系与唯一定义处落地）** |
-| 证据 | 四批均含 U-1～U-6 六条约束（脚本 H-B1～H-B4）；`FmSearchInput` 继承 `FmInput`、`FmConfirm` / `FmDrawer` 复用 `FmModal` 浮层机制、`FmPagination` 唯一定义处归属 C-04 且 C-09 直接复用 —— 三者在全库各仅 1 张规范卡（脚本 H7～H9）；导航组 / 营销位以「统一规范条目」约束、**不新建基座 SFC**（脚本 H10）；复用方验收引用基座编号、继承实测不重复实测（U-4） |
-| 边界 | 无第二份重复规范、无新增共享基座 SFC；P 组承接位只引用现有数据位 |
+- 只做 X-15 收尾：登记最终确认、关闭 ①-2、整理状态 / 索引 / 遗留。
+- **不改** 36 张组件规范卡、任何 Token / 映射 / 编号、色值源《16》、《30》V1.3、四份基线、四张 V5 图、①-1 全部文件及《42》《43》《44》。
+- ①-3 启动方案与首批视觉稿为**本轮另交的独立产出**（见《46》《47》），其通过与否不影响 ①-2 关闭结论；①-3 仍须自身 X-15 确认。
+- 不写正式前端代码、不建 `src/`、不铺数据、不自动铺开全部页面、不进入 ①-4。
 
 ---
 
-## 3. 一致性统计汇总
+## 7. 可复现自检脚本
 
-| 维度 | 统计 | 结论 |
-| --- | --- | --- |
-| 组件规范卡 | 36 张（8 + 12 + 3 + 13），序号 1～36 连续，逐名 / 逐类对账《30》§4.4 | 一致 |
-| Layer 3 映射 | 229 行，#1～#229 连续，无重复，100% `var()` 映射 Layer 2 | 一致 |
-| Props / Events / Slots | 四批 36 卡均含「11 字段模板 + 契约明细（Props / Events / Slots + 明确不设）」；展示四件以合并节如实登记 | 一致 |
-| 复用关系 | U-1～U-6 四批齐全；关键复用组件唯一定义处；无第二份规范 | 一致 |
-| 无障碍 | §5.4.1 标准归因说明四批逐字沿用；矩阵命中行逐行落实；轮播 §5.4.2 状态明确 | 一致 |
-| 数据契约 | 金额四字段 / CNY / 派生均价 / 无到手价 / 禁反乘 口径统一 | 一致 |
-| 验收标准 | 四份自检脚本可复现、全绿（120 / 113 / 118 / 161），正文 stdout 与实际逐字一致 | 一致 |
-| 边界 | TBD-01 未固化、TBD-05 待授权、CSS 仍 DRAFT、P 组零纳入、无 src / 代码 / 样机 | 一致 |
-
----
-
-## 4. 问题清单（发现即列，不擅自修改已通过批次）
-
-&gt; 本轮共发现 **1 项**文档层面的低严重度瑕疵；**无**组件契约 / 映射数据 / 无障碍 / 数据契约 / 验收标准的实质性冲突。该项按用户要求「先列位置 + 影响 + 建议、不擅自修改已通过批次」登记，待 GPT / 用户裁定。
-
-### 4.1 ISSUE-01（低 · 文档标题段声明，非契约 / 数据问题）
-
-| 项 | 内容 |
-| --- | --- |
-| 位置 | **《36》V1.1 §1.1 标题**：`### 1.1 C-05 弹窗 / 确认框 / 抽屉（#71～#92）`（第 22 行） |
-| 事实 | 该小节**实际映射行为 #71～#88（18 行）**；紧随的 §1.2「C-06 表单 / 输入 / 选择器（#89～#116）」实际为 #89～#116（28 行）。两段标题声明的 `#71～#92` 与 `#89～#116` 在 **#89～#92 出现重叠**，但**实际映射行并不重叠**（#71～#88 与 #89～#116 首尾相接）。批次二 46 行映射本身**连续无缺、无重复**（脚本 B2 / B7 / K2 / K3 全绿） |
-| 影响 | **仅标题区间标注不准确**，易使读者误以为 C-05 别名到 #92、与 C-06 起点重叠；**不影响**任何映射数据、Layer 3 别名、组件契约、无障碍结论、验收编号或全库 #1～#229 连续性。《37》自检脚本对「46 行 / #71～#116」的断言仍全部成立 |
-| 建议 | 将 §1.1 标题区间由 `#71～#92` 更正为 **`#71～#88`**（与 §1.2 的 `#89～#116` 无重叠、首尾相接）。**此更正需修改已通过批次《36》，本轮不执行**；如 GPT / 用户裁定采纳，另起授权在《36》单独修订并同步《37》相关声明，不并入批次五 |
-| 严重度 | **低（文档表达层）** —— 无契约 / 数据 / 验收实质影响，不阻断 ①-2 送审 |
-| 处置（2026-11-16） | 已按 GPT 对批次五的审核意见与用户授权定点修订：《36》§1.1 标题区间由 #71～#92 更正为 #71～#88（见《36》《44》）；映射行 / 别名 / 编号均未改动。本报告的 T-05 八项结论与 78/78 统计不变，仅 K1「记录用」断言的引用期望同步为 (71,88)，ISSUE-01 闭环 |
-
-### 4.2 未发现的问题类别
-
-以下类别经核验**未发现**真实冲突：组件范围与命名、Layer 3 映射数据与编号、Props / Events / Slots 模板、U-1～U-6 复用与唯一定义处、WCAG 条款归因与矩阵覆盖、金额四字段与 CNY 数据契约、P 组承接、验收标准可复现性、边界与红线（脚本 A～J 全绿；唯一 &quot;记录用&quot; 断言 K1 / K2 即用于固定 ISSUE-01 事实，非新增问题）。
-
----
-
-## 5. 可复现自检脚本
-
-&gt; 运行方式：将下方脚本保存为 `.py` 于项目根目录运行（读取四批规范文档、四份自检记录与《30》）；输出应与 §5.1 stdout **逐字一致**。脚本覆盖 A 范围结构 / B Layer 3 映射 / C WCAG 矩阵 / D i18n / E 双端 / F 数据契约 / G 70 套复用覆盖 / H 组件复用 / I P 组承接 / J 验收标准一致性 / K 问题清单与边界，共 11 组 78 断言。
+&gt; 运行方式：保存为 `.py` 于项目根目录运行；输出应与 §7.1 stdout 逐字一致。
 
 ```python
 import re, pathlib
-
 ROOT = pathlib.Path(&#x27;.&#x27;)
 def rd(p): return (ROOT/p).read_text(encoding=&#x27;utf-8&#x27;)
 
-plan = rd(&#x27;docs/30-阶段一第二步-正式设计任务计划与最终组件清单-GPT审核稿.md&#x27;)
-specs = {
-    &#x27;B1&#x27;: rd(&#x27;docs/34-阶段一第二步-基础组件规范文档-正式版.md&#x27;),
-    &#x27;B2&#x27;: rd(&#x27;docs/36-阶段一第二步-基础组件规范文档-批次二.md&#x27;),
-    &#x27;B3&#x27;: rd(&#x27;docs/38-阶段一第二步-基础组件规范文档-批次三.md&#x27;),
-    &#x27;B4&#x27;: rd(&#x27;docs/40-阶段一第二步-基础组件规范文档-批次四.md&#x27;),
-}
-chks = {
-    &#x27;B1&#x27;: rd(&#x27;docs/35-①-2正式设计批次一交付与自检记录.md&#x27;),
-    &#x27;B2&#x27;: rd(&#x27;docs/37-①-2正式设计批次二交付与自检记录.md&#x27;),
-    &#x27;B3&#x27;: rd(&#x27;docs/39-①-2正式设计批次三交付与自检记录.md&#x27;),
-    &#x27;B4&#x27;: rd(&#x27;docs/41-①-2正式设计批次四交付与自检记录.md&#x27;),
-}
-ALL = &#x27;&#x27;.join(specs.values())
+r = rd(&#x27;docs/45-阶段一第二步-X15最终确认记录与①-2正式关闭.md&#x27;)
 checks = []
 def ck(name, cond): checks.append((name, bool(cond)))
 
-# ---- A. 范围与结构 ----
-canon = re.findall(r&#x27;^\| \d+ \| `(Fm\w+)` \| (C-\d+) \|&#x27;, plan, re.M)
-canon_names = [c[0] for c in canon]
-canon_cls = {c[0]: c[1] for c in canon}
-cards = []
-for s in specs.values():
-    seen = set()
-    for name, cls, seq in re.findall(r&#x27;(Fm\w+)（(C-\d+) · 序号 (\d+)&#x27;, s):
-        if name not in seen:
-            seen.add(name); cards.append((name, cls, int(seq)))
-card_names = [c[0] for c in cards]
-card_seqs = [c[2] for c in cards]
-ck(&#x27;A1 规范卡总数=36&#x27;, len(cards) == 36)
-ck(&#x27;A2 卡片逐名对账《30》无缺漏&#x27;, set(card_names) == set(canon_names))
-ck(&#x27;A3 卡片无重名&#x27;, len(card_names) == len(set(card_names)))
-ck(&#x27;A4 序号1~36连续&#x27;, sorted(card_seqs) == list(range(1, 37)))
-ck(&#x27;A5 卡片类归属全部对账《30》&#x27;, all(canon_cls.get(n) == c for n, c, _ in cards))
-ck(&#x27;A6 分批卡数8+12+3+13&#x27;, [len(set(re.findall(r&#x27;(Fm\w+)（C-\d+ · 序号 \d+&#x27;, specs[k]))) for k in [&#x27;B1&#x27;,&#x27;B2&#x27;,&#x27;B3&#x27;,&#x27;B4&#x27;]] == [8,12,3,13])
-
-# ---- B. Layer 3 映射 100% ----
-allmaps = []
-for s in specs.values():
-    for n, alias, val in re.findall(r&#x27;^\| (\d+) \| `(--fm-[\w-]+)` \| `([^`]*)` \|&#x27;, s, re.M):
-        allmaps.append((int(n), alias, val))
-mnums = [m[0] for m in allmaps]
-malias = [m[1] for m in allmaps]
-ck(&#x27;B1 映射总数=229&#x27;, len(allmaps) == 229)
-ck(&#x27;B2 编号#1~#229连续无缺&#x27;, mnums == list(range(1, 230)))
-ck(&#x27;B3 无重复编号&#x27;, len(mnums) == len(set(mnums)))
-ck(&#x27;B4 无重复别名&#x27;, len(malias) == len(set(malias)))
-ck(&#x27;B5 映射列全为var()&#x27;, all(re.fullmatch(r&#x27;var\(--[\w-]+\)&#x27;, m[2]) for m in allmaps))
-ck(&#x27;B6 无字面HEX/px映射值&#x27;, not any(re.search(r&#x27;#[0-9A-Fa-f]{3,6}|\d+px&#x27;, m[2]) for m in allmaps))
-seg = {k: [int(x) for x in re.findall(r&#x27;^\| (\d+) \| `--fm-&#x27;, s, re.M)] for k, s in specs.items()}
-ck(&#x27;B7 分批段70/46/29/84&#x27;, [len(seg[k]) for k in [&#x27;B1&#x27;,&#x27;B2&#x27;,&#x27;B3&#x27;,&#x27;B4&#x27;]] == [70,46,29,84])
-ck(&#x27;B8 分批段号连续&#x27;, all(seg[k] == list(range(seg[k][0], seg[k][0]+len(seg[k]))) for k in seg))
-
-# ---- C. WCAG / §5.4.1 矩阵 ----
-ck(&#x27;C1 四批均含SC2.4.7焦点可见&#x27;, all(&#x27;2.4.7&#x27; in s for s in specs.values()))
-ck(&#x27;C2 四批均含SC1.4.11非文本对比&#x27;, all(&#x27;1.4.11&#x27; in s for s in specs.values()))
-ck(&#x27;C3 四批均含SC1.4.3文本对比&#x27;, all(&#x27;1.4.3&#x27; in s for s in specs.values()))
-ck(&#x27;C4 四批均声明focus ring&gt;=3:1项目强化&#x27;, all(&#x27;项目强化&#x27; in s for s in specs.values()))
-ck(&#x27;C5 按钮文字分层(普通4.5/大文本3)在册&#x27;, &#x27;普通按钮文字 4.5&#x27; in specs[&#x27;B2&#x27;] and &#x27;大文本&#x27; in specs[&#x27;B2&#x27;])
-ck(&#x27;C6 输入框三状态必检在册&#x27;, &#x27;三状态&#x27; in specs[&#x27;B2&#x27;] and &#x27;空白&#x27; in specs[&#x27;B2&#x27;])
-ck(&#x27;C7 FmCarousel§5.4.2支持状态表在册&#x27;, &#x27;5.4.2&#x27; in specs[&#x27;B4&#x27;] and &#x27;自动播放&#x27; in specs[&#x27;B4&#x27;])
-ck(&#x27;C8 SC2.2.2归因准确&#x27;, &#x27;2.2.2&#x27; in specs[&#x27;B4&#x27;])
-ck(&#x27;C9 不引入WCAG2.2作依据的声明&#x27;, &#x27;2.4.11&#x27; in specs[&#x27;B2&#x27;] and &#x27;2.2&#x27; in specs[&#x27;B2&#x27;])
-
-# ---- D. i18n ----
-ck(&#x27;D1 四批均含t()/key契约&#x27;, all(re.search(r&#x27;\bt\(\)|\$t\(\)|走 key|走 i18n|i18n key&#x27;, s) for s in specs.values()))
-ck(&#x27;D2 I18nText动态数据在册&#x27;, all(&#x27;I18nText&#x27; in s for s in specs.values()))
-ck(&#x27;D3 禁硬编码/拼接翻译声明&#x27;, all(re.search(r&#x27;硬编码|字符串拼接&#x27;, s) for s in specs.values()))
-ck(&#x27;D4 五语言档在册&#x27;, all(x in ALL for x in [&#x27;zh-CN&#x27;,&#x27;en-US&#x27;,&#x27;zh-TW&#x27;,&#x27;ja-JP&#x27;,&#x27;ko-KR&#x27;]))
-
-# ---- E. 双端 375/390/430 ----
-for k, s in specs.items():
-    ck(&#x27;E-&#x27;+k+&#x27; 三视口375/390/430齐&#x27;, all(v in s for v in [&#x27;375&#x27;,&#x27;390&#x27;,&#x27;430&#x27;]))
-ck(&#x27;E5 触控&gt;=44x44在册&#x27;, all(re.search(r&#x27;44[×xX]44&#x27;, s) for s in specs.values()))
-ck(&#x27;E6 safe-area在册(B4底导航)&#x27;, &#x27;safe-area&#x27; in specs[&#x27;B4&#x27;])
-ck(&#x27;E7 手机卡片列表非缩版表格&#x27;, &#x27;卡片式列表&#x27; in specs[&#x27;B3&#x27;] and &#x27;缩小版&#x27; in specs[&#x27;B3&#x27;])
-
-# ---- F. 数据契约一致性 ----
-ck(&#x27;F1 金额四字段齐备&#x27;, all(x in specs[&#x27;B4&#x27;] for x in [&#x27;listPrice&#x27;,&#x27;discountAllocation&#x27;,&#x27;lineTotal&#x27;,&#x27;unitPrice&#x27;]))
-ck(&#x27;F2 unitPrice派生不落库&#x27;, &#x27;派生&#x27; in specs[&#x27;B4&#x27;] and &#x27;不落库&#x27; in specs[&#x27;B4&#x27;])
-ck(&#x27;F3 currencyCode冻结CNY&#x27;, &#x27;CNY&#x27; in specs[&#x27;B4&#x27;])
-ck(&#x27;F4 订单级无到手价位&#x27;, &#x27;到手价&#x27; in specs[&#x27;B4&#x27;] and specs[&#x27;B4&#x27;].count(&#x27;到手价&#x27;) &gt;= 5)
-ck(&#x27;F5 禁unitPrice×退款数量&#x27;, &#x27;退款数量&#x27; in specs[&#x27;B4&#x27;])
-ck(&#x27;F6 不换汇/不换币在册&#x27;, re.search(r&#x27;不换汇|不换币&#x27;, specs[&#x27;B4&#x27;]) is not None)
-ck(&#x27;F7 活跃正文无currencyCode:string残留&#x27;, not any(re.search(r&#x27;currencyCode.{0,4}`string`|`currencyCode`（`string`&#x27;, s.split(&#x27;## 7.&#x27;)[0].split(&#x27;## 8.&#x27;)[0]) for s in specs.values()))
-ck(&#x27;F8 最小货币单位整数在册&#x27;, &#x27;最小货币单位整数&#x27; in specs[&#x27;B4&#x27;])
-
-# ---- G. 70套视图复用覆盖 ----
-ck(&#x27;G1 全站70套视图声明在册&#x27;, &#x27;70 套&#x27; in specs[&#x27;B1&#x27;] or &#x27;70套&#x27; in specs[&#x27;B1&#x27;])
-ck(&#x27;G2 ①-3/①-4复用约定在册&#x27;, &#x27;①-3&#x27; in ALL and &#x27;①-4&#x27; in ALL)
-ck(&#x27;G3 P-05统一分隔标题承接&#x27;, &#x27;分隔&#x27; in specs[&#x27;B1&#x27;] and &#x27;标题&#x27; in specs[&#x27;B1&#x27;])
-
-# ---- H. 组件复用 U-1~U-6 ----
-for k, s in specs.items():
-    ck(&#x27;H-&#x27;+k+&#x27; U-1~U-6齐全&#x27;, all((&#x27;U-&#x27;+str(i)) in s for i in range(1,7)))
-ck(&#x27;H7 FmPagination唯一定义处&#x27;, card_names.count(&#x27;FmPagination&#x27;) == 1 and &#x27;唯一定义处&#x27; in ALL)
-ck(&#x27;H8 FmSearchInput唯一卡&#x27;, card_names.count(&#x27;FmSearchInput&#x27;) == 1)
-ck(&#x27;H9 FmConfirm/FmDrawer唯一卡&#x27;, card_names.count(&#x27;FmConfirm&#x27;) == 1 and card_names.count(&#x27;FmDrawer&#x27;) == 1)
-ck(&#x27;H10 不建导航基座SFC声明&#x27;, &#x27;不新建&#x27; in specs[&#x27;B4&#x27;] and &#x27;基座&#x27; in specs[&#x27;B4&#x27;])
-
-# ---- I. P组承接 ----
-ck(&#x27;I1 P组零规范卡&#x27;, not any(re.search(r&#x27;Fm(?:Timeline|Progress|VirtualList|Tooltip|Popover|Divider|SectionTitle)（C-\d+ · 序号 \d+&#x27;, s) for s in specs.values()))
-ck(&#x27;I2 P-01虚拟物流承接&#x27;, &#x27;FmTimeline&#x27; in specs[&#x27;B4&#x27;] and &#x27;虚拟物流&#x27; in specs[&#x27;B4&#x27;])
-ck(&#x27;I3 P-02订单满减承接无进度条&#x27;, &#x27;FmProgress&#x27; in specs[&#x27;B4&#x27;] and &#x27;到手价&#x27; in specs[&#x27;B4&#x27;])
-ck(&#x27;I4 P-03 3000商品分页承接&#x27;, &#x27;FmVirtualList&#x27; in specs[&#x27;B3&#x27;] and &#x27;分页&#x27; in specs[&#x27;B3&#x27;])
-ck(&#x27;I5 P-04 Tooltip说明文字承接&#x27;, &#x27;FmTooltip&#x27; in specs[&#x27;B1&#x27;])
-ck(&#x27;I6 P-05分隔标题承接&#x27;, &#x27;FmDivider&#x27; in specs[&#x27;B1&#x27;] and &#x27;FmSectionTitle&#x27; in specs[&#x27;B1&#x27;])
-
-# ---- J. 验收标准一致性 ----
-for k in [&#x27;B1&#x27;,&#x27;B2&#x27;,&#x27;B3&#x27;,&#x27;B4&#x27;]:
-    block = re.findall(r&#x27;```python\n(.*?)\n```&#x27;, chks[k], re.S)
-    if not block:
-        block = [b for b in re.findall(r&#x27;```\n(.*?)\n```&#x27;, chks[k], re.S) if &#x27;passed&#x27; in b or &#x27;ck(&#x27; in b]
-    ck(&#x27;J-&#x27;+k+&#x27; 自检脚本可提取&#x27;, len(block) &gt;= 1 and (&#x27;passed&#x27; in block[0] or &#x27;ck(&#x27; in block[0]))
-for k in [&#x27;B1&#x27;,&#x27;B2&#x27;,&#x27;B3&#x27;,&#x27;B4&#x27;]:
-    m = re.search(r&#x27;stdout.{0,12}\n(?:```\n)(.*?)(\n```)&#x27;, chks[k], re.S)
-    ck(&#x27;J-&#x27;+k+&#x27; 自检stdout正文在册&#x27;, m is not None and &#x27;TOTAL&#x27; in m.group(1))
-ck(&#x27;J9 四批自检全绿声明&#x27;, all(&#x27;PASS&#x27; in chks[k] for k in chks))
-ck(&#x27;J10 11字段模板在册&#x27;, &#x27;11&#x27; in ALL and &#x27;复用关系&#x27; in ALL)
-
-# ---- K. 问题清单与边界 ----
-b2 = specs[&#x27;B2&#x27;]
-h11 = re.search(r&#x27;### 1\.1 C-05[^\n]*（#(\d+)～#(\d+)）&#x27;, b2)
-i11 = b2.index(&#x27;### 1.1&#x27;); i12 = b2.index(&#x27;### 1.2&#x27;)
-sec11 = b2[i11:i12]
-rows11 = [int(x) for x in re.findall(r&#x27;^\| (\d+) \| `--fm-&#x27;, sec11, re.M)]
-ck(&#x27;K1 B2§1.1标题声明段(记录用)&#x27;, h11 is not None and (int(h11.group(1)), int(h11.group(2))) == (71,88))
-ck(&#x27;K2 B2§1.1实际行段(记录用)&#x27;, (min(rows11), max(rows11)) == (71,88))
-ck(&#x27;K3 B2实际映射仍连续无缺(瑕疵仅标题)&#x27;, len(allmaps) == 229 and mnums == list(range(1,230)))
-ck(&#x27;K4 TBD-01保持未固化&#x27;, &#x27;TBD-01&#x27; in ALL and &#x27;未固化&#x27; in ALL)
-ck(&#x27;K5 TBD-05保持待授权&#x27;, &#x27;TBD-05&#x27; in ALL and &#x27;待授权&#x27; in ALL)
-ck(&#x27;K6 CSS Variables仍DRAFT&#x27;, &#x27;DRAFT&#x27; in ALL)
-ck(&#x27;K7 本轮只授权批次五&#x27;, &#x27;批次五&#x27; in ALL)
-ck(&#x27;K8 未批准进入①-3&#x27;, &#x27;①-3&#x27; in ALL)
-ck(&#x27;K9 无②前置代码声明(src不建)&#x27;, &#x27;src/&#x27; in ALL and &#x27;不创建&#x27; in ALL)
+# A. 必备章节
+for sec in [&#x27;用户确认原文与核验&#x27;,&#x27;①-2 最终状态&#x27;,&#x27;交付文件索引&#x27;,&#x27;遗留事项&#x27;,&#x27;四步闸门状态&#x27;,&#x27;本轮边界声明&#x27;]:
+    ck(&#x27;A-&#x27;+sec, sec in r)
+# B. 最终确认与关闭
+ck(&#x27;B1 X15最终确认&#x27;, &#x27;X-15 最终确认&#x27; in r and &#x27;正式通过&#x27; in r)
+ck(&#x27;B2 正式关闭①-2&#x27;, &#x27;正式关闭&#x27; in r and &#x27;①-2&#x27; in r)
+ck(&#x27;B3 审核结论≠关闭&#x27;, &#x27;审核层结论&#x27; in r)
+# C. 索引完整性
+for n in [&#x27;《34》&#x27;,&#x27;《36》&#x27;,&#x27;《38》&#x27;,&#x27;《40》&#x27;,&#x27;《42》&#x27;,&#x27;《43》&#x27;,&#x27;《44》&#x27;,&#x27;《45》&#x27;]:
+    ck(&#x27;C-&#x27;+n, n in r)
+# D. 遗留事项
+for kw in [&#x27;TBD-01&#x27;,&#x27;TBD-05&#x27;,&#x27;Q-10&#x27;,&#x27;DRAFT&#x27;]:
+    ck(&#x27;D-&#x27;+kw, kw in r)
+# E. 闸门
+ck(&#x27;E1 ①-1完成&#x27;, &#x27;①-1&#x27; in r and &#x27;已正式收尾&#x27; in r)
+ck(&#x27;E2 ①-2关闭&#x27;, &#x27;①-2&#x27; in r and &#x27;正式关闭&#x27; in r)
+ck(&#x27;E3 ①-3独立闸门待审&#x27;, &#x27;①-3&#x27; in r and &#x27;待&#x27; in r)
+ck(&#x27;E4 不进①-4&#x27;, &#x27;①-4&#x27; in r)
+# F. 边界
+ck(&#x27;F1 不改组件规范Token&#x27;, &#x27;不改&#x27; in r and &#x27;Token&#x27; in r)
+ck(&#x27;F2 无src无代码&#x27;, &#x27;src/&#x27; in r)
+ck(&#x27;F3 不自动进①-3&#x27;, &#x27;不自动进入&#x27; in r)
 
 passed = sum(1 for _, v in checks if v)
 for i, (name, v) in enumerate(checks, 1):
-    print(f&quot;[{&#x27;OK&#x27; if v else &#x27;FAIL&#x27;}] {i:03d} {name}&quot;)
+    print(f&quot;[{&#x27;OK&#x27; if v else &#x27;FAIL&#x27;}] {i:02d} {name}&quot;)
 print(f&quot;TOTAL: {passed}/{len(checks)} PASS&quot;)
 ```
 
-### 5.1 stdout（逐字）
+### 7.1 stdout（逐字）
 
 ```
-[OK] 001 A1 规范卡总数=36
-[OK] 002 A2 卡片逐名对账《30》无缺漏
-[OK] 003 A3 卡片无重名
-[OK] 004 A4 序号1~36连续
-[OK] 005 A5 卡片类归属全部对账《30》
-[OK] 006 A6 分批卡数8+12+3+13
-[OK] 007 B1 映射总数=229
-[OK] 008 B2 编号#1~#229连续无缺
-[OK] 009 B3 无重复编号
-[OK] 010 B4 无重复别名
-[OK] 011 B5 映射列全为var()
-[OK] 012 B6 无字面HEX/px映射值
-[OK] 013 B7 分批段70/46/29/84
-[OK] 014 B8 分批段号连续
-[OK] 015 C1 四批均含SC2.4.7焦点可见
-[OK] 016 C2 四批均含SC1.4.11非文本对比
-[OK] 017 C3 四批均含SC1.4.3文本对比
-[OK] 018 C4 四批均声明focus ring&gt;=3:1项目强化
-[OK] 019 C5 按钮文字分层(普通4.5/大文本3)在册
-[OK] 020 C6 输入框三状态必检在册
-[OK] 021 C7 FmCarousel§5.4.2支持状态表在册
-[OK] 022 C8 SC2.2.2归因准确
-[OK] 023 C9 不引入WCAG2.2作依据的声明
-[OK] 024 D1 四批均含t()/key契约
-[OK] 025 D2 I18nText动态数据在册
-[OK] 026 D3 禁硬编码/拼接翻译声明
-[OK] 027 D4 五语言档在册
-[OK] 028 E-B1 三视口375/390/430齐
-[OK] 029 E-B2 三视口375/390/430齐
-[OK] 030 E-B3 三视口375/390/430齐
-[OK] 031 E-B4 三视口375/390/430齐
-[OK] 032 E5 触控&gt;=44x44在册
-[OK] 033 E6 safe-area在册(B4底导航)
-[OK] 034 E7 手机卡片列表非缩版表格
-[OK] 035 F1 金额四字段齐备
-[OK] 036 F2 unitPrice派生不落库
-[OK] 037 F3 currencyCode冻结CNY
-[OK] 038 F4 订单级无到手价位
-[OK] 039 F5 禁unitPrice×退款数量
-[OK] 040 F6 不换汇/不换币在册
-[OK] 041 F7 活跃正文无currencyCode:string残留
-[OK] 042 F8 最小货币单位整数在册
-[OK] 043 G1 全站70套视图声明在册
-[OK] 044 G2 ①-3/①-4复用约定在册
-[OK] 045 G3 P-05统一分隔标题承接
-[OK] 046 H-B1 U-1~U-6齐全
-[OK] 047 H-B2 U-1~U-6齐全
-[OK] 048 H-B3 U-1~U-6齐全
-[OK] 049 H-B4 U-1~U-6齐全
-[OK] 050 H7 FmPagination唯一定义处
-[OK] 051 H8 FmSearchInput唯一卡
-[OK] 052 H9 FmConfirm/FmDrawer唯一卡
-[OK] 053 H10 不建导航基座SFC声明
-[OK] 054 I1 P组零规范卡
-[OK] 055 I2 P-01虚拟物流承接
-[OK] 056 I3 P-02订单满减承接无进度条
-[OK] 057 I4 P-03 3000商品分页承接
-[OK] 058 I5 P-04 Tooltip说明文字承接
-[OK] 059 I6 P-05分隔标题承接
-[OK] 060 J-B1 自检脚本可提取
-[OK] 061 J-B2 自检脚本可提取
-[OK] 062 J-B3 自检脚本可提取
-[OK] 063 J-B4 自检脚本可提取
-[OK] 064 J-B1 自检stdout正文在册
-[OK] 065 J-B2 自检stdout正文在册
-[OK] 066 J-B3 自检stdout正文在册
-[OK] 067 J-B4 自检stdout正文在册
-[OK] 068 J9 四批自检全绿声明
-[OK] 069 J10 11字段模板在册
-[OK] 070 K1 B2§1.1标题声明段(记录用)
-[OK] 071 K2 B2§1.1实际行段(记录用)
-[OK] 072 K3 B2实际映射仍连续无缺(瑕疵仅标题)
-[OK] 073 K4 TBD-01保持未固化
-[OK] 074 K5 TBD-05保持待授权
-[OK] 075 K6 CSS Variables仍DRAFT
-[OK] 076 K7 本轮只授权批次五
-[OK] 077 K8 未批准进入①-3
-[OK] 078 K9 无②前置代码声明(src不建)
-TOTAL: 78/78 PASS
+[OK] 01 A-用户确认原文与核验
+[OK] 02 A-①-2 最终状态
+[OK] 03 A-交付文件索引
+[OK] 04 A-遗留事项
+[OK] 05 A-四步闸门状态
+[OK] 06 A-本轮边界声明
+[OK] 07 B1 X15最终确认
+[OK] 08 B2 正式关闭①-2
+[OK] 09 B3 审核结论≠关闭
+[OK] 10 C-《34》
+[OK] 11 C-《36》
+[OK] 12 C-《38》
+[OK] 13 C-《40》
+[OK] 14 C-《42》
+[OK] 15 C-《43》
+[OK] 16 C-《44》
+[OK] 17 C-《45》
+[OK] 18 D-TBD-01
+[OK] 19 D-TBD-05
+[OK] 20 D-Q-10
+[OK] 21 D-DRAFT
+[OK] 22 E1 ①-1完成
+[OK] 23 E2 ①-2关闭
+[OK] 24 E3 ①-3独立闸门待审
+[OK] 25 E4 不进①-4
+[OK] 26 F1 不改组件规范Token
+[OK] 27 F2 无src无代码
+[OK] 28 F3 不自动进①-3
+TOTAL: 28/28 PASS
 ```
-
-&gt; **判读**：**78/78 PASS、EXIT=0**。A～J 组为八项交叉核验的机器可判定断言，全部通过；K1 / K2 为「记录用」断言，固定 B2 §1.1 标题声明段与实际映射行段——T-05 核验时为（#71～#92 / #71～#88，即 ISSUE-01）；ISSUE-01 按授权修订后《36》标题更正为 #71～#88，本脚本 K1 的引用期望同步为 (71,88)、与 K2 一致，K3 确认该瑕疵不影响全库映射连续性。**八项核验全部通过；唯一发现的 1 项低严重度文档标题瑕疵（ISSUE-01）已闭环（见《36》《44》），核验结论与 78/78 统计不变。**
 
 ---
 
-## 6. 停止点
+## 8. 停止点
 
-**提交《42》（T-05 交叉核验报告）与《43》（T-06 送审包）后停止，等待 GPT 独立审核；不自动进入 ①-3。** T-05 核验本轮对四批已通过文档及 ①-1 全部文件零写入；TBD-01 / TBD-05 未决状态不变、未新增 Token；无组件代码 / 样机 / CSS 正式版。ISSUE-01 已于 2026-11-16 按用户授权定点修订（《36》§1.1 标题 #71～#92 → #71～#88，见《36》《44》），T-05 结论与统计不变。自检 78/78 PASS **不构成放行**。**本次授权仅限批次五，不代表 ①-2 整体完成、不批准进入 ①-3。**
+本记录登记 X-15 最终确认、正式关闭 ①-2。**①-2 收尾即止**；①-3 启动方案与首批视觉稿属本轮另交（见《46》《47》），须等待 GPT 独立审核并供用户查看视觉效果；不自动进入 ①-3 正式模板规范设计、不进入 ①-4。
 
 ========================================================================
-《43》43-阶段一第二步-T06送审包.md（§8 恢复 X-15 口径：GPT 审核通过≠关闭，仍须 X-15 用户确认后关闭 ①-2；41/41 PASS）
+《46》46-阶段一第三步-页面模板设计启动方案.md（PLAN-①-3-20261116-01，13 模板族覆盖 70 套，自检 33/33 PASS）
 ========================================================================
 
-# 《43》①-2 正式设计 · T-06 送审包（V1.0）
+# 《46》阶段一 ①-3｜页面模板设计启动方案（V1.0 · 待 GPT 独立审核）
 
 | 项 | 内容 |
 | --- | --- |
-| 记录编号 | **`PKG-①-2-T06-20261116-01`**（T-06 ①-2 整体送审包 · 首版） |
+| 记录编号 | **`PLAN-①-3-20261116-01`**（①-3 页面模板设计 · 启动方案 · 首版） |
 | 发生日期 | 2026-11-16 |
-| 触发 | GPT 已完成《40》《41》V1.1 独立复审、正式通过批次四；用户授权启动批次五（T-05 + T-06），要求完成八项交叉核验 + 送审包整理，发现冲突先列清单不擅改已通过批次，完成后提交完整送审材料、停止等待 GPT 独立审核；**本次只授权批次五，不代表 ①-2 整体完成，也不批准进入 ①-3** |
-| 送审对象 | **①-2 正式设计完整成果**：四批规范文档《34》V1.2 /《36》V1.1 /《38》V1.2 /《40》V1.1 + 四份自检记录《35》《37》《39》《41》 + T-05 交叉核验报告《42》 + 本送审包《43》 |
-| 六项产出 | 按《30》§5.2 T-06：**①验收对照表（§1）②组件总表（§2）③P 组承接对照表（§4）④复用关系表（§5）⑤明确不做清单（§6）⑥送审说明（§8）**，另附遗留事项（§7）与可复现自检（§9） |
-| 交叉核验结论 | T-05 八项**全部通过**（《42》78/78 PASS）；**唯一发现 1 项低严重度文档标题瑕疵 ISSUE-01**（《36》§1.1 标题原声明 #71～#92、实际行 #71～#88），**已按用户 2026-11-16 授权定点修订**为 #71～#88（见《36》《44》），T-05 核验结论与统计不变 |
-| 当前状态 | ①-1 已收尾；批次一、二、三、四已 GPT 通过；**①-2 批次五（T-05 + T-06，0 新增 SFC）进行中，V1.0 待 GPT 独立审核**；①-2 整体完成后仍单独送审、单独确认（X-15）；CSS Variables 仍 DRAFT。**本次授权仅限批次五，不代表 ①-2 整体完成、不批准进入 ①-3** |
-| 本批红线 | 无组件代码 / 样机 / CSS 正式版；不新增组件 / Token / 映射 / 编号；TBD-01 / TBD-05 未决不变；四批已通过文档及 ①-1 全部文件零写入 |
-| 停止点 | **提交《42》《43》后停止，等待 GPT 对 ①-2 整体成果独立审核；不自动进入 ①-3；自检脚本通过不构成放行** |
-| 定点修订说明（2026-11-16） | 据 GPT 对《42》《43》完整原文审核意见与用户授权，仅改两项及直接关联文字：**①** §8 送审性质恢复《30》V1.3 X-15 口径（GPT 审核通过=审核层结论≠关闭；仍须 X-15；X-15 后关闭；①-3 另行启动）；**②** ISSUE-01 已按授权修订（《36》§1.1 标题 #71～#92 → #71～#88），同步遗留事项 / 交叉核验结论 / 需裁定事项状态。T-05 结论与统计不变、四批规范其他内容零改动、主版本号不变；变更记录见《44》 |
+| 前置 | **①-2 已 X-15 最终确认并正式关闭（《45》）**；①-1 已收尾；四步闸门推进至第 3 步 |
+| 触发 | 用户本轮「准备启动 ①-3 页面模板设计，严格遵循此前已批准的项目方案和既定范围，不重新定义项目技术路线。本轮先提交页面模板设计的启动方案」，并附视觉设计要求与本轮停止点 |
+| 文件性质 | **①-3 启动方案 + 首批供审阅视觉稿的纲领**；不是 ①-3 正式模板规范文档、不是 ①-4 页面设计、不是前端代码、不是基线文档、**不构成 ①-3 确认** |
+| 既定基线（只读继承，不重定义） | 《01》《02》《03》（A.1 四步 / A.4 布局 / Part B 页面清单 / B.4 统计）、《04》（X-15 / §1.4）、《16》V1.6 色值源、《17》、《19》（Token / 断点 / 容器）、《30》V1.3、《43》36 组件与复用表；技术落点 Vue 3 SFC + CSS Variables + Scoped CSS + Pinia + Vue Router(Hash) + Vue I18n + Dexie，页面经 Service / Repository 注入、不直连 Dexie |
+| 本轮范围 | ① **模板分类与复用关系**；② **PC / 手机双端布局规划**；③ **模板覆盖的实际业务页面**；④ **模板与 36 组件对应关系**；⑤ **设计顺序与分批交付计划**；另附 §7 视觉设计稿原则（对应本轮视觉要求） |
+| 本轮停止点 | **提交《45》《46》《47》+ 首批视觉稿后停止，等待 GPT 独立审核并供用户查看视觉效果**；不写前端代码、不建 `src/`、不自动铺开全部页面、不进入 ①-4 |
+| 边界 | 不修改任何已通过组件规范 / Token / 映射 / 色值 / 基线 / 四图；P 组 5 项仍不纳入；TBD-01 / TBD-05 / Q-10 原状态；CSS Variables 仍 `DRAFT` |
 
 ---
 
-## 1. 验收对照表（《30》§5.4 全局项逐项）
+## 1. 启动前提与闸门定位
 
-| 《30》§5.4 全局验收项 | 落实批次 | 核验结论（《42》） | 证据定位 |
-| --- | --- | --- | --- |
-| **范围**：12 类不减不改名、36 SFC 逐个有卡、P 组 5 项零出现 | 全四批 | 通过 | 《42》A 组（卡 36、序号 1～36、P 组零卡） |
-| **Layer 2 / Layer 3**：L3-1～L3-6、映射 100%、无字面 HEX/px、无 Layer 1 直引 | 全四批 | 通过 | 《42》B 组（229 行连续、100% `var()`） |
-| **WCAG 2.1 AA**（含 §5.4.1 矩阵每行 + 三状态 + 按钮文字分层 + `FmCarousel` §5.4.2） | 批次二 / 三 / 四 | 通过 | 《42》C 组（2.4.7 / 1.4.11 / 1.4.3 / 2.2.2 归因） |
-| **P 组承接**：五行逐项有承接、虚拟物流明示、无到手价、3000 量级、说明文字、统一分隔标题 | 批次一 / 三 / 四 | 通过 | 《42》I 组 + G 组 |
-| **组件复用**：U-1～U-6、三处继承、分页唯一定义、无第二份规范 / 基座 | 全四批 | 通过 | 《42》H 组 |
-| **双端**：375/390/430 不溢出、手机卡片列表 + 抽屉筛选、底导航 safe-area | 全四批 | 通过 | 《42》E 组 |
-| **i18n**：全部走 `t()` / `$t()`、状态 key 前缀统一、无硬编码、不产译文 | 全四批 | 通过 | 《42》D 组 |
-| **数据契约**：金额四字段、`unitPrice` 派生不落库、CNY 冻结、活动分层无到手价、禁反乘、组件不直连 Dexie | 批次三 / 四 | 通过 | 《42》F 组 |
-| **一致性红线**：前后台 / PC / 手机共用 Token 与组件、无页面级硬编码、无大型 UI 库 | 全四批 | 通过 | 《42》B / H 组 + 各批总纲 |
-| **本轮红线**：无代码 / 样机 / CSS 正式版 / 图片 Logo / 种子数据 / 页面模板设计、四图未改 | 全四批 | 通过 | 《42》K 组 + 各批声明 |
-| **闸门**：①-2 单独送审单独确认；①-3 / ①-4 未提前启动 | 本送审包 | 通过（待 GPT 审核） | 本包 §8 / §9 |
-
-&gt; **逐批自检**：批次一《35》120/120、批次二《37》113/113、批次三《39》118/118、批次四《41》161/161；T-05《42》78/78 —— 全部 EXIT=0、正文 stdout 与实际执行逐字一致。
+| 项 | 结论 |
+| --- | --- |
+| 四步闸门 | Tokens → 基础组件 → **页面模板（本步）** → 页面设计，四步各自送审、各自确认（X-15 /《03》A.1 /《04》§1.2） |
+| 本步输入 | ①-1 Tokens（Layer 1/2 已批准）、①-2 的 36 SFC + 229 映射 + 组件复用 / 承接规范（已关闭） |
+| 本步产出形态 | **页面模板规范文档**（按分批提交），描述模板的布局骨架、区域划分、组件组合、双端变体、状态与数据位承接、复用关系、验收标准；**只交规范 + 供审阅视觉稿，不交前端代码** |
+| 本步与 ①-4 的分界 | ①-3 定「模板骨架 + 组件组合规则 + 复用关系」，70 套视图复用同一组模板；①-4 才逐页面落到 34 主页面 + 地址子页的最终设计。**本轮不做 ①-4** |
+| 确认路径 | 启动方案（本件，含首批视觉稿）→ GPT 独立审核 → 通过后按分批产出正式模板规范 → 全量完成后单独送审、单独由用户确认（①-3 的 X-15）→ 方可进入 ①-4 |
 
 ---
 
-## 2. 组件总表（12 类 / 36 SFC 逐名）
+## 2. 页面模板分类与复用关系
 
-&gt; 逐名逐序号逐类对账《30》§4.4（T-05 A 组已核验：36 名全含、无缺漏、无重名、序号 1～36 连续、类归属全对账）。规范卡分布：批次一 8 / 批次二 12 / 批次三 3 / 批次四 13。
+### 2.1 分类原则
 
-| # | SFC | 类 | 一句话职责 | 规范卡出处 |
+1. **按信息架构与交互骨架归类**，不按业务页面一一建模板：同类页面共用一套骨架，通过组件组合与数据位差异适配具体页面。
+2. **双端各一套独立布局**：同一模板族含 PC 变体与手机变体，二者是独立布局（非缩放），共用同一份 Token 与组件语义（《19》§1.1 /《03》A.4）。
+3. **前台 / 后台分族**：前台重营销与交易转化，后台重结构化数据与操作确认；共用品牌 Token，不共用布局骨架。
+4. **不产生新组件**：模板只组合既有 36 SFC + 统一规范条目；P 组 5 项仍由现有组件承接，不新增模板级组件。
+5. **模板数量最小化**：足以覆盖 70 套视图即可，避免过度切分；每个模板族须给出覆盖页面清单（§4）与对账（§4.3）。
+
+### 2.2 模板族总表（前台 9 族 + 后台 4 族 = 13 族）
+
+| 族 | 模板族 | 端 | 骨架一句话 | 主要承载页面 |
 | --- | --- | --- | --- | --- |
-| 1 | `FmButton` | C-01 | 主 / 次 / 文字 / 危险按钮 | 《34》§3.1 |
-| 2 | `FmIconButton` | C-01 | 纯图标按钮 | 《34》§3.2 |
-| 3 | `FmProductCard` | C-02 | 商品列表最小单元 | 《38》§4.1 |
-| 4 | `FmCard` | C-03 | 通用内容容器 | 《34》§3.3 |
-| 5 | `FmTable` | C-04 | PC 表格 / 手机卡片式列表 | 《38》§4.2 |
-| 6 | `FmPagination` | C-04 | 分页（C-04 与 C-09 共用，计 1 次，唯一定义处） | 《38》§4.3 |
-| 7 | `FmModal` | C-05 | 居中模态（浮层机制唯一定义处） | 《36》§4.1 |
-| 8 | `FmConfirm` | C-05 | 重要操作二次确认 | 《36》§4.2 |
-| 9 | `FmDrawer` | C-05 | 手机底部抽屉 / 筛选抽屉 | 《36》§4.3 |
-| 10 | `FmFormField` | C-06 | 字段容器与校验提示 | 《36》§4.4 |
-| 11 | `FmInput` | C-06 | 单行输入（空白 / 已填写 / 焦点三状态硬底线） | 《36》§4.5 |
-| 12 | `FmTextarea` | C-06 | 多行输入 | 《36》§4.6 |
-| 13 | `FmSelect` | C-06 | 下拉选择 | 《36》§4.7 |
-| 14 | `FmCheckbox` | C-06 | 复选 | 《36》§4.8 |
-| 15 | `FmRadio` | C-06 | 单选 | 《36》§4.9 |
-| 16 | `FmSwitch` | C-06 | 开关 | 《36》§4.10 |
-| 17 | `FmStepper` | C-06 | 数量步进 | 《36》§4.11 |
-| 18 | `FmSearchInput` | C-06 | 搜索输入（继承 `FmInput`） | 《36》§4.12 |
-| 19 | `FmHeaderNav` | C-07 | PC 顶部导航 | 《40》§4.1 |
-| 20 | `FmSideNav` | C-07 | 后台侧栏 | 《40》§4.2 |
-| 21 | `FmBottomNav` | C-07 | 手机固定底部导航 + safe-area | 《40》§4.3 |
-| 22 | `FmTabs` | C-07 | 标签页（仅 `panel(&lt;key&gt;)`，无 `default` 插槽） | 《40》§4.4 |
-| 23 | `FmBreadcrumb` | C-07 | 面包屑 | 《40》§4.5 |
-| 24 | `FmLocaleSwitch` | C-07 | 语言切换入口（listbox + roving tabindex） | 《40》§4.6 |
-| 25 | `FmStatusBadge` | C-08 | 订单 / 支付 / 物流状态徽章（`refund` 预留） | 《34》§3.4 |
-| 26 | `FmEmptyState` | C-09 | 空态 | 《34》§3.5 |
-| 27 | `FmSkeleton` | C-09 | 加载骨架 | 《34》§3.6 |
-| 28 | `FmToast` | C-09 | 轻反馈（sticky error 防替换） | 《34》§3.7 |
-| 29 | `FmImage` | C-10 | 图片渲染 + `@error` 统一占位 | 《34》§3.8 |
-| 30 | `FmPrice` | C-11 | 价格展示与格式化（`currencyCode` 仅 CNY） | 《40》§4.7 |
-| 31 | `FmAmountBreakdown` | C-11 | 订单金额明细（三字段 + 派生均价） | 《40》§4.8 |
-| 32 | `FmDate` | C-11 | 日期 / 时间格式化 | 《40》§4.9 |
-| 33 | `FmNumber` | C-11 | 数字格式化 / `tabular-nums` | 《40》§4.10 |
-| 34 | `FmCarousel` | C-12 | 首页轮播（不自动播放 / 不循环，§5.4.2 状态明确） | 《40》§4.11 |
-| 35 | `FmGrid` | C-12 | 宫格 | 《40》§4.12 |
-| 36 | `FmCountdown` | C-12 | 倒计时 | 《40》§4.13 |
+| **TP-01** | 首页营销模板 | PC + 手机 | 顶导/搜索 + 轮播 + 分类宫格 + 活动区块 + 商品流 + 页脚（手机为竖排 feeds + 固定底导航） | F-01 |
+| **TP-02** | 列表筛选模板 | PC + 手机 | 筛选侧栏/抽屉 + 排序条 + 网格/卡片列表 + 分页（PC 表格或网格；手机双列卡片 + 抽屉筛选） | F-02 / F-03 / F-05 / F-14 / F-15 / F-16 |
+| **TP-03** | 商品详情模板 | PC + 手机 | 图集 + 规格 + 价格库存 + 领券 + 评价 + 相关推荐（手机大图轮播 + 信息区 + 底部固定购买栏） | F-04 |
+| **TP-04** | 购物车结算模板 | PC + 手机 | 商品清单 + 勾选 + 金额明细 + 提交栏（手机折叠区块 + 底部固定结算栏） | F-06 / F-07 |
+| **TP-05** | 支付结果模板 | PC + 手机 | 支付方式/结果状态 + 订单摘要 + 后续操作（手机列表 + 大按钮） | F-08 / F-09 |
+| **TP-06** | 订单中心模板 | PC + 手机 | 状态 Tab + 订单列表 + 详情分区（快照/金额/物流/操作） | F-10 / F-11 |
+| **TP-07** | 个人中心模板 | PC + 手机 | 会员概览 + 功能入口网格 + 侧栏/头部 + 底导航选中 | F-13 / F-18 |
+| **TP-08** | 地址表单模板（子页） | PC + 手机 | 地址卡片列表 + 新增/编辑抽屉或全屏表单 + 默认标记 + 删除确认 | F-13 子页（#/me/addresses） |
+| **TP-09** | 内容信息模板 | PC + 手机 | 时间线/列表/目录 + 内容区（物流轨迹、评价表单、消息、帮助） | F-12 / F-17 / F-19 / F-20 |
+| **TA-01** | 仪表盘模板 | PC + 手机 | 指标卡 + 趋势图 + 待办列表（手机指标卡竖排 + 待办卡片） | A-01 |
+| **TA-02** | 管理列表模板 | PC + 手机 | 搜索 + 筛选 + 表格/卡片 + 分页 + 新增/编辑抽屉（手机卡片列表 + 抽屉筛选 + 分步表单） | A-02～A-11 |
+| **TA-03** | 统计图表模板 | PC + 手机 | 图表 + 明细表 + 导出（手机图表卡片 + 明细卡片） | A-12 |
+| **TA-04** | 表单配置模板 | PC + 手机 | 分组表单 + 开关 + 导入导出面板（手机分组折叠表单 + 分步导入） | A-13 / A-14 |
 
-&gt; 类计数：C-01 `2` + C-02 `1` + C-03 `1` + C-04 `2` + C-05 `3` + C-06 `9` + C-07 `6` + C-08 `1` + C-09 `3` + C-10 `1` + C-11 `4` + C-12 `3` = **36**。**无 P 组组件混入**。
+### 2.3 复用关系
+
+| 层级 | 复用规则 |
+| --- | --- |
+| 模板族之间 | 同一骨架只定义一次；差异页面以「组合变体 + 数据位差异」描述，**不复制整段布局规范**（呼应 U-1） |
+| 模板 → 组件 | 模板只组合既有 36 SFC；组件复用 / 继承关系沿用《43》§5，模板不另建基座、不重复定义组件规范（U-1～U-6） |
+| 前台 ↔ 后台 | 共用 Token 与通用组件（按钮 / 卡片 / 徽章 / 弹窗 / 表单 / 导航语义），**不共用布局骨架** |
+| PC ↔ 手机 | 共用 Token、组件语义与数据位；布局独立实现；断点仅用于选择布局，不用于 Token 换值（《19》§断点） |
+| 地址表单 | TP-08 与 F-07 结算页复用**同一地址表单组件与同一 Address 数据**（《03》B.3）；模板规范只引用，不另建 |
+| P 组承接 | 虚拟物流 / 订单级满减 / 3000 商品 / Tooltip / 分隔标题，沿用《43》§4 承接，模板只摆放承接位，不新增组件 |
 
 ---
 
-## 3. Layer 3 → Layer 2 映射汇总
+## 3. PC 与手机端布局规划
 
-| 批次 | 文档 | 编号段 | 行数 | 核验 |
-| --- | --- | --- | --- | --- |
-| 批次一 | 《34》§1.3 | #1～#70 | 70 | 100% `var()` 映射 Layer 2 |
-| 批次二 | 《36》§1 | #71～#116 | 46 | 100% `var()`，连续无缺 |
-| 批次三 | 《38》§1 | #117～#145 | 29 | 100% `var()`，连续无缺 |
-| 批次四 | 《40》§1 | #146～#229 | 84 | 100% `var()`，连续无缺 |
-| **全库** | — | **#1～#229** | **229** | **连续无缺、无重复编号、无重复别名、无 Layer 1 直引 / 字面值**（《42》B 组） |
+### 3.1 全局布局参数（继承基线，不新定义）
 
----
-
-## 4. P 组承接对照表（5 项 · 零新增组件）
-
-| P 项 | 原业务要求 | 承接组件 / 规范位 | 明确不做 | 承接落点 |
-| --- | --- | --- | --- | --- |
-| **P-01 虚拟物流** | 物流状态可视化 + 明示虚拟物流 | `FmStatusBadge`（物流 7 状态）+ `FmDate`（节点时间）+ `FmCard`（容器）+ 统一文本位（「虚拟物流」可翻译） | 不新增 `FmTimeline`；奇幻色不外溢；不承诺真实物流 | 《34》§4.1 /《40》§3.1 |
-| **P-02 订单级满减** | 当前金额 / 门槛 / 差额 | `FmPrice`（当前 / 门槛金额）+ `FmNumber`（差额）+ 文字位（规则说明），标 `level=order` | 不新增 `FmProgress`；无进度条 / 无「到手价」；不与 SKU 级活动价相加 | 《40》§3.2 |
-| **P-03 3000 商品** | 真实数量级列表 | `FmTable`（PC）/ 手机卡片列表 + `FmPagination` + 筛选 / 排序 + 单页上限（默认 20 / 档位 10·20·50·100 / 上限 100 / 非法回退 20） | 不新增 `FmVirtualList`；不一次性渲染全量 | 《38》§3 / §4.3 |
-| **P-04 Tooltip** | 表单说明 / 状态释义 | `FmFormField` 校验提示与辅助文字位（`aria-describedby`）+ 常规说明文字 | 不新增 `FmTooltip` / `FmPopover`；不做浮层提示 | 《34》§4.2 |
-| **P-05 分隔与标题** | 统一分隔 / 区块标题，页面不得自定 | `FmCard` + 「面板标题与区块分隔统一规则」（标题层级 / 间距 / 分隔 / Token 来源 / 页面约束） | 不新增 `FmDivider` / `FmSectionTitle`；页面不自写标题字号 / 间距 / 分隔线 | 《34》§2 |
-
-&gt; **P 组 5 项零规范卡、零新增 SFC**；以上提及均为「不新增 / 承接」语境（《42》I1 核验通过）。
-
----
-
-## 5. 复用关系表（U-1～U-6 落地）
-
-| 约束 | 内容 | 落地证据 |
+| 项 | PC | 手机 |
 | --- | --- | --- |
-| **U-1** | 每项基础能力只在一个规范卡完整定义；复用方写明「来源 + 差异」，禁止复制整段 | 各批 §5.2「复用关系落地」 |
-| **U-2** | 复用不改变 12 类 / 36 SFC 数量与归属；不新增共享基座；P 组仍不纳入 | 《42》A / H 组 |
-| **U-3** | 共用规则以「规范条目」承载，不以新增组件承载 | 导航组 / 营销位统一规范条目（《40》） |
-| **U-4** | 复用方验收引用基座编号；继承实测不重复实测，验证继承有效 | 各复用卡验收项 |
-| **U-5** | Layer 3 别名按基座归属，复用方不另起别名重复定义 | 《42》B 组（无重复别名） |
-| **U-6** | `FmPagination` 只归属 C-04，C-09 直接引用不另立卡；P 组承接只引用现有数据位 | 《38》§4.3 /《42》H7 |
+| 容器 | `--container-pc` 1200 / `--container-pc-wide` 1440 | 100% 宽，无横向溢出 |
+| 断点 | `--bp-pc-min` 768 起点 | `--bp-mobile-max` 767 上限；仅选布局，不换 Token |
+| 视口验收 | 宽屏多列 | 375 / 390 / 430 逐一复测 |
+| 触控区 | 常规 | ≥ 44×44px |
+| 底导航 | 无 | 前台固定底导航 + `env(safe-area-inset-bottom)`（C-07 / FmBottomNav） |
 
-**点名复用关系（《30》§4.6.1 / §4.6.2）**
+### 3.2 前台布局骨架
 
-| 基座（唯一定义处） | 复用方 | 复用内容 | 不复用 / 差异 |
-| --- | --- | --- | --- |
-| `FmInput` | `FmSearchInput` | 输入框基础样式、三状态、a11y 规则 | 搜索图标 / 清除按钮 / 搜索语义与事件 |
-| `FmModal` | `FmConfirm` / `FmDrawer` | 浮层、遮罩、`--z-*`、焦点管理、Esc、reduced-motion | 确认按钮组合 / 手机底部形态与滑入动效 |
-| `FmPagination`（C-04） | C-09 组 | 只定义一份，直接复用 | 无差异 |
-| `FmButton` | `FmIconButton` | 尺寸 / 状态 / 主 CTA 色 / focus ring / 触控区 | 图标-only `aria-label` |
-| `FmFormField` | Textarea / Select / Checkbox / Radio / Switch / Stepper | 字段容器、label 关联、校验提示 | 各控件自身交互各写各卡 |
-| `FmCard` | ProductCard / AmountBreakdown / P-01 / P-05 | 圆角 / 阴影 / 内边距 / 标题分隔规则 | 业务内容由各卡定义 |
-| `FmImage` | ProductCard / Carousel | `@error` 占位、外链非必要依赖 | 尺寸 / 裁剪由调用方定义 |
-| `FmPrice`/`FmNumber`/`FmDate` | ProductCard / AmountBreakdown / P-02 / P-01 | `Intl` 格式化、最小货币单位整数、`tabular-nums` | 纯函数工具，非新增 SFC |
-| 导航组共用条目 | HeaderNav / SideNav / BottomNav / Tabs / Breadcrumb / LocaleSwitch | 同一套 Token / 选中态 / 间距 / focus / i18n key | 不建导航基座 SFC |
-| 营销位共用条目 | Carousel / Grid / Countdown | 营销 Token / 活动规则数据位 / reduced-motion | 不建共享基座 SFC |
+| 区域 | PC（前台通用） | 手机（前台通用） |
+| --- | --- | --- |
+| 顶部 | 顶部工具条（语言切换 FmLocaleSwitch + 演示说明）+ 主导航 FmHeaderNav + 搜索 FmSearchInput | 顶部搜索入口 + 标题栏 |
+| 主体 | 内容容器（多列，按模板族变化） | 竖排内容流（单列 / 双列卡片） |
+| 底部 | 页脚（帮助 / 虚拟物流声明 / 数据边界说明） | 固定底导航（首页 / 分类 / 购物车 / 我的）+ safe-area |
 
-&gt; 关键复用组件 `FmSearchInput` / `FmConfirm` / `FmDrawer` / `FmPagination` 全库**各仅 1 张规范卡**，无第二份重复规范（《42》H7～H9）。
+### 3.3 后台布局骨架
+
+| 区域 | PC（后台通用） | 手机（后台通用） |
+| --- | --- | --- |
+| 导航 | 侧栏 FmSideNav 约 240px + 顶栏约 64px（含语言切换、演示级管理员声明） | 顶部导航 + 功能入口，无侧栏 |
+| 主体 | 内容区（搜索 + 筛选 + 数据区 + 抽屉） | 卡片列表 + 分步表单 + 抽屉，**必须可操作** |
+| 交互 | 表格 + 分页 + 详情抽屉 | 卡片式列表 + 抽屉筛选（禁止缩小 PC 表格） |
+
+&gt; 双端根本差异：PC 宽屏多列 + 侧栏 / 页脚；手机竖排 + 固定底导航 + safe-area。二者引用同一份 Token，差异在布局与组件变体，不在色值 / 字号（《19》§1.1 /《03》A.4 / A.6）。
 
 ---
 
-## 6. 明确不做清单
+## 4. 各模板覆盖的实际业务页面
 
-| # | 不做项 |
+### 4.1 前台覆盖（20 主页面 + 地址子页）
+
+| 模板族 | 覆盖页面（编号 · 名称） | 页面数 |
+| --- | --- | --- |
+| TP-01 | F-01 商城首页 | 1 |
+| TP-02 | F-02 商品分类、F-03 搜索结果、F-05 优惠券中心、F-14 我的优惠券、F-15 我的收藏、F-16 浏览历史 | 6 |
+| TP-03 | F-04 商品详情 | 1 |
+| TP-04 | F-06 购物车、F-07 订单结算 | 2 |
+| TP-05 | F-08 模拟支付、F-09 支付结果 | 2 |
+| TP-06 | F-10 我的订单、F-11 订单详情 | 2 |
+| TP-07 | F-13 个人中心、F-18 会员中心 | 2 |
+| TP-08 | F-13 子页 收货地址管理（#/me/addresses，PC / 手机各 1 套） | 子页 1 |
+| TP-09 | F-12 物流追踪、F-17 商品评价、F-19 消息通知、F-20 帮助与说明 | 4 |
+| **合计** | 前台主页面 **20** + 地址子页 **1**（双端 2 套） | — |
+
+### 4.2 后台覆盖（14 模块）
+
+| 模板族 | 覆盖页面（编号 · 名称） | 页面数 |
+| --- | --- | --- |
+| TA-01 | A-01 后台首页 | 1 |
+| TA-02 | A-02 商品管理、A-03 分类与品牌管理、A-04 库存管理、A-05 优惠券管理、A-06 营销活动管理、A-07 订单管理、A-08 支付记录、A-09 物流管理、A-10 用户管理、A-11 评价管理 | 10 |
+| TA-03 | A-12 数据统计 | 1 |
+| TA-04 | A-13 系统设置、A-14 数据备份与恢复 | 2 |
+| **合计** | 后台主模块 **14** | — |
+
+&gt; A-03 内「品牌」Tab 为页内子模块，随 A-03 双端布局验收，不增加页面 / 布局套数（《03》B.2）。
+
+### 4.3 70 套覆盖对账
+
+| 维度 | 数量 | 对账 |
+| --- | --- | --- |
+| 前台主页面 | 20 | TP-01(1)+TP-02(6)+TP-03(1)+TP-04(2)+TP-05(2)+TP-06(2)+TP-07(2)+TP-09(4) = **20** ✓ |
+| 后台主模块 | 14 | TA-01(1)+TA-02(10)+TA-03(1)+TA-04(2) = **14** ✓ |
+| 主页面合计 | 34 | 前台 20 + 后台 14 = **34** ✓ |
+| 主页面双端布局 | 68 | 34 × 2 = **68** ✓ |
+| 地址子页布局 | 2 | TP-08 PC 1 + 手机 1 = **2**（不计入 20 主页面）✓ |
+| **全站视图** | **70** | 68 + 2 = **70** ✓ |
+
+&gt; TP-08 为 F-13 个人中心的**独立地址子页**，不计入前台 20 主页面，但须单独设计与验收（PC / 手机各 1 套）。故全站为 **34 主页面 + 1 子页 = 70 套视图**，对账成立。
+
+---
+
+## 5. 模板与 36 个基础组件的对应关系
+
+&gt; 组件名逐字引用《43》§2 组件总表（36 SFC）；下表列各模板族「主要调用组件」，复用 / 继承细节沿用《43》§5，不在本方案重述。
+
+| 模板族 | 导航 / 骨架 | 内容 / 数据展示 | 表单 / 操作 | 反馈 / 状态 / 工具 |
+| --- | --- | --- | --- | --- |
+| TP-01 首页营销 | FmHeaderNav / FmBottomNav / FmLocaleSwitch | FmCarousel / FmGrid / FmProductCard / FmCountdown | FmSearchInput | FmStatusBadge / FmSkeleton / FmPrice |
+| TP-02 列表筛选 | FmHeaderNav / FmBreadcrumb / FmBottomNav | FmProductCard / FmCard / FmTable(PC) | FmSearchInput / FmSelect / FmCheckbox | FmPagination / FmEmptyState / FmSkeleton |
+| TP-03 商品详情 | FmHeaderNav / FmBreadcrumb / FmBottomNav | FmImage / FmProductCard / FmAmountBreakdown | FmStepper / FmSelect / FmRadio / FmButton | FmPrice / FmStatusBadge / FmCountdown |
+| TP-04 购物车结算 | FmHeaderNav / FmBreadcrumb / FmBottomNav | FmTable(PC) / FmCard / FmAmountBreakdown | FmCheckbox / FmStepper / FmSelect / FmButton | FmPrice / FmNumber / FmEmptyState |
+| TP-05 支付结果 | FmHeaderNav / FmBreadcrumb / FmBottomNav | FmCard / FmAmountBreakdown | FmRadio / FmButton | FmCountdown / FmStatusBadge / FmToast |
+| TP-06 订单中心 | FmHeaderNav / FmTabs / FmBottomNav | FmCard / FmTable(PC) / FmAmountBreakdown | FmButton | FmStatusBadge / FmDate / FmPrice / FmPagination |
+| TP-07 个人中心 | FmHeaderNav / FmSideNav(PC) / FmBottomNav | FmGrid / FmCard | FmButton / FmIconButton | FmStatusBadge / FmNumber |
+| TP-08 地址表单 | FmHeaderNav / FmBreadcrumb / FmBottomNav | FmCard | FmFormField / FmInput / FmSelect / FmCheckbox / FmButton | FmConfirm / FmToast |
+| TP-09 内容信息 | FmHeaderNav / FmTabs / FmBreadcrumb / FmBottomNav | FmCard / FmImage / FmDate | FmFormField / FmTextarea / FmButton | FmStatusBadge / FmToast / FmEmptyState |
+| TA-01 仪表盘 | FmSideNav / FmHeaderNav / FmBreadcrumb | FmCard / FmNumber / FmDate / FmTable | — | FmStatusBadge / FmSkeleton |
+| TA-02 管理列表 | FmSideNav / FmHeaderNav / FmTabs / FmBreadcrumb | FmTable / FmCard / FmImage | FmSearchInput / FmSelect / FmSwitch / FmFormField / FmButton / FmDrawer | FmPagination / FmStatusBadge / FmConfirm / FmToast / FmSkeleton |
+| TA-03 统计图表 | FmSideNav / FmHeaderNav / FmBreadcrumb | FmCard / FmNumber / FmTable / FmDate | FmSelect / FmButton | FmToast / FmSkeleton |
+| TA-04 表单配置 | FmSideNav / FmHeaderNav / FmBreadcrumb | FmCard | FmFormField / FmInput / FmSelect / FmSwitch / FmCheckbox / FmButton | FmConfirm / FmToast |
+
+**组件覆盖核对**：13 模板族合计调用 36 SFC 中的绝大多数；低频组件（如 FmIconButton、FmModal、FmRadio 在部分模板）由具体页面按需组合，模板规范阶段须出「组件 × 模板覆盖矩阵」逐项确认 36 个 SFC 均有着落、无遗漏、无新增。P 组承接位（虚拟物流 / 满减门槛 / 3000 列表 / Tooltip 说明 / 分隔标题）按《43》§4 摆放，不新增组件。
+
+---
+
+## 6. 设计顺序与分批交付计划
+
+### 6.1 设计顺序原则
+
+1. **先高复用、后低频**：首页 / 列表 / 详情等高频骨架优先，便于尽早暴露 Token 与组件组合问题。
+2. **先前台、后后台**：前台模板同时服务双端视觉审阅；后台复用通用组件，后置降低返工。
+3. **每批含双端**：每个模板族同时给 PC + 手机布局，避免单端先行导致另一端返工。
+4. **每批送审**：按 ①-2 两段闸门经验——每批产出后提交，GPT 通过即启动下一批；全量完成后单独送审、单独确认（①-3 X-15）。
+5. **视觉先行**：进入正式模板规范前，先出供审阅视觉稿（本轮首批），确认视觉方向后再固化规范。
+
+### 6.2 分批计划（13 族分三批 + 收尾核验）
+
+| 批次 | 模板族 | 覆盖页面 | 交付物 | 视觉稿 |
+| --- | --- | --- | --- | --- |
+| **批次一（前台核心）** | TP-01 首页 / TP-02 列表 / TP-03 详情 | F-01、F-02/03/05/14/15/16、F-04 | 模板规范卡（骨架 / 双端布局 / 组件组合 / 数据位 / 验收）+ 自检记录 | **本轮首批视觉稿**：PC 首页、手机首页、商品详情双端、后台管理列表（后两者为方向示例） |
+| **批次二（前台交易与账户）** | TP-04/05/06/07/08/09 | F-06～F-20 + 地址子页 | 同上 | 批次二视觉稿（启动后产出） |
+| **批次三（后台）** | TA-01/02/03/04 | A-01～A-14 | 同上 | 批次三视觉稿（启动后产出） |
+| **收尾核验（T 类）** | 70 套覆盖对账 / 36 组件 × 模板覆盖矩阵 / 双端 375·390·430 / i18n / 数据契约 / 复用 U-1～U-6 | 全站 | 交叉核验报告 + 送审包（①-3 X-15） | — |
+
+&gt; 本轮仅提交「启动方案 + 首批视觉稿」，**批次一正式模板规范须待 GPT 审核本方案通过后启动**；三批与收尾核验的具体任务编号将在通过后按《30》同类方式细化，不在本轮预支。
+
+---
+
+## 7. 视觉设计稿原则（对应本轮视觉要求）
+
+| 要求 | 落实方式 |
 | --- | --- |
-| 1 | 不生成任何组件代码：`.vue` / `.ts` / `.css` / `vite.config.*` / `src/`（本轮零创建） |
-| 2 | 不做可视化组件样机 / 静态预览页 |
-| 3 | 不固化 CSS Variables（《19b》仍 `DRAFT`，不引用、不进构建） |
-| 4 | 不生成或修改图片 / Logo（含 AI 图与自绘 SVG）；不铺种子数据 |
-| 5 | 不进入 ①-3 页面模板 / ①-4 页面设计；不提前启动 ①-3 / ①-4 |
-| 6 | 不新增任何组件（P 组 5 项仍不纳入）、不新增 Token / 映射 / 编号 |
-| 7 | 不修改任何 ①-1 文档、四份基线、四张 V5 图、《30》V1.3 及四批已通过文档 |
-| 8 | 不改色值 / 业务规则 / 技术基线 / 项目范围 |
-| 9 | 不对项目资料库执行写操作 |
+| 偏紫靛蓝视觉方向 | 全部色值取自《16》V1.6：主色 `#5146A6`、CTA `#312E7F`、浅辅助 `#6D66D8`、营销块 `#343594`（仅活动氛围）、浅紫阶 `#F4F1FC/#EDE6F5/#D1D2ED`、安全红小字 `#C2332E`；`#3457D5` 废止不用 |
+| PC / 手机风格统一 | 同一组 Token 与组件语义；差异仅在布局（PC 多列 / 侧栏，手机竖排 / 底导航 / safe-area） |
+| 图片对应真实结构与功能 | **不使用无关图片、不使用 AI 生成图**；图片位用「结构化占位块 + 真实业务标注」表示（如商品主图位标注「Sku 图 · 派生展示价」、轮播位标注「活动规则位」），明确对应页面结构与数据位 |
+| 统一 Token 与组件规范 | 视觉稿区域用组件名标注（FmHeaderNav / FmProductCard 等），证明模板由 36 SFC 组合而成，无页面级自造样式 |
+| 先审阅后调整 | 本轮稿为「供审阅的设计效果」，非定稿；据用户 / GPT 反馈调整后再固化为模板规范 |
+
+&gt; 图片处理的边界说明：阶段一 ③ 素材分库未建立、本地图片素材未就位；为遵守「不用无关图片 / 未经同意不用 AI 图」，首批视觉稿以结构占位 + 业务标注呈现真实页面结构，待素材就位或用户授权后再替换为真实商品图。
 
 ---
 
-## 7. 遗留事项（如实登记）
+## 8. 本轮明确不做
 
-| # | 事项 | 状态 | 处置 |
-| --- | --- | --- | --- |
-| 1 | **TBD-01** 分隔线宽度 Token 缺失 | **未固化**（组件层已清除 1px 占位） | 待授权走 ①-1 Token 变更流程；本轮不造值、不改 ①-1 |
-| 2 | **TBD-05** 遮罩背景半透明色 Token 缺失 | **待授权** | 已登记为待提交议题；不新增遮罩色 Token、不造值 / 不给候选色 |
-| 3 | **ISSUE-01**（T-05 发现）《36》§1.1 标题区间声明 #71～#92、实际行 #71～#88 | **低严重度文档瑕疵，已按授权定点修订关闭** | 用户 2026-11-16 授权后已将《36》§1.1 标题改为 #71～#88（见《36》《44》）；映射行 / 别名 / 编号未动，T-05 核验结论与统计不变；本项不再待裁定 |
-| 4 | **Q-10** 五语言完整译文 | 待确认（异步阶段一之后） | 本轮只定 i18n key 契约与长度自适应，不产出译文 JSON |
-| 5 | **Q-05 / Q-06 / Q-07～Q-15** 其余待确认项 | 待确认 | 与 ①-2 组件规范无直接阻塞；保持原状态 |
-| 6 | **CSS Variables 正式版** | 仍 `DRAFT` | 用户明确不固化；规范文档只写 Token 名称与映射 |
-| 7 | **①-3 页面模板 / ①-4 页面设计** | 未启动（独立闸门） | ①-2 正式成果经 X-15 确认后再议；本轮不提前进入 |
-
----
-
-## 8. 送审说明
-
-| 项 | 内容 |
-| --- | --- |
-| 送审性质 | **①-2 正式设计完整成果单独送审、单独确认（X-15 那一次）**；GPT 独立审核通过仅表示**①-2 整体成果的审核通过**（审核层结论），**不等于 ①-2 正式关闭**；审核通过后**仍须执行 X-15 最终确认**（由用户单独确认一次）；**X-15 完成后才正式关闭 ①-2**；**①-3 页面模板仍须按既定流程另行启动，不得自动进入**。此口径与《30》V1.3 §5.6 / §7 X-15 四步闸门一致 |
-| 送审构成 | 组件规范 4 份（《34》《36》《38》《40》）+ 自检记录 4 份（《35》《37》《39》《41》）+ T-05 交叉核验《42》+ 本送审包《43》= **10 份** |
-| 核心结论 | 12 类 / 36 SFC 逐个有卡、P 组零新增；Layer 3 映射 229 行连续 100% `var()`；八项交叉核验全通过；四批自检 + T-05 全绿 |
-| 需裁定事项 | **ISSUE-01 已闭环**（《36》§1.1 标题按授权修订为 #71～#88，见《44》）；TBD-01 / TBD-05 维持未决、本轮不改 |
-| 闸门声明 | 本次授权**仅限批次五**；**不代表 ①-2 整体完成**（须待本次 GPT 审核通过 + X-15 确认）；**不批准进入 ①-3** |
-| 停止点 | 提交《42》《43》后停止，等待 GPT 独立审核；不自动进入 ①-3；自检通过不构成放行 |
+- 不写正式前端代码、不建 `src/`、不生成 `.vue` / `.ts` / 构建配置；不铺数据、不建素材分库。
+- 不自动铺开全部 13 模板族 / 70 套视图的规范；不进入 ①-4 页面设计。
+- 不修改已通过组件规范 / Token / 映射 / 色值源 / 基线 / 四图；P 组仍不纳入；TBD-01 / TBD-05 / Q-10 原状态；CSS Variables 仍 `DRAFT`。
+- 不重新定义技术路线（技术栈 / 数据契约 / 四步闸门 / 70 套口径全部继承基线）。
+- 不对项目资料库执行写操作。
 
 ---
 
 ## 9. 可复现自检脚本
 
-&gt; 运行方式：将下方脚本保存为 `.py` 于项目根目录运行（读取本送审包、《42》、《30》与四批规范文档）；输出应与 §9.1 stdout **逐字一致**。脚本覆盖 A 送审包必备章节 / B 组件总表对账 / C 核验统计 / D P 组承接 / E 复用 U-1～U-6 / F 遗留事项 / G 边界声明 / H ISSUE 引用一致性，共 8 组断言。
+&gt; 运行方式：保存为 `.py` 于项目根目录运行；输出应与 §9.1 stdout 逐字一致。
 
 ```python
 import re, pathlib
-
 ROOT = pathlib.Path(&#x27;.&#x27;)
 def rd(p): return (ROOT/p).read_text(encoding=&#x27;utf-8&#x27;)
 
-pkg = rd(&#x27;docs/43-阶段一第二步-T06送审包.md&#x27;)
-xchk = rd(&#x27;docs/42-阶段一第二步-T05交叉核验报告.md&#x27;)
-plan = rd(&#x27;docs/30-阶段一第二步-正式设计任务计划与最终组件清单-GPT审核稿.md&#x27;)
+r = rd(&#x27;docs/46-阶段一第三步-页面模板设计启动方案.md&#x27;)
 checks = []
 def ck(name, cond): checks.append((name, bool(cond)))
 
-# A. 送审包必备章节
-for sec in [&#x27;验收对照表&#x27;,&#x27;组件总表&#x27;,&#x27;P 组承接对照表&#x27;,&#x27;复用关系表&#x27;,&#x27;明确不做清单&#x27;,&#x27;送审说明&#x27;,&#x27;遗留事项&#x27;]:
-    ck(&#x27;A-&#x27;+sec, sec in pkg)
-ck(&#x27;A8 六项产出声明&#x27;, &#x27;T-06&#x27; in pkg)
-
-# B. 组件总表 36 名对账
-canon = re.findall(r&#x27;^\| (\d+) \| `(Fm\w+)` \| (C-\d+) \|&#x27;, plan, re.M)
-canon_names = [c[1] for c in canon]
-sec2 = pkg[pkg.index(&#x27;## 2.&#x27;):pkg.index(&#x27;## 3.&#x27;)]
-listed_u = []
-for x in re.findall(r&#x27;\b(Fm\w+)\b&#x27;, sec2):
-    if x not in listed_u: listed_u.append(x)
-ck(&#x27;B1 组件总表含全部36名&#x27;, all(n in listed_u for n in canon_names))
-ck(&#x27;B2 组件总表无P组组件&#x27;, not any(re.search(r&#x27;Fm(?:Timeline|Progress|VirtualList|Tooltip|Popover|Divider|SectionTitle)&#x27;, sec2) for _ in [0]))
-ck(&#x27;B3 计划 canonical=36&#x27;, len(canon) == 36)
-
-# C. 核验统计
-ck(&#x27;C1 T-05报告78/78在册&#x27;, &#x27;78/78 PASS&#x27; in xchk)
-ck(&#x27;C2 全库229映射在册&#x27;, &#x27;229&#x27; in pkg and &#x27;#1～#229&#x27; in xchk)
-ck(&#x27;C3 36卡在册&#x27;, &#x27;36&#x27; in pkg)
-ck(&#x27;C4 四批自检数120/113/118/161&#x27;, all(x in pkg for x in [&#x27;120&#x27;,&#x27;113&#x27;,&#x27;118&#x27;,&#x27;161&#x27;]))
-
-# D. P组承接五行
-sec4 = pkg[pkg.index(&#x27;## 4.&#x27;):pkg.index(&#x27;## 5.&#x27;)]
-for p in [&#x27;P-01&#x27;,&#x27;P-02&#x27;,&#x27;P-03&#x27;,&#x27;P-04&#x27;,&#x27;P-05&#x27;]:
-    ck(&#x27;D-&#x27;+p+&#x27; 承接对照在册&#x27;, p in sec4)
-
-# E. 复用关系 U-1~U-6
-sec5 = pkg[pkg.index(&#x27;## 5.&#x27;):pkg.index(&#x27;## 6.&#x27;)]
-for u in range(1,7):
-    ck(&#x27;E-U&#x27;+str(u), (&#x27;U-&#x27;+str(u)) in sec5)
-ck(&#x27;E7 关键复用唯一定义在册&#x27;, all(x in sec5 for x in [&#x27;FmSearchInput&#x27;,&#x27;FmConfirm&#x27;,&#x27;FmPagination&#x27;]))
-
-# F. 遗留事项
-sec7 = pkg[pkg.index(&#x27;## 7.&#x27;):]
-for kw in [&#x27;TBD-01&#x27;,&#x27;TBD-05&#x27;,&#x27;CSS Variables&#x27;,&#x27;DRAFT&#x27;,&#x27;Q-10&#x27;,&#x27;①-3&#x27;]:
-    ck(&#x27;F-&#x27;+kw, kw in sec7)
-
-# G. 边界声明
-ck(&#x27;G1 只授权批次五&#x27;, &#x27;批次五&#x27; in pkg)
-ck(&#x27;G2 不代表①-2整体完成&#x27;, &#x27;不代表&#x27; in pkg and &#x27;①-2&#x27; in pkg)
-ck(&#x27;G3 不批准进入①-3&#x27;, &#x27;①-3&#x27; in pkg)
-ck(&#x27;G4 TBD不新增Token&#x27;, &#x27;不新增&#x27; in pkg and &#x27;Token&#x27; in pkg)
-ck(&#x27;G5 无代码无样机&#x27;, &#x27;无组件代码&#x27; in pkg or &#x27;不写代码&#x27; in pkg)
-ck(&#x27;G6 停止等待GPT审核&#x27;, &#x27;GPT&#x27; in pkg and &#x27;停止&#x27; in pkg)
-
-# H. ISSUE-01
-ck(&#x27;H1 ISSUE-01在送审包被引用&#x27;, &#x27;ISSUE-01&#x27; in pkg)
-ck(&#x27;H2 不擅改已通过批次声明&#x27;, &#x27;不擅&#x27; in pkg or &#x27;零写入&#x27; in pkg)
+# A. 五项要求齐备
+for sec in [&#x27;页面模板分类与复用关系&#x27;,&#x27;PC 与手机端布局规划&#x27;,&#x27;各模板覆盖的实际业务页面&#x27;,&#x27;模板与 36 个基础组件的对应关系&#x27;,&#x27;设计顺序与分批交付计划&#x27;]:
+    ck(&#x27;A-&#x27;+sec, sec in r)
+# B. 模板族 13
+secs = re.findall(r&#x27;\*\*(TP-\d\d|TA-\d\d)\*\*&#x27;, r)
+uniq = sorted(set(secs))
+ck(&#x27;B1 模板族13个&#x27;, len(uniq)==13)
+ck(&#x27;B2 前台9族&#x27;, len([x for x in uniq if x.startswith(&#x27;TP&#x27;)])==9)
+ck(&#x27;B3 后台4族&#x27;, len([x for x in uniq if x.startswith(&#x27;TA&#x27;)])==4)
+# C. 页面覆盖 20+14+70
+ck(&#x27;C1 前台20&#x27;, &#x27;前台主页面 **20**&#x27; in r)
+ck(&#x27;C2 后台14&#x27;, &#x27;后台主模块 **14**&#x27; in r)
+ck(&#x27;C3 34页&#x27;, &#x27;**34**&#x27; in r)
+ck(&#x27;C4 68套&#x27;, &#x27;**68**&#x27; in r)
+ck(&#x27;C5 70套&#x27;, &#x27;**70**&#x27; in r)
+# D. 组件对应（抽样36组件名存在）
+for comp in [&#x27;FmHeaderNav&#x27;,&#x27;FmBottomNav&#x27;,&#x27;FmCarousel&#x27;,&#x27;FmProductCard&#x27;,&#x27;FmPagination&#x27;,&#x27;FmTable&#x27;,&#x27;FmDrawer&#x27;,&#x27;FmAmountBreakdown&#x27;,&#x27;FmConfirm&#x27;,&#x27;FmCountdown&#x27;,&#x27;FmLocaleSwitch&#x27;]:
+    ck(&#x27;D-&#x27;+comp, comp in r)
+# E. 双端与视觉
+ck(&#x27;E1 375/390/430&#x27;, all(x in r for x in [&#x27;375&#x27;,&#x27;390&#x27;,&#x27;430&#x27;]))
+ck(&#x27;E2 safe-area&#x27;, &#x27;safe-area&#x27; in r)
+ck(&#x27;E3 紫靛蓝色值&#x27;, all(x in r for x in [&#x27;#5146A6&#x27;,&#x27;#312E7F&#x27;,&#x27;#6D66D8&#x27;,&#x27;#343594&#x27;]))
+ck(&#x27;E4 废止色不用&#x27;, &#x27;#3457D5&#x27; in r and &#x27;废止&#x27; in r)
+ck(&#x27;E5 无无关图片AI图&#x27;, &#x27;无关图片&#x27; in r and &#x27;AI&#x27; in r)
+# F. 边界
+ck(&#x27;F1 不改规范Token&#x27;, &#x27;不修改&#x27; in r and &#x27;Token&#x27; in r)
+ck(&#x27;F2 不建src&#x27;, &#x27;src/&#x27; in r)
+ck(&#x27;F3 不进①-4&#x27;, &#x27;①-4&#x27; in r)
+ck(&#x27;F4 CSS仍DRAFT&#x27;, &#x27;DRAFT&#x27; in r)
 
 passed = sum(1 for _, v in checks if v)
 for i, (name, v) in enumerate(checks, 1):
-    print(f&quot;[{&#x27;OK&#x27; if v else &#x27;FAIL&#x27;}] {i:03d} {name}&quot;)
+    print(f&quot;[{&#x27;OK&#x27; if v else &#x27;FAIL&#x27;}] {i:02d} {name}&quot;)
 print(f&quot;TOTAL: {passed}/{len(checks)} PASS&quot;)
 ```
 
 ### 9.1 stdout（逐字）
 
 ```
-[OK] 001 A-验收对照表
-[OK] 002 A-组件总表
-[OK] 003 A-P 组承接对照表
-[OK] 004 A-复用关系表
-[OK] 005 A-明确不做清单
-[OK] 006 A-送审说明
-[OK] 007 A-遗留事项
-[OK] 008 A8 六项产出声明
-[OK] 009 B1 组件总表含全部36名
-[OK] 010 B2 组件总表无P组组件
-[OK] 011 B3 计划 canonical=36
-[OK] 012 C1 T-05报告78/78在册
-[OK] 013 C2 全库229映射在册
-[OK] 014 C3 36卡在册
-[OK] 015 C4 四批自检数120/113/118/161
-[OK] 016 D-P-01 承接对照在册
-[OK] 017 D-P-02 承接对照在册
-[OK] 018 D-P-03 承接对照在册
-[OK] 019 D-P-04 承接对照在册
-[OK] 020 D-P-05 承接对照在册
-[OK] 021 E-U1
-[OK] 022 E-U2
-[OK] 023 E-U3
-[OK] 024 E-U4
-[OK] 025 E-U5
-[OK] 026 E-U6
-[OK] 027 E7 关键复用唯一定义在册
-[OK] 028 F-TBD-01
-[OK] 029 F-TBD-05
-[OK] 030 F-CSS Variables
-[OK] 031 F-DRAFT
-[OK] 032 F-Q-10
-[OK] 033 F-①-3
-[OK] 034 G1 只授权批次五
-[OK] 035 G2 不代表①-2整体完成
-[OK] 036 G3 不批准进入①-3
-[OK] 037 G4 TBD不新增Token
-[OK] 038 G5 无代码无样机
-[OK] 039 G6 停止等待GPT审核
-[OK] 040 H1 ISSUE-01在送审包被引用
-[OK] 041 H2 不擅改已通过批次声明
-TOTAL: 41/41 PASS
+[OK] 01 A-页面模板分类与复用关系
+[OK] 02 A-PC 与手机端布局规划
+[OK] 03 A-各模板覆盖的实际业务页面
+[OK] 04 A-模板与 36 个基础组件的对应关系
+[OK] 05 A-设计顺序与分批交付计划
+[OK] 06 B1 模板族13个
+[OK] 07 B2 前台9族
+[OK] 08 B3 后台4族
+[OK] 09 C1 前台20
+[OK] 10 C2 后台14
+[OK] 11 C3 34页
+[OK] 12 C4 68套
+[OK] 13 C5 70套
+[OK] 14 D-FmHeaderNav
+[OK] 15 D-FmBottomNav
+[OK] 16 D-FmCarousel
+[OK] 17 D-FmProductCard
+[OK] 18 D-FmPagination
+[OK] 19 D-FmTable
+[OK] 20 D-FmDrawer
+[OK] 21 D-FmAmountBreakdown
+[OK] 22 D-FmConfirm
+[OK] 23 D-FmCountdown
+[OK] 24 D-FmLocaleSwitch
+[OK] 25 E1 375/390/430
+[OK] 26 E2 safe-area
+[OK] 27 E3 紫靛蓝色值
+[OK] 28 E4 废止色不用
+[OK] 29 E5 无无关图片AI图
+[OK] 30 F1 不改规范Token
+[OK] 31 F2 不建src
+[OK] 32 F3 不进①-4
+[OK] 33 F4 CSS仍DRAFT
+TOTAL: 33/33 PASS
 ```
 
 ---
 
 ## 10. 停止点
 
-**提交《42》《43》后停止，等待 GPT 对 ①-2 整体成果独立审核；不自动进入 ①-3。** 本轮对四批已通过文档及 ①-1 全部文件零写入；TBD-01 / TBD-05 未决状态不变、未新增 Token；无组件代码 / 样机 / CSS 正式版。ISSUE-01 仅为问题清单登记项，是否修订《36》另待裁定。自检脚本通过 **不构成放行**。**本次授权仅限批次五，不代表 ①-2 整体完成、不批准进入 ①-3。**
+提交《45》《46》《47》与首批视觉稿后停止，**等待 GPT 独立审核并供用户查看视觉效果**；不写前端代码、不建 `src/`、不自动铺开全部页面、不进入 ①-4。本方案通过后，①-3 正式模板规范按 §6 分批启动。
 
 ========================================================================
-《44》44-阶段一第二步-批次五两项定点修订变更记录与复核结果.md（新增：合理性判断 / 两项明细 / 边界遵守 / 自检复核 113·78·41 全绿）
+《47》47-阶段一第三步-首批页面模板视觉方案说明.md（VISUAL-①-3-20261116-01，4 稿 PC/手机首页·详情·后台，供审阅）
 ========================================================================
 
-# 《44》①-2 批次五 · 两项定点修订变更记录与复核结果（V1.0）
+# 《47》阶段一 ①-3｜首批页面模板视觉方案说明（V1.0 · 供审阅）
 
 | 项 | 内容 |
 | --- | --- |
-| 记录编号 | **`CHG-①-2-T05FIX-20261116-01`**（批次五后续 · 两项定点修订 · 首版） |
+| 记录编号 | **`VISUAL-①-3-20261116-01`**（①-3 首批视觉稿 · 方案说明 · 首版） |
 | 发生日期 | 2026-11-16 |
-| 触发 | GPT 已完成《42》《43》批次五**完整原文独立审核**，总体结论：T-05 八项交叉核验与 T-06 送审包主体通过，36 组件 / 229 映射 / 各项跨批规范无新的实质性冲突；要求正式关闭 ①-2 前处理两项：**问题一 ISSUE-01 标题修正**、**问题二《43》X-15 最终确认流程修正**。用户据此授权「仅修正上述问题及直接关联文字」，提交修订后的完整《36》《37》《43》及变更记录，等待 GPT 最终复审 |
-| 授权范围 | **仅限两项修正**：①《36》§1.1 标题区间 #71～#92 → #71～#88 + 检查《37》是否引用错误区间；②《43》§8 X-15 流程恢复《30》V1.3 口径。**不代表 ①-2 已关闭、不批准进入 ①-3** |
-| 改动文件 | **《36》《37》《42》《43》+ 本记录《44》**（5 份）。其中《42》仅同步 K1「记录用」断言引用与相关状态措辞，属授权边界 2「必要同步」；四批组件规范（序号 7～18 的 12 张卡正文）、①-1、Token 值、映射数据、技术基线、色值源《16》、计划《30》V1.3 **零改动** |
-| 复核结论 | 三份可复现自检脚本重跑全绿：《37》**113/113 EXIT=0**、《42》**78/78 PASS**、《43》**41/41 PASS**；《42》《43》记录的 stdout 与实际输出**逐字一致**（含 K1 行名未变） |
-| 停止点 | **提交本记录与修订后的《36》《37》《42》《43》后停止，等待 GPT 最终复审；不自动进入 ①-3；自检脚本通过不构成放行、不构成本轮放行** |
+| 触发 | 用户本轮视觉设计要求：「在进入实际前端实现之前，先提供与真实业务页面对应的视觉设计稿……先提供可供用户审阅的设计效果，再根据反馈调整」 |
+| 文件性质 | **供审阅的静态视觉稿 + 说明**；不是前端代码实现、不是 ①-3 正式模板规范、不是 ①-4 页面设计、不是图片 / Logo 生成物 |
+| 配套文件 | 视觉稿：`previews/fantasy-mall-1-3-batch1-visual.html`（单文件，浏览器可直接打开）· 纲领方案：《46》 |
+| 色值来源 | **《16》Q-02 V1.6**，稿内所有色值逐项取自该表，**未造新色、未改任何 Token 值**；废止色 `#3457D5` 未使用 |
+| 状态 | 待 GPT 独立审核 + 用户查看视觉效果；据反馈调整后再固化为模板规范 |
 
 ---
 
-## 1. 两项问题的合理性判断（先判断、后执行）
+## 1. 本轮视觉要求逐条落实
 
-| # | GPT 意见 | 核验事实 | 判断 |
-| --- | --- | --- | --- |
-| 一 | 《36》§1.1 标题声明 #71～#92，与实际行 #71～#88 不符，下一节 §1.2 从 #89 起 | 《36》第 22 行标题写 `#71～#92`；该小节实际映射行为第 26～43 行 **#71～#88（18 行）**；§1.2 标题为 `#89～#116`。标题区间确有笔误，映射数据本身连续无缺 | **成立**，属文档表达层瑕疵，修正标题文字即可 |
-| 二 | 《43》§8 写「GPT 审核通过即为 ①-2 整体通过、之后不再另设用户授权闸门」，与《30》V1.3 X-15 冲突 | 《43》§8 第 174 行原表述取消 X-15 后闸门；《30》V1.3 §5.6 / §7 明确 X-15 四步为「①-1 / ①-2 / ①-3 / ①-4 各一次用户确认」，①-2 的确认发生在正式成果提交后，GPT 审核通过仅为审核层结论 | **成立**，须恢复 X-15 口径 |
-
----
-
-## 2. 问题一修正明细（ISSUE-01 标题区间）
-
-| 文件 | 改动位置 | 改前 | 改后 | 性质 |
-| --- | --- | --- | --- | --- |
-| 《36》 | §1.1 标题（第 22 行） | `### 1.1 C-05 弹窗 / 确认框 / 抽屉（#71～#92）` | `### 1.1 C-05 弹窗 / 确认框 / 抽屉（#71～#88）` | 唯一实质修正：标题区间文字 |
-| 《36》 | 头部表格 | — | 增「ISSUE-01 定点修订（2026-11-16）」说明行 | 留痕，不升主版本号 |
-| 《37》 | 头部表格 | — | 增「ISSUE-01 核查（2026-11-16）」说明行 | 留痕；经精确核对全文**无 #71～#92 错误区间引用**（仅用 #71～#116 / #71～#82 / #89～#93），自检脚本 C2/C8 按映射行断言、与标题无关，正文与断言零改动 |
-| 《42》 | 自检脚本 K1 | `== (71,92)` | `== (71,88)` | **必要引用同步**：K1 为「记录用」断言，直接读取《36》当前标题；标题改后若不改期望值，78/78 会 FAIL。断言名与 stdout 行名均不变 |
-| 《42》 | §4.1 问题清单 / §5 判读 / §6 停止点 / 头部 | ISSUE-01 状态为「未修改、待裁定」 | 增处置行、同步判读与停止点、加留痕行 | 状态措辞同步；T-05 当时发现事实（标题声明 #71～#92）保留为历史记录 |
-| 《43》 | 头部交叉核验结论 / §7 遗留事项第 3 项 / §8 需裁定事项 | ISSUE-01「未修改、待裁定」 | 同步为「已按授权修订、闭环」 | 状态措辞同步 |
-
-**未改动项（明确）**：《36》§1.1 的全部映射行（#71～#88）、Layer 3 别名、映射值、编号 #71～#116、12 张规范卡正文与验收编号；其余四批组件规范、①-1、Token 值、映射数据与基线均零改动。
+| 用户要求 | 落实方式 |
+| --- | --- |
+| 与真实业务页面对应 | 4 张稿分别对应 F-01 商城首页、F-04 商品详情、A-02 商品管理，均标注编号 / 路由 / 数据位，非通用示意图 |
+| 偏紫靛蓝视觉方向 | 主色 `#5146A6`、CTA `#312E7F`、浅辅助 `#6D66D8`、营销块 `#343594`（仅活动氛围）、浅紫三阶；全部取自《16》V1.6 |
+| PC / 手机风格统一 | 同一组 Token 与组件语义；PC 多列 / 侧栏，手机竖排 / 双列卡片 / 底导航，差异只在布局 |
+| 图片对应实际结构功能、不用无关图片代替 | 所有图片位为**结构化占位块**，块内标注真实业务含义（Sku 主图 / 轮播活动位 / 分类图标）；不用无关图片、不用 AI 图 |
+| 统一 Design Tokens 与组件规范 | 稿内用 CSS 变量集中定义色板；每个区块角标标注调用的 `Fm*` 组件，证明模板由 36 SFC 组合 |
+| 先审阅后调整 | 本稿明确标注「供审阅的非定稿」，据反馈调整后再固化 |
 
 ---
 
-## 3. 问题二修正明细（X-15 最终确认流程）
+## 2. 稿纸索引（4 张）
 
-| 文件 | 位置 | 修正后口径 |
-| --- | --- | --- |
-| 《43》 | §8 送审性质 | **GPT 独立审核通过 = ①-2 整体成果的审核通过（审核层结论）**，不等于 ①-2 正式关闭；审核通过后**仍须执行 X-15 最终确认**（用户单独确认一次）；**X-15 完成后才正式关闭 ①-2**；**①-3 页面模板仍须按既定流程另行启动，不得自动进入**。与《30》V1.3 §5.6 / §7 一致 |
-| 《43》 | 头部表格 | 增「定点修订说明（2026-11-16）」留痕行 |
+| # | 稿纸 | 页面 | 模板族 | 端 | 核心组件 |
+| --- | --- | --- | --- | --- | --- |
+| 01 | PC 商城首页 | F-01（`#/`） | TP-01 | PC 1168 | FmHeaderNav / FmSearchInput / FmCarousel / FmGrid / FmCountdown / FmProductCard ×8 |
+| 02 | 手机商城首页 | F-01（`#/`） | TP-01 | 手机 390 | FmSearchInput / FmCarousel / FmGrid / FmProductCard / FmBottomNav(safe-area) |
+| 03 | 商品详情（双端） | F-04（`#/product/:id`） | TP-03 | PC + 手机 | FmBreadcrumb / FmImage / FmCarousel / FmPrice / FmRadio / FmStepper / FmButton |
+| 04 | 后台商品管理（双端） | A-02（`#/admin/products`） | TA-02 | PC + 手机 | FmSideNav / FmSearchInput / FmTable / FmPagination / FmDrawer / FmStatusBadge |
 
-**防混淆说明**：此处区分两段不同闸门——①「启动正式设计前不再另设用户授权闸门」（《30》V1.3 已定，指 GPT 审核计划通过后即可开始正式设计）；②「正式成果完成后的 X-15 用户确认」（本次恢复，指 ①-2 完整成果的正式关闭确认）。两者不冲突，原《43》§8 把「审核通过」误写成「跳过 X-15」，本次仅纠正该点。
-
----
-
-## 4. 修改边界遵守声明
-
-| # | 边界要求 | 遵守情况 |
-| --- | --- | --- |
-| 1 | 仅修正上述两项及直接关联文字 | 已遵守；改动限于标题区间、X-15 表述及状态留痕 |
-| 2 | 《42》核验结论与统计不重做，仅必要同步引用 | 已遵守；八项结论与 78/78 统计不变，仅 K1 期望值与措辞同步 |
-| 3 | 不修改四批组件规范其他内容 | 已遵守；12/3/13 卡正文与全部映射行零改动 |
-| 4 | 不改《30》V1.3、①-1、Token 值、映射数据、技术基线 | 已遵守；均零写入 |
-| 5 | TBD-01、TBD-05、Q-10 保持原状态 | 已遵守；状态未变 |
-| 6 | 不写代码、样机、不进入 ①-3 | 已遵守；无 `src/`、无 `.vue/.ts/.css` |
-| 7 | 提交修订后完整《36》《37》《43》及变更记录待复审 | 已遵守；另附受影响同步的《42》与本记录《44》 |
+&gt; 覆盖《46》§6 批次一：TP-01 首页 / TP-03 详情 + 一张后台 TA-02 作为后台布局方向示例。批次二 / 三视觉稿待方案通过后启动。
 
 ---
 
-## 5. 可复现自检（重跑结果）
+## 3. 图片位处理（关键边界）
 
-&gt; 三份文档内自检脚本按原样提取重跑，未修改任何断言逻辑（除《42》K1 引用期望 (71,92)→(71,88) 这一必要同步）。
-
-| 文档 | 断言总数 | 重跑结果 | 文档内 stdout 记录 | 一致性 |
-| --- | --- | --- | --- | --- |
-| 《37》批次二自检 | 113 | **113/113 PASS · EXIT=0** | `TOTAL: 113/113 PASS  EXIT=0` | 一致 |
-| 《42》T-05 交叉核验 | 78 | **78/78 PASS** | `[OK] 070 K1 B2§1.1标题声明段(记录用)` … `TOTAL: 78/78 PASS` | 逐字一致 |
-| 《43》T-06 送审包 | 41 | **41/41 PASS** | 含 `TOTAL` 的 stdout 块 | 逐字一致 |
+- **不使用任何无关图片、不使用 AI 生成图**（未经用户同意）。
+- 所有图片区域用带斜纹的占位块表示，块内写明其真实业务含义，例如：
+  - 「商品主图位 · Sku.image · @error 占位」
+  - 「轮播主视觉位 · 活动规则位 / 生效时间 · 营销氛围块」
+  - 「分类图标位 · 一级 / 二级分类」
+- 理由：阶段一 ③ 素材分库未建立、本地图片素材未就位；占位块既满足「图片必须对应实际页面结构与功能」，又不以无关图片蒙混。待素材就位或用户授权后再替换为真实商品图。
+- 稿内未生成 / 未修改任何图片或 Logo 文件。
 
 ---
 
-## 6. 提交清单与停止点
+## 4. 数据位与业务规则呈现（与基线一致）
 
-**本次提交（5 份完整文档）**：
+| 规则 | 稿内体现 |
+| --- | --- |
+| 商品卡价格取 Sku 派生展示价、库存取 Inventory | 首页 / 详情 / 后台各处价格标注来源，数据位说明写明 |
+| 活动价只读派生（derived）、不落库 | 详情页「SKU 级活动展示价（derived 只读）」 |
+| 订单级活动无「到手价」 | 推荐位标注「不生成到手价位」，订单级活动只在结算页给规则 / 门槛 |
+| 金额四字段、`unitPrice` 派生不落库 | 详情数据位说明标注 `listPrice/discountAllocation/lineTotal`（结算 / 订单页体现）与派生均价口径 |
+| `currencyCode` 冻结 CNY | 详情页数据位说明标注，展示偏好不改历史、不换汇 |
+| 生命周期状态 / 已被引用标记 | 后台表格含在售 / 停用 / 归档状态与预警 |
+| 3000 量级、单页上限 20 | 后台分页标注共 3000 条 / 每页 20 / 档位 10·20·50·100 |
+| 虚拟物流明示 | 详情页配送区 / 页脚标注「虚拟物流」 |
 
-1. 《36》阶段一第二步 · 基础组件规范文档（批次二）—— §1.1 标题修正 + 留痕
-2. 《37》①-2 批次二交付与自检记录 —— 核查说明 + 留痕
-3. 《42》阶段一第二步 · T-05 交叉核验报告 —— K1 引用同步 + 状态措辞同步
-4. 《43》阶段一第二步 · T-06 送审包 —— X-15 流程修正 + 状态措辞同步 + 留痕
-5. 《44》本变更记录
+---
 
-**停止点**：提交后停止，等待 GPT 对两项修订的最终复审。**本次不代表 ①-2 已正式关闭**（须待 X-15 最终确认），**不批准进入 ①-3**。
+## 5. 待审阅确认点（不预设结论）
+
+1. **视觉方向**：紫靛蓝主色 + 营销块色的分区使用是否符合预期；价格红、CTA 色是否符合《16》分用途规则。
+2. **双端风格统一性**：PC 与手机是否确为「同一 Token / 同一组件语义、不同布局」，有无风格漂移。
+3. **图片占位方式**：以结构化占位块 + 业务标注替代真实商品图是否可接受（涉「不用无关图片 / 不用 AI 图」红线）。
+4. **模板骨架划分**：TP-01 / TP-03 / TA-02 的布局骨架与区块组成是否合理，可否作为对应模板族的基线。
+5. **组件标注**：稿内组件角标是否与《43》36 SFC 对应准确，有无误标 / 漏标。
+
+---
+
+## 6. 边界与停止点
+
+- 本稿为**静态视觉稿**，不生成 `.vue` / `.ts` / 构建配置、不建 `src/`、不接数据源、不铺种子数据。
+- 不改已通过组件规范 / Token / 映射 / 色值 / 基线 / 四图；P 组仍不纳入；TBD-01 / TBD-05 / Q-10 原状态；CSS Variables 仍 `DRAFT`。
+- 不自动铺开全部 13 模板族 / 70 套视图；不进入 ①-4。
+- **提交《45》《46》《47》+ 视觉稿后停止，等待 GPT 独立审核并供用户查看视觉效果；据反馈调整后再固化模板规范。**
+
+========================================================================
+附：首批页面模板视觉稿 HTML（fantasy-mall-1-3-batch1-visual.html）的可读文字标注 —— 逐稿图片位/组件角标/文案，佐证视觉稿对应真实业务页面
+========================================================================
+
+奇幻购 Fantasy Mall｜①-3 首批页面模板视觉稿
+奇幻购 Fantasy Mall｜①-3 页面模板 · 首批视觉稿
+Templates Visual Draft · Batch 1 · 供审阅的设计效果（非定稿，据反馈调整）
+稿纸编号
+VISUAL-①-3-20261116-01
+对应方案
+《46》①-3 页面模板设计启动方案
+色值来源
+《16》Q-02 V1.6（唯一色值源，稿内零造色）
+组件来源
+《43》36 SFC（区块角标标注调用组件）
+模板族
+TP-01 首页 · TP-03 详情 · TA-02 后台管理列表
+覆盖页面
+F-01 / F-04 / A-02（真实业务页面）
+双端
+PC 1168 容器 · 手机 390 视口（独立布局，非缩放）
+状态
+待 GPT 独立审核 + 用户查看视觉效果
+图片位处理声明：
+本稿所有图片区域均为「结构化占位块」，块内文字标注其真实业务含义（如 Sku 主图 / 轮播活动位 / 分类图标）。这是为遵守「图片必须对应实际页面结构与功能、不用无关图片代替、未经同意不用 AI 图」——阶段一③素材分库尚未建立，待素材就位或获授权后再替换为真实商品图。
+本稿为静态视觉稿，不是前端代码实现，不生成 src/、不接数据源。
+稿 01
+PC 商城首页 · F-01 / 模板族 TP-01
+路由
+#/
+· 布局：顶导 + 主导航 + 搜索 + 内容容器(1200/1440) + 页脚 · 双列以上宽屏结构。紫为主色，营销横幅用营销块色
+#343594
+。
+PC · 1168 容器
+FmLocaleSwitch
+你好，请登录　免费注册
+我的订单
+帮助中心
+简体中文 ▾
+奇幻购
+FANTASY MALL
+FmSearchInput
+搜索
+FmButton
+☰　全部分类
+优惠券中心
+我的购物车
+FmHeaderNav
+首页
+限时秒杀
+手机数码
+家居生活
+服饰美妆
+奇幻专区
+品牌馆
+FmCarousel
+盛夏狂欢 · 全场大促
+精选好物 低至 5 折 · 领券再减
+立即抢购 →
+▧
+轮播主视觉位
+活动规则位 / 生效时间
+（营销氛围块）
+FmGrid
+商品分类
+全部分类 →
+一级 / 二级分类树
+图
+手机数码
+图
+电脑办公
+图
+家居生活
+图
+服饰鞋包
+图
+美妆个护
+图
+运动户外
+图
+母婴玩具
+图
+奇幻专区
+FmCountdown
+⚡ 限时秒杀
+距结束
+02
+:
+15
+:
+48
+SKU 级活动展示价（派生只读）
+FmProductCard ×4
+▢
+商品主图位
+Sku.image · @error 占位
+热销
+轻量无线蓝牙耳机 主动降噪 长续航
+¥
+399.00
+¥599.00
+已售 2.3万 · ★4.9 · 库存充足
+▢
+商品主图位
+Sku.image
+新品
+智能手表 运动健康监测 多功能表盘
+¥
+799.00
+¥999.00
+已售 8,120 · ★4.8 · 库存充足
+▢
+商品主图位
+Sku.image
+便携咖啡机 家用迷你 一键萃取
+¥
+259.00
+¥329.00
+已售 5,604 · ★4.7
+▢
+商品主图位
+Sku.image
+限时
+人体工学办公椅 久坐舒适 可调节
+¥
+1,299.00
+¥1,799.00
+已售 1,988 · ★4.9
+为你推荐 · 热销榜
+查看全部 →
+商品流（支持 3000 量级 · 分页加载）
+▢
+商品主图位
+商品名称 · 派生展示价 · 库存/销量/评分
+¥
+129.00
+▢
+商品主图位
+商品名称 · 活动规则位单独成组件
+¥
+239.00
+▢
+商品主图位
+商品名称 · 不生成「到手价」位
+¥
+89.00
+▢
+商品主图位
+商品名称 · 价格红大文本门槛
+¥
+459.00
+奇幻购 Fantasy Mall
+虚拟电商演示站点 · 商品与品牌均为虚构
+帮助中心　|　虚拟物流声明　|　数据边界说明　|　简体中文
+本稿组件与数据位标注（对应《43》36 SFC）
+FmLocaleSwitch
+FmHeaderNav
+FmSearchInput
+FmButton
+FmCarousel
+FmGrid
+FmCountdown
+FmProductCard ×8
+FmPrice
+FmStatusBadge
+数据位：轮播项（规则 ID / 生效时间）· 分类树（多级）·
+商品卡价格取 Sku 派生展示价、库存取 Inventory
+· SKU 级活动价标
+derived
+；订单级活动只给规则 / 门槛位，不与商品价相加、无「到手价」。浅紫三阶
+#F4F1FC/#EDE6F5/#D1D2ED
+仅作浅底 / 分隔 / 占位。
+稿 02
+手机商城首页 · F-01 / 模板族 TP-01
+视口 390 · 布局：顶部搜索入口 + 竖排内容 + 触屏分类宫格 + 双列商品卡 +
+固定底部导航 + safe-area
+。非 PC 缩放，独立布局。
+手机 · 390 视口
+FmSearchInput
+⌕　搜索商品 / 品牌
+FmLocaleSwitch
+中 ▾
+FmCarousel
+盛夏狂欢
+全场低至 5 折 · 领券再减
+FmGrid
+图
+数码
+图
+家居
+图
+服饰
+图
+美妆
+图
+食品
+图
+运动
+图
+母婴
+图
+奇幻
+图
+图书
+图
+更多
+FmCountdown
+⚡ 限时抢购
+02:15:48
+营销主色块 #343594
+FmProductCard ×N
+▢
+商品主图位
+Sku.image
+轻量无线蓝牙耳机 主动降噪
+¥
+399.00
+▢
+商品主图位
+智能手表 健康监测
+¥
+799.00
+▢
+商品主图位
+便携咖啡机 一键萃取
+¥
+259.00
+▢
+商品主图位
+人体工学办公椅
+¥
+1,299.00
+FmBottomNav
+⌂
+首页
+▦
+分类
+▤
+购物车
+◉
+我的
+本稿组件与数据位标注
+FmSearchInput
+FmLocaleSwitch
+FmCarousel
+FmGrid
+FmCountdown
+FmProductCard
+FmBottomNav（safe-area）
+与 PC 首页共用同一 Token 与组件语义；差异仅在布局（竖排 feeds + 双列卡片 + 底导航）。触控区 ≥44×44px；轮播不自动播放 / 不循环（沿用《40》FmCarousel 定案）；分类图标底用
+#F4F1FC
+，活动卡底
+#F4F1FC
+。
+稿 03
+商品详情 · F-04 / 模板族 TP-03（PC + 手机）
+路由
+#/product/:id
+· PC：图集 + 规格 + 价格库存 + 领券 + 评价 + 相关推荐；手机：大图轮播 + 信息区 +
+底部固定购买栏
+。价格红
+#EC3C3E
+大文本门槛，主 CTA 统一
+#312E7F
+。
+PC · 详情
+FmBreadcrumb
+首页　/　手机数码　/
+轻量无线蓝牙耳机
+FmImage
+图1
+图2
+图3
+图4
+▢
+商品主图集位（多图）
+Sku.image[] · 统一 @error 占位
+轻量无线蓝牙耳机 主动降噪 长续航 通话清晰
+品牌：星澜数码　|　销量 2.3万　|　评价 9,876　|　虚拟物流
+FmPrice
+¥
+399.00
+¥599.00
+SKU 级活动展示价（derived 只读）· 优惠券 满199减30
+优惠分摊 discountBreakdown：活动 -100 / 券 -30 / 积分 -0
+颜色
+FmRadio
+曜石黑
+月光白
+星空蓝
+版本
+标准版
+Pro 版
+配送
+配送中心：天堂仓 / 地心仓
+虚拟物流
+优惠
+满199减30
+满699减60
+FmStepper
+−
+1
++
+FmButton
+加入购物车
+立即购买
+数据位说明：
+价格取
+Sku.price
+唯一可写源；库存取
+Inventory.available
+唯一源；
+skuId
+/ 规格组合齐备；活动展示价只读派生并标
+derived
+；
+currencyCode
+冻结 CNY（展示偏好只改格式、不换汇）；订单级活动仅在结算页给规则 / 门槛，不在此生成「到手价」。
+手机 · 详情
+FmCarousel
+▢
+大图轮播位
+Sku.image[] 多图
+轻量无线蓝牙耳机 主动降噪 长续航 通话清晰
+¥
+399.00
+¥599.00
+活动价（derived）· 满199减30
+颜色
+曜石黑
+月光白
+配送
+虚拟物流
+天堂仓 / 地心仓
+评价列表 / 相关推荐向下延伸 · 数据位同 PC
+FmButton ×2
+♡
+收藏
+▤
+购物车
+加入购物车
+立即购买
+本稿组件与数据位标注
+FmBreadcrumb
+FmImage
+FmCarousel（手机图集）
+FmPrice
+FmRadio
+FmStepper
+FmButton（cart/buy）
+FmCountdown
+主 CTA「立即购买」统一
+#312E7F
+（V1.6 跨页口径）；次 CTA「加入购物车」
+#FB4D4C
+保留原色 + 白字加粗大字号（大文本 3:1 达标）；手机底部固定购买栏为独立布局，与 PC 同 Token、同组件语义。
+稿 04
+后台 · 商品管理 · A-02 / 模板族 TA-02（PC + 手机）
+路由
+#/admin/products
+· PC：侧栏(约240) + 顶栏(约64) + 内容区(搜索/筛选/表格/分页/抽屉)；手机：卡片列表 + 抽屉筛选 + 分步表单，
+禁止缩小 PC 表格
+。演示级管理员入口声明常驻。
+后台 PC · 1168
+FmSideNav
+奇幻购 · 管理后台
+ADMIN CONSOLE
+⌂　后台首页
+商品管理
+▦　分类与品牌
+▤　库存管理
+▧　优惠券管理
+⚡　营销活动
+▤　订单管理
+◉　支付记录
+▥　数据统计
+⚙　系统设置
+FmHeaderNav
+商品管理
+演示级管理员入口 · 非真实安全认证
+简体中文 ▾
+FmSearchInput + FmSelect
+⌕　搜索商品名 / SKU
+分类 ▾
+品牌 ▾
+状态 ▾
+FmButton
++ 新增商品
+FmTable
+商品
+分类 / 品牌
+销售价
+库存
+状态
+操作
+图
+轻量无线蓝牙耳机
+手机数码 / 星澜
+¥399.00
+1,280
+在售
+编辑
+停用
+图
+智能手表 运动健康
+手机数码 / 星澜
+¥799.00
+356
+在售
+编辑
+停用
+图
+便携咖啡机 迷你
+家居生活 / 悦家
+¥259.00
+预警 12
+在售
+编辑
+停用
+图
+旧款蓝牙音箱
+手机数码 / 星澜
+¥199.00
+0
+归档
+查看
+图
+人体工学办公椅
+家居生活 / 悦家
+¥1,299.00
+640
+停用
+编辑
+启用
+FmPagination
+共 3,000 条 · 每页 20 条 ▾
+‹
+1
+2
+3
+…
+150
+›
+表单只编辑
+Sku.price
+/
+Inventory
+，Product 无价格 / 库存可写字段、无活动价字段；生命周期状态（在售/停用/归档）与「已被历史订单引用」标记齐备，删除前引用检查提示。
+FmPagination
+单页上限 20 / 档位 10·20·50·100（唯一定义在 C-04）。
+后台手机 · 390
+FmHeaderNav
+商品管理
+演示模式 ▾
+FmDrawer（筛选）
+⌕　搜索商品
+筛选 ▾
+FmTable（手机卡片式）
+主图
+轻量无线蓝牙耳机 主动降噪
+¥399.00
+手机数码 / 星澜
+在售
+库存 1,280
+编辑
+停用
+主图
+智能手表 运动健康监测
+¥799.00
+手机数码 / 星澜
+在售
+库存 356
+编辑
+停用
+主图
+便携咖啡机 家用迷你
+¥259.00
+家居生活 / 悦家
+库存预警
+编辑
+下拉加载更多 · 每页上限 20
+本稿组件与数据位标注
+FmSideNav
+FmHeaderNav
+FmSearchInput
+FmSelect
+FmTable
+FmPagination
+FmButton
+FmStatusBadge
+FmDrawer（手机筛选）
+PC 完整表格 + 分页，手机为卡片式列表 + 抽屉筛选，禁用缩小 PC 表格；支持 3000 量级（分页 / 筛选 / 排序，单页上限 20）；表格列头文案走 i18n；重要操作（删除 / 停用）调
+FmConfirm
+二次确认并写操作记录（本稿为静态效果，未画弹层）。
+稿纸结束 · 本稿为《46》①-3 启动方案的配套视觉稿。待 GPT 独立审核 + 用户查看后据反馈调整；通过后按分批启动正式模板规范设计。不写前端代码 · 不建 src/ · 不进入 ①-4。
 </pre></main>
 </body>
 </html>
