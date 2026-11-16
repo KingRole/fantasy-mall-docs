@@ -1,0 +1,2036 @@
+【分享页正文 / WorkBuddy ①-2 正式设计批次一提交说明】
+
+询问内容是什么
+内容由 AI 生成，请核实重要信息
+
+GPT 已完成对《30》V1.3 和《33》的最终审核，正式审核通过。
+
+﻿
+
+
+现在可以按已批准的范围正式启动 Stage 1 · ①-2 基础组件设计。
+
+﻿
+
+
+执行要求：
+
+﻿
+
+
+1. 严格按照《30》V1.3 的 12 类、36 个 SFC 清单开展设计，不擅自增加、删除或调整范围。
+
+2. 按已确定的任务分解和规范卡模板，逐项完成组件规范文档。
+
+3. 每个组件必须完整说明职责、PC/手机变体、状态、交互、Token 依赖、i18n、数据契约、验收标准及复用关系。
+
+4. 严格遵守 Layer 2 / Layer 3 映射规则和已通过的无障碍标准。
+
+5. P 组 5 项仍不纳入本阶段；CSS Variables 继续保持 DRAFT。
+
+6. 本阶段只交付完整组件规范文档，不生成组件代码、不做样机、不进入页面模板或页面设计。
+
+7. 建议按组件类别分批完成，每批提交完整文档及自检记录，等待 GPT 审核后再继续下一批。
+
+﻿
+
+
+现在开始正式设计，并在第一批完成后提交我审核。
+
+08:52
+WorkBuddy
+已完成 10m20s
+
+①-2 正式设计已启动，批次一（T-01 + T-02）已完成并交付，共 2 份新文档，其余 docs/ 全部零写入。
+
+已交付：
+
+34-阶段一第二步-基础组件规范文档-正式版.md（SPEC-①-2-20261116-01，V1.0 批次一交付版）
+35-①-2正式设计批次一交付与自检记录.md（CHK-①-2-B1-20261116-01，含可复现核验脚本）
+
+批次一内容（严格对齐《30》V1.3 §5.2 任务分解）：
+
+部分	内容
+§1 总纲（T-01）	组件分层架构、命名与目录规范、Layer 3 → Layer 2 映射表 69 行（逐行 var() 映射，无 Layer 1 直引、无字面 HEX/px）、U-1～U-6 复用落地、全局 i18n 与数据边界
+§2 统一面板规则（P-05 承接）	标题层级 / 间距 / 分隔规则 / Token 来源 / 页面约束五项齐备，页面不得自行设计
+§3 第一批 8 张规范卡	FmButton、FmIconButton（继承按钮基座）、FmCard（容器基座）、FmStatusBadge（枚举对齐《01》§4.8：订单 5 态 + 物流 7 态轨迹）、FmEmptyState、FmSkeleton、FmToast、FmImage —— 每卡 11 字段齐全（职责 / 契约 / 双端变体 / 状态 / 交互 a11y / Token / i18n / 数据契约 / 验收 / 复用关系）
+§4–§6	P-01 / P-04 承接说明（跨批次组合规则）、第一批验收对照、批次二～五预告（8 + 12 + 3 + 13 = 36）
+
+复核：32/32 PASS、EXIT=0、stderr 空、正文 == stdout True。覆盖批次结构（8 卡序号与《30》§4.4 逐一对账）、映射表 69 行 var() 纯度、P 组候选名仅出现于禁止语境、a11y V1.3 归因未回退、CSS 仍 DRAFT 等。
+
+四点如实说明（详见《35》§5，不隐藏）​：
+
+①-2 是规范文档、无代码可渲染，对比度一律声明以《20》穷举为准；本批用到而《20》未覆盖的组合（如危险按钮白字底）统一标注批次五补测，不冒充已测。
+支付 / 退款枚举不自行发明，以《01》§4.8 /《02》§4 状态机为唯一权威；物流七态直接取《01》原文轨迹。
+按钮 PC 高度用 --space-6（32px）、手机 --space-7（48px 触控达标）——现有 Token 无 40px 档，按 L3-5 不在组件层就地造值；若认为 PC 偏小属 ①-1 Tokens 层变更议题。
+Toast 多例排队属阶段二 Toast Service，①-2 只定单例契约。
+
+零写入核验：docs/ 36 文件，本轮仅新增《34》《35》；src/ 不存在、无 .vue/.ts/构建配置；《19b》仍 DRAFT；《29》～《33》、全部 ①-1 文档、四份基线、四张 V5 图未动；P 组零纳入、零新增组件。
+
+已停止，等待你对批次一的审核意见；审核通过后按同一模板开始批次二（T-03：C-05 三件 + C-06 九件 + 输入框三状态实测表）。①-2 全部批次完成后仍单独送审、单独等待你确认（X-15 那一次）。
+
+35-①-2正式设计批次一交付与自检记录.md
+12.8 KB
+34-阶段一第二步-基础组件规范文档-正式版.md
+40.3 KB
+GLM-5.3-Flash
+09:02
+
+
+========================================================================
+《34》34-阶段一第二步-基础组件规范文档-正式版.md（SPEC-①-2-20261116-01，V1.0 批次一）
+========================================================================
+
+34-阶段一第二步-基础组件规范文档-正式版
+《34》阶段一第二步 · 基础组件规范文档（正式版 · 分批交付）
+项
+	
+内容
+
+
+记录编号
+	
+SPEC-①-2-20261116-01
+
+
+版本
+	
+V1.0 · 批次一交付版（2026-11-16）；后续批次以追加章节方式演进（V1.1 批次二 / V1.2 批次三 / V1.3 批次四 / V1.4 批次五终稿）
+
+
+依据
+	
+《30》V1.3（经 GPT 最终审核通过，2026-11-16）§3.3 L3-1～L3-6 / §4 全部 / §5.1～§5.4.2；《19》§5～§13 /《19b》Layer 1～2 草案（仍 DRAFT）；《20》全组合对比度核验；《25》输入框三状态规则；《16》V1.6 色值；《01》§4.8 状态机与轨迹；《02》§4 状态机；《03》A.2 / A.3 / A.5 / A.6；《28》①-1 收尾结论
+
+
+触发
+	
+用户 2026-11-16 指令：「GPT 已完成对《30》V1.3 和《33》的最终审核，正式审核通过。现在可以按已批准的范围正式启动 Stage 1 · ①-2 基础组件设计」，并要求「按组件类别分批完成，每批提交完整文档及自检记录，等待审核后再继续下一批」
+
+
+文件性质
+	
+①-2 正式规范文档（只交付规范，不交付代码）。本文档是《30》§5.1 所指「另行编号的新文档」
+
+
+本批范围
+	
+T-01 全部 + T-02 全部 = §1 总纲（分层 / 命名 / 目录 / Layer 3 映射 / 复用落地）+ §2 统一面板规则（P-05 承接）+ §3 第一批 8 张规范卡（C-01 FmButton FmIconButton、C-03 FmCard、C-08 FmStatusBadge、C-09 FmEmptyState FmSkeleton FmToast、C-10 FmImage）+ §4 P-01 / P-04 承接说明 + §5 第一批验收对照
+
+
+本批不做
+	
+批次二～五组件（C-02 / C-04 / C-05 / C-06 / C-07 / C-11 / C-12）、T-05 交叉核验汇总、T-06 送审包；不生成任何 .vue / .ts / .css 实现文件、不做样机、不固化 CSS、不新增组件、不动 P 组
+
+
+状态闸门
+	
+①-1 已收尾；①-2 正式设计进行中（批次 1 / 5）；①-2 整体完成后仍单独送审、单独等待用户确认（X-15 那一次）；①-3 / ①-4 未开始
+
+
+停止点
+	
+提交本批（含《35》自检记录）后停止，等待用户 / GPT 审核通过后才开始批次二
+1. 总纲（T-01：分层、命名、目录、Layer 3 映射、复用落地）
+1.1 组件分层架构
+1
+Layer 1  Primitive Token（--primitive-*）        ← 《19》/《19b》已定，唯一基础值来源，本轮零改动
+Layer 2  语义 Token（--color-* / --font-* / --space-* / --radius-* / --shadow-* / --z-* / --motion-* / --container-* / --bp-*）
+         ← 语义 Token 的正式来源（用户裁定 /《30》§3.3 L3-1）
+Layer 3  组件专用别名（--fm-<comp>-*）            ← 本文档逐组件定义；仅命名别名，必须 var() 映射 Layer 2（L3-2 / L3-3）
+Layer 4  组件规范卡（本文档 §3）                  ← 职责 / 契约 / 变体 / 状态 / a11y / Token / i18n / 数据 / 验收 / 复用
+L3-1～L3-6 全文见《30》§3.3，逐字有效；本总纲不复制、不修改，只按其落地。
+组件 = 纯展示 + 事件：不持有数据源、不直接访问 Dexie / IndexedDB（《03》A.5 / A.6）；页面经 Repository / 业务服务 + Pinia Store 注入数据。
+前后台 / PC / 手机共用同一批组件与 Token；禁止页面级硬编码 HEX / px 字号 / z-index。
+1.2 命名与目录规范
+项
+	
+规范
+
+
+SFC 命名
+	
+Fm 前缀 + PascalCase 多词名（FmProductCard），与《30》§4.4 36 名逐字一致，禁止缩写 / 同义改名
+
+
+文件位置（规范约定，本轮不创建文件）
+	
+src/components/base/<FmName>.vue；组件内不含路由 / Store 直连 / API 调用
+
+
+Layer 3 别名
+	
+--fm-<kebab-comp>-<role>[-<state>]，如 --fm-btn-bg-primary-hover、--fm-card-radius；每个别名必须出现在 §1.3 映射表，且只允许 var(--…Layer2…) 形式
+
+
+i18n key
+	
+组件内置文案 fm.<comp>.<purpose>；业务状态文案按《30》§4.3 统一前缀（status.order.* 等）；动态数据经 I18nText，禁止字符串拼接翻译
+
+
+事件命名
+	
+update:*（v-model）、动宾短语（confirm / cancel / change / error），禁止单词事件名 ok / click2 之类
+
+
+Props 命名
+	
+camelCase；布尔默认 false；枚举 prop 须在本卡「数据契约」列出全部取值
+1.3 Layer 3 → Layer 2 映射表（第一批组件，覆盖率必须 100%）
+规则：本表逐行可追溯；禁止指向 Layer 1 Primitive、禁止字面 HEX / px / 阴影 / 时长值（L3-3 / L3-4）；确需新值回 ①-1 Tokens 层走变更流程，不得在组件层就地解决（L3-5）。本轮不写入任何 .css / .vue 文件（L3-6 / 本轮红线）。
+#
+	
+Layer 3 别名
+	
+映射（Layer 2）
+	
+用途
+	
+所属组件
+
+
+1
+	
+--fm-btn-height-pc
+	
+var(--space-6)
+	
+PC 常规按钮高度（32px 档）
+	
+FmButton
+
+
+2
+	
+--fm-btn-height-mobile
+	
+var(--space-7)
+	
+手机按钮高度（48px，触控 ≥44×44 达标）
+	
+FmButton
+
+
+3
+	
+--fm-btn-height-lg
+	
+var(--space-7)
+	
+大号促销 CTA 高度（双端）
+	
+FmButton
+
+
+4
+	
+--fm-btn-pad-x
+	
+var(--space-4)
+	
+按钮水平内边距
+	
+FmButton
+
+
+5
+	
+--fm-btn-radius
+	
+var(--radius-md)
+	
+按钮圆角
+	
+FmButton
+
+
+6
+	
+--fm-btn-font-pc
+	
+var(--font-size-body-sm)
+	
+PC 按钮字号（14px）
+	
+FmButton
+
+
+7
+	
+--fm-btn-font-mobile
+	
+var(--font-size-body)
+	
+手机按钮字号（16px）
+	
+FmButton
+
+
+8
+	
+--fm-btn-bg-primary
+	
+var(--color-brand-primary-cta)
+	
+主按钮底（→ --color-brand-dark #312E7F，主 CTA 统一色）
+	
+FmButton
+
+
+9
+	
+--fm-btn-bg-primary-hover
+	
+var(--color-brand-primary-cta-hover)
+	
+主按钮 hover 底
+	
+FmButton
+
+
+10
+	
+--fm-btn-bg-primary-active
+	
+var(--color-brand-primary-cta-active)
+	
+主按钮按下底
+	
+FmButton
+
+
+11
+	
+--fm-btn-text-on-primary
+	
+var(--color-text-inverse)
+	
+主按钮文字（白）
+	
+FmButton
+
+
+12
+	
+--fm-btn-bg-secondary
+	
+var(--color-surface)
+	
+次按钮底
+	
+FmButton
+
+
+13
+	
+--fm-btn-border-secondary
+	
+var(--color-border-strong)
+	
+次按钮边界
+	
+FmButton
+
+
+14
+	
+--fm-btn-text-secondary
+	
+var(--color-text-primary)
+	
+次按钮文字
+	
+FmButton
+
+
+15
+	
+--fm-btn-bg-secondary-hover
+	
+var(--color-bg)
+	
+次按钮 hover 底
+	
+FmButton
+
+
+16
+	
+--fm-btn-text-brand
+	
+var(--color-text-brand)
+	
+文字按钮文字色（品牌紫 #5146A6）
+	
+FmButton
+
+
+17
+	
+--fm-btn-bg-text-hover
+	
+var(--color-brand-50)
+	
+文字按钮 hover 浅底
+	
+FmButton
+
+
+18
+	
+--fm-btn-bg-danger
+	
+var(--color-danger)
+	
+危险按钮底（→ 语义红 #C2332E）
+	
+FmButton
+
+
+19
+	
+--fm-btn-text-on-danger
+	
+var(--color-text-inverse)
+	
+危险按钮文字（白）
+	
+FmButton
+
+
+20
+	
+--fm-btn-bg-danger-hover
+	
+var(--color-text-safe-red)
+	
+危险按钮 hover 底（红系同源更深档，不新增色值）
+	
+FmButton
+
+
+21
+	
+--fm-btn-bg-disabled
+	
+var(--color-disabled-bg)
+	
+禁用底
+	
+FmButton
+
+
+22
+	
+--fm-btn-text-disabled
+	
+var(--color-text-disabled)
+	
+禁用文字
+	
+FmButton
+
+
+23
+	
+--fm-btn-border-disabled
+	
+var(--color-border)
+	
+禁用边界（装饰）
+	
+FmButton
+
+
+24
+	
+--fm-btn-focus-ring
+	
+var(--color-focus-ring)
+	
+focus ring 颜色（≥3:1 为项目强化标准）
+	
+FmButton / FmIconButton
+
+
+25
+	
+--fm-btn-focus-width
+	
+var(--color-focus-outline-width)
+	
+focus ring 宽度
+	
+FmButton / FmIconButton
+
+
+26
+	
+--fm-btn-focus-offset
+	
+var(--color-focus-outline-offset)
+	
+focus ring 偏移
+	
+FmButton / FmIconButton
+
+
+27
+	
+--fm-btn-duration
+	
+var(--motion-duration-fast)
+	
+状态过渡时长
+	
+FmButton / FmIconButton
+
+
+28
+	
+--fm-iconbtn-size-pc
+	
+var(--space-6)
+	
+PC 图标按钮边长
+	
+FmIconButton
+
+
+29
+	
+--fm-iconbtn-size-mobile
+	
+var(--space-7)
+	
+手机图标按钮边长（≥44）
+	
+FmIconButton
+
+
+30
+	
+--fm-iconbtn-icon-sm
+	
+var(--space-4)
+	
+小图标尺寸
+	
+FmIconButton
+
+
+31
+	
+--fm-iconbtn-icon-lg
+	
+var(--space-5)
+	
+大图标尺寸
+	
+FmIconButton
+
+
+32
+	
+--fm-card-radius
+	
+var(--radius-lg)
+	
+卡片圆角
+	
+FmCard
+
+
+33
+	
+--fm-card-pad-pc
+	
+var(--space-5)
+	
+PC 卡片内边距
+	
+FmCard
+
+
+34
+	
+--fm-card-pad-mobile
+	
+var(--space-4)
+	
+手机卡片内边距
+	
+FmCard
+
+
+35
+	
+--fm-card-bg
+	
+var(--color-surface)
+	
+卡片底
+	
+FmCard
+
+
+36
+	
+--fm-card-border
+	
+var(--color-border)
+	
+卡片描边（装饰分隔）
+	
+FmCard
+
+
+37
+	
+--fm-card-shadow
+	
+var(--shadow-card)
+	
+卡片常态阴影
+	
+FmCard
+
+
+38
+	
+--fm-card-shadow-hover
+	
+var(--shadow-float)
+	
+可点击卡 hover 阴影
+	
+FmCard
+
+
+39
+	
+--fm-card-divider
+	
+var(--color-border)
+	
+卡内分隔线色（统一面板规则 §2）
+	
+FmCard
+
+
+40
+	
+--fm-card-duration
+	
+var(--motion-duration-base)
+	
+hover 过渡时长
+	
+FmCard
+
+
+41
+	
+--fm-badge-radius
+	
+var(--radius-pill)
+	
+徽章圆角
+	
+FmStatusBadge
+
+
+42
+	
+--fm-badge-font
+	
+var(--font-size-caption)
+	
+徽章字号（12px，小字号红字须用安全红收敛点）
+	
+FmStatusBadge
+
+
+43
+	
+--fm-badge-pad-y
+	
+var(--space-1)
+	
+徽章纵向内边距
+	
+FmStatusBadge
+
+
+44
+	
+--fm-badge-pad-x
+	
+var(--space-2)
+	
+徽章横向内边距
+	
+FmStatusBadge
+
+
+45
+	
+--fm-badge-text
+	
+var(--color-text-primary)
+	
+徽章默认文字
+	
+FmStatusBadge
+
+
+46
+	
+--fm-badge-border
+	
+var(--color-border-strong)
+	
+徽章边界
+	
+FmStatusBadge
+
+
+47
+	
+--fm-badge-bg
+	
+var(--color-surface)
+	
+徽章底
+	
+FmStatusBadge
+
+
+48
+	
+--fm-badge-success
+	
+var(--color-success)
+	
+成功类语义色（选 A：仅白 / 浅灰底）
+	
+FmStatusBadge
+
+
+49
+	
+--fm-badge-warning
+	
+var(--color-warning)
+	
+进行中 / 警示语义色
+	
+FmStatusBadge
+
+
+50
+	
+--fm-badge-danger
+	
+var(--color-danger)
+	
+失败 / 取消语义色
+	
+FmStatusBadge
+
+
+51
+	
+--fm-badge-info
+	
+var(--color-info)
+	
+中性信息语义色
+	
+FmStatusBadge
+
+
+52
+	
+--fm-badge-brand
+	
+var(--color-text-brand)
+	
+待处理主流程语义色（品牌紫）
+	
+FmStatusBadge
+
+
+53
+	
+--fm-empty-icon-area
+	
+var(--color-brand-200)
+	
+空态图形区浅底（brand-200 允许用途：图片占位 / 选中态浅底 / 分隔）
+	
+FmEmptyState
+
+
+54
+	
+--fm-empty-title
+	
+var(--color-text-secondary)
+	
+空态标题
+	
+FmEmptyState
+
+
+55
+	
+--fm-empty-desc
+	
+var(--color-text-tertiary)
+	
+空态描述
+	
+FmEmptyState
+
+
+56
+	
+--fm-empty-pad
+	
+var(--space-7)
+	
+空态区块留白
+	
+FmEmptyState
+
+
+57
+	
+--fm-skeleton-base
+	
+var(--color-bg)
+	
+骨架底色
+	
+FmSkeleton
+
+
+58
+	
+--fm-skeleton-shine
+	
+var(--color-bg-cool)
+	
+骨架微光色
+	
+FmSkeleton
+
+
+59
+	
+--fm-skeleton-radius
+	
+var(--radius-md)
+	
+骨架块圆角
+	
+FmSkeleton
+
+
+60
+	
+--fm-skeleton-duration
+	
+var(--motion-duration-slow)
+	
+骨架脉冲周期（reduced-motion 下整体停播，见 §3.6）
+	
+FmSkeleton
+
+
+61
+	
+--fm-toast-z
+	
+var(--z-toast)
+	
+Toast 层级
+	
+FmToast
+
+
+62
+	
+--fm-toast-bg
+	
+var(--color-surface)
+	
+Toast 底
+	
+FmToast
+
+
+63
+	
+--fm-toast-shadow
+	
+var(--shadow-float)
+	
+Toast 阴影
+	
+FmToast
+
+
+64
+	
+--fm-toast-radius
+	
+var(--radius-md)
+	
+Toast 圆角
+	
+FmToast
+
+
+65
+	
+--fm-toast-text
+	
+var(--color-text-primary)
+	
+Toast 文字
+	
+FmToast
+
+
+66
+	
+--fm-toast-duration
+	
+var(--motion-duration-base)
+	
+Toast 进出场时长
+	
+FmToast
+
+
+67
+	
+--fm-image-placeholder-bg
+	
+var(--color-brand-200)
+	
+图片占位底（brand-200 允许用途）
+	
+FmImage
+
+
+68
+	
+--fm-image-placeholder-text
+	
+var(--color-text-brand)
+	
+占位说明文字（四允许色之一，见 §3.8）
+	
+FmImage
+
+
+69
+	
+--fm-image-radius
+	
+var(--radius-md)
+	
+图片圆角
+	
+FmImage
+核对声明：#1～#69 共 69 行、每行映射列均为 var(--…) 形式、无一处 Layer 1 直引、无字面 HEX / px / 阴影 / 时长（脚本核验见《35》§3）。--color-brand-primary-cta-hover / -active 为《19b》既有 Layer 2 条目（第 254～255 行），非本层新增。
+1.4 复用关系落地（U-1～U-6 · 第一批相关部分）
+约束
+	
+第一批落地
+
+
+U-1 唯一定义处
+	
+FmButton = 按钮基座（尺寸 / 状态 / focus ring / 触控区）唯一定义处；FmCard = 容器（圆角 / 阴影 / 内边距 / 标题与分隔）唯一定义处
+
+
+U-2 数量与归属不变
+	
+第一批 8 个 SFC 与《30》§4.4 序号 1/2/4/25/26/27/28/29 一致，未新增共享基座
+
+
+U-3 规范条目承载
+	
+FmIconButton 的基座规则不另立一套，其卡只写差异（§3.2 复用关系字段）
+
+
+U-4 引用基座验收编号
+	
+FmIconButton 验收项引用 FmButton 的 B-01～B-10 编号；继承结论不重复实测、另测差异态
+
+
+U-5 别名按基座归属
+	
+--fm-btn-* 只在 FmButton 名下定义；FmIconButton 复用同名别名，不另起 --fm-iconbtn-bg-* 等重复定义（仅尺寸 / 图标尺寸两类独有别名）
+
+
+U-6 不产生新组件
+	
+P-01 / P-04 承接只引用现有组件数据位（§4）；FmPagination 属 C-04，第一批不涉及
+1.5 全局 i18n 与数据边界（对第一批生效）
+组件内置文案 key 统一 fm.<comp>.* 前缀；本步不产出译文文件（译文属 Q-10 口径），仅登记 key 清单与回退规则（缺失回退 zh-CN）。
+所有组件不直接访问 Dexie / IndexedDB / Repository；数据一律经 props 传入、结果经 emit 传出。
+数量 / 文案不写死；文案长度自适应不截断不挤压（《30》§4.3 C-01）。
+2. 统一面板标题与区块分隔规则（P-05 承接 · T-02 必产章节）
+依据《30》§4.5.2 P-05 行：不新增 FmDivider / FmSectionTitle，由 FmCard + 本规则承担；页面不得自行设计。本规则对全站 70 套视图生效（①-3 模板与 ①-4 页面必须复用）。
+2.1 标题层级
+层级
+	
+字号 Token
+	
+字重 Token
+	
+用途
+
+
+页面主标题
+	
+var(--font-size-h1)
+	
+var(--font-weight-bold)
+	
+页面级唯一主标题（页面模板负责，非卡片）
+
+
+面板大标题
+	
+var(--font-size-h3)
+	
+var(--font-weight-bold)
+	
+FmCard titleLevel="lg"：区块主标题
+
+
+面板小标题
+	
+var(--font-size-body)
+	
+var(--font-weight-medium)
+	
+FmCard titleLevel="sm"：卡内分组标题
+
+
+辅助说明
+	
+var(--font-size-body-sm)
+	
+var(--font-weight-regular)
+	
+标题右侧说明文字（--color-text-tertiary）
+标题颜色：var(--color-text-primary)；说明文字 var(--color-text-tertiary)；标题不使用语义色、不使用 brand-200 底承载文字。
+同一视图内同级标题字号 / 字重必须一致；页面不得覆盖（A.6 禁止页面级硬编码字号）。
+2.2 间距
+场景
+	
+Token
+
+
+标题与正文间距
+	
+var(--space-3)
+
+
+卡内段落间距
+	
+var(--space-4)
+
+
+区块（卡与卡）间距
+	
+var(--space-5)
+
+
+页面区块间大留白
+	
+var(--space-6)
+
+
+标题行自身高度
+	
+var(--space-6)（PC）/ var(--space-7)（手机，兼作触控热区）
+2.3 分隔规则
+1.
+优先留白：默认用 §2.2 间距区分区块，不画线。
+2.
+需要线时：一律 FmCard 内置分隔变体（divider slot / dividerPosition），线色 var(--fm-card-divider)（→ --color-border，纯装饰分隔，1.17:1 豁免口径见《19b》），线宽 1px、通栏、上下各 var(--space-3) 留白。
+3.
+强分隔（付款区 / 地址区等功能边界）：var(--color-border-strong)；若该线承担识别功能（如区分可操作区）须按三状态口径独立核验 ≥3:1，不达标即降级为「留白 + 标题」方案。
+4.
+禁止：页面自写 <hr> 样式、自定线色 / 线宽、用 brand-300 / 语义色当分隔线。
+2.4 Token 来源与页面约束
+本规则全部取值来自 Layer 2 / §1.3 映射表；无任何新基础值（L3-1 / L3-5）。
+页面约束：只允许调用 FmCard 的标题 / 分隔变体实现区块标题与分隔；①-3 模板与 ①-4 页面验收扫查「无页面级自定义分隔线 / 标题样式」（《30》§4.5.2 P-05 验收要点）。
+3. 第一批组件规范卡（8 张）
+每卡 11 字段齐全（《30》§5.3 模板，缺一视为未完成）。a11y「实测结论」的数值一律以《20》穷举结果为准；凡本批组合未在《20》覆盖清单内的，标注「批次五补测」，不得以估算记达标。
+3.1 FmButton（C-01 · 序号 1）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+触发单一动作的按钮：主 / 次 / 文字 / 危险四变体 + 禁用 / 加载态。不负责：导航跳转外观（路由导航用 FmTabs / 导航组）、纯图标操作（FmIconButton）、数量增减（FmStepper）。加载中禁止重复提交但不改变按钮语义（aria-busy）。
+
+
+2
+	
+Props / Events / Slots
+	
+Props：`variant: 'primary'
+
+
+3
+	
+PC 变体
+	
+高度 --fm-btn-height-pc；字号 --fm-btn-font-pc；水平内边距 --fm-btn-pad-x；容器 1200 / 1440 内随页面布局自适应宽度，不写死宽。
+
+
+4
+	
+手机变体
+	
+高度 --fm-btn-height-mobile（48px ≥44 触控达标）；字号 --fm-btn-font-mobile；独立布局非缩放；375 / 390 / 430 文字自适应不截断；主操作允许通栏（宽度 100%）。
+
+
+5
+	
+状态矩阵
+	
+default / hover / active / focus-visible / disabled / loading：主按钮底 --fm-btn-bg-primary(-hover/-active)、文字 --fm-btn-text-on-primary；次按钮底 --fm-btn-bg-secondary(-hover) + 边界 --fm-btn-border-secondary + 文字 --fm-btn-text-secondary；文字按钮文字 --fm-btn-text-brand + hover 浅底 --fm-btn-bg-text-hover；危险按钮底 --fm-btn-bg-danger(-hover) + 白字。disabled：底 --fm-btn-bg-disabled、字 --fm-btn-text-disabled、不可聚焦、不派发 click、可辨识（禁用态辨识为 §5.4.1 矩阵要求）；loading：保留文字 + aria-busy="true" + disabled 等效（不可重复提交）。
+
+
+6
+	
+交互与可访问性
+	
+键盘 Enter / Space 触发；2.4.7 焦点可见（focus ring --fm-btn-focus-ring，≥3:1 为项目强化标准，宽 / 偏移取 --color-focus-outline-width/offset）；禁用态不可聚焦且可辨识；对比度：普通按钮文字 4.5:1（1.4.3），大文本按钮文字 3:1，必要图标 / 边界 3:1（1.4.11），不得统一按 3:1；文字 / 底组合以《20》穷举为准，未覆盖组合批次五补测；过渡 --fm-btn-duration；reduced-motion 下过渡趋零（延续《19》V1.4 第 4 条）。对应 §5.4.1 矩阵「FmButton / FmIconButton」行。
+
+
+7
+	
+Token 依赖
+	
+Layer 3：#1～#27（§1.3）；Layer 2 间接依赖 --color-brand-dark / --color-danger / --color-text-safe-red / --color-brand-50 / --color-disabled-bg 等（经映射表，组件样式不得直引 Layer 2 以外任何 Layer 1 值）。
+
+
+8
+	
+i18n
+	
+文字走默认插槽由调用方 t() 注入；组件内置 key 仅 fm.button.loading（屏幕阅读器播报，可选覆盖）。无写死文案；长度自适应不截断不挤压。
+
+
+9
+	
+数据契约
+	
+无业务数据字段；纯交互件。不持有数据源、不访问 Dexie。
+
+
+10
+	
+验收标准
+	
+B-01 四变体齐备且色值全部经 §1.3 映射；B-02 双端高度 / 触控达标；B-03 disabled 可辨且不可聚焦；B-04 loading aria-busy 且不重复提交；B-05 focus ring 项目强化 ≥3:1；B-06 按钮文字按 1.4.3 分层实测；B-07 键盘 Enter/Space；B-08 无硬编码文案。对应全局：《30》§5.4 WCAG / 双端 / i18n 项。
+
+
+11
+	
+复用关系
+	
+基座（定义处）。FmIconButton 继承本卡（U-4）；FmStepper（批次二）继承按钮基座规则；FmCarousel（批次四）切换按钮继承按钮基座 + aria-label 要求。
+3.2 FmIconButton（C-01 · 序号 2）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+纯图标触发的按钮（关闭、返回顶、收藏心形等）。不承载文字标签；语义必须由 aria-label 提供。区别于 FmButton：无四变体文案位。
+
+
+2
+	
+Props / Events / Slots
+	
+Props：label: string（必填，即 aria-label 来源，调用方传 t()）、`size: 'md'
+
+
+3
+	
+PC 变体
+	
+边长 --fm-iconbtn-size-pc；图标 --fm-iconbtn-icon-sm；ghost 无底、outline 加 --fm-btn-border-secondary。
+
+
+4
+	
+手机变体
+	
+边长 --fm-iconbtn-size-mobile（48 ≥44）；图标 --fm-iconbtn-icon-lg；触控热区不小于按钮本身。
+
+
+5
+	
+状态矩阵
+	
+default / hover / active / focus-visible / disabled / loading：hover 底 --fm-btn-bg-text-hover；active 同主按钮 active 深档（经映射，无新值）；disabled 文字 --fm-btn-text-disabled + 不可聚焦；loading aria-busy。
+
+
+6
+	
+交互与可访问性
+	
+键盘 Enter / Space；focus ring 同 FmButton（项目强化 ≥3:1）；aria-label 必填，缺失视为实现错误（对应 §5.4.1「图标-only aria-label」）；对比度：图标作为必要 UI 信息 ≥3:1（1.4.11），disabled 可辨；reduced-motion 同基座。
+
+
+7
+	
+Token 依赖
+	
+复用 --fm-btn-* 基座别名（#5～#27）+ 独有 #28～#31（§1.3）；无新增色值别名（U-5）。
+
+
+8
+	
+i18n
+	
+label 必须来自调用方 t()；组件无内置业务文案。
+
+
+9
+	
+数据契约
+	
+无业务数据字段；不访问 Dexie。
+
+
+10
+	
+验收标准
+	
+IB-01 aria-label 100% 存在；IB-02 尺寸 / 触控达标；IB-03 继承基座状态与 focus ring（引用 B-05）；IB-04 无文字标签出现；IB-05 无新色值别名。对应全局：§5.4 WCAG / 一致性红线。
+
+
+11
+	
+复用关系
+	
+基座 = FmButton（U-1 / U-4）：继承尺寸档、状态机制、focus ring、过渡时长；自身差异仅「图标-only + aria-label + ghost/outline 变体 + 独有尺寸别名」。Layer 3 别名归属 --fm-btn-* 基座 + 本组件独有 #28～#31。
+3.3 FmCard（C-03 · 序号 4）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+通用内容容器：统一圆角、内边距、描边、阴影、溢出处理、面板标题与分隔（按 §2 统一规则）。不负责业务排版（商品卡布局属 FmProductCard）、不持有数据源、不处理表单校验。
+
+
+2
+	
+Props / Events / Slots
+	
+Props：title?: string、`titleLevel?: 'lg'
+
+
+3
+	
+PC 变体
+	
+圆角 --fm-card-radius、内边距 --fm-card-pad-pc、常态阴影 --fm-card-shadow；clickable 时 hover 升 --fm-card-shadow-hover + 过渡 --fm-card-duration；容器 1200 / 1440 内自适应。
+
+
+4
+	
+手机变体
+	
+内边距 --fm-card-pad-mobile；独立布局；375 / 390 / 430 内容自适应、无横向溢出；clickable 触控区整卡可点。
+
+
+5
+	
+状态矩阵
+	
+default / hover（仅 clickable）/ focus-visible（仅 clickable）/ 内容溢出（统一 overflow 处理，不出现双滚动条）/ 空（正文为空时允许整卡留白，不画空态——空态用 FmEmptyState）。禁用不适用（容器无禁用语义）。
+
+
+6
+	
+交互与可访问性
+	
+clickable 时整体可聚焦、2.4.7 焦点可见（ring 同基座、项目强化 ≥3:1）、Enter / Space 派发 click；标题层级经 §2.1 保证（含在 header slot 中调用方仍须遵循）；分隔线为纯装饰（不承担识别功能时豁免数值；承担识别功能须 ≥3:1，见 §2.3）；reduced-motion 下 hover 过渡趋零。
+
+
+7
+	
+Token 依赖
+	
+#32～#40（§1.3）；间接依赖 --color-text-primary / --color-text-tertiary / --font-size-h3 / --font-size-body / --font-weight-* / --space-*（§2 全部经 Token，无新值）。
+
+
+8
+	
+i18n
+	
+title 由调用方 t()；组件无内置业务文案。
+
+
+9
+	
+数据契约
+	
+无业务数据字段；内容经 slot 注入；不访问 Dexie。
+
+
+10
+	
+验收标准
+	
+C-01 圆角 / 内边距 / 阴影三档全部经映射；C-02 标题层级符合 §2.1 且页面无覆盖；C-03 分隔符合 §2.3（优先留白）；C-04 clickable 焦点可达可派发；C-05 溢出无双滚动条；C-06 无页面级硬编码（配合 §2.4 扫查）。对应全局：§5.4 一致性红线 / P 组承接（P-05 行）。
+
+
+11
+	
+复用关系
+	
+容器基座（定义处）。复用方：FmProductCard（批次三）、FmAmountBreakdown（批次四）、P-01 虚拟物流组合位（§4.1）、P-05 面板标题 / 分隔（§2）——均引用本卡，不得重复实现容器。
+3.4 FmStatusBadge（C-08 · 序号 25）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+订单 / 支付 / 退款 / 物流状态的统一可视化标签。只做状态展示，不做状态流转、不含操作按钮。
+
+
+2
+	
+Props / Events / Slots
+	
+Props：`type: 'order'
+
+
+3
+	
+PC 变体
+	
+圆角 --fm-badge-radius、字号 --fm-badge-font、内边距 #43/#44、底 --fm-badge-bg、边界 --fm-badge-border；语义色按 #48～#52。
+
+
+4
+	
+手机变体
+	
+同一视觉规范；375 / 390 / 430 下单行不换行、超长状态名省略号 + title 提示（省略不影响 aria 读取）。
+
+
+5
+	
+状态矩阵
+	
+由 value 驱动：neutral（默认）/ success / warning / danger / info / brand 六类视觉映射；无 hover / focus（非交互件）；不存在禁用态。
+
+
+6
+	
+交互与可访问性
+	
+非交互件：不进 Tab 序；文字对比度按 1.4.3 普通文本 4.5:1（12px 属普通文本，小字号红字一律 --color-danger → 安全红收敛点，禁用 --color-price-red / --color-promo-*）；语义色选 A：只用于白 / 浅灰底，不启用 B 更深一阶（《30》§4.3 C-08）；brand-200 不承载徽章文字；具体文字 / 底组合以《20》穷举为准，未覆盖组合批次五补测。
+
+
+7
+	
+Token 依赖
+	
+#41～#52（§1.3）。
+
+
+8
+	
+i18n
+	
+key 规则 status.<type>.<value>（如 status.order.pendingPayment），与《30》§4.3 C-08 统一前缀一致；缺失回退 zh-CN；动态状态名经 I18nText。
+
+
+9
+	
+数据契约
+	
+value 枚举对齐《01》§4.8：订单五态 pendingPayment（待付款）/ pendingShipment（待发货）/ pendingReceipt（待收货）/ completed（已完成）/ cancelled（已取消，含「已取消（支付失败）」终态口径）；支付 / 退款枚举 pendingPayment / paid / paymentFailed / refunded / refunding 等，以《01》§4.8 /《02》§4 状态机为唯一权威，落地对齐不一致时以数据模型为准；物流轨迹七态 pendingShipment → shipped → pickedUp → inTransit → transitHub → delivering → signed（《01》§4.8 轨迹口径：待发货→已发货→已揽收→运输中→中转→派送中→已签收，时间戳递增）。组件不访问 Dexie；状态值由 Store / Service 传入。
+
+
+10
+	
+验收标准
+	
+S-01 订单 5 + 支付 / 退款 + 物流 7 全枚举有 key、有视觉映射；S-02 语义色符合选 A 分层；S-03 小字号红字用安全红；S-04 文字对比度 4.5:1（《20》为准 / 批次五补测）；S-05 枚举与《01》数据字典一致。对应全局：§5.4 WCAG / 数据契约项。
+
+
+11
+	
+复用关系
+	
+无基座。被复用方：P-01 虚拟物流组合位（§4.1）引用物流 7 态；批次三 FmProductCard 在售 / 停用 / 归档标签、批次四订单列表引用本组件。
+3.5 FmEmptyState（C-09 · 序号 26）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+列表 / 搜索 / 购物车 / 订单等无数据时的空态呈现。不负责加载（FmSkeleton）、不负责失败重试的业务逻辑（重试动作经 slot 按钮由页面处理）。
+
+
+2
+	
+Props / Events / Slots
+	
+Props：scene: string（场景 key，如 search / cart / orders）、showAction?: boolean。Events：无（动作经 slot）。Slots：graphic（插画区，内嵌 FmImage 或留白）、action（放 FmButton）。
+
+
+3
+	
+PC 变体
+	
+区块留白 --fm-empty-pad；图形区浅底 --fm-empty-icon-area（brand-200 允许用途）；标题 --fm-empty-title、描述 --fm-empty-desc。
+
+
+4
+	
+手机变体
+	
+同一规范；375 / 390 / 430 图形区自适应缩放、文字居中不溢出。
+
+
+5
+	
+状态矩阵
+	
+仅 default（空态本身即状态）；无 hover / focus（非交互件；action slot 内按钮自身携带交互态）。
+
+
+6
+	
+交互与可访问性
+	
+文字对比度：标题 --color-text-secondary 4.5:1、描述 --color-text-tertiary 4.5:1（普通文本口径，《20》为准）；brand-200 仅作图形区底、不承载文字（V1.1 既有规则）；描述文字与图形区不得形成「仅凭浅底识别」的依赖；reduced-motion 下图形区不得播放持续动画。
+
+
+7
+	
+Token 依赖
+	
+#53～#56（§1.3）。
+
+
+8
+	
+i18n
+	
+key fm.empty.<scene>.title / fm.empty.<scene>.desc / fm.empty.<scene>.action；场景清单随使用页面在批次三 / 四登记扩充；无写死文案。
+
+
+9
+	
+数据契约
+	
+无业务数据字段；空判定由页面 / Store 完成（组件不查询数据、不访问 Dexie）。
+
+
+10
+	
+验收标准
+	
+E-01 title / desc / action 三位齐备且可翻译；E-02 文字色对比度达标（《20》为准）；E-03 brand-200 未承载文字；E-04 无持续动画；E-05 重试按钮经 slot 使用 FmButton。对应全局：§5.4 WCAG / i18n。
+
+
+11
+	
+复用关系
+	
+无基座。C-09 组内与 FmSkeleton / FmToast 平行；被批次三 FmTable / 批次四订单列表复用。
+3.6 FmSkeleton（C-09 · 序号 27）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+数据加载中的结构占位（文本行 / 图块 / 卡片形状）。不负责错误态（页面处理）、不承载真实内容。
+
+
+2
+	
+Props / Events / Slots
+	
+Props：`type: 'text'
+
+
+3
+	
+PC 变体
+	
+块圆角 --fm-skeleton-radius；文本行高 --space-4、行距 --space-3；卡片型内嵌于 FmCard 尺寸随容器。
+
+
+4
+	
+手机变体
+	
+同一形状体系；375 / 390 / 430 自适应；列表型骨架行数与真实列表单页数量上限一致（P-03 口径，不一次铺满整屏假数据）。
+
+
+5
+	
+状态矩阵
+	
+animated（默认脉冲）/ 静态（animated=false 或 reduced-motion）；无 hover / focus / disabled。
+
+
+6
+	
+交互与可访问性
+	
+容器 role="status" + aria-label（key fm.skeleton.loading）+ aria-busy="true"；prefers-reduced-motion: reduce 下整体停播脉冲 / 微光动画，退为静态色块——不得只缩时长继续播放持续动画（《19》V1.4 第 4 条，《19b》§reduced-motion 块）；骨架块为纯装饰（aria-hidden 的形状层），不产生对比度识别义务；底色 --fm-skeleton-base 与微光 --fm-skeleton-shine 同源浅灰系。
+
+
+7
+	
+Token 依赖
+	
+#57～#60（§1.3）。
+
+
+8
+	
+i18n
+	
+fm.skeleton.loading（aria 播报）；无业务文案。
+
+
+9
+	
+数据契约
+	
+无业务数据字段；显隐由页面加载态驱动；不访问 Dexie。
+
+
+10
+	
+验收标准
+	
+K-01 reduced-motion 下静态（录屏 / 系统模拟核验）；K-02 role=status + aria 播报；K-03 形状与真实结构对应（无满屏假块）；K-04 无真实内容混入。对应全局：§5.4 WCAG / i18n。
+
+
+11
+	
+复用关系
+	
+无基座。被批次三 FmTable / FmProductCard 列表、批次四订单列表复用。
+3.7 FmToast（C-09 · 序号 28）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+轻量操作反馈（成功 / 失败 / 警示 / 提示），自动消失、不阻断流程。不负责需要用户决策的确认（FmConfirm）、不做表单内联校验提示（FmFormField）。
+
+
+2
+	
+Props / Events / Slots
+	
+Props：`type: 'success'
+
+
+3
+	
+PC 变体
+	
+顶部居中 / 底部居中两位置（页面模板选择）；层级 --fm-toast-z；底 --fm-toast-bg、阴影 --fm-toast-shadow、圆角 --fm-toast-radius、文字 --fm-toast-text；左侧语义色条 = type 对应语义色（#48～#51）。
+
+
+4
+	
+手机变体
+	
+顶部安全区下弹出；375 / 390 / 430 通栏自适应；文字两行内省略 + 完整文本经 aria 读取。
+
+
+5
+	
+状态矩阵
+	
+entering / visible / leaving / closed；无 hover 焦点态（closable 时关闭按钮自身带交互态与焦点）；无 disabled。
+
+
+6
+	
+交互与可访问性
+	
+role="status" + aria-live="polite"（error 用 aria-live="assertive" + role="alert"）；不抢焦点；closable 时关闭按钮 aria-label（key fm.toast.close）且焦点可达、2.4.7 可见（ring 同基座）；语义色条与文字对比度：文字 4.5:1（1.4.3）、语义色条作为 UI 信息 ≥3:1（1.4.11，《20》为准 / 批次五补测）；进出场 --fm-toast-duration，reduced-motion 下过渡趋零且不得保留持续性动画。
+
+
+7
+	
+Token 依赖
+	
+#61～#66 + #48～#51（§1.3）。
+
+
+8
+	
+i18n
+	
+message 由调用方 t()；内置 key 仅 fm.toast.close；无写死文案。
+
+
+9
+	
+数据契约
+	
+无业务数据字段；type 枚举四值；不访问 Dexie。
+
+
+10
+	
+验收标准
+	
+T-01 层级唯一最高（--z-toast）；T-02 aria-live 分级正确；T-03 不抢焦点、closable 可键盘关闭；T-04 自动消失时长经规范登记且 reduced-motion 无持续动画；T-05 语义色符合选 A（仅白 / 浅灰底承载）。对应全局：§5.4 WCAG / i18n。
+
+
+11
+	
+复用关系
+	
+无基座。与 FmConfirm（批次二）边界互补；被全部 34 页面复用。
+3.8 FmImage（C-10 · 序号 29）
+#
+	
+字段
+	
+内容
+
+
+1
+	
+组件职责与边界
+	
+统一图片渲染、加载态与 @error 本地占位。不生成图片 / Logo、不内嵌自绘 SVG 替代真实素材、不负责懒加载策略的业务配置（列宽 / 裁剪由调用方定义）。
+
+
+2
+	
+Props / Events / Slots
+	
+Props：src: string、alt: string（必填，装饰图传空串 + aria-hidden）、aspect?: string（如 '1:1'，经规范登记枚举）、lazy?: boolean、radius?: boolean。Events：load、error（内部已渲染占位，error 同时上报调用方）。Slots：placeholder（覆盖默认占位文案）。
+
+
+3
+	
+PC 变体
+	
+圆角 --fm-image-radius；aspect 锁定比例防布局抖动；容器 1200 / 1440 内自适应。
+
+
+4
+	
+手机变体
+	
+同一比例体系；375 / 390 / 430 自适应缩放；占位在弱网下不闪烁。
+
+
+5
+	
+状态矩阵
+	
+loading / loaded / error（占位）；无 hover / focus（非交互件，可点击图片由外层包裹）。
+
+
+6
+	
+交互与可访问性
+	
+alt 必填与语义一致；占位说明文字色仅允许 --color-text-primary / --color-text-secondary / --color-text-brand / --color-brand-dark 四者（《19b》brand-200 行既有规则），占位底 --fm-image-placeholder-bg（brand-200 允许用途：图片占位）；外链图片不得成为必要依赖（构建与首屏不依赖外链）；lazy 为体验增强非正确性依赖；无持续动画（加载不使用旋转动画，静态过渡）。
+
+
+7
+	
+Token 依赖
+	
+#67～#69（§1.3）。
+
+
+8
+	
+i18n
+	
+key fm.image.placeholder / fm.image.loadFailed；alt 由调用方 t()。
+
+
+9
+	
+数据契约
+	
+图片地址来源为本地素材库（docs/23 素材授权现状：零图片——素材库建立属前置阻塞点，见《30》§5.5；本组件契约先行，素材到位后按 src 注入）；不访问 Dexie。
+
+
+10
+	
+验收标准
+	
+I-01 @error 统一占位且说明色在四允许色内；I-02 alt 100% 提供；I-03 无外链必要依赖；I-04 比例锁定无抖动；I-05 无生成图片 / 自绘 SVG 图库。对应全局：§5.4 本轮红线（无图片生成）/ WCAG。
+
+
+11
+	
+复用关系
+	
+图片基座（定义处）。复用方：FmProductCard / FmCarousel（批次三、四）引用 @error 占位与比例规则；FmEmptyState graphic slot 可内嵌本组件。
+4. P-01 / P-04 在第一批的承接说明（T-02 要求，不新增组件）
+4.1 P-01 虚拟物流（部分落地，跨批次组合）
+第一批已具备：FmStatusBadge（物流 7 态，§3.4）+ FmCard（容器，§3.3）。
+待批次四补齐：FmDate（节点时间）。
+组合规则（全批次通用，登记于此）：物流轨迹块 = FmCard 容器 + 节点行（FmStatusBadge + FmDate + 统一文本位）；「虚拟物流」提示文案必现（key status.logistics.virtualNotice，走 t()）；奇幻色仅奇幻物流模块；不新增 FmTimeline。
+验收引用：《30》§4.5.2 P-01 行（状态 / 时间 / 文本三位齐备）。
+4.2 P-04 Tooltip 替代位（跨批次声明）
+表单说明 / 状态释义一律用 FmFormField 的辅助文字位（批次二定义）+ 说明文字（t()），必要时 FmCard 内联说明（§3.3）；不新增 FmTooltip / FmPopover。
+a11y 要求（登记于此，批次二落地）：说明文字与字段经 aria-describedby 关联、可翻译、不遮挡内容（《30》§4.5.2 P-04 行）。
+5. 第一批验收对照（对应《30》§5.4 全局项）
+《30》§5.4 全局项
+	
+第一批状态
+
+
+范围（12 类 / 36 SFC）
+	
+第一批覆盖 8/36（序号 1/2/4/25/26/27/28/29），其余 28 个属批次二～四；未新增、未改名
+
+
+Layer 2 / Layer 3
+	
+§1.3 映射表 69 行全部 var() 映射，无 Layer 1 直引、无字面值（《35》脚本核验）
+
+
+WCAG 2.1 AA
+	
+按钮文字 1.4.3 分层、focus ring 项目强化 ≥3:1、禁用态辨识、reduced-motion 停播持续动画（skeleton / toast）；已确认色值零改动、#707070 兜底未动；未覆盖对比度组合统一标「批次五补测」
+
+
+P 组承接
+	
+P-05 = §2 独立章节齐备；P-01 = §4.1 部分落地 + 跨批次组合规则；P-04 = §4.2 声明 + 批次二落地字段；零新增组件
+
+
+组件复用
+	
+§1.4 U-1～U-6 第一批落地；FmIconButton 继承 FmButton 基座、无重复规范
+
+
+双端
+	
+逐卡 PC / 手机变体齐备；触控 ≥44×44（按钮 / 图标按钮）；375 / 390 / 430 表现逐卡写明
+
+
+i18n
+	
+逐卡 key 清单登记；无写死文案；本步不产出译文文件
+
+
+数据契约
+	
+状态枚举对齐《01》§4.8；无金额字段（金额类属批次四 C-11）；零 Dexie 访问声明
+
+
+一致性红线
+	
+无页面级硬编码；共用同一 Token 体系
+
+
+本轮红线
+	
+无代码 / 无样机 / 无 CSS 正式版 / 无图片生成 / 无种子数据 / 四图未改
+
+
+闸门
+	
+批次一交付后停止；①-2 整体完成后单独送审、单独确认
+6. 后续批次计划（预告，本批不执行）
+批次
+	
+内容
+	
+SFC 数
+
+
+批次二（T-03）
+	
+C-05 FmModal FmConfirm FmDrawer + C-06 九件（含 FmInput 三状态硬底线与实测表）+ §5.4.1 矩阵逐行落地
+	
+12
+
+
+批次三（T-04 上）
+	
+C-02 FmProductCard + C-04 FmTable FmPagination（P-03 承接说明）
+	
+3
+
+
+批次四（T-04 下）
+	
+C-07 六件 + C-11 四件（金额四字段 / 派生均价）+ C-12 三件（FmCarousel 按 §5.4.2）+ P-01 / P-02 组合补齐
+	
+13
+
+
+批次五（T-05 + T-06）
+	
+八项交叉核验 + 对比度补测 + 验收对照表 + 送审包汇总
+	
+0
+合计 8 + 12 + 3 + 13 = 36，与《30》§4.4 一致。
+
+========================================================================
+《35》35-①-2正式设计批次一交付与自检记录.md（CHK-①-2-B1-20261116-01）
+========================================================================
+
+35-①-2正式设计批次一交付与自检记录
+《35》①-2 正式设计 · 批次一交付与自检记录
+项
+	
+内容
+
+
+记录编号
+	
+CHK-①-2-B1-20261116-01
+
+
+发生日期
+	
+2026-11-16
+
+
+触发
+	
+用户 2026-11-16 指令：GPT 最终审核通过《30》V1.3 与《33》，「现在开始正式设计，并在第一批完成后提交我审核」；要求按组件类别分批完成、每批提交完整文档及自检记录
+
+
+依据
+	
+《30》V1.3 §1～§5.4.2（经 GPT 最终审核通过）；《19》《19b》《20》《25》；《01》§4.8；《02》§4；《03》A.2 / A.3 / A.5 / A.6
+
+
+本批交付
+	
+《34》（SPEC-①-2-20261116-01，V1.0 批次一交付版）：§1 总纲（T-01）+ §2 统一面板规则（P-05 承接）+ §3 第一批 8 张规范卡 + §4 P-01 / P-04 承接说明 + §5 验收对照 + §6 后续批次预告
+
+
+本轮动作
+	
+仅新增《34》《35》；docs/ 其余文件（含全部 ①-1 文档、《29》～《33》、四份基线、四张 V5 图）一律零写入
+
+
+当前状态
+	
+①-1 已收尾；①-2 正式设计进行中（批次 1 / 5）；①-2 整体完成后仍单独送审、单独确认（X-15）；①-3 / ①-4 未开始；CSS Variables 仍 DRAFT
+
+
+本批红线
+	
+无组件代码（未创建 src/ 与任何 .vue / .ts / .css）、无样机、CSS 不固化、P 组零纳入、不新增组件、不改色值 / 基线 / 四图
+
+
+停止点
+	
+提交《34》+《35》后停止，等待用户 / GPT 审核通过后才开始批次二
+1. 先行核验结论（执行前判断，全部成立）
+#
+	
+用户要求
+	
+核验结果
+
+
+1
+	
+严格按《30》V1.3 的 12 类 / 36 SFC，不擅自增删调
+	
+成立。第一批取序号 1/2/4/25/26/27/28/29 共 8 个，与 §4.4 逐名一致（《34》§3 卡头「C-xx · 序号 n」可对账）
+
+
+2
+	
+按已定任务分解与规范卡模板逐项完成
+	
+成立。第一批 = T-01 全部 + T-02 全部（含 T-02 必产的「统一面板规则」章节与 P-01/P-04 组合说明）；每卡 11 字段按 §5.3 模板齐全
+
+
+3
+	
+每组件完整说明 9 类内容 + 复用关系
+	
+成立。11 字段含职责 / 契约 / 双端变体 / 状态 / 交互 a11y / Token / i18n / 数据契约 / 验收 / 复用
+
+
+4
+	
+遵守 Layer 2/3 映射与已通过无障碍标准
+	
+成立。《34》§1.3 映射表 69 行全部 var() 映射 Layer 2；a11y 沿用 V1.3 归因（2.4.7 焦点可见无数值、focus ring ≥3:1 为项目强化、按钮文字 1.4.3 分层）
+
+
+5
+	
+P 组不纳入、CSS 继续 DRAFT
+	
+成立。P 组候选名仅出现于禁止 / 移出语境（脚本 C1）；19b 头部 DRAFT 未动
+
+
+6
+	
+只交付规范文档，不生成代码 / 样机 / 页面
+	
+成立。未创建任何实现文件（§4 只读核验）
+
+
+7
+	
+分批完成，每批提交文档 + 自检记录
+	
+成立。本批即第一批；批次二～五计划已在《34》§6 预告（8+12+3+13=36）
+2. 第一批内容一览
+规范卡
+	
+类 / 序号
+	
+要点
+
+
+FmButton
+	
+C-01 / 1
+	
+四变体 + 禁用 / 加载；主 CTA --color-brand-dark；文字 1.4.3 分层；触控 48px
+
+
+FmIconButton
+	
+C-01 / 2
+	
+继承按钮基座（U-1/U-4/U-5）；aria-label 必填；仅尺寸类独有别名
+
+
+FmCard
+	
+C-03 / 4
+	
+容器基座；圆角 / 内边距 / 三档阴影全经映射；标题与分隔按 §2 统一规则
+
+
+FmStatusBadge
+	
+C-08 / 25
+	
+订单 5 + 支付 / 退款 + 物流 7 枚举对齐《01》§4.8；语义色选 A；小字红用安全红
+
+
+FmEmptyState
+	
+C-09 / 26
+	
+图形区 brand-200 允许用途；文字 4.5:1；动作经 slot 用 FmButton
+
+
+FmSkeleton
+	
+C-09 / 27
+	
+reduced-motion 下整体停播脉冲（退静态色块）；role=status 播报
+
+
+FmToast
+	
+C-09 / 28
+	
+--z-toast 最高层；aria-live 分级（error → assertive/alert）；不抢焦点
+
+
+FmImage
+	
+C-10 / 29
+	
+@error 统一占位；说明文字限四允许色；外链非必要依赖；无生成图片
+另含：§1.3 Layer 3 → Layer 2 映射表 69 行（按钮 27 + 图标按钮 4 + 卡片 9 + 徽章 12 + 空态 4 + 骨架 4 + Toast 6 + 图片 3）、§2 统一面板标题与区块分隔规则（P-05：标题层级 / 间距 / 分隔 / Token 来源 / 页面约束五项齐备）。
+3. 复核脚本与结果（正文 == stdout，可逐字复现）
+stdout（逐字）：
+复验：EXIT=0、stderr 空、正文 == stdout True。
+4. 只读核验（零写入与无实现文件）
+docs/ 文件数 35（新增《34》《35》）；本轮写入仅此两份。
+src/ 不存在；全工作区无 .vue / .ts / vite.config.*。
+19b 头部仍 DRAFT / 草案 · 未固化 · 未经用户确认；《30》V1.3 /《33》《32》《31》《29》及全部 ①-1 文档、四份基线、四张 V5 图 mtime 未变。
+5. 如实说明（不隐藏）
+1.
+对比度实测口径：①-2 是规范文档、无代码可渲染，故各卡 a11y 字段中的对比度一律声明「以《20》穷举结果为准」；凡本批用到而《20》组合清单未覆盖的（如危险按钮白字底、文字按钮 hover 底），统一标注批次五补测，不得以估算记达标——这是诚实口径，不是已测声明。
+2.
+状态枚举：FmStatusBadge 的物流七态与订单五态取自《01》§4.8 原文（待发货→已发货→已揽收→运输中→中转→派送中→已签收；待付款/待发货/待收货/已完成/已取消）；支付 / 退款枚举在《34》中标注「以《01》§4.8 /《02》§4 为唯一权威，落地对齐不一致时以数据模型为准」，未自行发明枚举。
+3.
+按钮高度档：现有 Token 无 40px / 44px 档，按 L3-5（新值须回 ①-1 层走变更）未就地造值，采用 --space-6（32px，PC）/ --space-7（48px，手机触控达标）；若审核认为 PC 32px 偏小，属 ①-1 Tokens 层变更议题，不在组件层解决。
+4.
+Toast 排队：多例排队属阶段二业务层（Toast Service），①-2 只定单例视觉与 a11y 契约，《34》已写明。
+6. 停止点
+已停止。 等待用户 / GPT 对批次一（《34》V1.0 + 本《35》）的审核意见；审核通过后按同一模板开始批次二（T-03：C-05 + C-06 共 12 张卡 + 三状态实测表），不提前开始。
